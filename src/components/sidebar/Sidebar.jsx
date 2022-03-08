@@ -18,7 +18,7 @@ const SidebarItem = (props) => {
 	return (
 		<div className="sidebar__item">
 			<div className="sidebar__item-flex">
-				<div className={` ${props.subNav.length > 0 ? 'sidebar__item-inner--sub' : 'sidebar__item-inner'} ${active}`}>
+				<div className={` sidebar__item-inner ${active}`}>
 					<i className={props.icon}></i>
 					<span>{props.title}</span>
 				</div>
@@ -57,26 +57,17 @@ function Sidebar(props) {
 					<img src={logo} alt="logo cong ty" />
 				</div>
 				{sidebar_items.map((item, index) => {
-					const subItem =
-						item.subNav.length > 0 ? (
+					const subItem = (
+						<Link key={index} to={item.route}>
 							<SidebarItem
 								location={props.location.pathname}
-								key={index}
 								subNav={item.subNav}
 								title={item.display_name}
 								icon={item.icon}
 								active={index === activeItem}
 							/>
-						) : (
-							<Link key={index} to={item.route}>
-								<SidebarItem
-									subNav={item.subNav}
-									title={item.display_name}
-									icon={item.icon}
-									active={index === activeItem}
-								/>
-							</Link>
-						);
+						</Link>
+					);
 					return subItem;
 				})}
 			</div>

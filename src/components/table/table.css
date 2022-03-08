@@ -19,6 +19,7 @@ tr {
 th,td {
   text-transform: capitalize;
   padding: 15px 10px;
+  border-bottom: 1px solid #ddd;
 }
 
 tbody > tr:hover{

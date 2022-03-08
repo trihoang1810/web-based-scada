@@ -118,7 +118,7 @@ i>span>i{
 .sidebar__item--inner-sub{
   display: flex;
   flex-direction: column;
-  margin-left: 70px;
+  margin-left: 40px;
   display: flex;
   font-weight: 400;
   transition: color .3s ease 0s;

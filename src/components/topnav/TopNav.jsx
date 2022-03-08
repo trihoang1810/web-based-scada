@@ -2,7 +2,7 @@ import React from 'react';
 
 import Dropdown from '../dropdown/DropDown';
 
-import ThemeMenu from '../thememenu/ThemeMenu';
+// import ThemeMenu from '../thememenu/ThemeMenu';
 
 import './topnav.css';
 
@@ -77,9 +77,9 @@ const Topnav = () => {
 						renderFooter={() => <Link to="/">View All</Link>}
 					/>
 				</div>
-				<div className="topnav__right-item">
+				{/* <div className="topnav__right-item">
 					<ThemeMenu />
-				</div>
+				</div> */}
 			</div>
 		</div>
 	);
