@@ -27,7 +27,8 @@ const injectionData = {
 function Test() {
 	return (
 		<div>
-			<Pie options={injectionOptions} data={injectionData} />
+			{/* <Pie options={injectionOptions} data={injectionData} /> */}
+			Machine 1 or 2
 		</div>
 	);
 }
