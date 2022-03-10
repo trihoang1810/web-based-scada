@@ -2,8 +2,6 @@ import React from 'react';
 
 import { Route, Switch, useRouteMatch } from 'react-router-dom';
 
-import Test from '../../test/Test';
-
 import QualityControl from './QualityControl';
 
 import Deformation from './deformation';
