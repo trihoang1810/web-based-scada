@@ -14,7 +14,6 @@ import { setActiveMenu } from '../../redux/slice/SideBarSlice';
 
 const SidebarItem = (props) => {
 	const active = props.active ? 'active' : '';
-	// const activeItem = sidebar_items.findIndex((item) => item.route === props.location.pathname);
 	return (
 		<div className="sidebar__item">
 			<div className="sidebar__item-flex">
@@ -40,7 +39,6 @@ const SidebarItem = (props) => {
 function Sidebar(props) {
 	const sideBarReducer = useSelector((state) => state.sidebar);
 	const activeMenu = sideBarReducer.active;
-	console.log(activeMenu);
 	const dispatch = useDispatch();
 	const handleMenuClick = () => {
 		dispatch(setActiveMenu(activeMenu === '' ? 'active' : ''));
