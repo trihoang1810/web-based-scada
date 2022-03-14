@@ -1,0 +1,28 @@
+.injectionMoldinMachinePage__quantity {
+	flex-wrap: nowrap;
+}
+
+.injectionMoldinMachinePage__quantity-item {
+	margin: 0 4px;
+	align-items: center;
+	flex-wrap: nowrap;
+}
+
+.injectionMoldinMachinePage__quantity-item div {
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	position: relative;
+	color: var(--txt-white);
+	text-align: center;
+	font-size: 1.1rem;
+	font-weight: 600;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.injectionMoldinMachinePage__quantity-item span {
+	color: var(--txt-color);
+	margin: 0 4px;
+}

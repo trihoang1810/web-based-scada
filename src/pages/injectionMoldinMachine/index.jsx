@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
+import InjectionFilter from '../../components/injectionFilter/InjectionFilter';
 import InjectionMoldingMachine from '../../components/injectionMoldingMachine/InjectionMoldingMachine';
+import InjectionStateNote from '../../components/injectionStateNote/InjectionStateNote';
 import './injectionMoldinMachinePage.css';
 
 function InjectionMoldinMachinePage() {
 	const resData = [
 		{
-			number: 'M24',
+			number: 'M1',
 			percent: 30,
 			state: 'R',
 			cycle: '30 giây',
@@ -15,7 +17,7 @@ function InjectionMoldinMachinePage() {
 			size: 'small',
 		},
 		{
-			number: 'M25',
+			number: 'M2',
 			percent: 50,
 			state: 'M',
 			cycle: '30 giây',
@@ -24,7 +26,7 @@ function InjectionMoldinMachinePage() {
 			size: 'large',
 		},
 		{
-			number: 'M30',
+			number: 'M3',
 			percent: 78,
 			state: 'S',
 			cycle: '30 giây',
@@ -33,7 +35,43 @@ function InjectionMoldinMachinePage() {
 			size: 'large',
 		},
 		{
-			number: 'M36',
+			number: 'M4',
+			percent: 15,
+			state: 'M',
+			cycle: '30 giây',
+			openDoorTime: '7 giây',
+			operatingTime: '1 tiếng 15 phút',
+			size: 'small',
+		},
+		{
+			number: 'M5',
+			percent: 30,
+			state: 'R',
+			cycle: '30 giây',
+			openDoorTime: '7 giây',
+			operatingTime: '1 tiếng 15 phút',
+			size: 'small',
+		},
+		{
+			number: 'M6',
+			percent: 50,
+			state: 'M',
+			cycle: '30 giây',
+			openDoorTime: '7 giây',
+			operatingTime: '1 tiếng 15 phút',
+			size: 'large',
+		},
+		{
+			number: 'm7',
+			percent: 78,
+			state: 'S',
+			cycle: '30 giây',
+			openDoorTime: '7 giây',
+			operatingTime: '1 tiếng 15 phút',
+			size: 'large',
+		},
+		{
+			number: 'm8',
 			percent: 15,
 			state: 'M',
 			cycle: '30 giây',
@@ -150,7 +188,7 @@ function InjectionMoldinMachinePage() {
 			size: 'small',
 		},
 		{
-			number: 'M24',
+			number: 'M1',
 			percent: 30,
 			state: 'R',
 			cycle: '30 giây',
@@ -159,7 +197,7 @@ function InjectionMoldinMachinePage() {
 			size: 'small',
 		},
 		{
-			number: 'M25',
+			number: 'M2',
 			percent: 50,
 			state: 'M',
 			cycle: '30 giây',
@@ -168,7 +206,7 @@ function InjectionMoldinMachinePage() {
 			size: 'large',
 		},
 		{
-			number: 'M30',
+			number: 'M3',
 			percent: 78,
 			state: 'S',
 			cycle: '30 giây',
@@ -177,24 +215,74 @@ function InjectionMoldinMachinePage() {
 			size: 'large',
 		},
 		{
-			number: 'M36',
+			number: 'M4',
 			percent: 15,
 			state: 'M',
+			cycle: '30 giây',
+			openDoorTime: '7 giây',
+			operatingTime: '1 tiếng 15 phút',
+			size: 'small',
+		},
+		{
+			number: 'M5',
+			percent: 30,
+			state: 'R',
+			cycle: '30 giây',
+			openDoorTime: '7 giây',
+			operatingTime: '1 tiếng 15 phút',
+			size: 'small',
+		},
+		{
+			number: 'M6',
+			percent: 50,
+			state: 'M',
+			cycle: '30 giây',
+			openDoorTime: '7 giây',
+			operatingTime: '1 tiếng 15 phút',
+			size: 'large',
+		},
+		{
+			number: 'm7',
+			percent: 78,
+			state: 'S',
+			cycle: '30 giây',
+			openDoorTime: '7 giây',
+			operatingTime: '1 tiếng 15 phút',
+			size: 'large',
+		},
+		{
+			number: 'm8',
+			percent: 15,
+			state: 'M',
+			cycle: '30 giây',
+			openDoorTime: '7 giây',
+			operatingTime: '1 tiếng 15 phút',
+			size: 'small',
+		},
+		{
+			number: 'M24',
+			percent: 30,
+			state: 'R',
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
 			operatingTime: '1 tiếng 15 phút',
 			size: 'small',
 		},
 	];
+	const pageSize = window.screen.width >= 1280 ? 12 : window.screen.width >= 500 ? 6 : 100;
 	let quantityPrepare = { M: 0, R: 0, S: 0 };
-	const [page, setPage] = useState(1);
+	const param = useParams();
+	const history = useHistory();
+	const [page, setPage] = useState(+param.page);
+	const [pages, setPages] = useState();
 	const [quantity, setQuantity] = useState({});
 	const [sizeFilter, setSizeFilter] = useState([]);
 	const [stateFilter, setStateFilter] = useState([]);
-	const [filerData, setFilterData] = useState();
+	const [filterData, setFilterData] = useState();
 	const [pageData, setPageData] = useState();
 
-	const hanldeCheckBtn = (state, payload) => {
+	const hanldeCheckBtn = (e, state, payload) => {
+		e.stopPropagation();
 		if (state === 'size') {
 			if (sizeFilter.includes(payload)) {
 				setSizeFilter(sizeFilter.filter((item) => item !== payload));
@@ -209,6 +297,10 @@ function InjectionMoldinMachinePage() {
 			}
 		}
 	};
+
+	useEffect(() => {
+		history.push(`/injection/${page}`);
+	}, [page]);
 
 	useEffect(() => {
 		resData.forEach((item) => {
@@ -238,88 +330,59 @@ function InjectionMoldinMachinePage() {
 	}, [sizeFilter, stateFilter]);
 
 	useEffect(() => {
-		if (filerData) {
-			setPageData(filerData.filter((item, index) => index >= 12 * (page - 1) && index < page * 12 && item));
+		if (filterData) {
+			let pagesArr = [];
+			for (let i = 1; i <= filterData.length / pageSize + 1; i++) {
+				pagesArr.push(i);
+			}
+			setPages(pagesArr);
 		}
-	}, [page, filerData]);
+	}, [filterData]);
+
+	useEffect(() => {
+		if (filterData) {
+			setPageData(
+				filterData.filter((item, index) => index >= pageSize * (page - 1) && index < page * pageSize && item)
+			);
+		}
+	}, [page, filterData]);
 
 	return (
-		<>
+		<div className="injectionMoldinMachinePage__container">
 			<h2 className="page-header">KHU MÁY ÉP</h2>
-			<div className="injectionMoldinMachinePage__control">
-				<div className="injectionMoldinMachinePage__quantity">
-					<div className="injectionMoldinMachinePage__quantity-item">
-						<div className="M">M</div>
-						<span>{quantity.M}</span>
-					</div>
-					<div className="injectionMoldinMachinePage__quantity-item">
-						<div className="R">R</div>
-						<span>{quantity.R}</span>
-					</div>
-					<div className="injectionMoldinMachinePage__quantity-item">
-						<div className="S">S</div>
-						<span>{quantity.S}</span>
-					</div>
-				</div>
-				<div className="injectionMoldinMachinePage__filter">
-					<div className="injectionMoldinMachinePage__filter-size">
-						<button
-							onClick={() => hanldeCheckBtn('size', 'small')}
-							className={`injectionMoldinMachinePage__filter-btn ${sizeFilter.includes('small') && 'active'}`}
-						>
-							<i className="bx bx-check"></i>
-							<span>Máy nhỏ</span>
-						</button>
-						<button
-							onClick={() => hanldeCheckBtn('size', 'large')}
-							className={`injectionMoldinMachinePage__filter-btn ${sizeFilter.includes('large') && 'active'}`}
-						>
-							<i className="bx bx-check"></i>
-							<span>Máy lớn</span>
-						</button>
-					</div>
-					<div className="injectionMoldinMachinePage__filter-state">
-						<button
-							onClick={() => hanldeCheckBtn('state', 'M')}
-							className={`injectionMoldinMachinePage__filter-btn ${stateFilter.includes('M') && 'active'}`}
-						>
-							<i className="bx bx-wrench"></i>
-							<span>Bảo trì</span>
-						</button>
-						<button
-							onClick={() => hanldeCheckBtn('state', 'R')}
-							className={`injectionMoldinMachinePage__filter-btn ${stateFilter.includes('R') && 'active'}`}
-						>
-							<i className="bx bxs-right-arrow"></i>
-							<span>Hoạt động</span>
-						</button>
-						<button
-							onClick={() => hanldeCheckBtn('state', 'S')}
-							className={`injectionMoldinMachinePage__filter-btn ${stateFilter.includes('S') && 'active'}`}
-						>
-							<i className="bx bx-stop"></i>
-							<span>Không hoạt động</span>
-						</button>
-					</div>
-				</div>
-			</div>
 
-			<div className="clearfix"></div>
+			<div className="row injectionMoldinMachinePage__control">
+				<div className="col-7 col-md-6 col-sm-4"></div>
+				<InjectionStateNote quantity={quantity} />
+				<div className="col-sm-2 col-md-4"></div>
+				<InjectionFilter hanldeCheckBtn={hanldeCheckBtn} sizeFilter={sizeFilter} stateFilter={stateFilter} />
+			</div>
+			<div className="col-sm-12 col-md-12 injectionMoldinMachinePage__pageIndex">
+				{pages &&
+					pages.map((pageIndex) => (
+						<div
+							key={pageIndex}
+							className={`injectionMoldinMachinePage__pageIndex-part ${pageIndex === page && 'pageIndexActive'}`}
+						></div>
+					))}
+			</div>
 			{page > 1 && (
 				<div onClick={() => setPage(page - 1)} className="injectionMoldinMachinePage__navigate previousPage">
 					<i className="bx bxs-chevron-left"></i>
 				</div>
 			)}
 
-			<div onClick={() => setPage(page + 1)} className="injectionMoldinMachinePage__navigate nextPage">
-				<i className="bx bxs-chevron-right"></i>
-			</div>
+			{filterData && page <= filterData.length / pageSize && (
+				<div onClick={() => setPage(page + 1)} className="injectionMoldinMachinePage__navigate nextPage">
+					<i className="bx bxs-chevron-right"></i>
+				</div>
+			)}
 
 			<div className="row injectionMoldinMachines__container">
 				{pageData &&
 					pageData.map((item, index) => <InjectionMoldingMachine injectionMoldingMachineData={item} key={index} />)}
 			</div>
-		</>
+		</div>
 	);
 }
 

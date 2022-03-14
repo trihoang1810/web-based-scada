@@ -14,14 +14,12 @@ import './assets/css/index.css';
 import './assets/css/theme.css';
 
 import Layout from './components/layout/Layout';
-import InjectionMoldinMachinePage from './pages/injectionMoldinMachine';
 
 ReactDOM.render(
 	<React.StrictMode>
-		{/* <Provider store={store}>
+		<Provider store={store}>
 			<Layout />
-		</Provider> */}
-		<InjectionMoldinMachinePage />
+		</Provider>
 	</React.StrictMode>,
 	document.getElementById('root')
 );

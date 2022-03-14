@@ -1,0 +1,127 @@
+.injectionMoldinMachinePage__filter {
+	position: relative;
+}
+
+.injectionMoldinMachinePage__filter > span {
+	margin: 4px 12px;
+	background-color: var(--main-bg);
+	color: var(--txt-color);
+	padding: 8px 24px;
+	border-radius: 4px;
+	font-size: 1.1rem;
+	border: 2px solid black;
+}
+
+.injectionMoldinMachinePage__filter .isFiltered {
+	background-color: var(--main-color-gray);
+	color: var(--txt-white);
+	border: 1px solid var(--main-color-gray);
+}
+
+.injectionMoldinMachinePage__filter > span:hover {
+	cursor: pointer;
+	background-color: var(--main-color-gray);
+	color: var(--txt-white);
+	border: 1px solid var(--main-color-gray);
+}
+
+.injectionMoldinMachinePage__filter-size,
+.injectionMoldinMachinePage__filter-state {
+	background-color: var(--main-bg);
+	color: var(--main-color-gray);
+	margin: 2px;
+	padding: 6px 16px;
+	border-radius: 4px;
+	text-align: center;
+	display: inline-block;
+	height: fit-content;
+	position: absolute;
+	top: 48px;
+	border: 2px solid black;
+	visibility: hidden;
+}
+
+.show {
+	visibility: visible;
+	transform-origin: top right;
+	transition: transform 0.3s ease 0s;
+	animation: zoomIn ease-in-out 0.2s;
+}
+
+.hide {
+	transform-origin: top right;
+	transition: transform 0.3s ease 0s;
+	animation: zoomOut ease-in-out 0.2s;
+}
+
+@keyframes zoomIn {
+	from {
+		transform: scale(0.1);
+	}
+	to {
+		transform: scale(1);
+	}
+}
+
+@keyframes zoomOut {
+	from {
+		visibility: visible;
+		transform: scale(1);
+	}
+	to {
+		transform: scale(0.1);
+		visibility: hidden;
+	}
+}
+
+.injectionMoldinMachinePage__filter-size {
+	right: 160px;
+}
+
+.injectionMoldinMachinePage__filter-state {
+	right: -18px;
+}
+
+.injectionMoldinMachinePage__filter-quantity span {
+	font-weight: 500;
+	margin-left: 4px;
+}
+
+.injectionMoldinMachinePage__filter-btn {
+	width: 124px;
+	height: 38px;
+	border-radius: 48px;
+	border: 2px solid var(--main-color-gray);
+	background-color: var(--main-bg);
+	color: var(--main-color-gray);
+	font-size: 1rem;
+	margin: 0 8px;
+	position: relative;
+	display: block;
+	margin-top: 4px;
+}
+
+.injectionMoldinMachinePage__filter-btn i {
+	font-size: 1.5rem;
+	line-height: 48px;
+	position: absolute;
+	left: 4px;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.injectionMoldinMachinePage__filter-btn span {
+	position: absolute;
+	left: 30px;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.injectionMoldinMachinePage__filter-btn :hover {
+	opacity: 0.7;
+}
+
+.btnActive {
+	background-color: var(--main-color-gray);
+	color: var(--txt-white);
+}

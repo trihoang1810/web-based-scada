@@ -1,82 +1,45 @@
+.injectionMoldinMachinePage__container {
+	position: relative;
+	overflow-x: hidden;
+}
+
 .injectionMoldinMachinePage__control {
-	float: right;
 	margin-bottom: 4px;
-	display: flex;
-	align-items: center;
 }
 
 .injectionMoldinMachinePage__quantity {
-	display: flex;
 }
 
-.injectionMoldinMachinePage__quantity-item {
-	display: inline-block;
-	margin: 0 4px;
-	display: flex;
-	flex-direction: row;
-	align-items: center;
-}
-
-.injectionMoldinMachinePage__quantity-item div {
-	width: 30px;
-	height: 30px;
-	border-radius: 50%;
-	position: relative;
-	color: var(--txt-white);
-	text-align: center;
-	font-size: 1.2rem;
-	font-weight: 600;
+.injectionMoldinMachinePage__pageIndex {
 	display: flex;
 	justify-content: center;
-	align-items: center;
+	align-items: flex-end;
+	height: 16px;
+	margin-bottom: 6px;
 }
 
-.injectionMoldinMachinePage__filter-quantity span {
-	font-weight: 500;
-	margin-left: 4px;
+.injectionMoldinMachinePage__pageIndex-part {
+	width: 60px;
+	height: 6px;
+	border-radius: 4px;
+	background: var(--second-color-gray);
+	margin: 0 4px;
+	display: inline-block;
 }
 
-.injectionMoldinMachinePage__filter-btn {
-	width: 124px;
-	height: 48px;
-	border-radius: 48px;
-	border: 2px solid #074ee8;
-	background-color: var(--main-bg);
-	color: #074ee8;
-	font-size: 1rem;
-	margin: 0 8px;
-	position: relative;
+.pageIndexActive {
+	background-color: var(--main-color-gray);
+	height: 8px;
+	animation: explode 0.5s;
 }
 
-.injectionMoldinMachinePage__filter-btn i {
-	font-size: 2rem;
-	line-height: 48px;
-	position: absolute;
-	left: 4px;
-	top: 50%;
-	transform: translateY(-50%);
-}
-
-.injectionMoldinMachinePage__filter-btn span {
-	position: absolute;
-	left: 40px;
-	top: 50%;
-	transform: translateY(-50%);
-}
-
-.injectionMoldinMachinePage__filter-btn :hover {
-	opacity: 0.7;
-}
-
-.active {
-	background-color: #074ee8;
-	color: var(--txt-white);
-}
-
-.clearfix::after {
-	content: '';
-	clear: both;
-	display: table;
+@keyframes explode {
+	40% {
+		transform: scale(1.5);
+	}
+	100% {
+		transform: scale(1);
+	}
 }
 
 .injectionMoldinMachines__container {
@@ -85,7 +48,7 @@
 
 .injectionMoldinMachinePage__navigate {
 	font-size: 6rem;
-	background-color: #ccc;
+	background-color: var(--second-color-gray);
 	opacity: 0.4;
 	border-radius: 50%;
 	cursor: pointer;
@@ -97,15 +60,15 @@
 }
 
 .previousPage {
-	position: fixed;
-	top: 50%;
+	position: absolute;
+	top: 50vh;
 	left: 0;
 	transform: translate(-30%, -50%);
 }
 
 .nextPage {
-	position: fixed;
-	top: 50%;
-	right: 0;
+	position: absolute;
+	top: 50vh;
+	right: 4px;
 	transform: translate(30%, -50%);
 }
