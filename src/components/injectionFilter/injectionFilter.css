@@ -25,7 +25,7 @@
 	border: 1px solid var(--main-color-gray);
 }
 
-.injectionMoldinMachinePage__filter-size,
+.injectionMoldinMachinePage__filter-wattage,
 .injectionMoldinMachinePage__filter-state {
 	background-color: var(--main-bg);
 	color: var(--main-color-gray);
@@ -74,7 +74,7 @@
 	}
 }
 
-.injectionMoldinMachinePage__filter-size {
+.injectionMoldinMachinePage__filter-wattage {
 	right: 160px;
 }
 

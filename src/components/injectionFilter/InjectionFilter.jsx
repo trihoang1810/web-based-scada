@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import './injectionFilter.css';
 
-function InjectionFilter({ hanldeCheckBtn, sizeFilter, stateFilter }) {
-	const [showSizeFilter, setShowSizeFilter] = useState(false);
+function InjectionFilter({ hanldeCheckBtn, wattageFilter, stateFilter }) {
+	const [showWattageFilter, setShowWattageFilter] = useState(false);
 	const [showStateFilter, setShowStateFilter] = useState(false);
 	useEffect(() => {
 		const closePopUp = () => {
-			setShowSizeFilter(false);
+			setShowWattageFilter(false);
 			setShowStateFilter(false);
 		};
 		document.addEventListener('click', closePopUp);
@@ -17,25 +17,25 @@ function InjectionFilter({ hanldeCheckBtn, sizeFilter, stateFilter }) {
 	return (
 		<div className="row injectionMoldinMachinePage__filter">
 			<span
-				className={`${sizeFilter.length > 0 && 'isFiltered'}`}
+				className={`${wattageFilter.length > 0 && 'isFiltered'}`}
 				onClick={(e) => {
-					setShowSizeFilter(!showSizeFilter);
+					setShowWattageFilter(!showWattageFilter);
 					e.stopPropagation();
 				}}
 			>
 				Công suất
 			</span>
-			<div className={`injectionMoldinMachinePage__filter-size ${showSizeFilter ? 'show' : 'hide'}`}>
+			<div className={`injectionMoldinMachinePage__filter-wattage ${showWattageFilter ? 'show' : 'hide'}`}>
 				<button
-					onClick={(e) => hanldeCheckBtn(e, 'size', 'small')}
-					className={`injectionMoldinMachinePage__filter-btn ${sizeFilter.includes('small') && 'btnActive'}`}
+					onClick={(e) => hanldeCheckBtn(e, 'wattage', 'small')}
+					className={`injectionMoldinMachinePage__filter-btn ${wattageFilter.includes('small') && 'btnActive'}`}
 				>
 					<i className="bx bx-check"></i>
 					<span>Máy nhỏ</span>
 				</button>
 				<button
-					onClick={(e) => hanldeCheckBtn(e, 'size', 'large')}
-					className={`injectionMoldinMachinePage__filter-btn ${sizeFilter.includes('large') && 'btnActive'}`}
+					onClick={(e) => hanldeCheckBtn(e, 'wattage', 'large')}
+					className={`injectionMoldinMachinePage__filter-btn ${wattageFilter.includes('large') && 'btnActive'}`}
 				>
 					<i className="bx bx-check"></i>
 					<span>Máy lớn</span>

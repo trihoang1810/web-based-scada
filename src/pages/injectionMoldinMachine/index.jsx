@@ -14,7 +14,7 @@ function InjectionMoldinMachinePage() {
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
 			operatingTime: '1 tiếng 15 phút',
-			size: 'small',
+			wattage: 'small',
 		},
 		{
 			number: 'M2',
@@ -23,7 +23,7 @@ function InjectionMoldinMachinePage() {
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
 			operatingTime: '1 tiếng 15 phút',
-			size: 'large',
+			wattage: 'large',
 		},
 		{
 			number: 'M3',
@@ -32,7 +32,7 @@ function InjectionMoldinMachinePage() {
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
 			operatingTime: '1 tiếng 15 phút',
-			size: 'large',
+			wattage: 'large',
 		},
 		{
 			number: 'M4',
@@ -41,7 +41,7 @@ function InjectionMoldinMachinePage() {
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
 			operatingTime: '1 tiếng 15 phút',
-			size: 'small',
+			wattage: 'small',
 		},
 		{
 			number: 'M5',
@@ -50,7 +50,7 @@ function InjectionMoldinMachinePage() {
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
 			operatingTime: '1 tiếng 15 phút',
-			size: 'small',
+			wattage: 'small',
 		},
 		{
 			number: 'M6',
@@ -59,7 +59,7 @@ function InjectionMoldinMachinePage() {
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
 			operatingTime: '1 tiếng 15 phút',
-			size: 'large',
+			wattage: 'large',
 		},
 		{
 			number: 'm7',
@@ -68,7 +68,7 @@ function InjectionMoldinMachinePage() {
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
 			operatingTime: '1 tiếng 15 phút',
-			size: 'large',
+			wattage: 'large',
 		},
 		{
 			number: 'm8',
@@ -77,7 +77,7 @@ function InjectionMoldinMachinePage() {
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
 			operatingTime: '1 tiếng 15 phút',
-			size: 'small',
+			wattage: 'small',
 		},
 		{
 			number: 'M24',
@@ -86,7 +86,7 @@ function InjectionMoldinMachinePage() {
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
 			operatingTime: '1 tiếng 15 phút',
-			size: 'small',
+			wattage: 'small',
 		},
 		{
 			number: 'M25',
@@ -95,7 +95,7 @@ function InjectionMoldinMachinePage() {
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
 			operatingTime: '1 tiếng 15 phút',
-			size: 'large',
+			wattage: 'large',
 		},
 		{
 			number: 'M30',
@@ -104,7 +104,7 @@ function InjectionMoldinMachinePage() {
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
 			operatingTime: '1 tiếng 15 phút',
-			size: 'large',
+			wattage: 'large',
 		},
 		{
 			number: 'M36',
@@ -113,7 +113,7 @@ function InjectionMoldinMachinePage() {
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
 			operatingTime: '1 tiếng 15 phút',
-			size: 'small',
+			wattage: 'small',
 		},
 		{
 			number: 'M24',
@@ -122,7 +122,7 @@ function InjectionMoldinMachinePage() {
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
 			operatingTime: '1 tiếng 15 phút',
-			size: 'small',
+			wattage: 'small',
 		},
 		{
 			number: 'M25',
@@ -131,7 +131,7 @@ function InjectionMoldinMachinePage() {
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
 			operatingTime: '1 tiếng 15 phút',
-			size: 'large',
+			wattage: 'large',
 		},
 		{
 			number: 'M30',
@@ -140,7 +140,7 @@ function InjectionMoldinMachinePage() {
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
 			operatingTime: '1 tiếng 15 phút',
-			size: 'large',
+			wattage: 'large',
 		},
 		{
 			number: 'M36',
@@ -149,7 +149,7 @@ function InjectionMoldinMachinePage() {
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
 			operatingTime: '1 tiếng 15 phút',
-			size: 'small',
+			wattage: 'small',
 		},
 		{
 			number: 'M24',
@@ -158,7 +158,7 @@ function InjectionMoldinMachinePage() {
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
 			operatingTime: '1 tiếng 15 phút',
-			size: 'small',
+			wattage: 'small',
 		},
 		{
 			number: 'M25',
@@ -167,7 +167,7 @@ function InjectionMoldinMachinePage() {
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
 			operatingTime: '1 tiếng 15 phút',
-			size: 'large',
+			wattage: 'large',
 		},
 		{
 			number: 'M30',
@@ -176,7 +176,7 @@ function InjectionMoldinMachinePage() {
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
 			operatingTime: '1 tiếng 15 phút',
-			size: 'large',
+			wattage: 'large',
 		},
 		{
 			number: 'M36',
@@ -185,7 +185,7 @@ function InjectionMoldinMachinePage() {
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
 			operatingTime: '1 tiếng 15 phút',
-			size: 'small',
+			wattage: 'small',
 		},
 		{
 			number: 'M1',
@@ -194,7 +194,7 @@ function InjectionMoldinMachinePage() {
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
 			operatingTime: '1 tiếng 15 phút',
-			size: 'small',
+			wattage: 'small',
 		},
 		{
 			number: 'M2',
@@ -203,7 +203,7 @@ function InjectionMoldinMachinePage() {
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
 			operatingTime: '1 tiếng 15 phút',
-			size: 'large',
+			wattage: 'large',
 		},
 		{
 			number: 'M3',
@@ -212,7 +212,7 @@ function InjectionMoldinMachinePage() {
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
 			operatingTime: '1 tiếng 15 phút',
-			size: 'large',
+			wattage: 'large',
 		},
 		{
 			number: 'M4',
@@ -221,7 +221,7 @@ function InjectionMoldinMachinePage() {
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
 			operatingTime: '1 tiếng 15 phút',
-			size: 'small',
+			wattage: 'small',
 		},
 		{
 			number: 'M5',
@@ -230,7 +230,7 @@ function InjectionMoldinMachinePage() {
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
 			operatingTime: '1 tiếng 15 phút',
-			size: 'small',
+			wattage: 'small',
 		},
 		{
 			number: 'M6',
@@ -239,7 +239,7 @@ function InjectionMoldinMachinePage() {
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
 			operatingTime: '1 tiếng 15 phút',
-			size: 'large',
+			wattage: 'large',
 		},
 		{
 			number: 'm7',
@@ -248,7 +248,7 @@ function InjectionMoldinMachinePage() {
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
 			operatingTime: '1 tiếng 15 phút',
-			size: 'large',
+			wattage: 'large',
 		},
 		{
 			number: 'm8',
@@ -257,7 +257,7 @@ function InjectionMoldinMachinePage() {
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
 			operatingTime: '1 tiếng 15 phút',
-			size: 'small',
+			wattage: 'small',
 		},
 		{
 			number: 'M24',
@@ -266,7 +266,7 @@ function InjectionMoldinMachinePage() {
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
 			operatingTime: '1 tiếng 15 phút',
-			size: 'small',
+			wattage: 'small',
 		},
 	];
 	const pageSize = window.screen.width >= 1280 ? 12 : window.screen.width >= 500 ? 6 : 100;
@@ -276,18 +276,18 @@ function InjectionMoldinMachinePage() {
 	const [page, setPage] = useState(+param.page);
 	const [pages, setPages] = useState();
 	const [quantity, setQuantity] = useState({});
-	const [sizeFilter, setSizeFilter] = useState([]);
+	const [wattageFilter, setWattageFilter] = useState([]);
 	const [stateFilter, setStateFilter] = useState([]);
 	const [filterData, setFilterData] = useState();
 	const [pageData, setPageData] = useState();
 
 	const hanldeCheckBtn = (e, state, payload) => {
 		e.stopPropagation();
-		if (state === 'size') {
-			if (sizeFilter.includes(payload)) {
-				setSizeFilter(sizeFilter.filter((item) => item !== payload));
+		if (state === 'wattage') {
+			if (wattageFilter.includes(payload)) {
+				setWattageFilter(wattageFilter.filter((item) => item !== payload));
 			} else {
-				setSizeFilter([...sizeFilter, payload]);
+				setWattageFilter([...wattageFilter, payload]);
 			}
 		} else {
 			if (stateFilter.includes(payload)) {
@@ -312,22 +312,22 @@ function InjectionMoldinMachinePage() {
 	}, []);
 
 	useEffect(() => {
-		let sizeFilterData, stateFilterData;
-		if (sizeFilter.length !== 0) {
-			sizeFilterData = resData.filter((item) => sizeFilter.includes(item.size));
-			setFilterData(sizeFilterData);
+		let wattageFilterData, stateFilterData;
+		if (wattageFilter.length !== 0) {
+			wattageFilterData = resData.filter((item) => wattageFilter.includes(item.wattage));
+			setFilterData(wattageFilterData);
 		}
 		if (stateFilter.length !== 0) {
 			stateFilterData = resData.filter((item) => stateFilter.includes(item.state));
 			setFilterData(stateFilterData);
 		}
-		if (sizeFilterData && stateFilterData) {
-			setFilterData(sizeFilterData.filter((item) => stateFilterData.includes(item)));
+		if (wattageFilterData && stateFilterData) {
+			setFilterData(wattageFilterData.filter((item) => stateFilterData.includes(item)));
 		}
-		if (!(sizeFilterData || stateFilterData)) {
+		if (!(wattageFilterData || stateFilterData)) {
 			setFilterData(resData);
 		}
-	}, [sizeFilter, stateFilter]);
+	}, [wattageFilter, stateFilter]);
 
 	useEffect(() => {
 		if (filterData) {
@@ -355,7 +355,7 @@ function InjectionMoldinMachinePage() {
 				<div className="col-7 col-md-6 col-sm-4"></div>
 				<InjectionStateNote quantity={quantity} />
 				<div className="col-sm-2 col-md-4"></div>
-				<InjectionFilter hanldeCheckBtn={hanldeCheckBtn} sizeFilter={sizeFilter} stateFilter={stateFilter} />
+				<InjectionFilter hanldeCheckBtn={hanldeCheckBtn} wattageFilter={wattageFilter} stateFilter={stateFilter} />
 			</div>
 			<div className="col-sm-12 col-md-12 injectionMoldinMachinePage__pageIndex">
 				{pages &&
