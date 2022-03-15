@@ -36,7 +36,8 @@ const Layout = () => {
 				render={(props) => (
 					<div className={`layout ${themeReducer.mode} ${themeReducer.color}`}>
 						<Sidebar {...props} />
-						<div className={`layout__content ${activeMenu === '' ? '' : 'active'}`}>
+						{/* <div className={`layout__content ${activeMenu === '' ? '' : 'active'}`}> */}
+						<div className={`layout__content`}>
 							<TopNav />
 							<div className="layout__content-main">
 								<Routes />

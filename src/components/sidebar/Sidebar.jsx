@@ -69,6 +69,7 @@ function Sidebar(props) {
 					return subItem;
 				})}
 			</div>
+			{activeMenu !== 'active' && <div className="sidebar__obscure-filter" onClick={handleMenuClick}></div>}
 			{activeMenu === 'active' ? (
 				<button className="sidebar__btn--inactive" onClick={() => handleMenuClick()}>
 					<i className="bx bx-menu"></i>

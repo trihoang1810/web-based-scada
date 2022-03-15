@@ -1,9 +1,10 @@
 .layout {
   color: var(--txt-color);
+  position: relative;
 }
 
 .layout__content {
-  padding-left: var(--sidebar-width);
+  /* padding-left: var(--sidebar-width); */
   background-color: var(--second-bg);
   min-height: 100vh;
   transition: all 0.1s linear 0s;

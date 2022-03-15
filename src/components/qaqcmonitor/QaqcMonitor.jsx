@@ -26,9 +26,14 @@ function QaqcMonitor(props) {
 	return (
 		<>
 			<div className="row">
-				<div className={`${isWaterProof ? `col-7` : `col-8`} flex-space-evenly`}>
+				<div className={`${isWaterProof ? `col-6` : `col-6`} flex-space-evenly`}>
 					<div className="row full-width">
-						<div className={`${isDeformation ? `col-6` : `col-8`} flex-left`}>
+						<div
+							style={{
+								flexGrow: 2,
+							}}
+							className={`${isDeformation ? `col-4 deformation` : `col-6`} flex-left params__title`}
+						>
 							{paramsTitle.map((item, index) => (
 								<p key={index}>{item}</p>
 							))}
@@ -42,7 +47,13 @@ function QaqcMonitor(props) {
 								</>
 							)}
 							{params.map((item, index) => (
-								<div key={index} className="card__params-container">
+								<div
+									style={{
+										flexGrow: 1,
+									}}
+									key={index}
+									className="card__params-container"
+								>
 									<p>{item}</p>
 								</div>
 							))}
@@ -58,7 +69,13 @@ function QaqcMonitor(props) {
 										</>
 									)}
 									{params.map((item, index) => (
-										<div key={index} className="card__params-container">
+										<div
+											style={{
+												flexGrow: 1,
+											}}
+											key={index}
+											className="card__params-container"
+										>
 											<p>{item}</p>
 										</div>
 									))}
@@ -159,7 +176,7 @@ function QaqcMonitor(props) {
 						)}
 					</div>
 				</div>
-				<div className={`${isWaterProof ? `col-5` : `col-4`} flex-center`}>{children}</div>
+				<div className={`${isWaterProof ? `col-6` : `col-6`} flex-center`}>{children}</div>
 			</div>
 		</>
 	);
