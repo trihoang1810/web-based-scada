@@ -1,0 +1,96 @@
+.injectionDetail__container {
+	position: relative;
+	border-radius: 16px;
+	height: fit-content;
+	padding: 30px;
+}
+
+.stateR {
+	border: 3px solid var(--main-color-green);
+}
+.stateS {
+	border: 3px solid var(--main-color-red);
+}
+.stateM {
+	border: 3px solid var(--main-color-blue);
+}
+
+.injectionDetail__number {
+	font-size: 4rem;
+	font-weight: 600;
+	color: var(--txt-color);
+	text-align: center;
+	padding-top: 30px;
+}
+
+.injectionDetail__name {
+	font-size: 2rem;
+	text-align: center;
+}
+
+.injectionDetail__state {
+	width: 100%;
+	text-align: center;
+	margin-top: 66px;
+}
+
+.injectionDetail__close:hover {
+	opacity: 0.5;
+	cursor: pointer;
+}
+
+.injectionDetail__progress {
+	margin-top: 20px;
+	max-width: 800px;
+	width: 96%;
+}
+
+.injectionDetail__progress > div {
+	height: 30px;
+}
+
+.injectionDetail__progress > span {
+	font-size: 1.3rem;
+	margin-top: 16px;
+	display: block;
+	text-align: center;
+}
+
+.injectionDetail__symbol {
+	max-width: 800px;
+}
+
+.injectionDetail__symbol ~ div {
+	font-size: 1.6rem;
+}
+
+.injectionDetail__table {
+	align-self: center;
+	font-size: 1.2rem;
+}
+
+.injectionDetail__table table {
+	max-width: 96%;
+	min-width: 0;
+}
+
+.injectionDetail__table span {
+	display: inline-block;
+	text-align: center;
+}
+
+.injectionDetail__value {
+	margin-top: 62px;
+	width: 86%;
+	display: flex;
+	justify-content: space-evenly;
+	flex-wrap: wrap;
+	margin-bottom: 0;
+}
+
+.injectionDetail__value span {
+	display: block;
+	text-align: center;
+	font-size: 1rem;
+	color: var(--txt-color);
+}

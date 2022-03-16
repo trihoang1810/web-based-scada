@@ -30,7 +30,7 @@
 .pageIndexActive {
 	background-color: var(--main-color-gray);
 	height: 8px;
-	animation: explode 0.5s;
+	animation: explode 0.8s;
 }
 
 @keyframes explode {
@@ -51,23 +51,25 @@
 	background-color: var(--second-color-gray);
 	opacity: 0.4;
 	border-radius: 50%;
-	cursor: pointer;
+	z-index: 997;
+	transition: all 0.3s;
 }
 
 .injectionMoldinMachinePage__navigate:hover {
 	opacity: 0.7;
 	font-size: 7rem;
+	cursor: pointer;
 }
 
 .previousPage {
-	position: absolute;
+	position: fixed;
 	top: 50vh;
 	left: 0;
 	transform: translate(-30%, -50%);
 }
 
 .nextPage {
-	position: absolute;
+	position: fixed;
 	top: 50vh;
 	right: 4px;
 	transform: translate(30%, -50%);

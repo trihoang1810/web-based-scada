@@ -1,17 +1,9 @@
 import ProgressBar from '../progressBar/ProgressBar';
 import '../../assets/css/index.css';
 import './injectionMoldingMachine.css';
+import { useHistory } from 'react-router-dom';
 
 function InjectionMoldingMachine({ injectionMoldingMachineData }) {
-	// const injectionMoldingMachineData = {
-	// 	number: 'M24',
-	// 	percent: 30,
-	// 	state: 'R',
-	// 	cycle: '30 giây',
-	// 	openDoorTime: '7 giây',
-	// 	operatingTime: '1 tiếng 15 phút',
-	// };
-
 	const symbolColor =
 		injectionMoldingMachineData.state === 'R'
 			? {
@@ -30,15 +22,18 @@ function InjectionMoldingMachine({ injectionMoldingMachineData }) {
 			  };
 	const typeClass =
 		injectionMoldingMachineData.state === 'R' ? 'R' : injectionMoldingMachineData.state === 'S' ? 'S' : 'M';
-
-	const showDetail = () => {};
+	const history = useHistory();
+	const handleShowDetail = () => history.push(`/injection/${injectionMoldingMachineData.number}`);
 
 	return (
 		<>
-			<div className="col-sm-12 col-md-6 col-3" onClick={showDetail}>
-				<div className="injectionMoldingMachine">
+			<div className="col-sm-12 col-md-6 col-3" onClick={handleShowDetail}>
+				<div className="injectionMoldingMachine__container">
 					<div className="injectionMoldingMachine__heading">
-						<div className="injectionMoldingMachine__heading-number">{injectionMoldingMachineData.number}</div>
+						<div>
+							<div className="injectionMoldingMachine__heading-number">{injectionMoldingMachineData.number}</div>
+							<div className="injectionMoldingMachine__heading-name">{injectionMoldingMachineData.name}</div>
+						</div>
 						<div className="injectionMoldingMachine__heading-progress">
 							<span>TIẾN ĐỘ</span>
 							<div>

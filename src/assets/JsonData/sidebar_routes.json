@@ -40,7 +40,7 @@
 	},
 	{
 		"display_name": "Máy ép",
-		"route": "/injection/1",
+		"route": "/injection/pages/1",
 		"icon": "bx bx-layer",
 		"subNav": []
 	},

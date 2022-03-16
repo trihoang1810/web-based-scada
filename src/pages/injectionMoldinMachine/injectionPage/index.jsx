@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
-import InjectionFilter from '../../components/injectionFilter/InjectionFilter';
-import InjectionMoldingMachine from '../../components/injectionMoldingMachine/InjectionMoldingMachine';
-import InjectionStateNote from '../../components/injectionStateNote/InjectionStateNote';
+import InjectionFilter from '../../../components/injectionFilter/InjectionFilter';
+import InjectionMoldingMachine from '../../../components/injectionMoldingMachine/InjectionMoldingMachine';
+import InjectionStateNote from '../../../components/injectionStateNote/InjectionStateNote';
 import './injectionMoldinMachinePage.css';
 
 function InjectionMoldinMachinePage() {
 	const resData = [
 		{
+			name: 'AXb12',
 			number: 'M1',
 			percent: 30,
 			state: 'R',
@@ -17,6 +18,7 @@ function InjectionMoldinMachinePage() {
 			wattage: 'small',
 		},
 		{
+			name: 'AXb12',
 			number: 'M2',
 			percent: 50,
 			state: 'M',
@@ -26,6 +28,7 @@ function InjectionMoldinMachinePage() {
 			wattage: 'large',
 		},
 		{
+			name: 'AXb12',
 			number: 'M3',
 			percent: 78,
 			state: 'S',
@@ -35,6 +38,7 @@ function InjectionMoldinMachinePage() {
 			wattage: 'large',
 		},
 		{
+			name: 'AXb12',
 			number: 'M4',
 			percent: 15,
 			state: 'M',
@@ -44,6 +48,7 @@ function InjectionMoldinMachinePage() {
 			wattage: 'small',
 		},
 		{
+			name: 'AXb12',
 			number: 'M5',
 			percent: 30,
 			state: 'R',
@@ -53,6 +58,7 @@ function InjectionMoldinMachinePage() {
 			wattage: 'small',
 		},
 		{
+			name: 'AXb12',
 			number: 'M6',
 			percent: 50,
 			state: 'M',
@@ -62,6 +68,7 @@ function InjectionMoldinMachinePage() {
 			wattage: 'large',
 		},
 		{
+			name: 'AXb12',
 			number: 'm7',
 			percent: 78,
 			state: 'S',
@@ -71,6 +78,7 @@ function InjectionMoldinMachinePage() {
 			wattage: 'large',
 		},
 		{
+			name: 'AXb12',
 			number: 'm8',
 			percent: 15,
 			state: 'M',
@@ -80,6 +88,7 @@ function InjectionMoldinMachinePage() {
 			wattage: 'small',
 		},
 		{
+			name: 'AXb12',
 			number: 'M24',
 			percent: 30,
 			state: 'R',
@@ -89,6 +98,7 @@ function InjectionMoldinMachinePage() {
 			wattage: 'small',
 		},
 		{
+			name: 'AXb12',
 			number: 'M25',
 			percent: 50,
 			state: 'M',
@@ -98,6 +108,7 @@ function InjectionMoldinMachinePage() {
 			wattage: 'large',
 		},
 		{
+			name: 'AXb12',
 			number: 'M30',
 			percent: 78,
 			state: 'S',
@@ -107,6 +118,7 @@ function InjectionMoldinMachinePage() {
 			wattage: 'large',
 		},
 		{
+			name: 'AXb12',
 			number: 'M36',
 			percent: 15,
 			state: 'M',
@@ -116,6 +128,7 @@ function InjectionMoldinMachinePage() {
 			wattage: 'small',
 		},
 		{
+			name: 'AXb12',
 			number: 'M24',
 			percent: 30,
 			state: 'R',
@@ -125,6 +138,7 @@ function InjectionMoldinMachinePage() {
 			wattage: 'small',
 		},
 		{
+			name: 'AXb12',
 			number: 'M25',
 			percent: 50,
 			state: 'M',
@@ -134,6 +148,7 @@ function InjectionMoldinMachinePage() {
 			wattage: 'large',
 		},
 		{
+			name: 'AXb12',
 			number: 'M30',
 			percent: 78,
 			state: 'S',
@@ -143,6 +158,7 @@ function InjectionMoldinMachinePage() {
 			wattage: 'large',
 		},
 		{
+			name: 'AXb12',
 			number: 'M36',
 			percent: 15,
 			state: 'M',
@@ -152,6 +168,7 @@ function InjectionMoldinMachinePage() {
 			wattage: 'small',
 		},
 		{
+			name: 'AXb12',
 			number: 'M24',
 			percent: 30,
 			state: 'R',
@@ -161,6 +178,7 @@ function InjectionMoldinMachinePage() {
 			wattage: 'small',
 		},
 		{
+			name: 'AXb12',
 			number: 'M25',
 			percent: 50,
 			state: 'M',
@@ -170,6 +188,7 @@ function InjectionMoldinMachinePage() {
 			wattage: 'large',
 		},
 		{
+			name: 'AXb12',
 			number: 'M30',
 			percent: 78,
 			state: 'S',
@@ -179,6 +198,7 @@ function InjectionMoldinMachinePage() {
 			wattage: 'large',
 		},
 		{
+			name: 'AXb12',
 			number: 'M36',
 			percent: 15,
 			state: 'M',
@@ -188,6 +208,7 @@ function InjectionMoldinMachinePage() {
 			wattage: 'small',
 		},
 		{
+			name: 'AXb12',
 			number: 'M1',
 			percent: 30,
 			state: 'R',
@@ -197,6 +218,7 @@ function InjectionMoldinMachinePage() {
 			wattage: 'small',
 		},
 		{
+			name: 'AXb12',
 			number: 'M2',
 			percent: 50,
 			state: 'M',
@@ -206,6 +228,7 @@ function InjectionMoldinMachinePage() {
 			wattage: 'large',
 		},
 		{
+			name: 'AXb12',
 			number: 'M3',
 			percent: 78,
 			state: 'S',
@@ -215,6 +238,7 @@ function InjectionMoldinMachinePage() {
 			wattage: 'large',
 		},
 		{
+			name: 'AXb12',
 			number: 'M4',
 			percent: 15,
 			state: 'M',
@@ -224,6 +248,7 @@ function InjectionMoldinMachinePage() {
 			wattage: 'small',
 		},
 		{
+			name: 'AXb12',
 			number: 'M5',
 			percent: 30,
 			state: 'R',
@@ -233,6 +258,7 @@ function InjectionMoldinMachinePage() {
 			wattage: 'small',
 		},
 		{
+			name: 'AXb12',
 			number: 'M6',
 			percent: 50,
 			state: 'M',
@@ -242,6 +268,7 @@ function InjectionMoldinMachinePage() {
 			wattage: 'large',
 		},
 		{
+			name: 'AXb12',
 			number: 'm7',
 			percent: 78,
 			state: 'S',
@@ -251,6 +278,7 @@ function InjectionMoldinMachinePage() {
 			wattage: 'large',
 		},
 		{
+			name: 'AXb12',
 			number: 'm8',
 			percent: 15,
 			state: 'M',
@@ -260,6 +288,7 @@ function InjectionMoldinMachinePage() {
 			wattage: 'small',
 		},
 		{
+			name: 'AXb12',
 			number: 'M24',
 			percent: 30,
 			state: 'R',
@@ -299,7 +328,7 @@ function InjectionMoldinMachinePage() {
 	};
 
 	useEffect(() => {
-		history.push(`/injection/${page}`);
+		history.push(`/injection/pages/${page}`);
 	}, [page]);
 
 	useEffect(() => {

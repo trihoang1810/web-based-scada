@@ -1,11 +1,17 @@
-.injectionMoldingMachine {
+.injectionMoldingMachine__container {
 	min-height: 180px;
 	max-width: 420px;
 	min-width: 350px;
 	border: 6px solid var(--main-color-gray);
 	padding: 10px 10px 4px 10px;
-	margin: 4px 4px;
+	margin: 8px 4px;
 	background-color: var(--main-bg);
+	transition: all 0.5s;
+}
+
+.injectionMoldingMachine__container:hover {
+	cursor: pointer;
+	transform: scale(1.05);
 }
 
 .injectionMoldingMachine__heading {
@@ -22,6 +28,11 @@
 	flex: 3;
 }
 
+.injectionMoldingMachine__heading-name {
+	font-size: 0.7rem;
+	margin-top: -4px;
+}
+
 .injectionMoldingMachine__heading-progress {
 	display: flex;
 	font-size: 0.8rem;
@@ -35,6 +46,7 @@
 
 .injectionMoldingMachine__heading-progress > div {
 	flex: 8;
+	height: 16px;
 }
 
 .injectionMoldingMachine__state {
@@ -77,7 +89,7 @@
 
 .injectionMoldingMachine__value {
 	margin-top: 8px;
-	font-size: 0.5rem;
+	font-size: 0.6rem;
 	letter-spacing: 0;
 }
 
@@ -88,7 +100,7 @@
 
 .injectionMoldingMachine__value td {
 	border: none;
-	padding: 2px 0;
+	padding: 6px 0;
 }
 
 .injectionMoldingMachine__value td:first-child {
