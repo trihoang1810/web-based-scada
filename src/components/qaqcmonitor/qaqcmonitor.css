@@ -16,3 +16,12 @@
   text-transform: capitalize;
   font-weight: 500;
 }
+
+.params__title>p{
+  margin-bottom:20px;
+}
+
+.deformation>p:first-child {
+  color:#FFF;
+  margin-bottom: 5px;
+}

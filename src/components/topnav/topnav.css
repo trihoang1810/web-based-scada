@@ -1,9 +1,11 @@
 .topnav {
   padding: 30px;
+  padding-left: 330px;
   display: flex;
   align-items: center;
   justify-content: space-between;
   height:var(--topnav-height);
+  transition: all 0.1s linear 0s;
 }
 
 .topnav.active {

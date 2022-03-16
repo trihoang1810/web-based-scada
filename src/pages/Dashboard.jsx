@@ -274,71 +274,66 @@ const Dashboard = () => {
 			<h2 className="page-header">Dashboard</h2>
 			<div className="row">
 				<div className="col-3">
-					<div className="card full-height">
-						<div className="card__header">
-							<h3>Khu máy ép</h3>
+					<Link to="/injection">
+						<div className="card full-height dashboard">
+							<div className="card__header">
+								<h3>Khu máy ép</h3>
+							</div>
+							<div className="card__body">
+								<Pie options={injectionOptions} plugins={[ChartDataLabels]} data={injectionData} />
+							</div>
 						</div>
-						<div className="card__body">
-							<Pie options={injectionOptions} plugins={[ChartDataLabels]} data={injectionData} />
-						</div>
-						<div className="card__footer">
-							<Link to="/injection">Xem thêm</Link>
-						</div>
-					</div>
+					</Link>
 				</div>
 				<div className="col-5">
-					<div className="card ">
-						<div className="card__header">
-							<h3>Phòng QA/QC thiết bị</h3>
+					<Link to="/qaqc">
+						<div className="card full-height dashboard">
+							<div className="card__header mb-40">
+								<h3>Phòng QA/QC thiết bị</h3>
+							</div>
+							<div className="card__body card__body--center ">
+								<Line options={qaqcOptions} data={qaqcData} />
+							</div>
 						</div>
-						<div className="card__body card__body--center ">
-							<Line options={qaqcOptions} data={qaqcData} />
-						</div>
-						<div className="card__footer">
-							<Link to="/qaqc">Xem thêm</Link>
-						</div>
-					</div>
+					</Link>
 				</div>
 				<div className="col-4">
-					<div className="card">
-						<div className="card__header">
-							<h3>Khu đóng gói</h3>
+					<Link to="/packing">
+						<div className="card full-height dashboard">
+							<div className="card__header mb-40">
+								<h3>Khu đóng gói</h3>
+							</div>
+							<div className="card__body card__body--center">
+								<Bar data={packingData} options={packingOptions} />
+							</div>
 						</div>
-						<div className="card__body card__body--center">
-							<Bar data={packingData} options={packingOptions} />
-						</div>
-						<div className="card__footer">
-							<Link to="/packing">Xem thêm</Link>
-						</div>
-					</div>
+					</Link>
 				</div>
 			</div>
 			<div className="row">
 				<div className="col-8">
-					<div className="card ">
-						<div className="card__header">
-							<h3>Kho vận</h3>
+					<Link to="/warehouse">
+						<div className="card dashboard">
+							<div className="card__header mb-40">
+								<h3>Kho vận</h3>
+							</div>
+							<div className="card__body card__body--center">
+								<Bar data={warehouseData} options={warehouseOptions} />
+							</div>
 						</div>
-						<div className="card__body card__body--center">
-							<Bar data={warehouseData} options={warehouseOptions} />
-						</div>
-						<div className="card__footer">
-							<Link to="/warehouse">Xem thêm</Link>
-						</div>
-					</div>
+					</Link>
 				</div>
 				<div className="col-4">
-					<div className="card">
-						<div className="card__header">
-							<h3>Cảnh báo</h3>
+					<Link to="/alarm">
+						<div className="card full-height dashboard">
+							<div className="card__header">
+								<h3>Cảnh báo</h3>
+							</div>
+							<div className="card__body">
+								<Table headData={latestAlarmData.head} bodyData={latestAlarmData.body} renderBody={renderAlarmBody} />
+							</div>
 						</div>
-						<div className="card__body">
-							<Table headData={latestAlarmData.head} bodyData={latestAlarmData.body} renderBody={renderAlarmBody} />
-						</div>
-						<div className="card__footer">
-							<Link to="/alarm">Xem thêm</Link>
-						</div>
-					</div>
+					</Link>
 				</div>
 			</div>
 		</div>

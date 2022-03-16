@@ -27,7 +27,7 @@ function QualityControl() {
 		<>
 			<h2 className="page-header">Phòng QA/QC thiết bị</h2>
 			<div className="row">
-				<div className="col-6 col-md-12">
+				<div className="col-5 col-md-12">
 					<div className="card full-height">
 						<div className="card__header">
 							<h3>Kiểm tra độ bền cưỡng bức</h3>
@@ -48,9 +48,9 @@ function QualityControl() {
 								isDeformation={false}
 							>
 								{forcedEndurance && forcedEndurance === 'forcedEndurance__stop' ? (
-									<StoppedForcedEndurance width="70%" height="205" />
+									<StoppedForcedEndurance width="70%" height="350" />
 								) : (
-									<RunForcedEndurance width="70%" height="205" />
+									<RunForcedEndurance width="70%" height="350" />
 								)}
 							</QaqcMonitor>
 						</div>
@@ -59,7 +59,7 @@ function QualityControl() {
 						</div>
 					</div>
 				</div>
-				<div className="col-6 col-md-12">
+				<div className="col-7 col-md-12">
 					<div className="card full-height">
 						<div className="card__header">
 							<h3>Kiểm tra độ biến dạng</h3>
@@ -76,9 +76,9 @@ function QualityControl() {
 								isDeformation={true}
 							>
 								{deformation && deformation === 'deformation__stop' ? (
-									<StoppedDeformation width="100%" height="205" />
+									<StoppedDeformation width="100%" height="350" />
 								) : (
-									<RunDeformation width="100%" height="205" />
+									<RunDeformation width="100%" height="350" />
 								)}
 							</QaqcMonitor>
 						</div>
@@ -110,9 +110,9 @@ function QualityControl() {
 								isDeformation={false}
 							>
 								{endurance && endurance === 'endurance__stop' ? (
-									<StoppedEndurance width="70%" height="205" />
+									<StoppedEndurance width="70%" height="350" />
 								) : (
-									<RunEndurance width="70%" height="205" />
+									<RunEndurance width="70%" height="350" />
 								)}
 							</QaqcMonitor>
 						</div>
@@ -128,7 +128,12 @@ function QualityControl() {
 						</div>
 						<div className="card__body">
 							<QaqcMonitor
-								paramsTitle={['Nhiệt độ cài đặt', 'Nhiệt độ thực', 'Thời gian KT cài đặt', 'Thời gian KT thực']}
+								paramsTitle={[
+									'Nhiệt độ cài đặt',
+									'Nhiệt độ thực',
+									'Thời gian kiểm tra cài đặt',
+									'Thời gian kiểm tra thực',
+								]}
 								params={['0000', '0000', '0000', '0000']}
 								led={{
 									isRunning: 'true',
@@ -138,9 +143,9 @@ function QualityControl() {
 								isDeformation={false}
 							>
 								{waterProof && waterProof === 'waterProof__stop' ? (
-									<StoppedWaterProof width="100%" height="205" />
+									<StoppedWaterProof width="100%" height="350" />
 								) : (
-									<RunWaterProof width="100%" height="205" />
+									<RunWaterProof width="100%" height="350" />
 								)}
 							</QaqcMonitor>
 						</div>
