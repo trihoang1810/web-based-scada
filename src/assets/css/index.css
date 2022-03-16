@@ -93,22 +93,15 @@ input:focus {
 	background-color: var(--txt-color);
 }
 
-<<<<<<< HEAD
 .divider.middle {
-	margin-left: 20px;
-	margin-right: 120x;
-=======
-.divider.middle{
-    margin-left: 50px;
-    margin-right: 50px;
->>>>>>> 865a325a1b597ee218647b62d306d5f4bc25c420
+	margin-left: 50px;
+	margin-right: 50px;
 }
 
 .page-header {
 	margin-bottom: 15px;
 	text-transform: capitalize;
 }
-
 
 .card {
 	padding: 30px;
@@ -118,12 +111,12 @@ input:focus {
 	box-shadow: var(--box-shadow);
 	border-radius: var(--border-radius);
 }
-.card.dashboard{
-    background-color: #FFF;
-    transition: all 0.2s linear 0;
+.card.dashboard {
+	background-color: #fff;
+	transition: all 0.2s linear 0;
 }
-.card.dashboard:hover{
-    background-color: #9b9b9b00;
+.card.dashboard:hover {
+	background-color: #9b9b9b00;
 }
 
 .full-height {
@@ -149,26 +142,15 @@ input:focus {
 	height: 300px;
 }
 
-<<<<<<< HEAD
 .card__params-container {
 	border: 1px solid black;
 	display: flex;
 	width: 100%;
 	justify-content: center;
 	align-items: center;
+	padding: 10px 0;
 	background-color: #2e2e2e;
 	margin-bottom: 20px;
-=======
-.card__params-container{
-    border: 1px solid black;
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-    padding: 10px 0;
-    background-color: #2e2e2e;
-    margin-bottom: 20px;
->>>>>>> 865a325a1b597ee218647b62d306d5f4bc25c420
 }
 
 .card__params-title {
@@ -221,26 +203,18 @@ input:focus {
 	flex-direction: column;
 }
 
-<<<<<<< HEAD
+.flex-horizontal-space-evenly {
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;
+	flex-direction: row;
+}
+
 .flex-left {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: flex-end;
-=======
-.flex-horizontal-space-evenly{
-    display: flex;
-    justify-content: space-evenly;
-    align-items: center;
-    flex-direction: row;
-}
-
-.flex-left{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: flex-end;
->>>>>>> 865a325a1b597ee218647b62d306d5f4bc25c420
 }
 
 .flex-left > p:first-child {
@@ -295,21 +269,21 @@ input:focus {
 	color: #fff;
 }
 
-.mb-40{
-    margin-bottom: 40px;
+.mb-40 {
+	margin-bottom: 40px;
 }
 
-.mb-10{
-    margin-bottom: 10px;
+.mb-10 {
+	margin-bottom: 10px;
 }
 
-.mb-20{
-    margin-bottom: 20px;
+.mb-20 {
+	margin-bottom: 20px;
 }
 
-.mb-30{
-    margin-bottom: 30px;
+.mb-30 {
+	margin-bottom: 30px;
 }
-.mb-15{
-    margin-bottom: 15px;
+.mb-15 {
+	margin-bottom: 15px;
 }
