@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import InjectionDetailComponent from '../../../components/injectionDetail/InjectionDetail';
 
@@ -13,9 +14,16 @@ function InjectionDetail() {
 		wattage: 'small',
 	};
 	const { id } = useParams();
+	const [value, setValue] = useState();
 	console.log(id);
 
-	return <InjectionDetailComponent injectionMoldingMachineData={injectionMoldingMachineData} />;
+	useEffect(() => {
+		const id = setTimeout(() => setValue(injectionMoldingMachineData), 2000);
+
+		return () => clearTimeout(id);
+	}, []);
+
+	return <>{value ? <InjectionDetailComponent injectionMoldingMachineData={value} /> : <InjectionDetailComponent />}</>;
 }
 
 export default InjectionDetail;

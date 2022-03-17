@@ -1,14 +1,17 @@
 import { useEffect, useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 import InjectionFilter from '../../../components/injectionFilter/InjectionFilter';
 import InjectionMoldingMachine from '../../../components/injectionMoldingMachine/InjectionMoldingMachine';
 import InjectionStateNote from '../../../components/injectionStateNote/InjectionStateNote';
 import './injectionMoldinMachinePage.css';
 
 function InjectionMoldinMachinePage() {
-	const resData = [
+	// fake data from API
+	const rawData = [
 		{
-			name: 'AXb12',
+			name: 'AXb15',
 			number: 'M1',
 			percent: 30,
 			state: 'R',
@@ -298,6 +301,13 @@ function InjectionMoldinMachinePage() {
 			wattage: 'small',
 		},
 	];
+	useEffect(() => {
+		const id = setTimeout(() => setResData(rawData), 2000);
+		return () => clearTimeout(id);
+	}, []);
+
+	//--------------------------------
+	const [resData, setResData] = useState(); // save data after call API
 	const pageSize = window.screen.width >= 1280 ? 12 : window.screen.width >= 500 ? 6 : 100;
 	let quantityPrepare = { M: 0, R: 0, S: 0 };
 	const param = useParams();
@@ -332,13 +342,13 @@ function InjectionMoldinMachinePage() {
 	}, [page]);
 
 	useEffect(() => {
-		resData.forEach((item) => {
+		resData?.forEach((item) => {
 			if (item.state === 'M') quantityPrepare.M++;
 			else if (item.state === 'R') quantityPrepare.R++;
 			else quantityPrepare.S++;
 		});
 		setQuantity(quantityPrepare);
-	}, []);
+	}, [resData]);
 
 	useEffect(() => {
 		let wattageFilterData, stateFilterData;
@@ -356,7 +366,7 @@ function InjectionMoldinMachinePage() {
 		if (!(wattageFilterData || stateFilterData)) {
 			setFilterData(resData);
 		}
-	}, [wattageFilter, stateFilter]);
+	}, [wattageFilter, stateFilter, resData]);
 
 	useEffect(() => {
 		if (filterData) {
@@ -381,11 +391,17 @@ function InjectionMoldinMachinePage() {
 			<h2 className="page-header">KHU MÁY ÉP</h2>
 
 			<div className="row injectionMoldinMachinePage__control">
-				<div className="col-8 col-md-8 col-sm-2"></div>
-				<InjectionStateNote quantity={quantity} />
-				<div className="col-md-0 col-0 col-sm-2" style={{ padding: 0 }}></div>
-				<div className="col-sm-2 col-md-0 col-0" style={{ padding: 0 }}></div>
-				<InjectionFilter hanldeCheckBtn={hanldeCheckBtn} wattageFilter={wattageFilter} stateFilter={stateFilter} />
+				{pageData ? (
+					<>
+						<div className="col-8 col-md-8 col-sm-2"></div>
+						<InjectionStateNote quantity={quantity} />
+						<div className="col-md-0 col-0 col-sm-2" style={{ padding: 0 }}></div>
+						<div className="col-sm-2 col-md-0 col-0" style={{ padding: 0 }}></div>
+						<InjectionFilter hanldeCheckBtn={hanldeCheckBtn} wattageFilter={wattageFilter} stateFilter={stateFilter} />
+					</>
+				) : (
+					<Skeleton height={50} baseColor="#ccc" width={500} />
+				)}
 			</div>
 			<div className="col-sm-12 col-md-12 injectionMoldinMachinePage__pageIndex">
 				{pages &&
@@ -409,8 +425,9 @@ function InjectionMoldinMachinePage() {
 			)}
 
 			<div className="row injectionMoldinMachines__container">
-				{pageData &&
-					pageData.map((item, index) => <InjectionMoldingMachine injectionMoldingMachineData={item} key={index} />)}
+				{pageData
+					? pageData.map((item, index) => <InjectionMoldingMachine injectionMoldingMachineData={item} key={index} />)
+					: [...Array(pageSize).keys()].map((item, index) => <InjectionMoldingMachine key={index} />)}
 			</div>
 		</div>
 	);

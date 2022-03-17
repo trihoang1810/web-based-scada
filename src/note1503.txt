@@ -1,4 +1,0 @@
-trạng thái hoạt động
-mã chi tiết ép
-tên chi tiết ép
-số lượng cần ép

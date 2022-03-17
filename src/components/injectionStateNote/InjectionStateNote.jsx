@@ -1,4 +1,5 @@
 import './injectionStateNote.css';
+
 function InjectionStateNote({ quantity }) {
 	return (
 		<div className="row col-2 col-md-3 col-sm-8 injectionStateNote__quantity">
