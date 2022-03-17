@@ -381,10 +381,10 @@ function InjectionMoldinMachinePage() {
 			<h2 className="page-header">KHU MÁY ÉP</h2>
 
 			<div className="row injectionMoldinMachinePage__control">
-				<div className="col-8 col-md-4 col-sm-2"></div>
+				<div className="col-8 col-md-8 col-sm-2"></div>
 				<InjectionStateNote quantity={quantity} />
-				<div className="col-md-4 col-0 col-sm-2" style={{ padding: 0 }}></div>
-				<div className="col-sm-2 col-md-4 col-0" style={{ padding: 0 }}></div>
+				<div className="col-md-0 col-0 col-sm-2" style={{ padding: 0 }}></div>
+				<div className="col-sm-2 col-md-0 col-0" style={{ padding: 0 }}></div>
 				<InjectionFilter hanldeCheckBtn={hanldeCheckBtn} wattageFilter={wattageFilter} stateFilter={stateFilter} />
 			</div>
 			<div className="col-sm-12 col-md-12 injectionMoldinMachinePage__pageIndex">

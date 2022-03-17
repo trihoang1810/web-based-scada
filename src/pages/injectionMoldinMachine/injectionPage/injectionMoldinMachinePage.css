@@ -5,9 +5,8 @@
 
 .injectionMoldinMachinePage__control {
 	margin-bottom: 4px;
-}
-
-.injectionMoldinMachinePage__quantity {
+	justify-content: flex-end;
+	margin-right: 24px;
 }
 
 .injectionMoldinMachinePage__pageIndex {

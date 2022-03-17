@@ -1,24 +1,25 @@
 .injectionMoldingMachine__container {
 	min-height: 180px;
 	max-width: 420px;
-	min-width: 350px;
+	min-width: 320px;
 	border: 6px solid var(--main-color-gray);
 	padding: 10px 10px 4px 10px;
 	margin: 8px 4px;
+	color: var(--txt-color);
 	background-color: var(--main-bg);
 	transition: all 0.5s;
 }
 
 .injectionMoldingMachine__container:hover {
 	cursor: pointer;
-	transform: scale(1.05);
+	background-color: var(--main-bg-dark);
+	color: var(--txt-white);
 }
 
 .injectionMoldingMachine__heading {
 	height: 30px;
 	width: 100%;
 	display: flex;
-	color: var(--txt-color);
 }
 
 .injectionMoldingMachine__heading-number {
@@ -94,7 +95,7 @@
 }
 
 .injectionMoldingMachine__value table {
-	min-width: 320px;
+	min-width: 300px;
 	color: var(--txt-white);
 }
 

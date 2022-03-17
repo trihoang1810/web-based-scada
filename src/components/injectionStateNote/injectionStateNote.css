@@ -1,15 +1,17 @@
-.injectionMoldinMachinePage__quantity {
+.injectionStateNote__quantity {
 	flex-wrap: nowrap;
-	padding-left: 48px;
+	padding-left: 20px;
+	justify-content: flex-end;
+	margin-right: 10px;
 }
 
-.injectionMoldinMachinePage__quantity-item {
+.injectionStateNote__quantity-item {
 	margin: 0 8px;
 	align-items: center;
 	flex-wrap: nowrap;
 }
 
-.injectionMoldinMachinePage__quantity-item div {
+.injectionStateNote__quantity-item div {
 	width: 30px;
 	height: 30px;
 	border-radius: 50%;
@@ -23,7 +25,7 @@
 	align-items: center;
 }
 
-.injectionMoldinMachinePage__quantity-item span {
+.injectionStateNote__quantity-item span {
 	color: var(--txt-color);
 	margin: 0 4px;
 }
