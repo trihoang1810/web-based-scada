@@ -302,7 +302,7 @@ function InjectionMoldinMachinePage() {
 		},
 	];
 	useEffect(() => {
-		const id = setTimeout(() => setResData(rawData), 2000);
+		const id = setTimeout(() => setResData(rawData), 0);
 		return () => clearTimeout(id);
 	}, []);
 
@@ -395,8 +395,8 @@ function InjectionMoldinMachinePage() {
 					<>
 						<div className="col-8 col-md-8 col-sm-2"></div>
 						<InjectionStateNote quantity={quantity} />
-						<div className="col-md-0 col-0 col-sm-2" style={{ padding: 0 }}></div>
-						<div className="col-sm-2 col-md-0 col-0" style={{ padding: 0 }}></div>
+						{/* <div className="col-md-0 col-0 col-sm-2" style={{ padding: 0 }}></div> */}
+						{/* <div className="col-sm-2 col-md-0 col-0" style={{ padding: 0 }}></div> */}
 						<InjectionFilter hanldeCheckBtn={hanldeCheckBtn} wattageFilter={wattageFilter} stateFilter={stateFilter} />
 					</>
 				) : (

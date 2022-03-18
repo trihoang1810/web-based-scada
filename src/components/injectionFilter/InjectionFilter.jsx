@@ -15,9 +15,9 @@ function InjectionFilter({ hanldeCheckBtn, wattageFilter, stateFilter }) {
 	}, []);
 
 	return (
-		<div className="row injectionMoldinMachinePage__filter">
+		<div className="row col-2 injectionMoldinMachinePage__filter">
 			<span
-				className={`${wattageFilter.length > 0 && 'isFiltered'}`}
+				className={`col-4 ${wattageFilter.length > 0 && 'isFiltered'}`}
 				onClick={(e) => {
 					setShowWattageFilter(!showWattageFilter);
 					e.stopPropagation();
@@ -42,7 +42,7 @@ function InjectionFilter({ hanldeCheckBtn, wattageFilter, stateFilter }) {
 				</button>
 			</div>
 			<span
-				className={`${stateFilter.length > 0 && 'isFiltered'}`}
+				className={`col-4 ${stateFilter.length > 0 && 'isFiltered'}`}
 				onClick={(e) => {
 					setShowStateFilter(!showStateFilter);
 					e.stopPropagation();

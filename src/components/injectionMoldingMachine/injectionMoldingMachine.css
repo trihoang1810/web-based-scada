@@ -85,9 +85,6 @@
 	background-color: var(--second-color-blue);
 }
 
-.injectionMoldingMachine__state-symbol {
-}
-
 .injectionMoldingMachine__value {
 	margin-top: 8px;
 	font-size: 0.6rem;

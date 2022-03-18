@@ -18,7 +18,7 @@ function InjectionDetail() {
 	console.log(id);
 
 	useEffect(() => {
-		const id = setTimeout(() => setValue(injectionMoldingMachineData), 2000);
+		const id = setTimeout(() => setValue(injectionMoldingMachineData), 0);
 
 		return () => clearTimeout(id);
 	}, []);
