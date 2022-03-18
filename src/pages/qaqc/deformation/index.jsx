@@ -18,17 +18,17 @@ function Deformation() {
 			history.push(`${match.url}/${newAlignment}`);
 		}
 	};
-	function ScrollToBottom() {
-		const { pathname } = useLocation();
-		React.useEffect(() => {
-			window.scrollTo({
-				top: 100,
-				behavior: 'smooth',
-			});
-		}, [pathname]);
+	// function ScrollToBottom() {
+	// 	const { pathname } = useLocation();
+	// 	React.useEffect(() => {
+	// 		window.scrollTo({
+	// 			top: 100,
+	// 			behavior: 'smooth',
+	// 		});
+	// 	}, [pathname]);
 
-		return null;
-	}
+	// 	return null;
+	// }
 	return (
 		<>
 			<h2 className="page-header">Deformation</h2>
