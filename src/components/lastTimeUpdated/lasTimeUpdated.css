@@ -1,0 +1,8 @@
+.lastTimeUpdated__container{
+  margin: 10px;
+}
+.lastTimeUpdated__container > span {
+  font-style: italic;
+  font-size: .8rem;
+  color: var(--txt-color);
+}

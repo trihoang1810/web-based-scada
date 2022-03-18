@@ -8,8 +8,8 @@ import Error from '../pages/Error';
 import QualityControlRoutes from '../pages/qaqc';
 import InjectionMoldingMachinePage from '../pages/injectionMoldinMachine/injectionPage';
 import InjectionDetail from '../pages/injectionMoldinMachine/injectionDetail';
-import PackingPage from '../pages/packingClassifyingMachine/packingPage/PackingPage';
-import PackingDetail from '../pages/packingClassifyingMachine/packingDetail/PackingDetail';
+import PackingPage from '../pages/packingClassifyingMachine/packingPage';
+import PackingDetail from '../pages/packingClassifyingMachine/packingDetail';
 
 const Routes = () => {
 	return (

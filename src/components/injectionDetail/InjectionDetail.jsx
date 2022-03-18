@@ -1,4 +1,4 @@
-import { IgrRadialGauge } from 'igniteui-react-gauges';
+// import { IgrRadialGauge } from 'igniteui-react-gauges';
 import Skeleton from 'react-loading-skeleton';
 import ProgressBar from '../progressBar/ProgressBar';
 import Badge from '../badge/Badge';
@@ -154,7 +154,7 @@ function InjectionDetail({ injectionMoldingMachineData }) {
 					{injectionMoldingMachineData ? (
 						<>
 							<div>
-								<IgrRadialGauge
+								{/* <IgrRadialGauge
 									id="cycle"
 									width="300px"
 									height="300px"
@@ -173,11 +173,11 @@ function InjectionDetail({ injectionMoldingMachineData }) {
 									labelInterval={10}
 									font="15px Verdana,Arial"
 									backingOuterExtent={0.9}
-								/>
+								/> */}
 								<span>Chu kì ép</span>
 							</div>
 							<div>
-								<IgrRadialGauge
+								{/* <IgrRadialGauge
 									id="openTime"
 									width="300px"
 									height="300px"
@@ -196,11 +196,11 @@ function InjectionDetail({ injectionMoldingMachineData }) {
 									labelInterval={10}
 									font="15px Verdana,Arial"
 									backingOuterExtent={0.9}
-								/>
+								/> */}
 								<span>Thời gian mở cửa</span>
 							</div>
 							<div>
-								<IgrRadialGauge
+								{/* <IgrRadialGauge
 									id="runningTime"
 									width="300px"
 									height="300px"
@@ -219,7 +219,7 @@ function InjectionDetail({ injectionMoldingMachineData }) {
 									labelInterval={10}
 									font="15px Verdana,Arial"
 									backingOuterExtent={0.9}
-								/>
+								/> */}
 								<span>Tổng thời gian hoạt động trên ngày</span>
 							</div>
 						</>
