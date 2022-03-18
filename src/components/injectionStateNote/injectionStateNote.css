@@ -1,0 +1,31 @@
+.injectionStateNote__quantity {
+	flex-wrap: nowrap;
+	padding-left: 20px;
+	justify-content: flex-end;
+	margin-right: 10px;
+}
+
+.injectionStateNote__quantity-item {
+	margin: 0 8px;
+	align-items: center;
+	flex-wrap: nowrap;
+}
+
+.injectionStateNote__quantity-item div {
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	position: relative;
+	color: var(--txt-white);
+	text-align: center;
+	font-size: 1.1rem;
+	font-weight: 600;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.injectionStateNote__quantity-item span {
+	color: var(--txt-color);
+	margin: 0 4px;
+}

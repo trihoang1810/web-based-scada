@@ -1,0 +1,124 @@
+.injectionMoldingMachine__container {
+	min-height: 180px;
+	max-width: 420px;
+	min-width: 320px;
+	border: 6px solid var(--main-color-gray);
+	padding: 10px 10px 4px 10px;
+	margin: 8px 4px;
+	color: var(--txt-color);
+	background-color: var(--main-bg);
+	transition: all 0.5s;
+}
+
+.injectionMoldingMachine__container:hover {
+	cursor: pointer;
+	background-color: var(--main-bg-dark);
+	color: var(--txt-white);
+}
+
+.injectionMoldingMachine__heading {
+	height: 30px;
+	width: 100%;
+	display: flex;
+}
+
+.injectionMoldingMachine__heading-number {
+	display: inline;
+	font-size: 1.4rem;
+	font-weight: 600;
+	flex: 3;
+}
+
+.injectionMoldingMachine__heading-name {
+	font-size: 0.7rem;
+	margin-top: -4px;
+}
+
+.injectionMoldingMachine__heading-progress {
+	display: flex;
+	font-size: 0.8rem;
+	margin-left: 10px;
+	flex: 9;
+}
+
+.injectionMoldingMachine__heading-progress > span {
+	flex: 4;
+}
+
+.injectionMoldingMachine__heading-progress > div {
+	flex: 8;
+	height: 16px;
+}
+
+.injectionMoldingMachine__state {
+	display: flex;
+}
+
+.injectionMoldingMachine__state-type {
+	color: var(--txt-white);
+	font-size: 2.4rem;
+	font-weight: 600;
+	text-align: center;
+	border-radius: 4px;
+	margin: 12px;
+	width: 48px;
+	height: 48px;
+}
+
+.injectionMoldingMachine__state-symbol {
+	flex: 8;
+	display: flex;
+	justify-content: center;
+	width: 100px;
+	height: 70px;
+}
+
+.R {
+	background-color: var(--second-color-green);
+}
+
+.S {
+	background-color: var(--main-color-red);
+}
+
+.M {
+	background-color: var(--second-color-blue);
+}
+
+.injectionMoldingMachine__value {
+	margin-top: 8px;
+	font-size: 0.6rem;
+	letter-spacing: 0;
+}
+
+.injectionMoldingMachine__value table {
+	min-width: 300px;
+	color: var(--txt-white);
+}
+
+.injectionMoldingMachine__value td {
+	border: none;
+	padding: 6px 0;
+}
+
+.injectionMoldingMachine__value td:first-child {
+	width: 212px;
+}
+
+.injectionMoldingMachine__value td:last-child {
+	font-weight: 600;
+}
+
+.injectionMoldingMachine__value tr {
+	display: block;
+	padding: 0 8px;
+}
+
+.injectionMoldingMachine__value tr:nth-child(1),
+.injectionMoldingMachine__value tr:nth-child(3) {
+	background-color: var(--second-color-gray);
+}
+
+.injectionMoldingMachine__value tr:nth-child(2) {
+	background-color: var(--main-color-gray);
+}

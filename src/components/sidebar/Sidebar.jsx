@@ -44,7 +44,14 @@ function Sidebar(props) {
 		dispatch(setActiveMenu(activeMenu === '' ? 'active' : ''));
 	};
 
-	const activeItem = sidebar_items.findIndex((item) => item.route === props.location.pathname);
+	const activeItem = sidebar_items.findIndex((item) => {
+		if (item.route.includes('/injection/')) {
+			return props.location.pathname.includes('/injection/');
+		} else {
+			return item.route === props.location.pathname;
+		}
+	});
+
 	return (
 		<>
 			<div className={`sidebar ${activeMenu}`}>

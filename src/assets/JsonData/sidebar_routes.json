@@ -1,83 +1,83 @@
 [
-    {
-        "display_name": "Dashboard",
-        "route": "/",
-        "icon": "bx bx-category-alt",
-        "subNav":[]
-    },
-    {
-        "display_name": "Kho vận",
-        "route": "/warehouse",
-        "icon": "bx bxs-truck",
-        "subNav":[]
-    },
-    {
-        "display_name": "Phòng QA/QC thiết bị",
-        "route": "/qaqc",
-        "icon": "bx bx-list-check",
-        "subNav":[
-        {
-        "display_name": "Độ bền biến dạng",
-        "route": "/qaqc/m1",
-        "icon": "bx bx-desktop"
-        },
-        {
-        "display_name": "Độ bền",
-        "route": "/qaqc/m2",
-        "icon": "bx bx-desktop"
-        },
-        {
-        "display_name": "Độ bền cưỡng bức",
-        "route": "/qaqc/m3",
-        "icon": "bx bx-desktop"
-        },
-        {
-        "display_name": "Chống thấm",
-        "route": "/qaqc/m4",
-        "icon": "bx bx-desktop"
-        }
-    ]
-    },
-    {
-        "display_name": "Máy ép",
-        "route": "/injection",
-        "icon": "bx bx-layer",
-        "subNav":[]
-    },
-    {
-        "display_name": "Khu vực đóng gói",
-        "route": "/package",
-        "icon": "bx bxs-package",
-        "subNav":[]
-    },
-    {
-        "display_name": "báo cáo",
-        "route": "/report",
-        "icon": "bx bx-file",
-        "subNav":[]
-    },
-    {
-        "display_name": "cảnh báo",
-        "route": "/warning",
-        "icon": "bx bx-alarm-exclamation",
-        "subNav":[]
-    },
-    {
-        "display_name": "tài khoản",
-        "route": "/profile",
-        "icon": "bx bx-user",
-        "subNav":[]
-    },
-    {
-        "display_name": "cài đặt",
-        "route": "/settings",
-        "icon": "bx bx-cog",
-        "subNav":[]
-    },
-    {
-        "display_name": "đăng xuất",
-        "route": "/",
-        "icon": "bx bx-log-out",
-        "subNav":[]
-    }
+	{
+		"display_name": "Dashboard",
+		"route": "/",
+		"icon": "bx bx-category-alt",
+		"subNav": []
+	},
+	{
+		"display_name": "Kho vận",
+		"route": "/warehouse",
+		"icon": "bx bxs-truck",
+		"subNav": []
+	},
+	{
+		"display_name": "Phòng QA/QC thiết bị",
+		"route": "/qaqc",
+		"icon": "bx bx-list-check",
+		"subNav": [
+			{
+				"display_name": "Độ bền biến dạng",
+				"route": "/qaqc/m1",
+				"icon": "bx bx-desktop"
+			},
+			{
+				"display_name": "Độ bền",
+				"route": "/qaqc/m2",
+				"icon": "bx bx-desktop"
+			},
+			{
+				"display_name": "Độ bền cưỡng bức",
+				"route": "/qaqc/m3",
+				"icon": "bx bx-desktop"
+			},
+			{
+				"display_name": "Chống thấm",
+				"route": "/qaqc/m4",
+				"icon": "bx bx-desktop"
+			}
+		]
+	},
+	{
+		"display_name": "Máy ép",
+		"route": "/injection/pages/1",
+		"icon": "bx bx-layer",
+		"subNav": []
+	},
+	{
+		"display_name": "Khu vực đóng gói",
+		"route": "/package",
+		"icon": "bx bxs-package",
+		"subNav": []
+	},
+	{
+		"display_name": "báo cáo",
+		"route": "/report",
+		"icon": "bx bx-file",
+		"subNav": []
+	},
+	{
+		"display_name": "cảnh báo",
+		"route": "/warning",
+		"icon": "bx bx-alarm-exclamation",
+		"subNav": []
+	},
+	{
+		"display_name": "tài khoản",
+		"route": "/profile",
+		"icon": "bx bx-user",
+		"subNav": []
+	},
+	{
+		"display_name": "cài đặt",
+		"route": "/settings",
+		"icon": "bx bx-cog",
+		"subNav": []
+	},
+	{
+		"display_name": "đăng xuất",
+		"route": "/",
+		"icon": "bx bx-log-out",
+		"subNav": []
+	}
 ]

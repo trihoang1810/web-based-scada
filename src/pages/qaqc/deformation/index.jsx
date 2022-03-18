@@ -59,7 +59,7 @@ function Deformation() {
 					HỆ KIỂM TRA 2
 				</ToggleButton>
 			</ToggleButtonGroup>
-			<ScrollToBottom />
+			{/* <ScrollToBottom /> */}
 			<Switch>
 				<Redirect exact from="/qaqc/m1" to={`${match.url}/system1`} />
 				<Route path={`${match.url}/system1`} component={FirstSystem} />

@@ -1,0 +1,74 @@
+.injectionMoldinMachinePage__container {
+	position: relative;
+	overflow-x: hidden;
+}
+
+.injectionMoldinMachinePage__control {
+	margin-bottom: 4px;
+	margin-right: 5px;
+}
+
+.injectionMoldinMachinePage__pageIndex {
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	height: 16px;
+	margin-bottom: 6px;
+}
+
+.injectionMoldinMachinePage__pageIndex-part {
+	width: 60px;
+	height: 6px;
+	border-radius: 4px;
+	background: var(--second-color-gray);
+	margin: 0 4px;
+	display: inline-block;
+}
+
+.pageIndexActive {
+	background-color: var(--main-color-gray);
+	height: 8px;
+	animation: explode 0.8s;
+}
+
+@keyframes explode {
+	40% {
+		transform: scale(1.5);
+	}
+	100% {
+		transform: scale(1);
+	}
+}
+
+.injectionMoldinMachines__container {
+	justify-content: flex-start;
+}
+
+.injectionMoldinMachinePage__navigate {
+	font-size: 6rem;
+	background-color: var(--second-color-gray);
+	opacity: 0.4;
+	border-radius: 50%;
+	z-index: 997;
+	transition: all 0.3s;
+}
+
+.injectionMoldinMachinePage__navigate:hover {
+	opacity: 0.7;
+	font-size: 7rem;
+	cursor: pointer;
+}
+
+.previousPage {
+	position: fixed;
+	top: 50vh;
+	left: 0;
+	transform: translate(-30%, -50%);
+}
+
+.nextPage {
+	position: fixed;
+	top: 50vh;
+	right: 4px;
+	transform: translate(30%, -50%);
+}

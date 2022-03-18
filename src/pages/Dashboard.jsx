@@ -274,7 +274,7 @@ const Dashboard = () => {
 			<h2 className="page-header">Dashboard</h2>
 			<div className="row">
 				<div className="col-3">
-					<Link to="/injection">
+					<Link to="/injection/pages/1">
 						<div className="card full-height dashboard">
 							<div className="card__header">
 								<h3>Khu máy ép</h3>
