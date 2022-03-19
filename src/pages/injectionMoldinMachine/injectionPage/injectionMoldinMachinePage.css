@@ -1,6 +1,7 @@
 .injectionMoldinMachinePage__container {
 	position: relative;
 	overflow-x: hidden;
+	min-height: 300px;
 }
 
 .injectionMoldinMachinePage__control {

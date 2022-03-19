@@ -366,6 +366,8 @@ function InjectionMoldinMachinePage() {
 		if (!(wattageFilterData || stateFilterData)) {
 			setFilterData(resData);
 		}
+		history.push('/injection/pages/1');
+		setPage(1);
 	}, [wattageFilter, stateFilter, resData]);
 
 	useEffect(() => {
