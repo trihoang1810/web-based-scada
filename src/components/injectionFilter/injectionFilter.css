@@ -3,13 +3,16 @@
 }
 
 .injectionMoldinMachinePage__filter > span {
-	margin: 4px 8px;
+	margin-left: 8px;
 	background-color: var(--main-bg);
 	color: var(--txt-color);
-	padding: 8px 24px;
+	display: flex;
+	justify-content: center;
 	border-radius: 4px;
 	font-size: 1.1rem;
 	border: 2px solid black;
+	padding: 8px 16px;
+	flex-grow: 1;
 }
 
 .injectionMoldinMachinePage__filter .isFiltered {
@@ -22,7 +25,7 @@
 	cursor: pointer;
 	background-color: var(--main-color-gray);
 	color: var(--txt-white);
-	border: 1px solid var(--main-color-gray);
+	border: 2px solid var(--main-color-gray);
 }
 
 .injectionMoldinMachinePage__filter-wattage,

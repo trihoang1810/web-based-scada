@@ -18,17 +18,17 @@ function Deformation() {
 			history.push(`${match.url}/${newAlignment}`);
 		}
 	};
-	function ScrollToBottom() {
-		const { pathname } = useLocation();
-		React.useEffect(() => {
-			window.scrollTo({
-				top: 100,
-				behavior: 'smooth',
-			});
-		}, [pathname]);
+	// function ScrollToBottom() {
+	// 	const { pathname } = useLocation();
+	// 	React.useEffect(() => {
+	// 		window.scrollTo({
+	// 			top: 100,
+	// 			behavior: 'smooth',
+	// 		});
+	// 	}, [pathname]);
 
-		return null;
-	}
+	// 	return null;
+	// }
 	return (
 		<>
 			<h2 className="page-header">Deformation</h2>
@@ -59,7 +59,7 @@ function Deformation() {
 					HỆ KIỂM TRA 2
 				</ToggleButton>
 			</ToggleButtonGroup>
-			<ScrollToBottom />
+			{/* <ScrollToBottom /> */}
 			<Switch>
 				<Redirect exact from="/qaqc/m1" to={`${match.url}/system1`} />
 				<Route path={`${match.url}/system1`} component={FirstSystem} />

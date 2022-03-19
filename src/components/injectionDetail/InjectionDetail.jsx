@@ -1,9 +1,10 @@
-import { IgrRadialGauge } from 'igniteui-react-gauges';
+// import { IgrRadialGauge } from 'igniteui-react-gauges';
 import Skeleton from 'react-loading-skeleton';
 import ProgressBar from '../progressBar/ProgressBar';
 import Badge from '../badge/Badge';
 import 'react-loading-skeleton/dist/skeleton.css';
 import './injectionDetail.css';
+import { Button } from '@mui/material';
 
 function InjectionDetail({ injectionMoldingMachineData }) {
 	const symbolColor =
@@ -148,13 +149,12 @@ function InjectionDetail({ injectionMoldingMachineData }) {
 				)}
 			</div>
 
-			<div className="row">
-				<div className="col-1"></div>
-				<div className="card col-11 injectionDetail__value">
+			<div className="row flex-center mb-20">
+				<div className="card col-12 injectionDetail__value">
 					{injectionMoldingMachineData ? (
 						<>
 							<div>
-								<IgrRadialGauge
+								{/* <IgrRadialGauge
 									id="cycle"
 									width="300px"
 									height="300px"
@@ -173,11 +173,11 @@ function InjectionDetail({ injectionMoldingMachineData }) {
 									labelInterval={10}
 									font="15px Verdana,Arial"
 									backingOuterExtent={0.9}
-								/>
+								/> */}
 								<span>Chu kì ép</span>
 							</div>
 							<div>
-								<IgrRadialGauge
+								{/* <IgrRadialGauge
 									id="openTime"
 									width="300px"
 									height="300px"
@@ -196,11 +196,11 @@ function InjectionDetail({ injectionMoldingMachineData }) {
 									labelInterval={10}
 									font="15px Verdana,Arial"
 									backingOuterExtent={0.9}
-								/>
+								/> */}
 								<span>Thời gian mở cửa</span>
 							</div>
 							<div>
-								<IgrRadialGauge
+								{/* <IgrRadialGauge
 									id="runningTime"
 									width="300px"
 									height="300px"
@@ -219,7 +219,7 @@ function InjectionDetail({ injectionMoldingMachineData }) {
 									labelInterval={10}
 									font="15px Verdana,Arial"
 									backingOuterExtent={0.9}
-								/>
+								/> */}
 								<span>Tổng thời gian hoạt động trên ngày</span>
 							</div>
 						</>
@@ -227,6 +227,9 @@ function InjectionDetail({ injectionMoldingMachineData }) {
 						<Skeleton height={300} containerClassName="col-12" />
 					)}
 				</div>
+			</div>
+			<div className="row flex-center">
+				<Button variant="contained">Đi đến trang báo cáo</Button>
 			</div>
 		</div>
 	);

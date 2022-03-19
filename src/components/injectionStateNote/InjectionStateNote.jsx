@@ -2,7 +2,7 @@ import './injectionStateNote.css';
 
 function InjectionStateNote({ quantity }) {
 	return (
-		<div className="row col-2 col-md-3 col-sm-8 injectionStateNote__quantity">
+		<div className="col-2 flex-horizontal-space-evenly col-md-3 col-sm-8 injectionStateNote__quantity">
 			<div className="row injectionStateNote__quantity-item">
 				<div className="M">M</div>
 				<span>{quantity.M}</span>
