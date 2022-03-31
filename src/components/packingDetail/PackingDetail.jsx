@@ -6,7 +6,7 @@ import { convertHMS } from '../../utils/utils';
 import { Button } from '@mui/material';
 
 function PackingDetail() {
-	const isRunning = true;
+	const isRunning = false;
 	return (
 		<>
 			<div
@@ -30,7 +30,7 @@ function PackingDetail() {
 					<div className="col-5">
 						<>
 							<svg width="100%" height="100%" viewBox="0 0 639 293" fill="none" xmlns="http://www.w3.org/2000/svg">
-								<g clip-path="url(#clip0_13_36)">
+								<g clipPath="url(#clip0_13_36)">
 									<rect x="248.819" y="107" width="8.99339" height="29" fill="#C4C4C4" />
 									<path d="M3 117H177.872V292H171.876V205.5H9.49523V292H3V117Z" fill="#6C6C6C" />
 									<path d="M190.862 136H275.8V292H267.806V145H197.857V292H190.862V136Z" fill="#C4C4C4" />
@@ -42,8 +42,8 @@ function PackingDetail() {
 									<line x1="184.866" y1="117.5" x2="244.822" y2="117.5" stroke="black" />
 									<path d="M192.861 96H248.82V102H202.853V107H248.82V111H192.861V96Z" fill="#373737" />
 									<line x1="248.819" y1="96.5" x2="288.79" y2="96.5" stroke="black" />
-									<line x1="275.8" y1="98" x2="288.79" y2="98" stroke="#B7B7B7" stroke-width="2" />
-									<line x1="287.792" y1="98" x2="287.792" y2="111" stroke="#B7B7B7" stroke-width="2" />
+									<line x1="275.8" y1="98" x2="288.79" y2="98" stroke="#B7B7B7" strokeWidth="2" />
+									<line x1="287.792" y1="98" x2="287.792" y2="111" stroke="#B7B7B7" strokeWidth="2" />
 									<line x1="289.29" y1="96" x2="289.29" y2="136" stroke="black" />
 									<path d="M288.79 135H404.705V292H398.709V143.5H294.786V292H288.79V135Z" fill="#C4C4C4" />
 									<path
@@ -51,7 +51,7 @@ function PackingDetail() {
 										fill={`${isRunning ? '#46565B' : 'var(--main-color-gray)'}`}
 									/>
 									<line x1="294.786" y1="170.5" x2="327.761" y2="170.5" stroke="#30393C" />
-									<line x1="316.77" y1="144" x2="332.758" y2="144" stroke="#30393C" stroke-width="2" />
+									<line x1="316.77" y1="144" x2="332.758" y2="144" stroke="#30393C" strokeWidth="2" />
 									<rect
 										x="275.8"
 										y="151"
@@ -64,12 +64,12 @@ function PackingDetail() {
 										d="M305.778 127H342.75V112.5H307.276V102H342.75V88.5H327.262V64H371.23L373.728 66.5V88.5H358.739V102L388.217 102.5V112.5H358.739V125H389.716V132.5H388.217V131.5H385.219V132.5H309.775V131.5H307.276V132.5H305.778V127Z"
 										fill="#696969"
 									/>
-									<path d="M308.553 107L308.553 131" stroke="#686868" stroke-width="2" />
-									<path d="M308.553 105L308.553 110" stroke="#070707" stroke-width="2" />
-									<path d="M386.718 108L386.718 131" stroke="#686868" stroke-width="2" />
-									<path d="M386.496 106L386.496 111" stroke="#070707" stroke-width="2" />
-									<path d="M375.726 44L375.726 133" stroke="#686868" stroke-width="4" />
-									<path d="M325.763 44L325.763 133" stroke="#686868" stroke-width="4" />
+									<path d="M308.553 107L308.553 131" stroke="#686868" strokeWidth="2" />
+									<path d="M308.553 105L308.553 110" stroke="#070707" strokeWidth="2" />
+									<path d="M386.718 108L386.718 131" stroke="#686868" strokeWidth="2" />
+									<path d="M386.496 106L386.496 111" stroke="#070707" strokeWidth="2" />
+									<path d="M375.726 44L375.726 133" stroke="#686868" strokeWidth="4" />
+									<path d="M325.763 44L325.763 133" stroke="#686868" strokeWidth="4" />
 									<rect x="315.271" y="0.5" width="70.9472" height="55" fill="#C4C4C4" stroke="black" />
 									<rect x="326.762" y="18" width="47.9648" height="33" fill="#1F1F1F" />
 									<rect x="330.759" y="22" width="39.9706" height="25" fill="#6B6B6B" />
@@ -82,25 +82,25 @@ function PackingDetail() {
 										d="M383.47 9C383.47 10.519 382.24 11.75 380.723 11.75C379.205 11.75 377.975 10.519 377.975 9C377.975 7.48104 379.205 6.25 380.723 6.25C382.24 6.25 383.47 7.48104 383.47 9Z"
 										fill="#C57B26"
 										stroke="black"
-										stroke-width="0.5"
+										strokeWidth="0.5"
 									/>
 									<path
 										d="M383.47 24C383.47 25.519 382.24 26.75 380.723 26.75C379.205 26.75 377.975 25.519 377.975 24C377.975 22.481 379.205 21.25 380.723 21.25C382.24 21.25 383.47 22.481 383.47 24Z"
 										fill={`${isRunning ? '#31BE00' : 'var(--main-color-gray)'}`}
 										stroke="black"
-										stroke-width="0.5"
+										strokeWidth="0.5"
 									/>
 									<path
 										d="M383.47 35C383.47 36.519 382.24 37.75 380.723 37.75C379.205 37.75 377.975 36.519 377.975 35C377.975 33.481 379.205 32.25 380.723 32.25C382.24 32.25 383.47 33.481 383.47 35Z"
 										fill={`${isRunning ? '#31BE00' : 'var(--main-color-gray)'}`}
 										stroke="black"
-										stroke-width="0.5"
+										strokeWidth="0.5"
 									/>
 									<path
 										d="M383.47 46C383.47 47.519 382.24 48.75 380.723 48.75C379.205 48.75 377.975 47.519 377.975 46C377.975 44.481 379.205 43.25 380.723 43.25C382.24 43.25 383.47 44.481 383.47 46Z"
 										fill={`${isRunning ? '#31BE00' : 'var(--main-color-gray)'}`}
 										stroke="black"
-										stroke-width="0.5"
+										strokeWidth="0.5"
 									/>
 									<path
 										d="M408.702 147H497.637L472.655 109.5L478.651 105.5L514.125 158.5L577.078 115.5H602.56V292H596.564V128H577.078L514.125 171V292H508.629V165L501.634 153H414.198V292H408.702V147Z"
@@ -119,11 +119,11 @@ function PackingDetail() {
 										transform="matrix(0.833699 -0.552219 0.551655 0.834072 527.615 77.3179)"
 										fill="white"
 									/>
-									<path d="M515.624 120.701L605.756 61.0001" stroke="white" stroke-width="2" stroke-dasharray="2 2" />
-									<path d="M517.999 125.968L608.131 66.2667" stroke="white" stroke-width="2" stroke-dasharray="2 2" />
-									<path d="M520.996 130.968L611.129 71.2667" stroke="white" stroke-width="2" stroke-dasharray="2 2" />
-									<path d="M523.994 135.968L614.127 76.2667" stroke="white" stroke-width="2" stroke-dasharray="2 2" />
-									<path d="M526.992 140.968L617.124 81.2667" stroke="white" stroke-width="2" stroke-dasharray="2 2" />
+									<path d="M515.624 120.701L605.756 61.0001" stroke="white" strokeWidth="2" strokeDasharray="2 2" />
+									<path d="M517.999 125.968L608.131 66.2667" stroke="white" strokeWidth="2" strokeDasharray="2 2" />
+									<path d="M520.996 130.968L611.129 71.2667" stroke="white" strokeWidth="2" strokeDasharray="2 2" />
+									<path d="M523.994 135.968L614.127 76.2667" stroke="white" strokeWidth="2" strokeDasharray="2 2" />
+									<path d="M526.992 140.968L617.124 81.2667" stroke="white" strokeWidth="2" strokeDasharray="2 2" />
 									<rect
 										x="292.787"
 										y="300"
@@ -133,10 +133,10 @@ function PackingDetail() {
 										fill={`${isRunning ? '#31BE00' : 'var(--main-color-gray)'}`}
 									/>
 									<rect x="232.831" y="235" width="21.9839" height="11" rx="3" fill="white" />
-									<path d="M220.838 265.304H265.805" stroke="white" stroke-width="2" stroke-dasharray="2 2" />
-									<path d="M220.838 272.304H265.805" stroke="white" stroke-width="2" stroke-dasharray="2 2" />
-									<path d="M220.838 279.304H265.805" stroke="white" stroke-width="2" stroke-dasharray="2 2" />
-									<path d="M220.838 286.304H265.805" stroke="white" stroke-width="2" stroke-dasharray="2 2" />
+									<path d="M220.838 265.304H265.805" stroke="white" strokeWidth="2" strokeDasharray="2 2" />
+									<path d="M220.838 272.304H265.805" stroke="white" strokeWidth="2" strokeDasharray="2 2" />
+									<path d="M220.838 279.304H265.805" stroke="white" strokeWidth="2" strokeDasharray="2 2" />
+									<path d="M220.838 286.304H265.805" stroke="white" strokeWidth="2" strokeDasharray="2 2" />
 									<rect
 										x="472.655"
 										y="147"
@@ -146,10 +146,10 @@ function PackingDetail() {
 										fill="#838383"
 									/>
 									<rect x="432.264" y="116.211" width="14.8102" height="5.21053" rx="2.60526" fill="white" />
-									<path d="M424.184 130.565H454.478" stroke="white" stroke-width="2" stroke-dasharray="2 2" />
-									<path d="M424.184 133.881H454.478" stroke="white" stroke-width="2" stroke-dasharray="2 2" />
-									<path d="M424.184 137.197H454.478" stroke="white" stroke-width="2" stroke-dasharray="2 2" />
-									<path d="M424.184 140.512H454.478" stroke="white" stroke-width="2" stroke-dasharray="2 2" />
+									<path d="M424.184 130.565H454.478" stroke="white" strokeWidth="2" strokeDasharray="2 2" />
+									<path d="M424.184 133.881H454.478" stroke="white" strokeWidth="2" strokeDasharray="2 2" />
+									<path d="M424.184 137.197H454.478" stroke="white" strokeWidth="2" strokeDasharray="2 2" />
+									<path d="M424.184 140.512H454.478" stroke="white" strokeWidth="2" strokeDasharray="2 2" />
 								</g>
 								<defs>
 									<clipPath id="clip0_13_36">

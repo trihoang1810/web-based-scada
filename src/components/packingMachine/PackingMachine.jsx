@@ -23,7 +23,6 @@ function PackingMachine({
 	onClick,
 }) {
 	const workingHoursSetPoint = 28800;
-
 	return (
 		<>
 			<div className="row mb-20">
@@ -41,7 +40,7 @@ function PackingMachine({
 				<div className="col-10">
 					<>
 						<svg width="100%" height="100%" viewBox="0 0 639 293" fill="none" xmlns="http://www.w3.org/2000/svg">
-							<g clip-path="url(#clip0_13_36)">
+							<g clipPath="url(#clip0_13_36)">
 								<rect x="248.819" y="107" width="8.99339" height="29" fill="#C4C4C4" />
 								<path d="M3 117H177.872V292H171.876V205.5H9.49523V292H3V117Z" fill="#6C6C6C" />
 								<path d="M190.862 136H275.8V292H267.806V145H197.857V292H190.862V136Z" fill="#C4C4C4" />
