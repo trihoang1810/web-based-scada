@@ -5,7 +5,6 @@ import ProgressBar from '../progressBar/ProgressBar';
 import './injectionMoldingMachine.css';
 
 function InjectionMoldingMachine({ injectionMoldingMachineData }) {
-	console.log(injectionMoldingMachineData);
 	const symbolColor =
 		injectionMoldingMachineData?.state === 'R'
 			? {

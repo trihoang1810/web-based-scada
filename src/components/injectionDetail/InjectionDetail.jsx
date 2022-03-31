@@ -1,10 +1,72 @@
-import { IgrRadialGauge } from 'igniteui-react-gauges';
+// import { IgrRadialGauge } from 'igniteui-react-gauges';
 import Skeleton from 'react-loading-skeleton';
 import ProgressBar from '../progressBar/ProgressBar';
 import Badge from '../badge/Badge';
 import 'react-loading-skeleton/dist/skeleton.css';
 import './injectionDetail.css';
 import { Button } from '@mui/material';
+import { Pie } from 'react-chartjs-2';
+import {
+	Chart,
+	ArcElement,
+	Tooltip,
+	Legend,
+	CategoryScale,
+	BarElement,
+	LinearScale,
+	Title,
+	LineElement,
+	PointElement,
+} from 'chart.js';
+
+import ChartDataLabels from 'chartjs-plugin-datalabels';
+Chart.defaults.set('plugins.datalabels', {
+	color: 'black',
+});
+Chart.register(
+	ArcElement,
+	Tooltip,
+	Legend,
+	ChartDataLabels,
+	CategoryScale,
+	BarElement,
+	LinearScale,
+	Title,
+	LineElement,
+	PointElement
+);
+
+const injectionOptions = {
+	// responsive: true,
+	plugins: {
+		labels: {
+			render: (args) => {
+				return args.label;
+			},
+		},
+		datalabels: {
+			font: {
+				weight: 'bold',
+				size: 16,
+			},
+		},
+		legend: {
+			display: true,
+			position: 'top',
+		},
+	},
+};
+
+const injectionData = {
+	labels: ['Thời gian sản xuất', 'Thời gian nghỉ', 'Thời gian tắt', 'Thời gian lỗi'],
+	datasets: [
+		{
+			label: 'dataset1',
+			data: [25, 50, 100, 75],
+			backgroundColor: ['red', 'green', 'orange', 'blue'],
+		},
+	],
+};
 
 function InjectionDetail({ injectionMoldingMachineData }) {
 	const symbolColor =
@@ -154,7 +216,7 @@ function InjectionDetail({ injectionMoldingMachineData }) {
 					{injectionMoldingMachineData ? (
 						<>
 							<div>
-								<IgrRadialGauge
+								{/* <IgrRadialGauge
 									id="cycle"
 									width="300px"
 									height="300px"
@@ -173,11 +235,11 @@ function InjectionDetail({ injectionMoldingMachineData }) {
 									labelInterval={10}
 									font="15px Verdana,Arial"
 									backingOuterExtent={0.9}
-								/>
+								/> */}
 								<span>Chu kì ép</span>
 							</div>
 							<div>
-								<IgrRadialGauge
+								{/* <IgrRadialGauge
 									id="openTime"
 									width="300px"
 									height="300px"
@@ -196,32 +258,13 @@ function InjectionDetail({ injectionMoldingMachineData }) {
 									labelInterval={10}
 									font="15px Verdana,Arial"
 									backingOuterExtent={0.9}
-								/>
+								/> */}
 								<span>Thời gian mở cửa</span>
 							</div>
-							<div>
-								<IgrRadialGauge
-									id="runningTime"
-									width="300px"
-									height="300px"
-									minimumValue={0}
-									maximumValue={15}
-									interval={3}
-									value={12}
-									backingOutline="#c4c4c4"
-									scaleEndExtent={0.825}
-									scaleStartExtent={0.775}
-									minorTickStartExtent={0.7}
-									minorTickEndExtent={0.75}
-									tickStartExtent={0.675}
-									tickEndExtent={0.75}
-									labelExtent={0.6}
-									labelInterval={10}
-									font="15px Verdana,Arial"
-									backingOuterExtent={0.9}
-								/>
+							{/* <div>
+								<Pie options={injectionOptions} plugins={[ChartDataLabels]} data={injectionData} />
 								<span>Tổng thời gian hoạt động trên ngày</span>
-							</div>
+							</div> */}
 						</>
 					) : (
 						<Skeleton height={300} containerClassName="col-12" />

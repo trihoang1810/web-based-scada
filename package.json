@@ -14,6 +14,8 @@
     "apexcharts": "^3.32.1",
     "axios": "^0.24.0",
     "chartjs-plugin-datalabels": "^2.0.0",
+    "exceljs": "^4.3.0",
+    "file-saver": "^2.0.5",
     "igniteui-react-core": "^16.15.0",
     "igniteui-react-gauges": "^16.15.0",
     "query-string": "^7.1.1",

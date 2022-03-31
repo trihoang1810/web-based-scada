@@ -289,7 +289,7 @@ const Dashboard = () => {
 					<Link to="/qaqc">
 						<div className="card full-height dashboard">
 							<div className="card__header mb-40">
-								<h3>Phòng QA/QC thiết bị</h3>
+								<h3>PHÒNG QA/QC THIẾT BỊ</h3>
 							</div>
 							<div className="card__body card__body--center ">
 								<Line options={qaqcOptions} data={qaqcData} />

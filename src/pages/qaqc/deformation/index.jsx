@@ -1,13 +1,8 @@
+import { Breadcrumbs, Link, ToggleButton, ToggleButtonGroup, Typography } from '@mui/material';
 import React from 'react';
-
-import { ToggleButtonGroup, ToggleButton } from '@mui/material';
-
-import { Switch, Route, useRouteMatch, useHistory, useLocation, Redirect } from 'react-router-dom';
-
+import { Redirect, Route, Switch, useHistory, useRouteMatch } from 'react-router-dom';
 import FirstSystem from './firstsystem/FirstSystem';
-
 import SecondSystem from './secondsystem/SecondSystem';
-
 function Deformation() {
 	const history = useHistory();
 	const match = useRouteMatch();
@@ -18,20 +13,49 @@ function Deformation() {
 			history.push(`${match.url}/${newAlignment}`);
 		}
 	};
-	function ScrollToBottom() {
-		const { pathname } = useLocation();
-		React.useEffect(() => {
-			window.scrollTo({
-				top: 100,
-				behavior: 'smooth',
-			});
-		}, [pathname]);
+	// function ScrollToBottom() {
+	// 	const { pathname } = useLocation();
+	// 	React.useEffect(() => {
+	// 		window.scrollTo({
+	// 			top: 100,
+	// 			behavior: 'smooth',
+	// 		});
+	// 	}, [pathname]);
 
-		return null;
-	}
+	// 	return null;
+	// }
 	return (
 		<>
-			<h2 className="page-header">Deformation</h2>
+			<Breadcrumbs
+				sx={{
+					'& .MuiBreadcrumbs-ol': {
+						'& .MuiBreadcrumbs-li': {
+							'& .MuiTypography-root': {
+								display: 'block',
+								fontSize: '1.5em',
+								marginBlockStart: '0.83em',
+								marginBlockEnd: '0.83em',
+								marginInlineStart: '0px',
+								marginInlineEnd: '0px',
+								fontWeight: 'bold',
+							},
+							'& .MuiLink-root': {
+								marginBottom: '15px',
+								textTransform: 'capitalize',
+							},
+							'& .MuiBreadcrumbs-separator': {
+								fontSize: '1.5rem',
+							},
+						},
+					},
+				}}
+				aria-label="breadcrumb"
+			>
+				<Link color="inherit" underline="hover" href="/qaqc">
+					PHÒNG QA/QC THIẾT BỊ
+				</Link>
+				<Typography color="text.primary">MÁY KIẾM TRA ĐỘ BIẾN DẠNG</Typography>
+			</Breadcrumbs>
 			<ToggleButtonGroup
 				fullWidth={true}
 				value={alignment}
