@@ -10,6 +10,7 @@ import InjectionMoldingMachinePage from '../pages/injectionMoldinMachine/injecti
 import InjectionDetail from '../pages/injectionMoldinMachine/injectionDetail';
 import PackingPage from '../pages/packingClassifyingMachine/packingPage';
 import PackingDetail from '../pages/packingClassifyingMachine/packingDetail';
+import Alarm from '../pages/Alarm';
 
 const Routes = () => {
 	return (
@@ -21,7 +22,8 @@ const Routes = () => {
 			<Route path="/package/:id" component={PackingDetail} />
 			<Route path="/injection/pages/:page" component={InjectionMoldingMachinePage} />
 			<Route path="/injection/:id" component={InjectionDetail} />
-			<Route component={Error} />
+			<Route path="/warning" component={Alarm} />
+			<Route path="*" component={Error} />
 		</Switch>
 	);
 };

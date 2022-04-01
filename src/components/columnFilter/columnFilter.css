@@ -1,0 +1,9 @@
+input[type=text]{
+  width: 100%;
+  border: none;
+  padding:10px 0;
+  border-bottom: 1px solid #ddd;
+  background-color: transparent;
+  color: var(--txt-black);
+  font-size: 1rem;
+}

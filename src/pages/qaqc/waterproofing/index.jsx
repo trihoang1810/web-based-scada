@@ -1,6 +1,5 @@
 import React from 'react';
 // import { IgrRadialGauge, IgrRadialGaugeRange } from 'igniteui-react-gauges';
-import Chart from 'react-apexcharts';
 import { ReactComponent as Stop } from '../../../assets/images/qaqc/stop.svg';
 import { ReactComponent as Manual } from '../../../assets/images/qaqc/manual.svg';
 import { ReactComponent as Auto } from '../../../assets/images/qaqc/auto.svg';
@@ -23,6 +22,57 @@ import {
 	Breadcrumbs,
 } from '@mui/material';
 import ProgressBar from '../../../components/progressBar/ProgressBar';
+import {
+	Chart,
+	ArcElement,
+	Tooltip,
+	Legend,
+	CategoryScale,
+	BarElement,
+	LinearScale,
+	Title,
+	LineElement,
+	PointElement,
+} from 'chart.js';
+import { Line } from 'react-chartjs-2';
+
+Chart.register(ArcElement, Tooltip, Legend, CategoryScale, BarElement, LinearScale, Title, LineElement, PointElement);
+
+const trendOptions = {
+	responsive: true,
+	maintainAspectRatio: false,
+	plugins: {
+		legend: {
+			display: true,
+			position: 'top',
+		},
+	},
+	scales: {
+		x: {
+			grid: {
+				display: false,
+			},
+		},
+		y: {
+			grid: {
+				display: false,
+			},
+		},
+	},
+};
+
+const trendData = {
+	labels: ['17:51', '18:00', '18:30', '19:00', '20:09', '20:30', '21:00', '21:30', '22:00', '22:30', '23:00'],
+	datasets: [
+		{
+			label: 'Nhiệt độ máy',
+			data: [10, 25, 50, 75, 100, 75, 50, 25, 10, 25, 50, 75],
+			fill: true,
+			borderColor: 'rgba(54, 162, 235, 1)',
+			tension: 0.1,
+		},
+	],
+};
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
 	[`&.${tableCellClasses.head}`]: {
@@ -208,6 +258,21 @@ function WaterProofing() {
 									<IgrRadialGaugeRange name="range3" startValue={60} endValue={100} brush="green" />
 								</IgrRadialGauge> */}
 							</div>
+						</div>
+					</div>
+				</div>
+				<div className="col-12">
+					<div
+						className="card"
+						style={{
+							height: '550px',
+						}}
+					>
+						<div className="card__header">
+							<h3>Biểu đồ nhiệt độ</h3>
+						</div>
+						<div className="card__body">
+							<Line options={trendOptions} data={trendData} />
 						</div>
 					</div>
 				</div>

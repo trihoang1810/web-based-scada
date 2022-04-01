@@ -8,7 +8,7 @@ table{
   border-spacing: 0;
 }
 
-thead{
+thead, tfoot{
   background-color: var(--second-bg)
 }
 
@@ -16,13 +16,13 @@ tr {
   text-align: left;
 }
 
-th,td {
+th, td {
   text-transform: capitalize;
   padding: 15px 10px;
   border-bottom: 1px solid #ddd;
 }
 
-tbody > tr:hover{
+.basic-table tbody > tr:hover{
   background-color: var(--main-color);
   color: var(--txt-white);
 }

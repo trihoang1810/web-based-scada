@@ -1,6 +1,6 @@
 import { ReactComponent as StoppedForcedEndurance } from '../assets/images/qaqc/forcedEndurance__stop.svg';
 import { ReactComponent as RunForcedEndurance } from '../assets/images/qaqc/forcedEndurance__run.svg';
-
+import { format } from 'date-fns';
 import { ReactComponent as StoppedEndurance } from '../assets/images/qaqc/endurance__stop.svg';
 import { ReactComponent as RunEndurance } from '../assets/images/qaqc/endurance__run.svg';
 
@@ -31,4 +31,62 @@ function convertHMS(value) {
 
 const packingEmployees = ['Nguyễn Hữu Tâm', 'Trần Hải Văn', 'Danh Khả', 'Nguyễn Thanh Định'];
 
-export { packingEmployees, machineInformation, convertHMS };
+const COLUMNS = [
+	{
+		Header: 'Thời gian',
+		Footer: 'Thời gian',
+		width: 80,
+		accessor: 'date',
+		Cell: ({ value }) => {
+			return format(new Date(value), 'dd-MM-yyyy HH:mm:ss');
+		},
+		disableSortBy: true,
+	},
+	{
+		Header: 'Mã lỗi',
+		Footer: 'Mã lỗi',
+		width: 40,
+		accessor: 'error_code',
+		disableSortBy: true,
+	},
+	{
+		Header: 'Khu vực',
+		Footer: 'Khu vực',
+		width: 100,
+		accessor: 'error_sector',
+		disableSortBy: true,
+	},
+	{
+		Header: 'Chi tiết',
+		Footer: 'Chi tiết',
+		width: 200,
+		accessor: 'error_msg',
+		disableSortBy: true,
+	},
+	{
+		Header: 'Mức độ ưu tiên',
+		Footer: 'Mức độ ưu tiên',
+		width: 30,
+		accessor: 'priority',
+		Cell: ({ value }) => {
+			switch (value) {
+				case 'low':
+					return 'Thấp';
+				case 'middle':
+					return 'Trung bình';
+				case 'high':
+					return 'Cao';
+				default:
+					break;
+			}
+		},
+		disableFilters: true,
+	},
+];
+
+function convertDate(value) {
+	const date = new Date(value);
+	return date.toLocaleDateString();
+}
+
+export { packingEmployees, machineInformation, convertHMS, COLUMNS, convertDate };
