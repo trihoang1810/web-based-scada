@@ -1,12 +1,10 @@
 import React from 'react';
-import './packingDetail.css';
-import { packingEmployees, packingState } from '../../utils/utils';
-import ProgressBar from '../progressBar/ProgressBar';
-import { convertHMS } from '../../utils/utils';
-import { Button } from '@mui/material';
-import Badge from '../badge/Badge';
-import ReportNavigationButton from '../reportNavigationButton/ReportNavigationButton';
 import { useHistory } from 'react-router-dom';
+import { convertHMS, packingEmployees, packingState } from '../../utils/utils';
+import Badge from '../badge/Badge';
+import ProgressBar from '../progressBar/ProgressBar';
+import ReportNavigationButton from '../reportNavigationButton/ReportNavigationButton';
+import './packingDetail.css';
 
 const mockPacking = {
 	id: 'module1',
@@ -259,6 +257,12 @@ function PackingDetail() {
 											<td>500</td>
 											<td>500</td>
 											<td>500</td>
+										</tr>
+										<tr>
+											<td>Số lượng thực hiện</td>
+											<td>500</td>
+											<td>500</td>
+											<td>0</td>
 										</tr>
 										<tr>
 											<td>Ghi chú</td>

@@ -274,8 +274,14 @@ function InjectionDetail({ injectionMoldingMachineData }) {
 					)}
 				</div>
 			</div>
-			<div className="row flex-center">
-				<ReportNavigationButton history={history} path="/report/main/injection" />
+			<div className="row">
+				<div className="col-12 flex-horizontal-center">
+					<ReportNavigationButton history={history} path="/report/main/injection" />
+					<div className="mr-40"></div>
+					<ReportNavigationButton history={history} path="/report/oee">
+						Đánh giá OEE
+					</ReportNavigationButton>
+				</div>
 			</div>
 		</div>
 	);

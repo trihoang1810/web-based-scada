@@ -195,6 +195,13 @@ input:focus {
 	flex-direction: column;
 }
 
+.flex-horizontal-center{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: row;
+}
+
 .flex-space-between {
 	display: flex;
 	justify-content: space-between;
@@ -279,6 +286,26 @@ input:focus {
 .orange-color {
 	background-color: var(--main-color-orange);
 	color: #fff;
+}
+
+.mr-40{
+	margin-right: 40px;
+}
+
+.mr-30{
+	margin-right: 30px;
+}
+
+.mr-20{
+	margin-right: 20px;
+}
+
+.mr-10{
+	margin-right: 10px;
+}
+
+.mr-15{
+	margin-right: 15px;
 }
 
 .mb-40 {

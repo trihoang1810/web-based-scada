@@ -1,14 +1,20 @@
 import { Button } from '@mui/material';
 import React from 'react';
 
-function ReportNavigationButton({ history, path }) {
+function ReportNavigationButton({ children, history, path }) {
 	const onClick = () => {
 		history.push(path);
 	};
 	return (
 		<>
-			<Button onClick={onClick} variant="contained">
-				Đi đến trang báo cáo
+			<Button
+				sx={{
+					backgroundColor: 'var(--main-color)',
+				}}
+				onClick={onClick}
+				variant="contained"
+			>
+				{children ? children : 'Đi đến trang báo cáo'}
 			</Button>
 		</>
 	);

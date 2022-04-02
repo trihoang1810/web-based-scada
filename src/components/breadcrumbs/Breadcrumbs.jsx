@@ -1,10 +1,7 @@
 import { Breadcrumbs, Link, Typography } from '@mui/material';
 import React from 'react';
-import { useParams } from 'react-router-dom';
-import PackingDetailComponent from '../../../components/packingDetail/PackingDetail';
 
-function PackingDetail() {
-	const { id } = useParams();
+function CustomizedBreadcrumbs({ id, sector, href }) {
 	return (
 		<>
 			<Breadcrumbs
@@ -32,14 +29,13 @@ function PackingDetail() {
 				}}
 				aria-label="breadcrumb"
 			>
-				<Link color="inherit" underline="hover" href="/package">
-					KHU KIỂM TRA ĐÓNG GÓI
+				<Link color="inherit" underline="hover" href={href}>
+					{sector}
 				</Link>
-				<Typography color="text.primary">CỤM MÁY {id.split('module')[1]}</Typography>
+				<Typography color="text.primary">{id}</Typography>
 			</Breadcrumbs>
-			<PackingDetailComponent/>
 		</>
 	);
 }
 
-export default PackingDetail;
+export default CustomizedBreadcrumbs;

@@ -46,7 +46,7 @@
 	},
 	{
 		"display_name": "Khu vực đóng gói",
-		"route": "/package",
+		"route": "/packing",
 		"icon": "bx bxs-package",
 		"subNav": []
 	},

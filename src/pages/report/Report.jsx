@@ -1,6 +1,6 @@
 import React from 'react';
 import { Redirect, Route, Switch, useRouteMatch } from 'react-router-dom';
-import ReportOee from '../../components/reportOee/ReportOee';
+import ReportOee from './oeeIndex';
 import ReportMain from './reportMain';
 
 function Report() {
