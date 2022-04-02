@@ -18,15 +18,30 @@ function convertHMS(value) {
 	return hours + ' tiếng ' + minutes + ' phút'; // Return is HH : MM : SS
 }
 
-const packagingEmployees = ['Nguyễn Hữu Tâm', 'Trần Hải Văn', 'Danh Khả', 'Nguyễn Thanh Định'];
+const packingEmployees = ['Nguyễn Hữu Tâm', 'Trần Hải Văn', 'Danh Khả', 'Nguyễn Thanh Định'];
 
-const packagingState = {
+const packingState = {
 	onProcess: 'primary',
 	onFinish: 'success',
 	onIdle: 'warning',
 	onCancel: 'danger',
 	onWait: 'wait',
 };
+
+const MENU_LIST = [
+	{
+		title: 'Phòng QA/QC thiết bị',
+		url: '/report/main/qaqc',
+	},
+	{
+		title: 'Khu vực đóng gói',
+		url: '/report/main/packing',
+	},
+	{
+		title: 'Khu vực máy ép',
+		url: '/report/main/injection',
+	},
+];
 
 const COLUMNS = [
 	{
@@ -86,4 +101,4 @@ function convertDate(value) {
 	return date.toLocaleDateString();
 }
 
-export { packagingState, packagingEmployees, convertHMS, COLUMNS, convertDate };
+export { packingState, packingEmployees, convertHMS, COLUMNS, convertDate, MENU_LIST };

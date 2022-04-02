@@ -23,6 +23,8 @@ import {
 	Breadcrumbs,
 } from '@mui/material';
 import ProgressBar from '../../../components/progressBar/ProgressBar';
+import ReportNavigationButton from '../../../components/reportNavigationButton/ReportNavigationButton';
+import { useHistory } from 'react-router-dom';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
 	[`&.${tableCellClasses.head}`]: {
@@ -45,6 +47,7 @@ function StyledPaper({ children }) {
 	return <Paper elevation={6}>{children}</Paper>;
 }
 function ForcedEndurance() {
+	let history = useHistory();
 	const [machineState, setMachineState] = React.useState('stop');
 	const [settings, setSettings] = React.useState({
 		stopTimeAbove: 0,
@@ -288,7 +291,7 @@ function ForcedEndurance() {
 			</div>
 			<div className="row">
 				<div className="col-12 flex-center">
-					<Button variant="contained">Đi đến báo cáo</Button>
+					<ReportNavigationButton history={history} path="/report/main/qaqc" />
 				</div>
 			</div>
 		</>

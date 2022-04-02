@@ -39,7 +39,7 @@ function AlarmFilter({ onSubmit }) {
 	const SECTOR_OPTIONS = React.useMemo(() => {
 		return [
 			{ value: 'qaqc', key: 'Phòng QA/QC thiết bị' },
-			{ value: 'packaging', key: 'Khu vực đóng gói' },
+			{ value: 'packing', key: 'Khu vực đóng gói' },
 			{ value: 'injection', key: 'Khu vực máy ép' },
 			{ value: 'warehouse', key: 'Kho vận' },
 		];

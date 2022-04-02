@@ -35,6 +35,8 @@ import {
 	PointElement,
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
+import ReportNavigationButton from '../../../components/reportNavigationButton/ReportNavigationButton';
+import { useHistory } from 'react-router-dom';
 
 Chart.register(ArcElement, Tooltip, Legend, CategoryScale, BarElement, LinearScale, Title, LineElement, PointElement);
 
@@ -95,6 +97,7 @@ function StyledPaper({ children }) {
 	return <Paper elevation={6}>{children}</Paper>;
 }
 function WaterProofing() {
+	const history = useHistory();
 	const [machineState, setMachineState] = React.useState('stop');
 	const [settings, setSettings] = React.useState({
 		temperature: 0,
@@ -279,7 +282,7 @@ function WaterProofing() {
 			</div>
 			<div className="row">
 				<div className="col-12 flex-center">
-					<Button variant="contained">Đi đến báo cáo</Button>
+					<ReportNavigationButton history={history} path="/report/main/qaqc" />
 				</div>
 			</div>
 		</>

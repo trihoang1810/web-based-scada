@@ -1,12 +1,14 @@
 import React from 'react';
 import './packingDetail.css';
-import { packagingEmployees, packagingState } from '../../utils/utils';
+import { packingEmployees, packingState } from '../../utils/utils';
 import ProgressBar from '../progressBar/ProgressBar';
 import { convertHMS } from '../../utils/utils';
 import { Button } from '@mui/material';
 import Badge from '../badge/Badge';
+import ReportNavigationButton from '../reportNavigationButton/ReportNavigationButton';
+import { useHistory } from 'react-router-dom';
 
-const mockPackaging = {
+const mockPacking = {
 	id: 'module1',
 	state: 'finish',
 	startTime: '2020-01-01T00:00:00.000Z',
@@ -15,10 +17,11 @@ const mockPackaging = {
 };
 
 function PackingDetail() {
+	const history = useHistory();
 	const [productState, setProductState] = React.useState('onWait');
 	const [productStateText, setProductStateText] = React.useState('Đang chờ');
 	React.useEffect(() => {
-		switch (mockPackaging.state) {
+		switch (mockPacking.state) {
 			case 'running':
 				setProductState('onProcess');
 				return;
@@ -226,7 +229,7 @@ function PackingDetail() {
 							className="row full-width"
 						>
 							<div className="col-12 flex-justify-center">
-								<span className="packaging__employee-name">Nhân viên thực hiện: {packagingEmployees[0]}</span>
+								<span className="packing__employee-name">Nhân viên thực hiện: {packingEmployees[0]}</span>
 							</div>
 							<div className="col-12 flex-justify-center">
 								<span className="packingParamsTitle">Giờ làm việc thực: {convertHMS(21161)}</span>
@@ -278,13 +281,13 @@ function PackingDetail() {
 										<tr>
 											<td>Trạng thái</td>
 											<td>
-												<Badge type={packagingState[productState]} content={productStateText} />
+												<Badge type={packingState[productState]} content={productStateText} />
 											</td>
 											<td>
-												<Badge type={packagingState[productState]} content={productStateText} />
+												<Badge type={packingState[productState]} content={productStateText} />
 											</td>
 											<td>
-												<Badge type={packagingState[productState]} content={productStateText} />
+												<Badge type={packingState[productState]} content={productStateText} />
 											</td>
 										</tr>
 									</tbody>
@@ -294,7 +297,7 @@ function PackingDetail() {
 					</div>
 				</div>
 				<div className="flex-center mb-10">
-					<Button variant="contained">Đi đến trang báo cáo</Button>
+					<ReportNavigationButton history={history} path="/report/main/packing" />
 				</div>
 			</div>
 		</>

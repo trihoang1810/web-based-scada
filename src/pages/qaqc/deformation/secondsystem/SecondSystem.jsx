@@ -1,24 +1,23 @@
-import React from 'react';
-// import { IgrRadialGauge, IgrRadialGaugeRange } from 'igniteui-react-gauges';
-import Chart from 'react-apexcharts';
-import { ReactComponent as Stop } from '../../../../assets/images/qaqc/stop.svg';
-import { ReactComponent as Manual } from '../../../../assets/images/qaqc/manual.svg';
-import { ReactComponent as Auto } from '../../../../assets/images/qaqc/auto.svg';
-import ProgressBar from '../../../../components/progressBar/ProgressBar';
 import {
-	Button,
+	createTheme,
+	Paper,
 	styled,
+	Table,
+	TableBody,
 	TableCell,
 	tableCellClasses,
-	ThemeProvider,
-	createTheme,
 	TableContainer,
-	Table,
 	TableHead,
 	TableRow,
-	TableBody,
-	Paper,
+	ThemeProvider,
 } from '@mui/material';
+import React from 'react';
+import { ReactComponent as Auto } from '../../../../assets/images/qaqc/auto.svg';
+import { ReactComponent as Manual } from '../../../../assets/images/qaqc/manual.svg';
+import { ReactComponent as Stop } from '../../../../assets/images/qaqc/stop.svg';
+import ProgressBar from '../../../../components/progressBar/ProgressBar';
+import ReportNavigationButton from '../../../../components/reportNavigationButton/ReportNavigationButton';
+import { useHistory } from 'react-router-dom';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
 	[`&.${tableCellClasses.head}`]: {
@@ -89,6 +88,8 @@ function StyledPaper({ children }) {
 }
 
 function SecondSystem() {
+	let history = useHistory();
+
 	const [machineState, setMachineState] = React.useState('stop');
 	const [settings, setSettings] = React.useState({
 		force: 0,
@@ -394,7 +395,7 @@ function SecondSystem() {
 			</div>
 			<div className="row">
 				<div className="col-12 flex-center">
-					<Button variant="contained">Đi đến báo cáo</Button>
+					<ReportNavigationButton history={history} path="/report/main/qaqc" />
 				</div>
 			</div>
 		</>

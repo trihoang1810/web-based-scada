@@ -20,6 +20,8 @@ import {
 } from 'chart.js';
 
 import ChartDataLabels from 'chartjs-plugin-datalabels';
+import ReportNavigationButton from '../reportNavigationButton/ReportNavigationButton';
+import { useHistory } from 'react-router-dom';
 Chart.defaults.set('plugins.datalabels', {
 	color: 'black',
 });
@@ -69,6 +71,7 @@ const injectionData = {
 };
 
 function InjectionDetail({ injectionMoldingMachineData }) {
+	const history = useHistory();
 	const symbolColor =
 		injectionMoldingMachineData?.state === 'R'
 			? {
@@ -272,7 +275,7 @@ function InjectionDetail({ injectionMoldingMachineData }) {
 				</div>
 			</div>
 			<div className="row flex-center">
-				<Button variant="contained">Đi đến trang báo cáo</Button>
+				<ReportNavigationButton history={history} path="/report/main/injection" />
 			</div>
 		</div>
 	);
