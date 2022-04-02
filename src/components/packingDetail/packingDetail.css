@@ -30,3 +30,15 @@
  font-weight: bold;
 }
 
+#packingDetail > tbody > tr:last-child > td{
+  border:none;
+}
+
+.packaging__employee-name {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--txt-color);
+  margin-bottom: 10px;
+  margin-top: 20px;
+}
+

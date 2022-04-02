@@ -1,15 +1,4 @@
-import { ReactComponent as StoppedForcedEndurance } from '../assets/images/qaqc/forcedEndurance__stop.svg';
-import { ReactComponent as RunForcedEndurance } from '../assets/images/qaqc/forcedEndurance__run.svg';
 import { format } from 'date-fns';
-import { ReactComponent as StoppedEndurance } from '../assets/images/qaqc/endurance__stop.svg';
-import { ReactComponent as RunEndurance } from '../assets/images/qaqc/endurance__run.svg';
-
-const machineInformation = {
-	forcedEndurance__stop: StoppedForcedEndurance,
-	forcedEndurance__run: RunForcedEndurance,
-	endurance__stop: StoppedEndurance,
-	endurance__run: RunEndurance,
-};
 
 function convertHMS(value) {
 	const sec = parseInt(value, 10); // convert value to number if it's string
@@ -29,7 +18,15 @@ function convertHMS(value) {
 	return hours + ' tiếng ' + minutes + ' phút'; // Return is HH : MM : SS
 }
 
-const packingEmployees = ['Nguyễn Hữu Tâm', 'Trần Hải Văn', 'Danh Khả', 'Nguyễn Thanh Định'];
+const packagingEmployees = ['Nguyễn Hữu Tâm', 'Trần Hải Văn', 'Danh Khả', 'Nguyễn Thanh Định'];
+
+const packagingState = {
+	onProcess: 'primary',
+	onFinish: 'success',
+	onIdle: 'warning',
+	onCancel: 'danger',
+	onWait: 'wait',
+};
 
 const COLUMNS = [
 	{
@@ -89,4 +86,4 @@ function convertDate(value) {
 	return date.toLocaleDateString();
 }
 
-export { packingEmployees, machineInformation, convertHMS, COLUMNS, convertDate };
+export { packagingState, packagingEmployees, convertHMS, COLUMNS, convertDate };

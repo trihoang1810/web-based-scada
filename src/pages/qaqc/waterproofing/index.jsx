@@ -271,7 +271,7 @@ function WaterProofing() {
 						<div className="card__header">
 							<h3>Biểu đồ nhiệt độ</h3>
 						</div>
-						<div className="card__body">
+						<div className="card__body height-90">
 							<Line options={trendOptions} data={trendData} />
 						</div>
 					</div>
