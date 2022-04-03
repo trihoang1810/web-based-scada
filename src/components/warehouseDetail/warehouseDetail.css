@@ -20,17 +20,6 @@
 	overflow-x: hidden;
 }
 
-.warehouseDetail__values td {
-	text-align: center;
-}
-
-.warehouseDetail__values thead {
-	background-color: var(--main-bg-dark);
-	color: var(--txt-white);
-	font-size: 1.3rem;
-	font-weight: 500;
-}
-
 .warehouseDetail__values tbody {
 	max-height: 200px;
 	overflow-y: scroll;
