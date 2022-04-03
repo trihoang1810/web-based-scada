@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import './warehouseFilter.css';
+import './warehouseFilterRow.css';
 
-function WarehouseFilter({ filterId, deleteFilterRow, filterValues, setFilterValue, data, setSearchDisabled }) {
+function WarehouseFilter({ filterId, deleteFilterRow, filterValues, setFilterValue, data }) {
 	const nowDate = new Date();
 
 	const toDateDefault = nowDate.toJSON().slice(0, 10);
@@ -46,14 +46,6 @@ function WarehouseFilter({ filterId, deleteFilterRow, filterValues, setFilterVal
 			setToDate(toDateDefault);
 		}
 	}, [id, type]);
-
-	// useEffect(() => {
-	// 	if (type && id && name && fromDate && toDate) {
-	// 		setSearchDisabled(false);
-	// 	} else {
-	// 		setSearchDisabled(true);
-	// 	}
-	// }, [type, id, name, fromDate, toDate]);
 
 	return (
 		<div className="row warehouseOverview__container">
