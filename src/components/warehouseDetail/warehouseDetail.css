@@ -1,0 +1,37 @@
+.warehouseDetail__chart {
+	width: 100%;
+	margin-bottom: 20px;
+}
+
+.warehouseDetail__chart span {
+	font-size: 1.5rem;
+	color: var(--main-bg-dark);
+	margin-left: 40px;
+}
+
+.warehouseDetail__chart div {
+	height: 360px;
+	margin: 20px;
+}
+
+.warehouseDetail__values > div > div {
+	height: 300px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+}
+
+.warehouseDetail__values td {
+	text-align: center;
+}
+
+.warehouseDetail__values thead {
+	background-color: var(--main-bg-dark);
+	color: var(--txt-white);
+	font-size: 1.3rem;
+	font-weight: 500;
+}
+
+.warehouseDetail__values tbody {
+	max-height: 200px;
+	overflow-y: scroll;
+}

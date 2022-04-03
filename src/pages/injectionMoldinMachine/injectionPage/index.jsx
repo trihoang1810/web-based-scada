@@ -302,7 +302,7 @@ function InjectionMoldinMachinePage() {
 		},
 	];
 	useEffect(() => {
-		const id = setTimeout(() => setResData(rawData), 0);
+		const id = setTimeout(() => setResData(rawData), 1000);
 		return () => clearTimeout(id);
 	}, []);
 
@@ -311,7 +311,6 @@ function InjectionMoldinMachinePage() {
 	const pageSize = window.screen.width >= 1280 ? 12 : window.screen.width >= 500 ? 6 : 100;
 	let quantityPrepare = { M: 0, R: 0, S: 0 };
 	const param = useParams();
-	const history = useHistory();
 	const [page, setPage] = useState(+param.page);
 	const [pages, setPages] = useState();
 	const [quantity, setQuantity] = useState({});
@@ -319,6 +318,7 @@ function InjectionMoldinMachinePage() {
 	const [stateFilter, setStateFilter] = useState([]);
 	const [filterData, setFilterData] = useState();
 	const [pageData, setPageData] = useState();
+	const history = useHistory();
 
 	const hanldeCheckBtn = (e, state, payload) => {
 		e.stopPropagation();

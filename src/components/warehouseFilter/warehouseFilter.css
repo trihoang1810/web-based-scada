@@ -1,0 +1,30 @@
+.warehouseOverview__container > div {
+	display: flex;
+	flex-direction: column;
+	margin-top: 12px;
+}
+
+.warehouseOverview__container select,
+.warehouseOverview__container input {
+	width: 80%;
+	margin: 0 auto;
+	border-radius: 6px;
+	border: 2px solid black;
+	height: 40px;
+	padding-left: 10px;
+	font-size: 1.2rem;
+}
+
+.warehouseOverview__filter {
+	position: relative;
+}
+
+.warehouseOverview__container .deleteBtn {
+	font-size: 1.5rem;
+	justify-content: center;
+	width: 30px;
+}
+
+.warehouseOverview__container .deleteBtn:hover {
+	opacity: 0.6;
+}

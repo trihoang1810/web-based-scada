@@ -1,6 +1,6 @@
-import { useEffect, useState } from 'react';
-import { useParams, useLocation } from 'react-router-dom';
 import { Breadcrumbs, Link, Typography } from '@mui/material';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import InjectionDetailComponent from '../../../components/injectionDetail/InjectionDetail';
 
 function InjectionDetail() {
