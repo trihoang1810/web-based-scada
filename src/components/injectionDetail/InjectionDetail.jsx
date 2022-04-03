@@ -1,12 +1,77 @@
 // import { IgrRadialGauge } from 'igniteui-react-gauges';
-import { Button } from '@mui/material';
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css';
 import ProgressBar from '../progressBar/ProgressBar';
 import Badge from '../badge/Badge';
 import './injectionDetail.css';
+import { Button } from '@mui/material';
+import { Pie } from 'react-chartjs-2';
+import {
+	Chart,
+	ArcElement,
+	Tooltip,
+	Legend,
+	CategoryScale,
+	BarElement,
+	LinearScale,
+	Title,
+	LineElement,
+	PointElement,
+} from 'chart.js';
+
+import ChartDataLabels from 'chartjs-plugin-datalabels';
+import ReportNavigationButton from '../reportNavigationButton/ReportNavigationButton';
+import { useHistory } from 'react-router-dom';
+Chart.defaults.set('plugins.datalabels', {
+	color: 'black',
+});
+Chart.register(
+	ArcElement,
+	Tooltip,
+	Legend,
+	ChartDataLabels,
+	CategoryScale,
+	BarElement,
+	LinearScale,
+	Title,
+	LineElement,
+	PointElement
+);
+
+const injectionOptions = {
+	// responsive: true,
+	plugins: {
+		labels: {
+			render: (args) => {
+				return args.label;
+			},
+		},
+		datalabels: {
+			font: {
+				weight: 'bold',
+				size: 16,
+			},
+		},
+		legend: {
+			display: true,
+			position: 'top',
+		},
+	},
+};
+
+const injectionData = {
+	labels: ['Thời gian sản xuất', 'Thời gian nghỉ', 'Thời gian tắt', 'Thời gian lỗi'],
+	datasets: [
+		{
+			label: 'dataset1',
+			data: [25, 50, 100, 75],
+			backgroundColor: ['red', 'green', 'orange', 'blue'],
+		},
+	],
+};
 
 function InjectionDetail({ injectionMoldingMachineData }) {
+	const history = useHistory();
 	const symbolColor =
 		injectionMoldingMachineData?.state === 'R'
 			? {
@@ -199,37 +264,24 @@ function InjectionDetail({ injectionMoldingMachineData }) {
 								/> */}
 								<span>Thời gian mở cửa</span>
 							</div>
-							<div>
-								{/* <IgrRadialGauge
-									id="runningTime"
-									width="300px"
-									height="300px"
-									minimumValue={0}
-									maximumValue={15}
-									interval={3}
-									value={12}
-									backingOutline="#c4c4c4"
-									scaleEndExtent={0.825}
-									scaleStartExtent={0.775}
-									minorTickStartExtent={0.7}
-									minorTickEndExtent={0.75}
-									tickStartExtent={0.675}
-									tickEndExtent={0.75}
-									labelExtent={0.6}
-									labelInterval={10}
-									font="15px Verdana,Arial"
-									backingOuterExtent={0.9}
-								/> */}
+							{/* <div>
+								<Pie options={injectionOptions} plugins={[ChartDataLabels]} data={injectionData} />
 								<span>Tổng thời gian hoạt động trên ngày</span>
-							</div>
+							</div> */}
 						</>
 					) : (
 						<Skeleton height={300} containerClassName="col-12" />
 					)}
 				</div>
 			</div>
-			<div className="row flex-center">
-				<Button variant="contained">Đi đến trang báo cáo</Button>
+			<div className="row">
+				<div className="col-12 flex-horizontal-center">
+					<ReportNavigationButton history={history} path="/report/main/injection" />
+					<div className="mr-40"></div>
+					<ReportNavigationButton history={history} path="/report/oee">
+						Đánh giá OEE
+					</ReportNavigationButton>
+				</div>
 			</div>
 		</div>
 	);

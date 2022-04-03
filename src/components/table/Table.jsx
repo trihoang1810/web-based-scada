@@ -13,7 +13,7 @@ function Table(props) {
 						</thead>
 					) : null}
 					{props.bodyData && props.renderBody ? (
-						<tbody>{props.bodyData.map((item, index) => props.renderBody(item, index))}</tbody>
+						<tbody className="basic-table">{props.bodyData.map((item, index) => props.renderBody(item, index))}</tbody>
 					) : null}
 				</table>
 			</div>

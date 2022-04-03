@@ -25,7 +25,7 @@ function QualityControl() {
 	const match = useRouteMatch();
 	return (
 		<>
-			<h2 className="page-header">Phòng QA/QC thiết bị</h2>
+			<h2 className="page-header">PHÒNG QA/QC THIẾT BỊ</h2>
 			<div className="row">
 				<div className="col-5 col-md-12">
 					<div className="card full-height">
@@ -55,7 +55,7 @@ function QualityControl() {
 							</QaqcMonitor>
 						</div>
 						<div className="card__footer">
-							<Link to={`${match.url}/m2`}>Xem thêm</Link>
+							<Link to={`${match.url}/m3`}>Xem thêm</Link>
 						</div>
 					</div>
 				</div>
@@ -66,7 +66,7 @@ function QualityControl() {
 						</div>
 						<div className="card__body">
 							<QaqcMonitor
-								paramsTitle={['1', 'Lực nén cài đặt', 'Thời gian dữ', 'Số lần cài đặt']}
+								paramsTitle={['1', 'Lực nén cài đặt', 'Thời gian giữ', 'Số lần cài đặt']}
 								params={['0000', '0000', '0000']}
 								led={{
 									mode: '1',
@@ -97,8 +97,8 @@ function QualityControl() {
 						<div className="card__body">
 							<QaqcMonitor
 								paramsTitle={[
-									'Thời gian dừng lên',
-									'Thời gian dừng xuống',
+									'Thời gian chờ nắp đóng',
+									'Thời gian chờ nắp mở',
 									'Số lần đóng nắp cài đặt',
 									'Số lần đóng nắp hiện tại',
 								]}
@@ -117,7 +117,7 @@ function QualityControl() {
 							</QaqcMonitor>
 						</div>
 						<div className="card__footer">
-							<Link to={`${match.url}/m3`}>Xem thêm</Link>
+							<Link to={`${match.url}/m2`}>Xem thêm</Link>
 						</div>
 					</div>
 				</div>

@@ -11,6 +11,8 @@ import PackingPage from '../pages/packingClassifyingMachine/packingPage';
 import PackingDetail from '../pages/packingClassifyingMachine/packingDetail';
 import WarehouseOverview from '../pages/warehouse/warehouseOverview';
 import WarehouseDetail from '../pages/warehouse/warehouseDetail';
+import Alarm from '../pages/Alarm';
+import Report from '../pages/report/Report';
 
 const Routes = () => {
 	return (
@@ -19,11 +21,13 @@ const Routes = () => {
 			<Route path="/warehouse/:id" component={WarehouseDetail} />
 			<Route path="/warehouse" component={WarehouseOverview} />
 			<Route path="/qaqc" component={QualityControlRoutes} />
-			<Route path="/package" exact component={PackingPage} />
-			<Route path="/package/:id" component={PackingDetail} />
+			<Route path="/packing" exact component={PackingPage} />
+			<Route path="/packing/:id" component={PackingDetail} />
 			<Route path="/injection/pages/:page" component={InjectionMoldingMachinePage} />
 			<Route path="/injection/:id" component={InjectionDetail} />
-			<Route component={Error} />
+			<Route path="/warning" component={Alarm} />
+			<Route path="/report" component={Report} />
+			<Route path="*" component={Error} />
 		</Switch>
 	);
 };

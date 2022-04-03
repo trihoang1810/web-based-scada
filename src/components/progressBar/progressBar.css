@@ -13,13 +13,25 @@
 }
 
 .danger {
-	background-color: var(--main-color-red);
+	background-color: rgb(255, 59, 59);
 }
 
 .warming {
-	background-color: var(--main-color-orange);
+	background-color: rgb(255, 190, 70);
 }
 
 .safe {
-	background-color: var(--main-color-green);
+	background-color: rgb(59, 177, 59);
+}
+
+.ProgressBar__trend--up{
+	color: var(--main-color-red);
+}
+
+.ProgressBar__trend--down{
+	color: var(--main-color-green);
+}
+
+i .ProgressBar__trend{
+	font-size: 1.3rem;
 }

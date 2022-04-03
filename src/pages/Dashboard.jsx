@@ -1,8 +1,8 @@
 import React from 'react';
 
-import { Pie, Line, Bar } from 'react-chartjs-2';
-
 import Badge from '../components/badge/Badge';
+
+import { Pie, Line, Bar } from 'react-chartjs-2';
 
 import {
 	Chart,
@@ -324,7 +324,7 @@ const Dashboard = () => {
 					</Link>
 				</div>
 				<div className="col-4">
-					<Link to="/alarm">
+					<Link to="/warning">
 						<div className="card full-height dashboard">
 							<div className="card__header">
 								<h3>Cảnh báo</h3>
