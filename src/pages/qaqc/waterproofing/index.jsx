@@ -5,7 +5,6 @@ import { ReactComponent as Manual } from '../../../assets/images/qaqc/manual.svg
 import { ReactComponent as Auto } from '../../../assets/images/qaqc/auto.svg';
 import { ReactComponent as WaterProofMachine } from '../../../assets/images/qaqc/waterProof__run.svg';
 import {
-	Button,
 	styled,
 	TableCell,
 	tableCellClasses,
@@ -44,9 +43,11 @@ const trendOptions = {
 	responsive: true,
 	maintainAspectRatio: false,
 	plugins: {
+		datalabels: {
+			display: false,
+		},
 		legend: {
-			display: true,
-			position: 'top',
+			display: false,
 		},
 	},
 	scales: {
@@ -68,9 +69,17 @@ const trendData = {
 	datasets: [
 		{
 			label: 'Nhiệt độ máy',
-			data: [10, 25, 50, 75, 100, 75, 50, 25, 10, 25, 50, 75],
-			fill: true,
+			data: [10, 25, 50, 75, 100, 110, 100, 90, 110, 100, 103, 102],
+			fill: 'start',
 			borderColor: 'rgba(54, 162, 235, 1)',
+			backgroundColor: 'rgba(54, 162, 235,0.2)',
+			tension: 0.4,
+		},
+		{
+			label: 'Setpoint',
+			data: [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100],
+			fill: false,
+			borderColor: '#ff5252',
 			tension: 0.1,
 		},
 	],
@@ -180,7 +189,7 @@ function WaterProofing() {
 										<TableHead>
 											<TableRow>
 												<StyledTableCell align="left">Thông số của máy</StyledTableCell>
-												<StyledTableCell align="left">Xi lanh 3</StyledTableCell>
+												<StyledTableCell align="left"> </StyledTableCell>
 											</TableRow>
 										</TableHead>
 										<TableBody
@@ -188,6 +197,7 @@ function WaterProofing() {
 												'& .MuiTableRow-root:hover': {
 													'& .MuiTableCell-root': {
 														color: 'white',
+														backgroundColor: 'var(--second-color-blue)',
 													},
 												},
 											}}

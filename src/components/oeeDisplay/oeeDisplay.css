@@ -1,0 +1,77 @@
+.oee-display__header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #000;
+}
+
+.oee-display__value{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: #000;
+}
+
+.oee-display__header--availability,
+.oee-display__value--availability {
+  color: #249efa;
+}
+
+.oee-display__header--performance,
+.oee-display__value--performance {
+  color: #24e6a4;
+}
+
+.oee-display__header--quality,
+.oee-display__value--quality {
+  color: #fdba3a;
+}
+
+.oee-display__horizontal-divider{
+  position: relative;
+}
+
+.oee-display__horizontal-divider::after{
+  content: "";
+  display: block;
+  width: 3px;
+  height: 50px;
+  background-color: #000;
+  margin-left: 10px;
+  margin-right: 10px;
+  position: absolute;
+  left: 90%;
+  top: 15%;
+}
+
+.oee-display__value{
+  position: relative;
+}
+
+.oee-display__trend{
+  position: absolute;
+  right: -10px;
+  top: 1.5rem;
+  font-size: 0.8rem;
+  color: #000;
+  width: 150%;
+}
+
+.oee-display__trend-detail{
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #000;
+}
+
+.oee-display__trend--up > span{
+  color: #24e6a4;
+}
+
+.oee-display__trend--down > span{
+  color: #fdba3a;
+}

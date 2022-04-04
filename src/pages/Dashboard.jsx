@@ -4,40 +4,11 @@ import Badge from '../components/badge/Badge';
 
 import { Pie, Line, Bar } from 'react-chartjs-2';
 
-import {
-	Chart,
-	ArcElement,
-	Tooltip,
-	Legend,
-	CategoryScale,
-	BarElement,
-	LinearScale,
-	Title,
-	LineElement,
-	PointElement,
-} from 'chart.js';
-
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 import { Link } from 'react-router-dom';
 
 import Table from '../components/table/Table';
-
-Chart.defaults.set('plugins.datalabels', {
-	color: 'black',
-});
-Chart.register(
-	ArcElement,
-	Tooltip,
-	Legend,
-	ChartDataLabels,
-	CategoryScale,
-	BarElement,
-	LinearScale,
-	Title,
-	LineElement,
-	PointElement
-);
 
 //------------------------------------------
 const injectionOptions = {
@@ -280,7 +251,7 @@ const Dashboard = () => {
 								<h3>Khu máy ép</h3>
 							</div>
 							<div className="card__body">
-								<Pie options={injectionOptions} plugins={[ChartDataLabels]} data={injectionData} />
+								<Pie options={injectionOptions} data={injectionData} />
 							</div>
 						</div>
 					</Link>

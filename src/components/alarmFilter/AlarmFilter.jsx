@@ -1,6 +1,6 @@
 import React from 'react';
 import './alarmFilter.css';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import FormikControl from '../formControl/FormControl';
 import { format } from 'date-fns';

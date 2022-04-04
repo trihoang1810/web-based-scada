@@ -60,7 +60,7 @@ function FirstSystem() {
 	});
 	const rows = [
 		createData('Lực nhấn', settings.force2, settings.force3),
-		createData('Số lần nhấn', settings.numbs, settings.numbs),
+		createData('Số lần nhấn', settings.numb, settings.numb),
 		createData('Thời gian giữ', settings.time2, settings.time3),
 		createData('Bài test', settings.testNumber, settings.testNumber),
 	];
@@ -236,6 +236,7 @@ function FirstSystem() {
 												'& .MuiTableRow-root:hover': {
 													'& .MuiTableCell-root': {
 														color: 'white',
+														backgroundColor: 'var(--second-color-blue)',
 													},
 												},
 											}}

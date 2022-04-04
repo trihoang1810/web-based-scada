@@ -129,6 +129,18 @@ input:focus {
 	height: 90%;
 }
 
+.height-80{
+	height: 80%;
+}
+
+.height-70{
+	height: 70%;
+}
+
+.height-60{
+	height: 60%;
+}
+
 .full-width {
 	width: 100%;
 }
