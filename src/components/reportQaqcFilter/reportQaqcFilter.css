@@ -1,15 +1,21 @@
-#alarm__filter {
+.qaqc-report__container{
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-top:20px;
+}
+
+#qaqc-report__filter {
   display: flex;
   flex-flow: row wrap;
   align-items: center;
   width: 100%;
   height: 100%;
-  background-color: #fff;
-  border-radius: 5px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+
 }
-#alarm__filter label {
+
+#qaqc-report__filter label {
   font-weight: bold;
   flex-direction: column;
   font-size: 1rem;
@@ -17,13 +23,13 @@
   margin-bottom: 5px;
 }
 
-#alarm__filter input + label {
+#qaqc-report__filter input + label {
   font-weight: bold;
   display: inline-flex;
   margin-right: 20px;
 }
 
-#alarm__filter input[type='text'],
+#qaqc-report__filter input[type='text'],
 input[type='date'],
 select {
   display: block;
@@ -40,13 +46,13 @@ select {
   /* margin-bottom: 20px; */
   transition: border-color ease-in-out .15s;
 }
-#alarm__filter input[type='text']:focus,
+#qaqc-report__filter input[type='text']:focus,
 input[type='date']:focus,
 select:focus {
   outline: 0;
   border: 2px solid rgb(0, 0, 255,0.5);
 }
-#alarm__filter input[type='checkbox'] {
+#qaqc-report__filter input[type='checkbox'] {
   display: inline-block;
   width: auto;
   margin-right: 9px;
@@ -86,17 +92,22 @@ select:focus {
   color: var(--txt-white);
 }
 
-.alarm-error-message {
+.btn-disabled {
+  background-color: var(--main-color-gray);
+  color: var(--txt-white);
+}
+
+.error-message {
 	color: var(--main-color-red);
 	font-size: 1rem;
 	font-weight: 500;
 }
 
-.alarm-error-msg__container{
+.error-msg__container{
   min-width: 400px;
+  display: block;
 }
 
-.alarm-error-msg__container > .alarm-error-message {
+.error-msg__container > .error-message {
   padding-top: 3px ;
-  padding-left: 10px;
 }

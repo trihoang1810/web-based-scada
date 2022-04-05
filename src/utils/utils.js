@@ -62,6 +62,108 @@ const QA_QC_REPORT_MENU_LIST = [
 	},
 ];
 
+const ENDURANCE_COLUMNS = [
+	{
+		Header: 'Số lần thử',
+		accessor: 'sample',
+	},
+	{
+		Header: 'Thời gian nắp đóng êm',
+		accessor: 'time',
+	},
+	{
+		Header: 'Chân nắp không rơi ra',
+		accessor: 'toilet_bumper',
+	},
+	{
+		Header: 'Không rò rỉ dầu',
+		accessor: 'no_oil_spill',
+	},
+	{
+		Header: 'Kết quả đánh giá',
+		accessor: 'first_result',
+	},
+	{
+		Header: 'Thời gian đế đóng êm',
+		accessor: 'closing_time',
+	},
+	{
+		Header: 'Chân đế không rơi',
+		accessor: 'no_drop_bumper',
+	},
+	{
+		Header: 'Không rò rỉ',
+		accessor: 'no_spill',
+	},
+	{
+		Header: 'Kết quả đánh giá',
+		accessor: 'second_result',
+	},
+	{
+		Header: 'Tổng lỗi',
+		accessor: 'total',
+	},
+	{
+		Header: 'Ghi chú',
+		accessor: 'note',
+	},
+	{
+		Header: 'Nhân viên KT',
+		accessor: 'employee',
+	},
+];
+
+const FORCED_ENDURANCE_COLUMNS = [
+	{
+		Header: 'Số lần thử',
+		accessor: 'sample',
+	},
+	{
+		Header: 'Thời gian nắp đóng êm',
+		accessor: 'time',
+	},
+	{
+		Header: 'Chân nắp không nứt vỡ',
+		accessor: 'toilet_bumper',
+	},
+	{
+		Header: 'Không rò rỉ dầu',
+		accessor: 'no_oil_spill',
+	},
+	{
+		Header: 'Kết quả đánh giá',
+		accessor: 'first_result',
+	},
+	{
+		Header: 'Thời gian đế đóng êm',
+		accessor: 'closing_time',
+	},
+	{
+		Header: 'Chân đế không nứt vỡ',
+		accessor: 'no_drop_bumper',
+	},
+	{
+		Header: 'Không rò rỉ',
+		accessor: 'no_spill',
+	},
+	{
+		Header: 'Kết quả đánh giá',
+		accessor: 'second_result',
+	},
+	{
+		Header: 'Tổng lỗi',
+		accessor: 'total',
+	},
+	{
+		Header: 'Ghi chú',
+		accessor: 'note',
+	},
+	{
+		Header: 'Nhân viên KT',
+		accessor: 'employee',
+	},
+];
+
 const COLUMNS = [
 	{
 		Header: 'Thời gian',
@@ -120,4 +222,14 @@ function convertDate(value) {
 	return date.toLocaleDateString();
 }
 
-export { packingState, packingEmployees, QA_QC_REPORT_MENU_LIST, convertHMS, COLUMNS, convertDate, REPORT_MENU_LIST };
+export {
+	packingState,
+	packingEmployees,
+	QA_QC_REPORT_MENU_LIST,
+	convertHMS,
+	COLUMNS,
+	convertDate,
+	REPORT_MENU_LIST,
+	ENDURANCE_COLUMNS,
+	FORCED_ENDURANCE_COLUMNS,
+};

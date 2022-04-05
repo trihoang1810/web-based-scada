@@ -1,0 +1,49 @@
+.fix-width {
+	width: 100%;
+	overflow-y: hidden;
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+}
+
+/*Scrollbar Override */
+ 
+.scroll-inner::-webkit-scrollbar {
+		width: 10px;
+	}
+.scroll-inner::-webkit-scrollbar:horizontal {
+		height: 10px;
+	}
+.scroll-inner::-webkit-scrollbar-track {
+		background-color: transparentize(#ccc, 0.7);
+	}
+.scroll-inner::-webkit-scrollbar-thumb {
+		border-radius: 10px;
+		background: transparentize(#ccc, 0.5);
+		box-shadow: inset 0 0 6px rgba(0,0,0,0.5); 
+}
+
+#report-qaqc__table tfoot td {
+    text-transform: capitalize;
+    padding: 15px 10px;
+    border-bottom: 1px solid #ddd;
+    font-weight: bold;
+    text-align: -internal-center;
+    border: none;
+}
+
+#report-qaqc__table thead, tfoot {
+  background-color: var(--main-color);
+}
+
+#report-qaqc__table tbody td {
+  color: var(--txt-black);
+}
+
+#report-qaqc__table tr > td, tr > th {
+  padding: 15px 10px;
+  border: 1px solid #ddd;
+}
+
+#report-qaqc__table thead th, tfoot td {
+   color: var(--txt-white);
+}
