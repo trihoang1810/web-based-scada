@@ -4,8 +4,6 @@ import Badge from '../components/badge/Badge';
 
 import { Pie, Line, Bar } from 'react-chartjs-2';
 
-import ChartDataLabels from 'chartjs-plugin-datalabels';
-
 import { Link } from 'react-router-dom';
 
 import Table from '../components/table/Table';
@@ -248,7 +246,7 @@ const Dashboard = () => {
 					<Link to="/injection/pages/1">
 						<div className="card full-height dashboard">
 							<div className="card__header">
-								<h3>Khu máy ép</h3>
+								<h3>KHU MÁY ÉP</h3>
 							</div>
 							<div className="card__body">
 								<Pie options={injectionOptions} data={injectionData} />
@@ -272,7 +270,7 @@ const Dashboard = () => {
 					<Link to="/packing">
 						<div className="card full-height dashboard">
 							<div className="card__header mb-40">
-								<h3>Khu đóng gói</h3>
+								<h3>KHU ĐÓNG GÓI</h3>
 							</div>
 							<div className="card__body card__body--center">
 								<Bar data={packingData} options={packingOptions} />
@@ -286,7 +284,7 @@ const Dashboard = () => {
 					<Link to="/warehouse">
 						<div className="card dashboard">
 							<div className="card__header mb-40">
-								<h3>Kho vận</h3>
+								<h3>KHO VẬN</h3>
 							</div>
 							<div className="card__body card__body--center">
 								<Bar data={warehouseData} options={warehouseOptions} />
@@ -298,7 +296,7 @@ const Dashboard = () => {
 					<Link to="/warning">
 						<div className="card full-height dashboard">
 							<div className="card__header">
-								<h3>Cảnh báo</h3>
+								<h3>CẢNH BÁO</h3>
 							</div>
 							<div className="card__body">
 								<Table headData={latestAlarmData.head} bodyData={latestAlarmData.body} renderBody={renderAlarmBody} />

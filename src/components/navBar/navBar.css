@@ -22,6 +22,10 @@ nav {
   border: 1px solid var(--txt-color);
 }
 
+.menu-list--none-top-border li {
+  border-top: none;
+}
+
 .menu-list li a {
   flex-grow: 1;
   text-decoration: none;
@@ -39,5 +43,4 @@ nav {
   background-color: var(--second-color);
   color: var(--txt-white);
   transition: all 0.1s ease-in-out;
-  border: 1px solid var(--second-color);
 }

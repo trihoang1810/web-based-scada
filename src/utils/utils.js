@@ -28,7 +28,7 @@ const packingState = {
 	onWait: 'wait',
 };
 
-const MENU_LIST = [
+const REPORT_MENU_LIST = [
 	{
 		title: 'Phòng QA/QC thiết bị',
 		url: '/report/main/qaqc',
@@ -40,6 +40,25 @@ const MENU_LIST = [
 	{
 		title: 'Khu vực máy ép',
 		url: '/report/main/injection',
+	},
+];
+
+const QA_QC_REPORT_MENU_LIST = [
+	{
+		title: 'MKT Độ bền NBC',
+		url: '/report/main/qaqc/endurance',
+	},
+	{
+		title: 'MKT Độ bền cưỡng bức NBC',
+		url: '/report/main/qaqc/forced-endurance',
+	},
+	{
+		title: 'MKT Độ biến dạng NBC',
+		url: '/report/main/qaqc/deformation',
+	},
+	{
+		title: 'MKT Chống thấm NBC',
+		url: '/report/main/qaqc/water-proof',
 	},
 ];
 
@@ -101,4 +120,4 @@ function convertDate(value) {
 	return date.toLocaleDateString();
 }
 
-export { packingState, packingEmployees, convertHMS, COLUMNS, convertDate, MENU_LIST };
+export { packingState, packingEmployees, QA_QC_REPORT_MENU_LIST, convertHMS, COLUMNS, convertDate, REPORT_MENU_LIST };

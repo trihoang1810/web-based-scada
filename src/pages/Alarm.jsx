@@ -21,7 +21,7 @@ function Alarm() {
 		value.dateEnd = format(new Date(value.dateEnd), 'yyyy-MM-dd');
 		console.log(value);
 	};
-	const [dataToDownload, setDataToDownload] = React.useState(alarm_mocking);
+	const [dataToDownload] = React.useState(alarm_mocking);
 	return (
 		<>
 			<h2 className="page-header">CẢNH BÁO</h2>
