@@ -71,7 +71,7 @@ function Deformation() {
 						color: 'var(--txt-white)',
 					},
 					'& .MuiButtonBase-root.Mui-selected:hover': {
-						backgroundColor: 'var(--second-color-blue)',
+						backgroundColor: 'var(--main-color)',
 						color: 'var(--txt-white)',
 					},
 				}}

@@ -46,7 +46,7 @@
 	},
 	{
 		"display_name": "Khu vực đóng gói",
-		"route": "/package",
+		"route": "/packing",
 		"icon": "bx bxs-package",
 		"subNav": []
 	},
@@ -54,7 +54,18 @@
 		"display_name": "báo cáo",
 		"route": "/report",
 		"icon": "bx bx-file",
-		"subNav": []
+		"subNav": [
+			{
+				"display_name": "Báo cáo các khu vực",
+				"route": "/report/main",
+				"icon": "bx bx-desktop"
+			},
+			{
+				"display_name": "Đánh giá chỉ số OEE",
+				"route": "/report/oee",
+				"icon": "bx bx-desktop"
+			}
+		]
 	},
 	{
 		"display_name": "cảnh báo",

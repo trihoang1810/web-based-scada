@@ -2,8 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
 
-import { createStore } from 'redux';
-
 import { Provider } from 'react-redux';
 
 import store from './redux/store/store';
@@ -14,6 +12,50 @@ import './assets/css/index.css';
 import './assets/css/theme.css';
 
 import Layout from './components/layout/Layout';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
+import {
+	Chart,
+	Filler,
+	ArcElement,
+	Tooltip,
+	Legend,
+	CategoryScale,
+	BarElement,
+	LinearScale,
+	Title,
+	LineElement,
+	PointElement,
+} from 'chart.js';
+
+Chart.defaults.set('plugins.datalabels', {
+	color: 'black',
+	labels: {
+		title: {
+			font: {
+				weight: 'bold',
+			},
+		},
+		value: {
+			font: {
+				weight: 'bold',
+			},
+		},
+	},
+});
+
+Chart.register(
+	ArcElement,
+	Tooltip,
+	Filler,
+	Legend,
+	ChartDataLabels,
+	CategoryScale,
+	BarElement,
+	LinearScale,
+	Title,
+	LineElement,
+	PointElement
+);
 
 ReactDOM.render(
 	<React.StrictMode>

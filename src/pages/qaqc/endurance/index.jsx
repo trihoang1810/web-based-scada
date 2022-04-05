@@ -1,28 +1,29 @@
+import {
+	Breadcrumbs,
+	createTheme,
+	Link,
+	Paper,
+	styled,
+	Table,
+	TableBody,
+	TableCell,
+	tableCellClasses,
+	TableContainer,
+	TableHead,
+	TableRow,
+	ThemeProvider,
+	Typography,
+} from '@mui/material';
 import React from 'react';
 // import { IgrRadialGauge, IgrRadialGaugeRange } from 'igniteui-react-gauges';
 import Chart from 'react-apexcharts';
-import { ReactComponent as Stop } from '../../../assets/images/qaqc/stop.svg';
-import { ReactComponent as Manual } from '../../../assets/images/qaqc/manual.svg';
+import { useHistory } from 'react-router-dom';
 import { ReactComponent as Auto } from '../../../assets/images/qaqc/auto.svg';
 import { ReactComponent as EnduranceMachine } from '../../../assets/images/qaqc/endurance__run.svg';
-import {
-	Button,
-	styled,
-	TableCell,
-	tableCellClasses,
-	ThemeProvider,
-	createTheme,
-	TableContainer,
-	Table,
-	TableHead,
-	TableRow,
-	TableBody,
-	Paper,
-	Link,
-	Typography,
-	Breadcrumbs,
-} from '@mui/material';
+import { ReactComponent as Manual } from '../../../assets/images/qaqc/manual.svg';
+import { ReactComponent as Stop } from '../../../assets/images/qaqc/stop.svg';
 import ProgressBar from '../../../components/progressBar/ProgressBar';
+import ReportNavigationButton from '../../../components/reportNavigationButton/ReportNavigationButton';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
 	[`&.${tableCellClasses.head}`]: {
@@ -92,6 +93,7 @@ function StyledPaper({ children }) {
 	return <Paper elevation={6}>{children}</Paper>;
 }
 function Endurance() {
+	let history = useHistory();
 	const [machineState, setMachineState] = React.useState('stop');
 	const [settings, setSettings] = React.useState({
 		waitedClosedTime: 0,
@@ -191,6 +193,7 @@ function Endurance() {
 												'& .MuiTableRow-root:hover': {
 													'& .MuiTableCell-root': {
 														color: 'white',
+														backgroundColor: 'var(--second-color-blue)',
 													},
 												},
 											}}
@@ -342,7 +345,7 @@ function Endurance() {
 			</div>
 			<div className="row">
 				<div className="col-12 flex-center">
-					<Button variant="contained">Đi đến báo cáo</Button>
+					<ReportNavigationButton history={history} path="/report/main/qaqc" />
 				</div>
 			</div>
 		</>

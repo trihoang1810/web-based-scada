@@ -67,7 +67,7 @@ function PackingPage() {
 	];
 	const history = useHistory();
 
-	const handleShowDetail = (item) => history.push(`/package/${item}`);
+	const handleShowDetail = (item) => history.push(`/packing/${item}`);
 	return (
 		<>
 			<h2 className="page-header">KHU KIỂM TRA ĐÓNG GÓI</h2>

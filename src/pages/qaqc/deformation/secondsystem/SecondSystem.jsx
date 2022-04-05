@@ -1,24 +1,23 @@
-import React from 'react';
-// import { IgrRadialGauge, IgrRadialGaugeRange } from 'igniteui-react-gauges';
-import Chart from 'react-apexcharts';
-import { ReactComponent as Stop } from '../../../../assets/images/qaqc/stop.svg';
-import { ReactComponent as Manual } from '../../../../assets/images/qaqc/manual.svg';
-import { ReactComponent as Auto } from '../../../../assets/images/qaqc/auto.svg';
-import ProgressBar from '../../../../components/progressBar/ProgressBar';
 import {
-	Button,
+	createTheme,
+	Paper,
 	styled,
+	Table,
+	TableBody,
 	TableCell,
 	tableCellClasses,
-	ThemeProvider,
-	createTheme,
 	TableContainer,
-	Table,
 	TableHead,
 	TableRow,
-	TableBody,
-	Paper,
+	ThemeProvider,
 } from '@mui/material';
+import React from 'react';
+import { ReactComponent as Auto } from '../../../../assets/images/qaqc/auto.svg';
+import { ReactComponent as Manual } from '../../../../assets/images/qaqc/manual.svg';
+import { ReactComponent as Stop } from '../../../../assets/images/qaqc/stop.svg';
+import ProgressBar from '../../../../components/progressBar/ProgressBar';
+import ReportNavigationButton from '../../../../components/reportNavigationButton/ReportNavigationButton';
+import { useHistory } from 'react-router-dom';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
 	[`&.${tableCellClasses.head}`]: {
@@ -30,52 +29,52 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 	},
 }));
 
-var velocityChartOptions = {
-	options: {
-		chart: {
-			height: 300,
-			type: 'radialBar',
-			offsetY: -10,
-		},
-		plotOptions: {
-			radialBar: {
-				startAngle: -135,
-				endAngle: 135,
-				dataLabels: {
-					name: {
-						fontSize: '14px',
-						color: undefined,
-						offsetY: 60,
-					},
-					value: {
-						offsetY: 30,
-						fontSize: '14px',
-						color: 'var(--txt-color)',
-						fontWeight: 'bold',
-						formatter: function (val) {
-							return val + 's';
-						},
-					},
-				},
-			},
-		},
-		fill: {
-			type: 'gradient',
-			gradient: {
-				shade: 'dark',
-				shadeIntensity: 0.15,
-				inverseColors: false,
-				opacityFrom: 1,
-				opacityTo: 1,
-				stops: [0, 50, 65, 91],
-			},
-		},
-		stroke: {
-			dashArray: 4,
-		},
-		labels: ['Thời gian giữ'],
-	},
-};
+// var velocityChartOptions = {
+// 	options: {
+// 		chart: {
+// 			height: 300,
+// 			type: 'radialBar',
+// 			offsetY: -10,
+// 		},
+// 		plotOptions: {
+// 			radialBar: {
+// 				startAngle: -135,
+// 				endAngle: 135,
+// 				dataLabels: {
+// 					name: {
+// 						fontSize: '14px',
+// 						color: undefined,
+// 						offsetY: 60,
+// 					},
+// 					value: {
+// 						offsetY: 30,
+// 						fontSize: '14px',
+// 						color: 'var(--txt-color)',
+// 						fontWeight: 'bold',
+// 						formatter: function (val) {
+// 							return val + 's';
+// 						},
+// 					},
+// 				},
+// 			},
+// 		},
+// 		fill: {
+// 			type: 'gradient',
+// 			gradient: {
+// 				shade: 'dark',
+// 				shadeIntensity: 0.15,
+// 				inverseColors: false,
+// 				opacityFrom: 1,
+// 				opacityTo: 1,
+// 				stops: [0, 50, 65, 91],
+// 			},
+// 		},
+// 		stroke: {
+// 			dashArray: 4,
+// 		},
+// 		labels: ['Thời gian giữ'],
+// 	},
+// };
 
 function createData(params, process) {
 	return {
@@ -89,6 +88,8 @@ function StyledPaper({ children }) {
 }
 
 function SecondSystem() {
+	let history = useHistory();
+
 	const [machineState, setMachineState] = React.useState('stop');
 	const [settings, setSettings] = React.useState({
 		force: 0,
@@ -279,6 +280,7 @@ function SecondSystem() {
 												'& .MuiTableRow-root:hover': {
 													'& .MuiTableCell-root': {
 														color: 'white',
+														backgroundColor: 'var(--second-color-blue)',
 													},
 												},
 											}}
@@ -394,7 +396,7 @@ function SecondSystem() {
 			</div>
 			<div className="row">
 				<div className="col-12 flex-center">
-					<Button variant="contained">Đi đến báo cáo</Button>
+					<ReportNavigationButton history={history} path="/report/main/qaqc" />
 				</div>
 			</div>
 		</>

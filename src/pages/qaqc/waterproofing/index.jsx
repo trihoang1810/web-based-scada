@@ -1,12 +1,10 @@
 import React from 'react';
 // import { IgrRadialGauge, IgrRadialGaugeRange } from 'igniteui-react-gauges';
-import Chart from 'react-apexcharts';
 import { ReactComponent as Stop } from '../../../assets/images/qaqc/stop.svg';
 import { ReactComponent as Manual } from '../../../assets/images/qaqc/manual.svg';
 import { ReactComponent as Auto } from '../../../assets/images/qaqc/auto.svg';
 import { ReactComponent as WaterProofMachine } from '../../../assets/images/qaqc/waterProof__run.svg';
 import {
-	Button,
 	styled,
 	TableCell,
 	tableCellClasses,
@@ -23,6 +21,69 @@ import {
 	Breadcrumbs,
 } from '@mui/material';
 import ProgressBar from '../../../components/progressBar/ProgressBar';
+import {
+	Chart,
+	ArcElement,
+	Tooltip,
+	Legend,
+	CategoryScale,
+	BarElement,
+	LinearScale,
+	Title,
+	LineElement,
+	PointElement,
+} from 'chart.js';
+import { Line } from 'react-chartjs-2';
+import ReportNavigationButton from '../../../components/reportNavigationButton/ReportNavigationButton';
+import { useHistory } from 'react-router-dom';
+
+Chart.register(ArcElement, Tooltip, Legend, CategoryScale, BarElement, LinearScale, Title, LineElement, PointElement);
+
+const trendOptions = {
+	responsive: true,
+	maintainAspectRatio: false,
+	plugins: {
+		datalabels: {
+			display: false,
+		},
+		legend: {
+			display: false,
+		},
+	},
+	scales: {
+		x: {
+			grid: {
+				display: false,
+			},
+		},
+		y: {
+			grid: {
+				display: false,
+			},
+		},
+	},
+};
+
+const trendData = {
+	labels: ['17:51', '18:00', '18:30', '19:00', '20:09', '20:30', '21:00', '21:30', '22:00', '22:30', '23:00'],
+	datasets: [
+		{
+			label: 'Nhiệt độ máy',
+			data: [10, 25, 50, 75, 100, 110, 100, 90, 110, 100, 103, 102],
+			fill: 'start',
+			borderColor: 'rgba(54, 162, 235, 1)',
+			backgroundColor: 'rgba(54, 162, 235,0.2)',
+			tension: 0.4,
+		},
+		{
+			label: 'Setpoint',
+			data: [100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100],
+			fill: false,
+			borderColor: '#ff5252',
+			tension: 0.1,
+		},
+	],
+};
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
 	[`&.${tableCellClasses.head}`]: {
@@ -45,6 +106,7 @@ function StyledPaper({ children }) {
 	return <Paper elevation={6}>{children}</Paper>;
 }
 function WaterProofing() {
+	const history = useHistory();
 	const [machineState, setMachineState] = React.useState('stop');
 	const [settings, setSettings] = React.useState({
 		temperature: 0,
@@ -127,7 +189,7 @@ function WaterProofing() {
 										<TableHead>
 											<TableRow>
 												<StyledTableCell align="left">Thông số của máy</StyledTableCell>
-												<StyledTableCell align="left">Xi lanh 3</StyledTableCell>
+												<StyledTableCell align="left"> </StyledTableCell>
 											</TableRow>
 										</TableHead>
 										<TableBody
@@ -135,6 +197,7 @@ function WaterProofing() {
 												'& .MuiTableRow-root:hover': {
 													'& .MuiTableCell-root': {
 														color: 'white',
+														backgroundColor: 'var(--second-color-blue)',
 													},
 												},
 											}}
@@ -211,10 +274,25 @@ function WaterProofing() {
 						</div>
 					</div>
 				</div>
+				<div className="col-12">
+					<div
+						className="card"
+						style={{
+							height: '550px',
+						}}
+					>
+						<div className="card__header">
+							<h3>Biểu đồ nhiệt độ</h3>
+						</div>
+						<div className="card__body height-90">
+							<Line options={trendOptions} data={trendData} />
+						</div>
+					</div>
+				</div>
 			</div>
 			<div className="row">
 				<div className="col-12 flex-center">
-					<Button variant="contained">Đi đến báo cáo</Button>
+					<ReportNavigationButton history={history} path="/report/main/qaqc" />
 				</div>
 			</div>
 		</>

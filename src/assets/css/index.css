@@ -4,6 +4,7 @@
 	--second-bg: #fafafb;
 	--txt-color: #455560;
 	--txt-white: #fff;
+	--txt-black: #000;
 	--main-color: #001d37;
 	--second-color: #00294d;
 	--box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
@@ -124,6 +125,22 @@ input:focus {
 	height: 100%;
 }
 
+.height-90{
+	height: 90%;
+}
+
+.height-80{
+	height: 80%;
+}
+
+.height-70{
+	height: 70%;
+}
+
+.height-60{
+	height: 60%;
+}
+
 .full-width {
 	width: 100%;
 }
@@ -188,6 +205,13 @@ input:focus {
 	justify-content: center;
 	align-items: center;
 	flex-direction: column;
+}
+
+.flex-horizontal-center{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: row;
 }
 
 .flex-space-between {
@@ -276,6 +300,26 @@ input:focus {
 	color: #fff;
 }
 
+.mr-40{
+	margin-right: 40px;
+}
+
+.mr-30{
+	margin-right: 30px;
+}
+
+.mr-20{
+	margin-right: 20px;
+}
+
+.mr-10{
+	margin-right: 10px;
+}
+
+.mr-15{
+	margin-right: 15px;
+}
+
 .mb-40 {
 	margin-bottom: 40px;
 }
@@ -294,3 +338,4 @@ input:focus {
 .mb-15 {
 	margin-bottom: 15px;
 }
+

@@ -1,0 +1,49 @@
+{
+  "cellValues": [
+    {
+      "cell": "C1",
+      "text": "BÁO CÁO GIÁM SÁT NHÂN CÔNG",
+      "font": { "size": "12", "bold": true }
+    },
+    { "cell": "G1", "text": "Mã tài liệu" },
+    { "cell": "G2", "text": "Ngày ban hành" },
+    { "cell": "G3", "text": "Ngày sửa đổi" },
+    { "cell": "G4", "text": "Lần sửa đổi" },
+    { "cell": "H1", "text": "0" },
+    { "cell": "H2", "text": "0" },
+    { "cell": "H3", "text": "0" },
+    { "cell": "H4", "text": "0" },
+    { "cell": "A6", "text": "Nhân công", "font": { "bold": true } },
+    { "cell": "C6", "text": "0" },
+    { "cell": "D6", "text": "Máy ép", "font": { "bold": true } },
+    { "cell": "E6", "text": "0" },
+    { "cell": "A7", "text": "Thời gian từ", "font": { "bold": true } },
+    { "cell": "C7", "text": "0" },
+    { "cell": "D7", "text": "Đến", "font": { "bold": true } },
+    { "cell": "E7", "text": "0" },
+    { "cell": "A9", "text": "STT" },
+    { "cell": "B9", "text": "Ca" },
+    { "cell": "C9", "text": "Khuôn ép" },
+    { "cell": "D9", "text": "Chu kì ép định mức" },
+    { "cell": "E9", "text": "Chu kì ép" },
+    { "cell": "F9", "text": "Thời gian cửa mở" },
+    { "cell": "G9", "text": "Mốc thời gian" },
+    { "cell": "H9", "text": "Ghi chú" }
+  ],
+  "cellMergers": [
+    "A1:B4",
+    "C1:F4",
+    "A6:B6",
+    "A7:B7",
+    "F6:H6",
+    "F7:H7",
+    "A9:A10",
+    "B9:B10",
+    "C9:C10",
+    "D9:D10",
+    "E9:E10",
+    "F9:F10",
+    "G9:G10",
+    "H9:H10"
+  ]
+}

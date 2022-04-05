@@ -1,0 +1,85 @@
+.alarm-table tfoot td {
+    text-transform: capitalize;
+    padding: 15px 10px;
+    border-bottom: 1px solid #ddd;
+    font-weight: bold;
+    text-align: -internal-center;
+    border: none;
+}
+
+.alarm-table thead, tfoot {
+  background-color: white;
+}
+
+.alarm-table tbody td {
+  color: black;
+}
+
+.alarm-table tr > td, tr > th {
+  padding: 15px 10px;
+  border: 1px solid #ddd;
+}
+
+.alarm-table thead th, tfoot td {
+   color: black;
+}
+
+tr.low {
+  background-color: var(--main-color-green);
+}
+
+tr.high {
+  background-color: var(--main-color-red);
+}
+
+tr.high > td {
+  color: var(--txt-white);
+
+}
+
+tr.middle {
+  background-color: var(--main-color-orange);
+}
+
+.pagination__container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
+.pagination__button{
+  border: none;
+  border-radius: 3px;
+  background-color: transparent;
+  color: var(--txt-black);
+  font-size: 1rem;
+  padding: 10px;
+  cursor: pointer;
+  outline: none;
+  transition:cubic-bezier(1, 0, 0, 1) .2s;
+}
+.pagination__button:hover{
+  background-color: var(--main-color);
+  color: var(--txt-white);
+}
+
+.pagination__button.disabled{
+  background-color: transparent;
+  color: var(--txt-black);
+  cursor: not-allowed;
+}
+.pagination__move-to-top{
+  margin-left: 10px;
+  font-weight: 500;
+}
+.pagination__select-page-size{
+  margin-left: 10px;
+  font-weight: 500;
+  font-size:1rem;
+  padding: 5px 10px;
+}
+.pagination__select-options{
+  margin: 10px;
+  font-weight: 500;
+  padding: 5px 10px;
+}
