@@ -1,12 +1,10 @@
 import React from 'react';
 // import { IgrRadialGauge, IgrRadialGaugeRange } from 'igniteui-react-gauges';
-import Chart from 'react-apexcharts';
 import { ReactComponent as Stop } from '../../../assets/images/qaqc/stop.svg';
 import { ReactComponent as Manual } from '../../../assets/images/qaqc/manual.svg';
 import { ReactComponent as Auto } from '../../../assets/images/qaqc/auto.svg';
 import { ReactComponent as ForcedEnduranceMachine } from '../../../assets/images/qaqc/forcedEndurance__run.svg';
 import {
-	Button,
 	styled,
 	TableCell,
 	tableCellClasses,
