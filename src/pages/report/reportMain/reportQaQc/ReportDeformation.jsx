@@ -1,90 +1,250 @@
 import React from 'react';
 import ReportQaqcFilter from '../../../../components/reportQaqcFilter/ReportQaqcFilter';
-import { createExcelFile, drawBorder, saveExcelFile } from '../../../../utils/excel';
-import convention from '../../../../assets/JsonData/report_qaqc_endurance.json';
-import enduranceData from '../../../../assets/JsonData/mock_endurance_report.json';
+import { createExcelFile, drawBorder, drawDottedBorder, saveExcelFile } from '../../../../utils/excel';
+import staticLoadConvention from '../../../../assets/JsonData/report_qaqc_static-load.json';
+import bendingConvention from '../../../../assets/JsonData/report_qaqc_bending.json';
+import rockTestConvention from '../../../../assets/JsonData/report_qaqc_rock-test.json';
+import deformationData from '../../../../assets/JsonData/mock_deformation_report.json';
 import { format } from 'date-fns';
-import ReportQaqcTable from '../../../../components/reportQaqcTable/ReportQaqcTable';
-import { ENDURANCE_COLUMNS } from '../../../../utils/utils';
+import {
+	STATIC_LOAD_DEFORMATION_COLUMNS,
+	ROCK_TEST_DEFORMATION_COLUMNS,
+	BENDING_DEFORMATION_COLUMNS,
+} from '../../../../utils/utils';
 
 function ReportDeformation() {
-	const exportReport = (productName) => {
-		const workbook = createExcelFile(convention, 11);
+	const exportReport = (productName, dateStart, dateEnd, purpose, note, testType) => {
+		const workbook = createExcelFile(
+			testType === 'static-load'
+				? staticLoadConvention
+				: testType === 'bending'
+				? bendingConvention
+				: rockTestConvention,
+			11
+		);
 		const sheet1 = workbook.getWorksheet('sheet1');
 
 		sheet1.addImage(0, {
 			tl: { row: 0.3, col: 0.2 },
 			br: { row: 3.7, col: 1.7 },
 		});
-
 		//set width, height of row/column
 		sheet1.getRow(5).height = 10;
 		sheet1.getRow(7).height = 10;
-		sheet1.getRow(11).height = 10;
-		sheet1.getRow(9).height = 40;
+		sheet1.getRow(8).height = 20;
+		sheet1.getRow(6).height = 20;
 		sheet1.getRow(10).height = 40;
-		sheet1.getRow(43).height = 95;
+		sheet1.getColumn(14).width = 40;
+		sheet1.getRow(9).height = 40;
+		sheet1.getRow(11).height = 20;
+		sheet1.getRow(26).height = 95;
+
+		switch (testType) {
+			case 'static-load':
+				sheet1.getRow(12).height = 30;
+				sheet1.getRow(13).height = 30;
+				break;
+			case 'bending':
+				sheet1.getRow(12).height = 30;
+				sheet1.getRow(12).height = 30;
+				break;
+			case 'rock-test':
+				sheet1.getRow(12).height = 30;
+				sheet1.getRow(12).height = 30;
+				break;
+			default:
+				break;
+		}
 		//add text value
-		[...Array(20).keys()].forEach((item, index) => {
-			const row = sheet1.getRow(index + 16);
-			row.values = [(index + 1) * 5000];
-			row.font = { name: 'Times New Roman', size: 11 };
-		});
-		enduranceData.forEach((item, index) => {
-			const row = sheet1.getRow(index + 16);
-			row.values = [
-				item.sample,
-				item.time,
-				item.toilet_bumper,
-				item.no_oil_spill,
-				item.first_result,
-				item.closing_time,
-				item.no_drop_bumper,
-				item.no_spill,
-				item.second_result,
-				item.total,
-				item.note,
-				'',
-				'',
-				item.employee,
-			];
-			row.font = { name: 'Times New Roman', size: 11 };
-		});
+		const assignPurpose = {
+			richText: [
+				{
+					text: 'Mục đích kiểm tra:                   ',
+					font: {
+						bold: true,
+						name: 'Times New Roman',
+					},
+				},
+				{
+					text: 'Định kỳ □                           Bất thường □                           SP mới □                            Khác □',
+					font: {
+						name: 'Times New Roman',
+					},
+				},
+			],
+		};
+
+		switch (purpose) {
+			case 'period':
+				assignPurpose.richText[1].text =
+					'Định kỳ ☑                           Bất thường □                           SP mới □                            Khác □';
+				break;
+			case 'anomaly':
+				assignPurpose.richText[1].text =
+					'Định kỳ □                           Bất thường ☑                           SP mới □                            Khác □';
+				break;
+			case 'newProduct':
+				assignPurpose.richText[1].text =
+					'Định kỳ □                           Bất thường □                           SP mới ☑                            Khác □';
+				break;
+			case 'other':
+				assignPurpose.richText[1].text = `Định kỳ □                           Bất thường □                           SP mới □                            Khác ☑      ${note}`;
+				break;
+			default:
+				break;
+		}
+
+		sheet1.getCell('A9').value = assignPurpose;
+		sheet1.getCell('A9').alignment = { vertical: 'middle', horizontal: 'left' };
+		sheet1.getCell('D8').value = dateStart;
+		sheet1.getCell('K8').value = dateEnd;
+		switch (testType) {
+			case 'static-load':
+				deformationData?.forEach((item, index) => {
+					const row = sheet1.getRow(index + 14);
+					row.height = 30;
+					row.alignment = { vertical: 'middle', horizontal: 'center' };
+					row.values = [item.id, item.result, '', '', '', '', '', '', '', item.total, item.note, '', '', item.employee];
+					row.font = { name: 'Times New Roman', size: 11 };
+				});
+				break;
+			case 'bending':
+				deformationData?.forEach((item, index) => {
+					const row = sheet1.getRow(index + 14);
+					row.height = 30;
+					row.alignment = { vertical: 'middle', horizontal: 'center' };
+					row.values = [
+						item.id,
+						item.weight,
+						'',
+						item.number_of_test,
+						'',
+						'',
+						item.result,
+						'',
+						'',
+						item.total,
+						item.note,
+						'',
+						'',
+						item.employee,
+					];
+					row.font = { name: 'Times New Roman', size: 11 };
+				});
+				break;
+			case 'rock-test':
+				deformationData?.forEach((item, index) => {
+					const row = sheet1.getRow(index + 14);
+					row.height = 30;
+					row.alignment = { vertical: 'middle', horizontal: 'center' };
+					row.values = [
+						item.id,
+						item.weight,
+						'',
+						item.number_of_test,
+						'',
+						'',
+						item.result,
+						'',
+						'',
+						item.total,
+						item.note,
+						'',
+						'',
+						item.employee,
+					];
+					row.font = { name: 'Times New Roman', size: 11 };
+				});
+				break;
+			default:
+				[...Array(5).keys()].forEach((item, index) => {
+					const row = sheet1.getRow(index + 14);
+					row.height = 30;
+					row.alignment = { vertical: 'middle', horizontal: 'center' };
+					row.values = [index + 1];
+					row.font = { name: 'Times New Roman', size: 11 };
+				});
+				break;
+		}
+
 		//merge cells
-		for (let i = 15; i <= 35; i++) {
+		for (let i = 14; i <= 18; i++) {
 			sheet1.mergeCells(`K${i}:M${i}`);
 		}
-		sheet1.getColumn(14).width = 40;
-		//set border
-		for (let r = 15; r <= 35; r++) {
-			for (let c = 1; c <= 14; c++) {
-				drawBorder(sheet1, r, c, 'left', 'right');
-				if (r === 35) {
-					drawBorder(sheet1, r, c, 'left', 'right', 'bottom');
+		switch (testType) {
+			case 'static-load':
+				for (let i = 14; i <= 18; i++) {
+					sheet1.mergeCells(`B${i}:I${i}`);
 				}
+				break;
+			case 'bending':
+				for (let i = 14; i <= 18; i++) {
+					sheet1.mergeCells(`B${i}:C${i}`);
+					sheet1.mergeCells(`D${i}:F${i}`);
+					sheet1.mergeCells(`G${i}:I${i}`);
+				}
+				break;
+			case 'rock-test':
+				for (let i = 14; i <= 18; i++) {
+					sheet1.mergeCells(`B${i}:C${i}`);
+					sheet1.mergeCells(`D${i}:F${i}`);
+					sheet1.mergeCells(`G${i}:I${i}`);
+				}
+				break;
+			default:
+				break;
+		}
+		//set border
+		for (let r = 14; r <= 18; r++) {
+			for (let c = 1; c <= 14; c++) {
+				drawBorder(sheet1, r, c, 'left', 'right', 'bottom');
 			}
 		}
 
-		for (let c = 14; c <= 28; c++) {
-			drawBorder(sheet1, 37, c, 'top');
+		for (let c = 1; c <= 14; c++) {
+			drawBorder(sheet1, 20, c, 'top');
 		}
 
-		for (let r = 37; r <= 40; r++) {
+		for (let r = 20; r <= 23; r++) {
 			drawBorder(sheet1, r, 14, 'right');
 		}
 
-		drawBorder(sheet1, 37, 14, 'top', 'right');
+		for (let c = 3; c <= 14; c++) {
+			drawDottedBorder(sheet1, 21, c, 'top', 'bottom');
+		}
 
+		for (let c = 3; c <= 14; c++) {
+			drawDottedBorder(sheet1, 22, c, 'bottom');
+		}
+		drawBorder(sheet1, 20, 14, 'top', 'right');
 		//save file to pc
-		saveExcelFile(workbook, `Phieu-kiem-tra-dong-em ${productName} ${format(new Date(), 'dd-MM-yyyy')}`);
+		saveExcelFile(
+			workbook,
+			`${
+				testType === 'rock-test'
+					? 'Phiếu kiểm tra rock test'
+					: testType === 'bending'
+					? 'Phiếu kiểm tra lực uốn'
+					: 'Phiếu kiểm tra chịu tải tĩnh'
+			} ${productName} ${format(new Date(), 'dd-MM-yyyy')}`
+		);
 	};
 	const onSubmit = (values) => {
 		console.log(values);
 	};
 	return (
 		<>
-			<ReportQaqcFilter deformation={true} onSubmit={onSubmit} exportReport={exportReport} />
-			<ReportQaqcTable reportData={enduranceData} reportHeaders={ENDURANCE_COLUMNS} />
+			<ReportQaqcFilter
+				deformation={true}
+				onSubmit={onSubmit}
+				exportReport={exportReport}
+				reportData={deformationData}
+				reportHeaders={{
+					staticLoad: STATIC_LOAD_DEFORMATION_COLUMNS,
+					rockTest: ROCK_TEST_DEFORMATION_COLUMNS,
+					bending: BENDING_DEFORMATION_COLUMNS,
+				}}
+			/>
 		</>
 	);
 }

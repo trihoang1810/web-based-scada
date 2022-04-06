@@ -8,7 +8,7 @@ import ReportQaqcTable from '../../../../components/reportQaqcTable/ReportQaqcTa
 import { FORCED_ENDURANCE_COLUMNS } from '../../../../utils/utils';
 
 function ReportDeformation() {
-	const exportReport = (productName) => {
+	const exportReport = (productName, dateStart, dateEnd, purpose, note) => {
 		const workbook = createExcelFile(convention, 11);
 		const sheet1 = workbook.getWorksheet('sheet1');
 
@@ -27,6 +27,48 @@ function ReportDeformation() {
 		sheet1.getRow(10).height = 40;
 		sheet1.getRow(30).height = 95;
 		//add text value
+		const assignPurpose = {
+			richText: [
+				{
+					text: 'Mục đích kiểm tra:                   ',
+					font: {
+						bold: true,
+						name: 'Times New Roman',
+					},
+				},
+				{
+					text: 'Định kỳ □                           Bất thường □                           SP mới □                            Khác □',
+					font: {
+						name: 'Times New Roman',
+					},
+				},
+			],
+		};
+
+		switch (purpose) {
+			case 'period':
+				assignPurpose.richText[1].text =
+					'Định kỳ ☑                           Bất thường □                           SP mới □                            Khác □';
+				break;
+			case 'anomaly':
+				assignPurpose.richText[1].text =
+					'Định kỳ □                           Bất thường ☑                           SP mới □                            Khác □';
+				break;
+			case 'newProduct':
+				assignPurpose.richText[1].text =
+					'Định kỳ □                           Bất thường □                           SP mới ☑                            Khác □';
+				break;
+			case 'other':
+				assignPurpose.richText[1].text = `Định kỳ □                           Bất thường □                           SP mới □                            Khác ☑      ${note}`;
+				break;
+			default:
+				break;
+		}
+
+		sheet1.getCell('A9').value = assignPurpose;
+		sheet1.getCell('A9').alignment = { vertical: 'middle', horizontal: 'left' };
+		sheet1.getCell('D8').value = dateStart;
+		sheet1.getCell('K8').value = dateEnd;
 		[...Array(6).keys()].forEach((item, index) => {
 			const row = sheet1.getRow(index + 16);
 			row.values = [(index + 1) * 5000];
@@ -82,7 +124,7 @@ function ReportDeformation() {
 		drawBorder(sheet1, 24, 14, 'top', 'right');
 
 		//save file to pc
-		saveExcelFile(workbook, `Phieu-kiem-tra-dong-em ${productName} ${format(new Date(), 'dd-MM-yyyy')}`);
+		saveExcelFile(workbook, `Phiếu kiểm tra đóng cưỡng bức ${productName} ${format(new Date(), 'dd-MM-yyyy')}`);
 	};
 	const onSubmit = (values) => {
 		console.log(values);
