@@ -5,7 +5,6 @@ import { ColumnFilter } from '../columnFilter/ColumnFilter';
 import './alarmTable.css';
 
 function AlarmTable({ alarmData }) {
-
 	const columns = React.useMemo(() => COLUMNS, []);
 	const data = React.useMemo(() => alarmData, [alarmData]);
 
@@ -97,24 +96,33 @@ function AlarmTable({ alarmData }) {
 					<strong>{pageOptions.length} </strong>
 				</span>{' '}
 				<button
+					type="button"
 					className={` pagination__button pagination__move-to-top ${canPreviousPage ? `` : `disabled`}`}
 					onClick={() => gotoPage(0)}
 				>
 					{'<<'}
 				</button>{' '}
-				<button className={`pagination__button ${canPreviousPage ? `` : `disabled`}`} onClick={() => previousPage()}>
+				<button
+					type="button"
+					className={`pagination__button ${canPreviousPage ? `` : `disabled`}`}
+					onClick={() => previousPage()}
+				>
 					Trang trước
 				</button>
-				<button className={`pagination__button ${canNextPage ? `` : `disabled`}`} onClick={() => nextPage()}>
+				<button
+					type="button"
+					className={`pagination__button ${canNextPage ? `` : `disabled`}`}
+					onClick={() => nextPage()}
+				>
 					Trang sau
 				</button>
 				<button
+					type="button"
 					className={`pagination__button pagination__move-to-bottom ${canNextPage ? `` : `disabled`}`}
 					onClick={() => gotoPage(pageCount - 1)}
 				>
 					{'>>'}
 				</button>
-
 			</div>
 		</>
 	);

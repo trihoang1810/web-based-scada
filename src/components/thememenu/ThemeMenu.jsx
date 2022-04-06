@@ -103,12 +103,12 @@ const ThemeMenu = () => {
 
 	return (
 		<div>
-			<button ref={menu_toggle_ref} className="dropdown__toggle" onClick={() => setActiveMenu()}>
+			<button type="button" ref={menu_toggle_ref} className="dropdown__toggle" onClick={() => setActiveMenu()}>
 				<i className="bx bx-palette"></i>
 			</button>
 			<div ref={menu_ref} className="theme-menu">
 				<h4>Theme settings</h4>
-				<button className="theme-menu__close" onClick={() => closeMenu()}>
+				<button type="button" className="theme-menu__close" onClick={() => closeMenu()}>
 					<i className="bx bx-x"></i>
 				</button>
 				<div className="theme-menu__select">

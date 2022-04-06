@@ -8,6 +8,7 @@ function ReportNavigationButton({ children, history, path }) {
 	return (
 		<>
 			<Button
+				type="button"
 				sx={{
 					backgroundColor: 'var(--main-color)',
 				}}

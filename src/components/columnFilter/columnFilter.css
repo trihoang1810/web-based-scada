@@ -7,3 +7,16 @@ input[type=text]{
   color: var(--txt-black);
   font-size: 1rem;
 }
+
+.column-filter__input--packing ::placeholder {
+  color: var(--txt-white);
+  opacity: 1; /* Firefox */
+}
+
+.column-filter__input--packing :-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color: var(--txt-white);
+}
+
+.column-filter__input--packing ::-ms-input-placeholder { /* Microsoft Edge */
+   color: var(--txt-white);
+}
