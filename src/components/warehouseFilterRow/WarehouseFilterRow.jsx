@@ -1,31 +1,17 @@
-import { useEffect, useState } from 'react';
+import { ErrorMessage, Formik, useFormikContext } from 'formik';
+import { useEffect, useRef, useState } from 'react';
+import * as Yup from 'yup';
+import FormikControl from '../formControl/FormControl';
 import './warehouseFilterRow.css';
 
 function WarehouseFilter({ filterId, deleteFilterRow, filterValues, setFilterValue, data }) {
-	const nowDate = new Date();
-
-	const toDateDefault = nowDate.toJSON().slice(0, 10);
-	nowDate.setDate(nowDate.getDate() - 7);
-	const fromDateDefault = nowDate.toJSON().slice(0, 10);
-
 	const [type, setType] = useState('');
-	const [id, setId] = useState('');
 	const [name, setName] = useState('');
-	const [fromDate, setFromDate] = useState('');
-	const [toDate, setToDate] = useState('');
-	const [ids, setIds] = useState([]);
+	const [ids, setIds] = useState();
 
-	useEffect(() => {
-		setFilterValue({
-			...filterValues,
-			['row' + filterId]: {
-				type,
-				id,
-				fromDate,
-				toDate,
-			},
-		});
-	}, [type, id, fromDate, toDate]);
+	const { values, handleChange, setFieldValue, handleSubmit, isSubmitting, isValid } = useFormikContext();
+
+	const { id, fromDate, toDate } = values;
 
 	useEffect(() => {
 		if (type === 'discharger') {
@@ -42,49 +28,77 @@ function WarehouseFilter({ filterId, deleteFilterRow, filterValues, setFilterVal
 		}
 		if (filterName) {
 			setName(filterName);
-			setFromDate(fromDateDefault);
-			setToDate(toDateDefault);
 		}
 	}, [id, type]);
 
+	useEffect(() => {
+		setFilterValue({
+			...filterValues,
+			['row' + filterId]: { id, fromDate, toDate },
+		});
+	}, [id, fromDate, toDate]);
+
+	const handleChangeId = (e) => {
+		const id = e.target.value;
+		setFieldValue('id', id);
+		handleChange(e);
+	};
+
 	return (
-		<div className="row warehouseOverview__container">
-			<div className="col-2">
-				<select
-					name={`type-${filterId}`}
-					id={`type-${filterId}`}
-					value={type}
-					onChange={(e) => setType(e.target.value)}
-				>
-					<option value=""></option>
-					<option value="discharger">Bộ xả</option>
-					<option value="lid">Nắp bàn cầu</option>
-				</select>
-			</div>
-			<div className="col-2">
-				<input type="text" list={`list${filterId}`} value={id} onChange={(e) => setId(e.target.value)} />
-				<datalist id={`list${filterId}`}>
-					{ids.map((id) => (
-						<option key={id} value={id}>
-							{id}
-						</option>
-					))}
-				</datalist>
-			</div>
-			<div className="col-3">
-				<input value={name} type="text" disabled />
-			</div>
-			<div className="col-2">
-				<input type="date" value={fromDate} onChange={(e) => setFromDate(e.target.value)} />
-			</div>
-			<div className="col-2">
-				<input type="date" value={toDate} onChange={(e) => setToDate(e.target.value)} />
-			</div>
-			{deleteFilterRow && (
-				<div className="col-1 deleteBtn" onClick={() => deleteFilterRow(filterId)}>
-					<i className="bx bxs-x-circle"></i>
+		<div className="row warehouseFilterRow__container">
+			<>
+				<div className="col-2">
+					<select
+						name={`type-${filterId}`}
+						id={`type-${filterId}`}
+						value={type}
+						onChange={(e) => setType(e.target.value)}
+					>
+						<option value=""></option>
+						<option value="discharger">Bộ xả</option>
+						<option value="lid">Nắp bàn cầu</option>
+					</select>
 				</div>
-			)}
+
+				<div className="col-2">
+					<FormikControl control="input" list={`list${filterId}`} name="id" onChange={handleChangeId} />
+
+					{ids && (
+						<datalist id={`list${filterId}`}>
+							{ids.map((id) => (
+								<option key={id} value={id}>
+									{id}
+								</option>
+							))}
+						</datalist>
+					)}
+				</div>
+
+				<div className="col-3">
+					<FormikControl value={name} control="input" disabled />
+				</div>
+
+				<div className="col-2">
+					<FormikControl control="date" name="fromDate" />
+				</div>
+
+				<div className="col-2">
+					<FormikControl control="date" name="toDate" />
+				</div>
+
+				{deleteFilterRow && (
+					<div className="col-1 flex-center">
+						<div className="deleteBtn" onClick={() => deleteFilterRow(filterId)}>
+							<i className="bx bxs-x-circle"></i>
+						</div>
+					</div>
+				)}
+				<div className="row" style={{ width: '100%', textAlign: 'center' }}>
+					<div className="col-12">
+						<ErrorMessage name="id" component="div" className="error-message" />
+					</div>
+				</div>
+			</>
 		</div>
 	);
 }

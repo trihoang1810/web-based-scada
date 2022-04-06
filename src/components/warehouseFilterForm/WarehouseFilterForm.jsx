@@ -1,10 +1,18 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
+import { Formik, Form, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
 import WarehouseFilterRow from '../warehouseFilterRow/WarehouseFilterRow';
+import './warehouseFilterForm.css';
 
 function WarehouseFilterForm() {
 	const [filterRows, setFilterRows] = useState([1]);
 	const [filterValues, setFilterValue] = useState({ row1: {} });
 	const [searchDisabled, setSearchDisabled] = useState(true);
+
+	const nowDate = new Date();
+	const toDateDefault = nowDate.toJSON().slice(0, 10);
+	nowDate.setDate(nowDate.getDate() - 7);
+	const fromDateDefault = nowDate.toJSON().slice(0, 10);
 
 	const fakeData = {
 		discharger: [
@@ -37,21 +45,16 @@ function WarehouseFilterForm() {
 		],
 	};
 
-	// check all the filter inputs are filled and enalble search btn
-	useEffect(() => {
-		setSearchDisabled(false);
-		for (let row in filterValues) {
-			if (filterValues[row]) {
-				for (let key in filterValues[row]) {
-					if (!filterValues[row][key]) {
-						setSearchDisabled(true);
-					}
-				}
-			} else {
-				setSearchDisabled(true);
+	const idList = useMemo(() => {
+		const list = {};
+		for (let type in fakeData) {
+			list[type] = [];
+			for (let item of fakeData[type]) {
+				list[type].push(item.id);
 			}
 		}
-	}, [filterValues]);
+		return list;
+	}, []);
 
 	const addFilterRow = () => {
 		setFilterRows([...filterRows, filterRows[filterRows.length - 1] + 1]);
@@ -71,45 +74,66 @@ function WarehouseFilterForm() {
 		setFilterValue(newFilterValue);
 	}, [filterRows]);
 
+	const validationSchema = Yup.object({
+		type: '',
+		id: Yup.string().required('Mã sản phẩm không được bỏ trống'),
+		fromDate: Yup.date().required('Ngày bắt đầu không được bỏ trống'),
+		toDate: Yup.date().when('fromDate', (fromdate, schema) =>
+			fromdate ? schema.min(fromdate, 'Ngày bắt đầu phải nhỏ hơn ngày kết thúc') : schema
+		),
+	});
+
 	return (
 		<>
-			<div className="card warehouseOverview__filter">
-				<div className="row warehouseOverview__filter-title">
-					<span className="col-2">Loại sản phẩm</span>
-					<span className="col-2">Mã sản phẩm</span>
-					<span className="col-3">Tên sản phẩm</span>
-					<span className="col-2">Từ ngày(mm/dd/yyyy)</span>
-					<span className="col-2">Đến ngày(mm/dd/yyyy)</span>
-				</div>
-				{filterRows.map((rowId) => (
-					<WarehouseFilterRow
-						filterId={rowId}
-						key={rowId}
-						deleteFilterRow={filterRows.length > 1 && deleteFilterRow}
-						filterValues={filterValues}
-						setFilterValue={setFilterValue}
-						data={fakeData}
-						setSearchDisabled={setSearchDisabled}
-					/>
-				))}
+			<div className="card warehouseFilterForm__container">
+				<Formik>
+					<Form>
+						<div className="row" style={{ width: '100%' }}>
+							<div className="col-10">
+								<div className="row warehouseFilterForm-title">
+									<span className="col-2">Loại sản phẩm</span>
+									<span className="col-2">Mã sản phẩm</span>
+									<span className="col-3">Tên sản phẩm</span>
+									<span className="col-2">Từ ngày(mm/dd/yyyy)</span>
+									<span className="col-2">Đến ngày(mm/dd/yyyy)</span>
+								</div>
 
-				{filterRows.length < 3 && (
-					<div className="warehouseOverview__filter-addBtn" onClick={addFilterRow}>
-						<i className="bx bx-plus-circle"></i>
-					</div>
-				)}
+								{filterRows.map((rowId) => (
+									<Formik
+										key={rowId}
+										validationSchema={validationSchema}
+										initialValues={{
+											type: '',
+											id: '',
+											fromDate: fromDateDefault,
+											toDate: toDateDefault,
+										}}
+									>
+										<WarehouseFilterRow
+											filterId={rowId}
+											deleteFilterRow={filterRows.length > 1 && deleteFilterRow}
+											filterValues={filterValues}
+											setFilterValue={setFilterValue}
+											data={fakeData}
+											setSearchDisabled={setSearchDisabled}
+										/>
+									</Formik>
+								))}
+							</div>
 
-				<div className="row">
-					<div className="col-11">
-						<button
-							disabled={searchDisabled}
-							className={`warehouseOverview__filter-searchBtn ${searchDisabled && 'disabled'}`}
-							onClick={search}
-						>
-							Tìm
-						</button>
-					</div>
-				</div>
+							<div className="col-2 flex-horizontal-center">
+								{filterRows.length < 3 && (
+									<div className="warehouseFilterForm-addBtn flex-center" onClick={addFilterRow}>
+										<i className="bx bx-plus-circle"></i>
+									</div>
+								)}
+								<button type="button" className="btn warehouseFilterForm-btn" onClick={search}>
+									Tìm
+								</button>
+							</div>
+						</div>
+					</Form>
+				</Formik>
 			</div>
 		</>
 	);

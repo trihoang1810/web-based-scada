@@ -1,11 +1,10 @@
-.warehouseOverview__container > div {
+.warehouseFilterRow__container > div {
 	display: flex;
-	flex-direction: column;
 	margin-top: 12px;
 }
 
-.warehouseOverview__container select,
-.warehouseOverview__container input {
+.warehouseFilterRow__container select,
+.warehouseFilterRow__container input {
 	width: 80%;
 	margin: 0 auto;
 	border-radius: 6px;
@@ -15,16 +14,14 @@
 	font-size: 1.2rem;
 }
 
-.warehouseOverview__filter {
-	position: relative;
-}
-
-.warehouseOverview__container .deleteBtn {
+.warehouseFilterRow__container .deleteBtn {
+	display: flex;
 	font-size: 1.5rem;
 	justify-content: center;
 	width: 30px;
+	align-items: center;
 }
 
-.warehouseOverview__container .deleteBtn:hover {
+.warehouseFilterRow__container .deleteBtn:hover {
 	opacity: 0.6;
 }
