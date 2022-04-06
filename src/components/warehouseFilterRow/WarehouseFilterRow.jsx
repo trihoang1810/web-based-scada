@@ -1,6 +1,5 @@
-import { ErrorMessage, Formik, useFormikContext } from 'formik';
-import { useEffect, useRef, useState } from 'react';
-import * as Yup from 'yup';
+import { ErrorMessage, useFormikContext } from 'formik';
+import { useEffect, useState } from 'react';
 import FormikControl from '../formControl/FormControl';
 import './warehouseFilterRow.css';
 
@@ -32,19 +31,22 @@ function WarehouseFilter({ filterId, deleteFilterRow, filterValues, setFilterVal
 	useEffect(() => {
 		setFilterValue({
 			...filterValues,
-			['row' + filterId]: { id, fromDate, toDate },
+			['row' + filterId]: { type, id, name, fromDate, toDate },
 		});
-	}, [id, fromDate, toDate]);
+	}, [type, id, name, fromDate, toDate]);
 
 	return (
 		<div className="row warehouseFilterRow__container">
 			<>
-				<div className="col-3">
+				<div className="col-2">
 					<FormikControl
 						control="select"
 						name="type"
 						onChange={handleChange}
-						options={[{ value: '' }, { key: 'Bộ xả', value: 'discharger' }, { key: 'Nắp bàn cầu', value: 'lid' }]}
+						options={[
+							{ key: 'Bộ xả', value: 'discharger' },
+							{ key: 'Nắp bàn cầu', value: 'lid' },
+						]}
 					/>
 				</div>
 
@@ -63,19 +65,19 @@ function WarehouseFilter({ filterId, deleteFilterRow, filterValues, setFilterVal
 				</div>
 
 				<div className="col-2">
-					<FormikControl name="name" control="input" disable={true} />
+					<FormikControl name="name" control="input" />
 				</div>
 
 				<div className="col-2">
-					<FormikControl control="date" name="fromDate" />
+					<FormikControl control="date" name="fromDate" onChange={handleChange} />
 				</div>
 
 				<div className="col-2">
-					<FormikControl control="date" name="toDate" />
+					<FormikControl control="date" name="toDate" onChange={handleChange} />
 				</div>
 
 				{deleteFilterRow && (
-					<div className="col-1 flex-center">
+					<div className="col-2 flex-center">
 						<div className="deleteBtn" onClick={() => deleteFilterRow(filterId)}>
 							<i className="bx bxs-x-circle"></i>
 						</div>
@@ -84,6 +86,9 @@ function WarehouseFilter({ filterId, deleteFilterRow, filterValues, setFilterVal
 				<div className="row" style={{ width: '100%', textAlign: 'center' }}>
 					<div className="col-12">
 						<ErrorMessage name="id" component="div" className="error-message" />
+						<ErrorMessage name="fromDate" component="div" className="error-message" />
+						<ErrorMessage name="toDate" component="div" className="error-message" />
+						<ErrorMessage name="name" component="div" className="error-message" />
 					</div>
 				</div>
 			</>

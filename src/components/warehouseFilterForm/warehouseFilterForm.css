@@ -4,6 +4,9 @@
 .warehouseFilterForm-title {
 	text-align: center;
 	font-size: 1.4rem;
+	display: flex;
+	align-items: center;
+	width: 100%;
 }
 
 .warehouseFilterForm-addBtn {
@@ -15,7 +18,7 @@
 	cursor: pointer;
 }
 
-.warehouseFilterForm-searchBtn {
+.warehouseFilterForm-btn {
 	padding: 6px 60px;
 	border-radius: 6px;
 	margin: 30px auto;
@@ -27,7 +30,7 @@
 	border: 2px solid var(--main-bg-dark);
 }
 
-.warehouseFilterForm-searchBtn:hover {
+.warehouseFilterForm-btn:hover {
 	background-color: var(--main-color-gray);
 	color: var(--txt-white);
 	border: 2px solid var(--main-color-gray);

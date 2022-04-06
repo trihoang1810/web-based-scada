@@ -1,3 +1,7 @@
+.warehouseFilterRow__container {
+	width: 100%;
+}
+
 .warehouseFilterRow__container > div {
 	display: flex;
 	margin-top: 12px;
@@ -5,10 +9,8 @@
 
 .warehouseFilterRow__container select,
 .warehouseFilterRow__container input {
-	width: 80%;
 	margin: 0 auto;
 	border-radius: 6px;
-	border: 2px solid black;
 	height: 40px;
 	padding-left: 10px;
 	font-size: 1.2rem;
