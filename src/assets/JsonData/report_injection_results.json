@@ -1,0 +1,87 @@
+{
+  "cellValues": [
+    {
+      "cell": "F1",
+      "text": "BÁO CÁO ÉP MÁY",
+      "font": { "size": "20", "bold": true }
+    },
+    { "cell": "A6", "text": "Stt", "font": { "bold": true } },
+    { "cell": "B6", "text": "Ngày ép", "font": { "bold": true } },
+    { "cell": "C6", "text": "Người ép", "font": { "bold": true } },
+    { "cell": "C7", "text": "Ca ép", "font": { "bold": true } },
+    { "cell": "D7", "text": "Trưởng ca", "font": { "bold": true } },
+    { "cell": "E7", "text": "Mã NV", "font": { "bold": true } },
+    { "cell": "F7", "text": "Tên nhân viên", "font": { "bold": true } },
+    { "cell": "G6", "text": "Thiết bị ép", "font": { "bold": true } },
+    { "cell": "G7", "text": "Máy ép", "font": { "bold": true } },
+    { "cell": "H7", "text": "Khuôn ép", "font": { "bold": true } },
+    { "cell": "I7", "text": "Kết quả bảo dưỡng", "font": { "bold": true } },
+    { "cell": "J6", "text": "Sản phẩm ép", "font": { "bold": true } },
+    { "cell": "J7", "text": "Mã sản phẩm", "font": { "bold": true } },
+    { "cell": "K7", "text": "Tên sản phẩm", "font": { "bold": true } },
+    { "cell": "L7", "text": "Đvt", "font": { "bold": true } },
+    { "cell": "M7", "text": "Nhóm", "font": { "bold": true } },
+    { "cell": "N6", "text": "Kết quả ép", "font": { "bold": true } },
+    { "cell": "N7", "text": "Cavity", "font": { "bold": true } },
+    { "cell": "O7", "text": "Chu kỳ (s)", "font": { "bold": true } },
+    { "cell": "P7", "text": "Số lượng", "font": { "bold": true } },
+    { "cell": "Q7", "text": "Khối lượng (kg)", "font": { "bold": true } },
+    { "cell": "U6", "text": "Thời gian ép", "font": { "bold": true } },
+    {
+      "cell": "R7",
+      "text": "Định mức quy đổi (đvt/kg)",
+      "font": { "bold": true }
+    },
+    { "cell": "S7", "text": "Số lượng nhập", "font": { "bold": true } },
+    { "cell": "T7", "text": "Kết quả kiểm tra", "font": { "bold": true } },
+    { "cell": "U7", "text": "Bắt đầu", "font": { "bold": true } },
+    { "cell": "V7", "text": "Kết thúc", "font": { "bold": true } },
+    {
+      "cell": "W7",
+      "text": "Thời gian sản xuất (phút)",
+      "font": { "bold": true }
+    },
+    {
+      "cell": "X7",
+      "text": "Thời gian có sự cố (phút)",
+      "font": { "bold": true }
+    },
+    { "cell": "R1", "text": "Mã tài liệu", "font": { "bold": true } },
+    { "cell": "R2", "text": "Ngày ban hành", "font": { "bold": true } },
+    { "cell": "R3", "text": "Ngày sửa đổi", "font": { "bold": true } },
+    { "cell": "R4", "text": "Lần sửa đổi", "font": { "bold": true } },
+    { "cell": "Y1", "text": "BM05.QT02.SX", "font": { "bold": true } },
+    { "cell": "Y2", "text": "01/01/2021", "font": { "bold": true } },
+    { "cell": "Y3", "text": "01/06/2021", "font": { "bold": true } },
+    { "cell": "Y4", "text": "1", "font": { "bold": true } },
+    { "cell": "Y7", "text": "Giải trình sự cố", "font": { "bold": true } },
+    {
+      "cell": "Z6",
+      "text": "Hình thức & số lượng đóng gói",
+      "font": { "bold": true }
+    },
+    { "cell": "Z7", "text": "Xe", "font": { "bold": true } },
+    { "cell": "AA7", "text": "Rổ", "font": { "bold": true } },
+    { "cell": "AB7", "text": "Thùng", "font": { "bold": true } },
+    { "cell": "AC7", "text": "Bao", "font": { "bold": true } },
+    { "cell": "AD7", "text": "Khác", "font": { "bold": true } },
+    { "cell": "AE6", "text": "Có sản lượng", "font": { "bold": true } }
+  ],
+  "cellMergers": [
+    "A1:E4",
+    "A6:A7",
+    "B6:B7",
+    "C6:F6",
+    "G6:I6",
+    "J6:M6",
+    "F1:Q4",
+    "N6:T6",
+    "U6:Y6",
+    "R1:X1",
+    "R2:X2",
+    "R3:X3",
+    "R4:X4",
+    "Z6:AD6",
+    "AE6:AE7"
+  ]
+}

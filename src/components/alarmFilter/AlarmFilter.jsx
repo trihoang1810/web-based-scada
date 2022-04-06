@@ -1,6 +1,6 @@
 import React from 'react';
 import './alarmFilter.css';
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import FormikControl from '../formControl/FormControl';
 import { format } from 'date-fns';
@@ -83,11 +83,11 @@ function AlarmFilter({ onSubmit }) {
 					<button type="submit" className="btn btn-primary">
 						Tìm kiếm
 					</button>
-					<div className="error-msg__container">
-						<ErrorMessage name="dateEnd" component="div" className="error-message" />
-						<ErrorMessage name="error_code" component="div" className="error-message" />
-						<ErrorMessage name="error_sector" component="div" className="error-message" />
-						<ErrorMessage name="priority" component="div" className="error-message" />
+					<div className="alarm-error-msg__container">
+						<ErrorMessage name="dateEnd" component="div" className="alarm-error-message" />
+						<ErrorMessage name="error_code" component="div" className="alarm-error-message" />
+						<ErrorMessage name="error_sector" component="div" className="alarm-error-message" />
+						<ErrorMessage name="priority" component="div" className="alarm-error-message" />
 					</div>
 				</Form>
 			</Formik>

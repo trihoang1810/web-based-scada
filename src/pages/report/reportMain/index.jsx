@@ -6,15 +6,16 @@ import { Switch } from 'react-router-dom';
 import Navbar from '../../../components/navBar/NavBar';
 import ReportInjectionMoldingSector from '../../../components/reportInjectionMoldingSector/ReportInjectionMoldingSector';
 import ReportPackingSector from '../../../components/reportPackingSector/ReportPackingSector';
-import ReportQaQc from '../../../components/reportQaQc/ReportQaQc';
+import ReportQaQc from './reportQaQc/ReportQaQc';
+import { REPORT_MENU_LIST } from '../../../utils/utils';
 
 function ReportMain() {
 	const match = useRouteMatch();
 	return (
 		<>
-			<Navbar />
+			<Navbar menuList={REPORT_MENU_LIST}  />
 			<Switch>
-				<Redirect exact from={match.url} to={`${match.url}/qaqc`} />
+				<Redirect exact from={match.url} to={`${match.url}/qaqc/endurance`} />
 				<Route path={`${match.url}/qaqc`} component={ReportQaQc} />
 				<Route path={`${match.url}/packing`} component={ReportPackingSector} />
 				<Route path={`${match.url}/injection`} component={ReportInjectionMoldingSector} />

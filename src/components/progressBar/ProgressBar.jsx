@@ -16,9 +16,9 @@ function ProgressBar({ percent, width, height, trend }) {
 					<div className={`ProgressBar__progress ${barClass}`} style={{ width: percent + '%', fontSize: '10px' }}></div>
 				</div>
 				{trend && trend === 'up' ? (
-					<i class="ProgressBar__trend ProgressBar__trend--up bx bxs-right-arrow"></i>
+					<i className="ProgressBar__trend ProgressBar__trend--up bx bxs-right-arrow"></i>
 				) : trend === 'down' ? (
-					<i class="ProgressBar__trend ProgressBar__trend--down bx bxs-left-arrow"></i>
+					<i className="ProgressBar__trend ProgressBar__trend--down bx bxs-left-arrow"></i>
 				) : null}
 			</div>
 		</>

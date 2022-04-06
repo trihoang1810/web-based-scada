@@ -29,52 +29,52 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 	},
 }));
 
-var velocityChartOptions = {
-	options: {
-		chart: {
-			height: 300,
-			type: 'radialBar',
-			offsetY: -10,
-		},
-		plotOptions: {
-			radialBar: {
-				startAngle: -135,
-				endAngle: 135,
-				dataLabels: {
-					name: {
-						fontSize: '14px',
-						color: undefined,
-						offsetY: 60,
-					},
-					value: {
-						offsetY: 30,
-						fontSize: '14px',
-						color: 'var(--txt-color)',
-						fontWeight: 'bold',
-						formatter: function (val) {
-							return val + 's';
-						},
-					},
-				},
-			},
-		},
-		fill: {
-			type: 'gradient',
-			gradient: {
-				shade: 'dark',
-				shadeIntensity: 0.15,
-				inverseColors: false,
-				opacityFrom: 1,
-				opacityTo: 1,
-				stops: [0, 50, 65, 91],
-			},
-		},
-		stroke: {
-			dashArray: 4,
-		},
-		labels: ['Thời gian giữ'],
-	},
-};
+// var velocityChartOptions = {
+// 	options: {
+// 		chart: {
+// 			height: 300,
+// 			type: 'radialBar',
+// 			offsetY: -10,
+// 		},
+// 		plotOptions: {
+// 			radialBar: {
+// 				startAngle: -135,
+// 				endAngle: 135,
+// 				dataLabels: {
+// 					name: {
+// 						fontSize: '14px',
+// 						color: undefined,
+// 						offsetY: 60,
+// 					},
+// 					value: {
+// 						offsetY: 30,
+// 						fontSize: '14px',
+// 						color: 'var(--txt-color)',
+// 						fontWeight: 'bold',
+// 						formatter: function (val) {
+// 							return val + 's';
+// 						},
+// 					},
+// 				},
+// 			},
+// 		},
+// 		fill: {
+// 			type: 'gradient',
+// 			gradient: {
+// 				shade: 'dark',
+// 				shadeIntensity: 0.15,
+// 				inverseColors: false,
+// 				opacityFrom: 1,
+// 				opacityTo: 1,
+// 				stops: [0, 50, 65, 91],
+// 			},
+// 		},
+// 		stroke: {
+// 			dashArray: 4,
+// 		},
+// 		labels: ['Thời gian giữ'],
+// 	},
+// };
 
 function createData(params, process) {
 	return {
@@ -280,6 +280,7 @@ function SecondSystem() {
 												'& .MuiTableRow-root:hover': {
 													'& .MuiTableCell-root': {
 														color: 'white',
+														backgroundColor: 'var(--second-color-blue)',
 													},
 												},
 											}}
