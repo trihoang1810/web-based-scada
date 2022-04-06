@@ -2,7 +2,7 @@
   "cellValues": [
     {
       "cell": "C1",
-      "text": "PHIẾU KIỂM TRA ĐÓNG CƯỠNG BỨC\nNẮP BÀN CẦU",
+      "text": "PHIẾU KIỂM ROCK TEST",
       "font": { "size": "18", "bold": true, "italic": true }
     },
     {
@@ -25,7 +25,7 @@
       "text": "Lần sửa lỗi",
       "font": { "bold": true, "italic": true }
     },
-    { "cell": "M1", "text": "BM05.QT2.QA.lab", "font": { "size": "10" } },
+    { "cell": "M1", "text": "BM09.QT02.QA.lab", "font": { "size": "10" } },
     { "cell": "M2", "text": "01/05/21", "font": { "size": "10" } },
     { "cell": "M3", "text": "01/05/21", "font": { "size": "10" } },
     { "cell": "M4", "text": "0", "font": { "size": "10" } },
@@ -33,44 +33,53 @@
     { "cell": "K6", "text": "MÃ SẢN PHẨM", "font": { "bold": true } },
     { "cell": "A8", "text": "Ngày bắt đầu", "font": { "size": "12" } },
     { "cell": "I8", "text": "Ngày kết thúc", "font": { "size": "12" } },
-    { "cell": "A9", "text": "Mục đích kiểm tra" },
+    {
+      "cell": "F10", "text": "'- Tải trọng 1335N±22N\n- Sau lần 25.000 lần không có hư hỏng, bộ bản lề hoạt động bình thường",
+      "font": {
+        "size":"11"
+      }
+    },
+    { "cell": "A9", "text": "Mục đích kiểm tra",
+      "font":{
+        "bold": "true"
+      }
+    },
     {
       "cell": "A10",
       "text": "Tiêu chuẩn thử nghiệm",
       "font": { "size": "12", "bold": true }
     },
-    { "cell": "A12", "text": "Số lần thử" },
+    { "cell": "A12", "text": "Mẫu số" },
     {
       "cell": "B12",
-      "text": "Kết quả kiểm tra độ bền hoạt động",
-      "font": { "size": "14", "bold": true }
+      "text": "Tải trọng",
+      "font": { "size": "12" }
     },
-    { "cell": "A15", "text": "Thời gian cài đặt" },
-    { "cell": "J12", "text": "Tổng lỗi" },
-    { "cell": "K12", "text": "Ghi chú" },
-    { "cell": "N12", "text": "Nhân viên KT" },
-    { "cell": "B13", "text": "NẮP", "font": { "bold": true } },
-    { "cell": "F13", "text": "ĐẾ", "font": { "bold": true } },
-    { "cell": "B14", "text": "Thời gian đóng êm (s)" },
-    { "cell": "C14", "text": "Không nứt vỡ" },
-    { "cell": "D14", "text": "Không rò rỉ dầu" },
-    { "cell": "E14", "text": "Kết quả đánh giá" },
-    { "cell": "F14", "text": "Thời gian đóng êm (s)" },
-    { "cell": "G14", "text": "Không nứt vỡ" },
-    { "cell": "H14", "text": "Không rò rỉ dầu" },
-    { "cell": "I14", "text": "Kết quả đánh giá" },
     {
-      "cell": "A24",
-      "text": "Nhận xét",
+      "cell": "D12",
+      "text": "Số lần thử nghiệm",
+      "font": { "size": "12" }
+    },
+    {
+      "cell": "G12",
+      "text": "Kết quả đánh giá",
+      "font": { "size": "12" }
+    },
+    { "cell": "J12", "text": "Tổng lỗi" },
+    { "cell": "K12", "text": "Nhận xét" },
+    { "cell": "N12", "text": "Nhân viên KT" },
+    {
+      "cell": "A20",
+      "text": "Nhận xét: ",
       "font": { "size": "12", "bold": true }
     },
     {
-      "cell": "A28",
-      "text": "Kiểm tra",
+      "cell": "A24",
+      "text": "Nhận xét",
       "font": { "size": "14", "bold": true }
     },
     {
-      "cell": "H28",
+      "cell": "H24",
       "text": "Phê duyệt",
       "font": { "size": "14", "bold": true }
     }
@@ -97,17 +106,17 @@
     "A9:N9",
     "A10:D10",
     "E10:N10",
-    "A24:B24",
-    "A12:A14",
-    "B12:I12",
-    "B13:E13",
-    "F13:I13",
-    "J12:J14",
-    "K12:M14",
-    "N12:N14",
-    "A28:G29",
-    "H28:N29",
-    "A30:G30",
-    "H30:N30"
+    "A20:B20",
+    "A12:A13",
+    "B12:C13",
+    "D12:F13",
+    "G12:I13",
+    "J12:J13",
+    "K12:M13",
+    "N12:N13",
+    "A24:G25",
+    "H24:N25",
+    "A26:G26",
+    "H26:N26"
   ]
 }

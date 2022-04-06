@@ -113,6 +113,91 @@ const ENDURANCE_COLUMNS = [
 	},
 ];
 
+const STATIC_LOAD_DEFORMATION_COLUMNS = [
+	{
+		Header: 'Mẫu số',
+		accessor: 'id',
+	},
+	{
+		Header: 'Kết quả kiểm tra chịu tải tĩnh trong 3 phút',
+		accessor: 'result',
+	},
+	{
+		Header: 'Tổng lỗi',
+		accessor: 'total',
+	},
+	{
+		Header: 'Ghi chú',
+		accessor: 'note',
+	},
+	{
+		Header: 'Nhân viên KT',
+		accessor: 'employee',
+	},
+];
+
+const BENDING_DEFORMATION_COLUMNS = [
+	{
+		Header: 'Mẫu số',
+		accessor: 'id',
+	},
+	{
+		Header: 'Tải trọng',
+		accessor: 'weight',
+	},
+	{
+		Header: 'Số lần thử nghiệm',
+		accessor: 'number_of_test',
+	},
+	{
+		Header: 'Kết quả đánh giá',
+		accessor: 'result',
+	},
+	{
+		Header: 'Tổng lỗi',
+		accessor: 'total',
+	},
+	{
+		Header: 'Ghi chú',
+		accessor: 'note',
+	},
+	{
+		Header: 'Nhân viên KT',
+		accessor: 'employee',
+	},
+];
+
+const ROCK_TEST_DEFORMATION_COLUMNS = [
+	{
+		Header: 'Mẫu số',
+		accessor: 'id',
+	},
+	{
+		Header: 'Tải trọng',
+		accessor: 'weight',
+	},
+	{
+		Header: 'Số lần thử nghiệm',
+		accessor: 'number_of_test',
+	},
+	{
+		Header: 'Kết quả đánh giá',
+		accessor: 'result',
+	},
+	{
+		Header: 'Tổng lỗi',
+		accessor: 'total',
+	},
+	{
+		Header: 'Ghi chú',
+		accessor: 'note',
+	},
+	{
+		Header: 'Nhân viên KT',
+		accessor: 'employee',
+	},
+];
+
 const FORCED_ENDURANCE_COLUMNS = [
 	{
 		Header: 'Số lần thử',
@@ -217,6 +302,37 @@ const COLUMNS = [
 	},
 ];
 
+const WATER_PROOF_COLUMNS = [
+	{
+		Header: 'Mẫu số',
+		accessor: 'id',
+	},
+	{
+		Header: 'Nhiệt độ máy',
+		accessor: 'temperature',
+	},
+	{
+		Header: 'Thời gian',
+		accessor: 'time',
+	},
+	{
+		Header: 'Kết quả đánh giá',
+		accessor: 'result',
+	},
+	{
+		Header: 'Tổng lỗi',
+		accessor: 'total',
+	},
+	{
+		Header: 'Ghi chú',
+		accessor: 'note',
+	},
+	{
+		Header: 'Nhân viên KT',
+		accessor: 'employee',
+	},
+];
+
 function convertDate(value) {
 	const date = new Date(value);
 	return date.toLocaleDateString();
@@ -232,4 +348,8 @@ export {
 	REPORT_MENU_LIST,
 	ENDURANCE_COLUMNS,
 	FORCED_ENDURANCE_COLUMNS,
+	STATIC_LOAD_DEFORMATION_COLUMNS,
+	ROCK_TEST_DEFORMATION_COLUMNS,
+	BENDING_DEFORMATION_COLUMNS,
+	WATER_PROOF_COLUMNS,
 };
