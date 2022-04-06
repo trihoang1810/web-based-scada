@@ -27,6 +27,7 @@ function InjectionFilter({ hanldeCheckBtn, wattageFilter, stateFilter }) {
 			</span>
 			<div className={`injectionMoldinMachinePage__filter-wattage ${showWattageFilter ? 'show' : 'hide'}`}>
 				<button
+					type="button"
 					onClick={(e) => hanldeCheckBtn(e, 'wattage', 'small')}
 					className={`injectionMoldinMachinePage__filter-btn ${wattageFilter.includes('small') && 'btnActive'}`}
 				>
@@ -34,6 +35,7 @@ function InjectionFilter({ hanldeCheckBtn, wattageFilter, stateFilter }) {
 					<span>Máy nhỏ</span>
 				</button>
 				<button
+					type="button"
 					onClick={(e) => hanldeCheckBtn(e, 'wattage', 'large')}
 					className={`injectionMoldinMachinePage__filter-btn ${wattageFilter.includes('large') && 'btnActive'}`}
 				>
@@ -52,6 +54,7 @@ function InjectionFilter({ hanldeCheckBtn, wattageFilter, stateFilter }) {
 			</span>
 			<div className={`injectionMoldinMachinePage__filter-state ${showStateFilter ? 'show' : 'hide'}`}>
 				<button
+					type="button"
 					onClick={(e) => hanldeCheckBtn(e, 'state', 'M')}
 					className={`injectionMoldinMachinePage__filter-btn ${stateFilter.includes('M') && 'btnActive'}`}
 				>
@@ -59,6 +62,7 @@ function InjectionFilter({ hanldeCheckBtn, wattageFilter, stateFilter }) {
 					<span>Bảo trì</span>
 				</button>
 				<button
+					type="button"
 					onClick={(e) => hanldeCheckBtn(e, 'state', 'R')}
 					className={`injectionMoldinMachinePage__filter-btn ${stateFilter.includes('R') && 'btnActive'}`}
 				>
@@ -66,6 +70,7 @@ function InjectionFilter({ hanldeCheckBtn, wattageFilter, stateFilter }) {
 					<span>Đang chạy</span>
 				</button>
 				<button
+					type="button"
 					onClick={(e) => hanldeCheckBtn(e, 'state', 'S')}
 					className={`injectionMoldinMachinePage__filter-btn ${stateFilter.includes('S') && 'btnActive'}`}
 				>

@@ -13,7 +13,7 @@ function NotFound() {
 			<br />
 			<NotFoundImage width="90%" />
 			<Link to="/">
-				<Button variant="contained">Nhấn vào đây để quay về trang chủ</Button>
+				<Button type="button" variant="contained">Nhấn vào đây để quay về trang chủ</Button>
 			</Link>
 		</div>
 	);

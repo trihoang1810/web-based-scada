@@ -120,6 +120,7 @@ function ReportPackingTable({ reportHeaders, reportData }) {
 									<strong>{pageOptions.length} </strong>
 								</span>{' '}
 								<button
+									type="button"
 									className={` pagination__button pagination__move-to-top ${canPreviousPage ? `` : `disabled`}`}
 									onClick={() => gotoPage(0)}
 								>

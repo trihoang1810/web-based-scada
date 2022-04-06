@@ -82,21 +82,28 @@ function ReportQaqcTable({ reportHeaders, reportData }) {
 									<strong>{pageOptions.length} </strong>
 								</span>{' '}
 								<button
+									type="button"
 									className={` pagination__button pagination__move-to-top ${canPreviousPage ? `` : `disabled`}`}
 									onClick={() => gotoPage(0)}
 								>
 									{'<<'}
 								</button>{' '}
 								<button
+									type="button"
 									className={`pagination__button ${canPreviousPage ? `` : `disabled`}`}
 									onClick={() => previousPage()}
 								>
 									Trang trước
 								</button>
-								<button className={`pagination__button ${canNextPage ? `` : `disabled`}`} onClick={() => nextPage()}>
+								<button
+									type="button"
+									className={`pagination__button ${canNextPage ? `` : `disabled`}`}
+									onClick={() => nextPage()}
+								>
 									Trang sau
 								</button>
 								<button
+									type="button"
 									className={`pagination__button pagination__move-to-bottom ${canNextPage ? `` : `disabled`}`}
 									onClick={() => gotoPage(pageCount - 1)}
 								>
