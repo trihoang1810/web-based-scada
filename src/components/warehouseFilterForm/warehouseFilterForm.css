@@ -1,0 +1,51 @@
+.warehouseFilterForm__container {
+}
+
+.warehouseFilterForm-title {
+	text-align: center;
+	font-size: 1.4rem;
+}
+
+.warehouseFilterForm-addBtn {
+	font-size: 3rem;
+}
+
+.warehouseFilterForm-addBtn:hover {
+	opacity: 0.5;
+	cursor: pointer;
+}
+
+.warehouseFilterForm-searchBtn {
+	padding: 6px 60px;
+	border-radius: 6px;
+	margin: 30px auto;
+	display: block;
+	background-color: var(--main-bg);
+	color: var(--txt-color);
+	font-size: 1.4rem;
+	font-weight: 600;
+	border: 2px solid var(--main-bg-dark);
+}
+
+.warehouseFilterForm-searchBtn:hover {
+	background-color: var(--main-color-gray);
+	color: var(--txt-white);
+	border: 2px solid var(--main-color-gray);
+}
+
+.warehouseFilterForm .disabled {
+	opacity: 0.7;
+	cursor: none;
+}
+
+.warehouseFilterForm .disabled:hover {
+	background-color: var(--main-bg);
+	color: var(--txt-color);
+	border: 2px solid var(--main-bg-dark);
+}
+
+.warehouseFilterForm__container .btn {
+	margin-top: 0;
+	margin-left: 60px;
+	padding: 10px 30px;
+}
