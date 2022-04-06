@@ -302,6 +302,81 @@ const COLUMNS = [
 	},
 ];
 
+const PACKING_COLUMNS = [
+	{
+		Header: 'STT',
+		accessor: 'id',
+		width: 60,
+		disableSortBy: true,
+		disableFilters: true,
+	},
+	{
+		Header: 'Ngày',
+		accessor: 'date',
+		width: 120,
+		disableFilters: true,
+	},
+	{
+		Header: 'Mã công việc',
+		accessor: 'productCode',
+		disableSortBy: true,
+	},
+	{
+		Header: 'Tên công việc',
+		accessor: 'productName',
+		width: 400,
+		disableSortBy: true,
+	},
+	{
+		Header: 'Đvt',
+		accessor: 'unit',
+		width: 60,
+		disableFilters: true,
+	},
+	{
+		Header: 'Số lượng',
+		accessor: 'quantity',
+		width: 80,
+		disableSortBy: true,
+	},
+	{
+		Header: 'KQ kiểm tra SP',
+		accessor: 'result',
+		width: 80,
+		disableFilters: true,
+	},
+	{
+		Header: 'Thiết bị sử dụng',
+		accessor: 'equipment',
+		width: 80,
+		disableFilters: true,
+	},
+	{
+		Header: 'KQ bảo dưỡng TB',
+		accessor: 'maintenanceResult',
+		width: 80,
+		disableFilters: true,
+	},
+	{
+		Header: 'Người thực hiện',
+		accessor: 'employee',
+		width: 80,
+		disableSortBy: true,
+	},
+	{
+		Header: 'Thời gian thực hiện',
+		accessor: 'time',
+		width: 120,
+		disableFilters: true,
+	},
+	{
+		Header: 'Ghi chú',
+		accessor: 'note',
+		width: 200,
+		disableSortBy: true,
+	},
+];
+
 const WATER_PROOF_COLUMNS = [
 	{
 		Header: 'Mẫu số',
@@ -352,4 +427,5 @@ export {
 	ROCK_TEST_DEFORMATION_COLUMNS,
 	BENDING_DEFORMATION_COLUMNS,
 	WATER_PROOF_COLUMNS,
+	PACKING_COLUMNS,
 };
