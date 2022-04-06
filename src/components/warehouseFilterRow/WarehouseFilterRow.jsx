@@ -5,19 +5,15 @@ import FormikControl from '../formControl/FormControl';
 import './warehouseFilterRow.css';
 
 function WarehouseFilter({ filterId, deleteFilterRow, filterValues, setFilterValue, data }) {
-	const [type, setType] = useState('');
-	const [name, setName] = useState('');
 	const [ids, setIds] = useState();
 
 	const { values, handleChange, setFieldValue, handleSubmit, isSubmitting, isValid } = useFormikContext();
 
-	const { id, fromDate, toDate } = values;
+	const { type, id, name, fromDate, toDate } = values;
 
 	useEffect(() => {
-		if (type === 'discharger') {
-			setIds(data.discharger.map((item) => item.id));
-		} else if (type === 'lid') {
-			setIds(data.lid.map((item) => item.id));
+		if (type.length > 0) {
+			setIds(data[type].map((item) => item.id));
 		}
 	}, [type]);
 
@@ -27,7 +23,9 @@ function WarehouseFilter({ filterId, deleteFilterRow, filterValues, setFilterVal
 			filterName = data[type].filter((item) => item.id === id && item.name)[0]?.name;
 		}
 		if (filterName) {
-			setName(filterName);
+			setFieldValue('name', filterName);
+		} else {
+			setFieldValue('name', '');
 		}
 	}, [id, type]);
 
@@ -38,30 +36,20 @@ function WarehouseFilter({ filterId, deleteFilterRow, filterValues, setFilterVal
 		});
 	}, [id, fromDate, toDate]);
 
-	const handleChangeId = (e) => {
-		const id = e.target.value;
-		setFieldValue('id', id);
-		handleChange(e);
-	};
-
 	return (
 		<div className="row warehouseFilterRow__container">
 			<>
-				<div className="col-2">
-					<select
-						name={`type-${filterId}`}
-						id={`type-${filterId}`}
-						value={type}
-						onChange={(e) => setType(e.target.value)}
-					>
-						<option value=""></option>
-						<option value="discharger">Bộ xả</option>
-						<option value="lid">Nắp bàn cầu</option>
-					</select>
+				<div className="col-3">
+					<FormikControl
+						control="select"
+						name="type"
+						onChange={handleChange}
+						options={[{ value: '' }, { key: 'Bộ xả', value: 'discharger' }, { key: 'Nắp bàn cầu', value: 'lid' }]}
+					/>
 				</div>
 
 				<div className="col-2">
-					<FormikControl control="input" list={`list${filterId}`} name="id" onChange={handleChangeId} />
+					<FormikControl control="input" list={`list${filterId}`} name="id" onChange={handleChange} />
 
 					{ids && (
 						<datalist id={`list${filterId}`}>
@@ -74,8 +62,8 @@ function WarehouseFilter({ filterId, deleteFilterRow, filterValues, setFilterVal
 					)}
 				</div>
 
-				<div className="col-3">
-					<FormikControl value={name} control="input" disabled />
+				<div className="col-2">
+					<FormikControl name="name" control="input" disable={true} />
 				</div>
 
 				<div className="col-2">

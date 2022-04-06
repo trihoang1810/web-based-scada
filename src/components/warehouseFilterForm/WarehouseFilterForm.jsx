@@ -3,6 +3,7 @@ import { Formik, Form, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 import WarehouseFilterRow from '../warehouseFilterRow/WarehouseFilterRow';
 import './warehouseFilterForm.css';
+import { type } from '@testing-library/user-event/dist/type';
 
 function WarehouseFilterForm() {
 	const [filterRows, setFilterRows] = useState([1]);
@@ -75,9 +76,10 @@ function WarehouseFilterForm() {
 	}, [filterRows]);
 
 	const validationSchema = Yup.object({
-		type: '',
+		type: Yup.string(),
 		id: Yup.string().required('Mã sản phẩm không được bỏ trống'),
 		fromDate: Yup.date().required('Ngày bắt đầu không được bỏ trống'),
+		name: Yup.string().required('Sản phẩm không tồn tại'),
 		toDate: Yup.date().when('fromDate', (fromdate, schema) =>
 			fromdate ? schema.min(fromdate, 'Ngày bắt đầu phải nhỏ hơn ngày kết thúc') : schema
 		),
@@ -89,11 +91,11 @@ function WarehouseFilterForm() {
 				<Formik>
 					<Form>
 						<div className="row" style={{ width: '100%' }}>
-							<div className="col-10">
+							<div className="col-11">
 								<div className="row warehouseFilterForm-title">
-									<span className="col-2">Loại sản phẩm</span>
+									<span className="col-3">Loại sản phẩm</span>
 									<span className="col-2">Mã sản phẩm</span>
-									<span className="col-3">Tên sản phẩm</span>
+									<span className="col-2">Tên sản phẩm</span>
 									<span className="col-2">Từ ngày(mm/dd/yyyy)</span>
 									<span className="col-2">Đến ngày(mm/dd/yyyy)</span>
 								</div>
@@ -105,6 +107,7 @@ function WarehouseFilterForm() {
 										initialValues={{
 											type: '',
 											id: '',
+											name: '',
 											fromDate: fromDateDefault,
 											toDate: toDateDefault,
 										}}
@@ -121,7 +124,7 @@ function WarehouseFilterForm() {
 								))}
 							</div>
 
-							<div className="col-2 flex-horizontal-center">
+							<div className="col-1 flex-horizontal-center">
 								{filterRows.length < 3 && (
 									<div className="warehouseFilterForm-addBtn flex-center" onClick={addFilterRow}>
 										<i className="bx bx-plus-circle"></i>
