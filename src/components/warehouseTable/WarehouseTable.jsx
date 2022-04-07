@@ -13,7 +13,15 @@ function WarehouseTable({ headers = [], body = [], onRowClick }) {
 
 			<tbody>
 				{body.map((row, index) => (
-					<tr key={index} onClick={() => onRowClick(row.id)}>
+					<tr
+						key={index}
+						onClick={
+							onRowClick &&
+							function () {
+								onRowClick(row.id);
+							}
+						}
+					>
 						{headers.map((header, index) => (
 							<td key={index}>{row[header.key]}</td>
 						))}
