@@ -72,7 +72,7 @@ function WarehouseFilter({ filterId, deleteFilterRow, filterValues, setFilterVal
 					)}
 				</div>
 
-				<div className="col-2">
+				<div className="col-3">
 					<FormikControl name="name" control="input" />
 				</div>
 
@@ -85,7 +85,7 @@ function WarehouseFilter({ filterId, deleteFilterRow, filterValues, setFilterVal
 				</div>
 
 				{deleteFilterRow && (
-					<div className="col-2 flex-center">
+					<div className="col-1 flex-center">
 						<div className="deleteBtn" onClick={() => deleteFilterRow(filterId)}>
 							<i className="bx bxs-x-circle"></i>
 						</div>

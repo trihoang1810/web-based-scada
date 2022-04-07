@@ -91,12 +91,12 @@ function WarehouseFilterForm() {
 							<div className="row warehouseFilterForm-title">
 								<span className="col-2">Loại sản phẩm</span>
 								<span className="col-2">Mã sản phẩm</span>
-								<span className="col-2">Tên sản phẩm</span>
+								<span className="col-3">Tên sản phẩm</span>
 								<span className="col-2">Từ ngày(mm/dd/yyyy)</span>
 								<span className="col-2">Đến ngày(mm/dd/yyyy)</span>
 
 								{filterRows.length < 3 && (
-									<div className="warehouseFilterForm-addBtn col-2" onClick={addFilterRow}>
+									<div className="warehouseFilterForm-addBtn col-1" onClick={addFilterRow}>
 										<i className="bx bx-plus-circle"></i>
 									</div>
 								)}
