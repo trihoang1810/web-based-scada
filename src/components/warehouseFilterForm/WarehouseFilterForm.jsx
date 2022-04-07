@@ -1,5 +1,5 @@
 import { useState, useEffect, useMemo } from 'react';
-import { Formik, Form, ErrorMessage } from 'formik';
+import { Formik } from 'formik';
 import * as Yup from 'yup';
 import WarehouseFilterRow from '../warehouseFilterRow/WarehouseFilterRow';
 import './warehouseFilterForm.css';
@@ -65,7 +65,7 @@ function WarehouseFilterForm() {
 	};
 
 	const deleteFilterRow = (filterId) => {
-		setFilterRows(filterRows.filter((item) => item != filterId));
+		setFilterRows(filterRows.filter((item) => item !== filterId));
 	};
 
 	const search = () => {

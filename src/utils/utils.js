@@ -43,6 +43,17 @@ const REPORT_MENU_LIST = [
 	},
 ];
 
+const MONITOR_INJECTION_LIST = [
+	{
+		title: 'BẢNG',
+		url: '/report/injection/pages/1',
+	},
+	{
+		title: 'BẢN ĐỒ',
+		url: '/report/injection/map',
+	},
+];
+
 const QA_QC_REPORT_MENU_LIST = [
 	{
 		title: 'MKT Độ bền NBC',
@@ -418,35 +429,44 @@ const PACKING_EMPLOYEE_COLUMNS = [
 		Header: 'STT',
 		accessor: 'id',
 		width: 60,
+		disableFilters: true,
+		disableSortBy: true,
 	},
 	{
 		Header: 'Mã nhân viên',
 		accessor: 'employeeId',
 		width: 100,
+		disableSortBy: true,
 	},
 	{
 		Header: 'Tên nhân viên',
 		accessor: 'employeeName',
+		disableSortBy: true,
 	},
 	{
 		Header: 'Bộ phận',
 		accessor: 'department',
+		disableSortBy: true,
 	},
 	{
 		Header: 'Giờ làm việc KH',
 		accessor: 'workTime',
+		disableFilters: true,
 	},
 	{
 		Header: 'Số giờ nghỉ',
 		accessor: 'restTime',
+		disableFilters: true,
 	},
 	{
 		Header: 'Các vi phạm/nhắc nhở',
 		accessor: 'violation',
+		disableFilters: true,
 	},
 	{
 		Header: 'Ghi chú',
 		accessor: 'note',
+		disableSortBy: true,
 	},
 ];
 
@@ -471,4 +491,5 @@ export {
 	WATER_PROOF_COLUMNS,
 	PACKING_COLUMNS,
 	PACKING_EMPLOYEE_COLUMNS,
+	MONITOR_INJECTION_LIST,
 };

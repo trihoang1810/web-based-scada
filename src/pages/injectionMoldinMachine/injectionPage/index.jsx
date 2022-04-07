@@ -6,6 +6,9 @@ import InjectionFilter from '../../../components/injectionFilter/InjectionFilter
 import InjectionMoldingMachine from '../../../components/injectionMoldingMachine/InjectionMoldingMachine';
 import InjectionStateNote from '../../../components/injectionStateNote/InjectionStateNote';
 import './injectionMoldinMachinePage.css';
+import { MONITOR_INJECTION_LIST } from '../../../utils/utils';
+import Navbar from '../../../components/navBar/NavBar';
+import ReportNavigationButton from '../../../components/reportNavigationButton/ReportNavigationButton';
 
 function InjectionMoldinMachinePage() {
 	// fake data from API
@@ -426,10 +429,22 @@ function InjectionMoldinMachinePage() {
 				</div>
 			)}
 
-			<div className="row injectionMoldinMachines__container">
+			<div className="row injectionMoldinMachines__container mb-20">
 				{pageData
 					? pageData.map((item, index) => <InjectionMoldingMachine injectionMoldingMachineData={item} key={index} />)
 					: [...Array(pageSize).keys()].map((item, index) => <InjectionMoldingMachine key={index} />)}
+			</div>
+			<div className="row mb-10">
+				<div className="col-12 flex-center">
+					<ReportNavigationButton history={history} path="/injection/map">
+						Xem dưới dạng bản đồ
+					</ReportNavigationButton>
+				</div>
+			</div>
+			<div className="row">
+				<div className="col-12 flex-center">
+					<ReportNavigationButton history={history} path="/report/main/injection" />
+				</div>
 			</div>
 		</div>
 	);

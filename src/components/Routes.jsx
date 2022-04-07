@@ -13,6 +13,8 @@ import WarehouseOverview from '../pages/warehouse/warehouseOverview';
 import WarehouseDetail from '../pages/warehouse/warehouseDetail';
 import Alarm from '../pages/Alarm';
 import Report from '../pages/report/Report';
+import InjectionMap from '../pages/injectionMoldinMachine/injectionMap';
+import InjectionMoldingMainPage from '../pages/injectionMoldinMachine/index';
 
 const Routes = () => {
 	return (
@@ -23,6 +25,8 @@ const Routes = () => {
 			<Route path="/qaqc" component={QualityControlRoutes} />
 			<Route path="/packing" exact component={PackingPage} />
 			<Route path="/packing/:id" component={PackingDetail} />
+			<Route path="/injection" exact component={InjectionMoldingMainPage} />
+			<Route exact path="/injection/map" component={InjectionMap} />
 			<Route path="/injection/pages/:page" component={InjectionMoldingMachinePage} />
 			<Route path="/injection/:id" component={InjectionDetail} />
 			<Route path="/warning" component={Alarm} />

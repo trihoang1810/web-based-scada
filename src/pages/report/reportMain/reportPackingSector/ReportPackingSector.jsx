@@ -68,7 +68,6 @@ function ReportPackingSector() {
 
 		for (let c = 1; c <= 20; c++) {
 			bgBrush(sheet1, 8, c, 'e7e6e6');
-			bgBrush(sheet1, 27, c, 'e7e6e6');
 		}
 
 		sheet1.getCell('C7').alignment = {
