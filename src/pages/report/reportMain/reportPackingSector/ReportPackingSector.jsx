@@ -1,20 +1,26 @@
 import { format } from 'date-fns';
 import React from 'react';
-import mocking_packing_report from '../../assets/JsonData/mock_packing_report.json';
-import data from '../../assets/JsonData/report_packing_employee-assessment.json';
-import { bgBrush, createExcelFile, drawBorder, saveExcelFile } from '../../utils//excel';
-import { PACKING_COLUMNS } from '../../utils/utils';
-import ReportPackingFilter from '../reportPackingFilter/ReportPackingFilter';
-import ReportPackingTable from '../reportPackingTable/ReportPackingTable';
+import mocking_packing_report from '../../../../assets/JsonData/mock_packing_report.json';
+import data from '../../../../assets/JsonData/report_packing_employee-assessment.json';
+import { bgBrush, createExcelFile, drawBorder, saveExcelFile } from '../../../../utils/excel';
+import { PACKING_COLUMNS, PACKING_EMPLOYEE_COLUMNS } from '../../../../utils/utils';
+import ReportPackingFilter from '../../../../components/reportPackingFilter/ReportPackingFilter';
+import ReportPackingTable from '../../../../components/reportPackingTable/ReportPackingTable';
+import mocking_packing_report_employee from '../../../../assets/JsonData/mock_packing_report_employee-assessment.json';
+
+const randomColor = ['color1', 'color2', 'color3', 'color4', 'color5', 'color6', 'color7', 'color8', 'color9'];
+
 function ReportPackingSector() {
 	const [packingReportData, setPackingReportData] = React.useState([]);
+	const [packingEmployeeReportData, setPackingEmployeeReportData] = React.useState([]);
 	React.useEffect(() => {
-		mocking_packing_report.forEach((reportList, index) => {
-			reportList['list-report'].forEach((report, index) => {
+		mocking_packing_report.forEach((reportList, index1) => {
+			reportList['list-report'].forEach((report, index2) => {
 				setPackingReportData((prevState) => [
 					...prevState,
 					{
 						id: report.id,
+						color: randomColor[index1 % 9],
 						date: reportList.date,
 						productCode: report.productCode,
 						productName: report.productName,
@@ -30,8 +36,22 @@ function ReportPackingSector() {
 				]);
 			});
 		});
+		mocking_packing_report_employee.forEach((reportList, index1) => {
+			setPackingEmployeeReportData((prevState) => [
+				...prevState,
+				{
+					id: reportList.id,
+					employeeId: reportList.employeeId,
+					employee: reportList.employee,
+					department: reportList.department,
+					workTime: reportList.workTime,
+					restTime: reportList.workRest,
+					violation: reportList.violation,
+					note: reportList.note,
+				},
+			]);
+		});
 	}, []);
-	console.log('packingReportData', packingReportData);
 	const exportReport = (dateSearch, fileName) => {
 		const workbook = createExcelFile(data);
 		const sheet1 = workbook.getWorksheet('sheet1');
@@ -60,37 +80,8 @@ function ReportPackingSector() {
 			vertical: 'middle',
 		};
 		let rowIndex1 = 9;
-		///-------------------------------------------------
-		// for (let i = 1; i <= 10; i++) {
-		// 	sheet1.getRow(rowIndex1).values = [
-		// 		i,
-		// 		'03/03/2022',
-		// 		'VS040321D-CO1',
-		// 		'',
-		// 		'Bộ xả paradice KR piston 2 nhấn...',
-		// 		'',
-		// 		'',
-
-		// 		'',
-		// 		'',
-		// 		'',
-		// 		'bộ',
-		// 		'500',
-		// 		'',
-		// 		'',
-		// 		'',
-		// 		'định',
-		// 	];
-		// 	sheet1.getRow(rowIndex1).font = {
-		// 		name: 'Times New Roman',
-		// 	};
-		// 	sheet1.mergeCells(rowIndex1, 3, rowIndex1, 4);
-		// 	sheet1.mergeCells(rowIndex1, 5, rowIndex1, 10);
-		// 	sheet1.mergeCells(rowIndex1, 16, rowIndex1, 17);
-		// 	sheet1.mergeCells(rowIndex1, 19, rowIndex1, 20);
-		// 	rowIndex1++;
-		// }
 		packingReportData.forEach((item, index) => {
+			let dateComparison = item.date;
 			sheet1.getRow(rowIndex1).values = [
 				item.id,
 				item.date,
@@ -113,6 +104,7 @@ function ReportPackingSector() {
 				item.note,
 			];
 			sheet1.getRow(rowIndex1).font = {
+				size: 9,
 				name: 'Times New Roman',
 			};
 			sheet1.mergeCells(rowIndex1, 3, rowIndex1, 4);
@@ -120,6 +112,16 @@ function ReportPackingSector() {
 			sheet1.mergeCells(rowIndex1, 16, rowIndex1, 17);
 			sheet1.mergeCells(rowIndex1, 19, rowIndex1, 20);
 			rowIndex1++;
+			if (index + 1 !== packingReportData.length) {
+				if (dateComparison !== packingReportData[index + 1].date) {
+					dateComparison = packingReportData[index + 1].date;
+					sheet1.mergeCells(rowIndex1, 3, rowIndex1, 4);
+					sheet1.mergeCells(rowIndex1, 5, rowIndex1, 10);
+					sheet1.mergeCells(rowIndex1, 16, rowIndex1, 17);
+					sheet1.mergeCells(rowIndex1, 19, rowIndex1, 20);
+					rowIndex1++;
+				}
+			}
 		});
 		///-----------------------------------------------
 		for (let r = 9; r < rowIndex1; r++) {
@@ -162,13 +164,34 @@ function ReportPackingSector() {
 
 		let rowIndex2 = rowIndex1 + 2;
 		///------------------------------------------------------
-		for (let i = 1; i <= 14; i++) {
-			sheet1.getRow(rowIndex2).values = [i, '', 'Itam', '', 'Lê Thành Tâm', '', '', '', 'ĐGBX', '', 12];
+		packingEmployeeReportData.forEach((item, index) => {
+			sheet1.getRow(rowIndex2).values = [
+				index + 1,
+				'',
+				item.employeeId,
+				'',
+				item.employee,
+				'',
+				'',
+				'',
+				item.department,
+				'',
+				item.workTime,
+				'',
+				item.restTime,
+				'',
+				item.violation,
+				'',
+				'',
+				'',
+				item.note,
+			];
 			sheet1.getRow(rowIndex2).font = {
+				size: 9,
 				name: 'Times New Roman',
 			};
 			rowIndex2++;
-		}
+		});
 		///-----------------------------------------------------
 
 		for (let r = rowIndex1 + 1; r < rowIndex2; r++) {
@@ -249,6 +272,7 @@ function ReportPackingSector() {
 		<>
 			<ReportPackingFilter exportReport={exportReport} onSubmit={onSubmit} />
 			<ReportPackingTable reportData={packingReportData} reportHeaders={PACKING_COLUMNS} />
+			<ReportPackingTable reportData={packingEmployeeReportData} reportHeaders={PACKING_EMPLOYEE_COLUMNS} />
 		</>
 	);
 }
