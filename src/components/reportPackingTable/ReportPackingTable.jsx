@@ -1,13 +1,43 @@
 import React from 'react';
-import './reportQaqcTable.css';
-import { usePagination, useFlexLayout, useTable } from 'react-table';
+import './reportPackingTable.css';
+import { useFilters, usePagination, useFlexLayout, useTable, useSortBy } from 'react-table';
 
-function ReportQaqcTable({ reportHeaders, reportData }) {
+const ColumnFilter = ({ column }) => {
+	const { filterValue, setFilter } = column;
+	return (
+		<>
+			<span>
+				<input
+					style={{
+						width: '100%',
+						border: 'none',
+						padding: '10px 0',
+						borderBottom: '1px solid #ddd',
+						backgroundColor: 'transparent',
+						color: 'var(--txt-white)',
+						fontSize: '1rem',
+						'::placeholder': {
+							color: 'var(--txt-white)',
+						},
+					}}
+					type="text"
+					className="column-filter__input--packing"
+					value={filterValue || ''}
+					onChange={(e) => setFilter(e.target.value)}
+					placeholder="Tìm kiếm ở đây"
+				/>
+			</span>
+		</>
+	);
+};
+
+function ReportPackingTable({ reportHeaders, reportData }) {
 	const columns = React.useMemo(() => reportHeaders, [reportHeaders]);
 	const data = React.useMemo(() => reportData, [reportData]);
 
 	const defaultColumn = React.useMemo(() => {
 		return {
+			Filter: ColumnFilter,
 			minWidth: 30, // minWidth is only used as a limit for resizing
 			width: 150, // width is used for both the flex-basis and flex-grow
 			maxWidth: 200, // maxWidth is only used as a limit for resizing
@@ -19,6 +49,8 @@ function ReportQaqcTable({ reportHeaders, reportData }) {
 			data,
 			defaultColumn,
 		},
+		useFilters,
+		useSortBy,
 		usePagination,
 		useFlexLayout
 	);
@@ -50,12 +82,18 @@ function ReportQaqcTable({ reportHeaders, reportData }) {
 						</div>
 						<div className="card__body">
 							<div className="center-block fix-width scroll-inner">
-								<table id="report-qaqc__table" {...getTableProps()}>
+								<table id="report-packing__table" {...getTableProps()}>
 									<thead>
 										{headerGroups.map((headerGroup) => (
 											<tr {...headerGroup.getHeaderGroupProps()}>
 												{headerGroup.headers.map((column) => {
-													return <th {...column.getHeaderProps()}>{column.render('Header')}</th>;
+													return (
+														<th {...column.getHeaderProps(column.getSortByToggleProps({ title: undefined }))}>
+															{column.render('Header')}
+															<span>{column.isSorted ? (column.isSortedDesc ? ' 🔽' : ' 🔼') : ''}</span>
+															<div>{column.canFilter ? column.render('Filter') : null}</div>
+														</th>
+													);
 												})}
 											</tr>
 										))}
@@ -89,21 +127,15 @@ function ReportQaqcTable({ reportHeaders, reportData }) {
 									{'<<'}
 								</button>{' '}
 								<button
-									type="button"
 									className={`pagination__button ${canPreviousPage ? `` : `disabled`}`}
 									onClick={() => previousPage()}
 								>
 									Trang trước
 								</button>
-								<button
-									type="button"
-									className={`pagination__button ${canNextPage ? `` : `disabled`}`}
-									onClick={() => nextPage()}
-								>
+								<button className={`pagination__button ${canNextPage ? `` : `disabled`}`} onClick={() => nextPage()}>
 									Trang sau
 								</button>
 								<button
-									type="button"
 									className={`pagination__button pagination__move-to-bottom ${canNextPage ? `` : `disabled`}`}
 									onClick={() => gotoPage(pageCount - 1)}
 								>
@@ -118,4 +150,4 @@ function ReportQaqcTable({ reportHeaders, reportData }) {
 	);
 }
 
-export default ReportQaqcTable;
+export default ReportPackingTable;
