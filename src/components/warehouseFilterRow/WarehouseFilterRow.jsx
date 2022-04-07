@@ -5,6 +5,7 @@ import './warehouseFilterRow.css';
 
 function WarehouseFilter({ filterId, deleteFilterRow, filterValues, setFilterValue, data, setSearchDisabled }) {
 	const [ids, setIds] = useState();
+	const [rowValues, setRowValues] = useState({});
 
 	const { values, handleChange, setFieldValue, handleSubmit, isSubmitting, isValid } = useFormikContext();
 
@@ -29,15 +30,15 @@ function WarehouseFilter({ filterId, deleteFilterRow, filterValues, setFilterVal
 	}, [id, type]);
 
 	useEffect(() => {
-		setFilterValue({
-			...filterValues,
-			['row' + filterId]: { type, id, name, fromDate, toDate },
-		});
+		setRowValues({ type, id, name, fromDate, toDate });
 	}, [type, id, name, fromDate, toDate]);
 
 	useEffect(() => {
 		if (isValid) {
-			setSearchDisabled(false);
+			setFilterValue({
+				...filterValues,
+				['row' + filterId]: rowValues,
+			});
 		} else {
 			setSearchDisabled(true);
 		}
@@ -91,7 +92,7 @@ function WarehouseFilter({ filterId, deleteFilterRow, filterValues, setFilterVal
 						</div>
 					</div>
 				)}
-				<div className="row" style={{ width: '100%', textAlign: 'center' }}>
+				<div className="row" style={{ width: '100%', marginTop: '6px', marginLeft: '4px' }}>
 					<div className="col-12">
 						<ErrorMessage name="id" component="div" className="error-message" />
 						<ErrorMessage name="fromDate" component="div" className="error-message" />

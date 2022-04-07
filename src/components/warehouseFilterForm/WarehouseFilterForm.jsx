@@ -1,5 +1,5 @@
-import { useState, useEffect, useMemo } from 'react';
 import { Formik } from 'formik';
+import { useEffect, useMemo, useState } from 'react';
 import * as Yup from 'yup';
 import WarehouseFilterRow from '../warehouseFilterRow/WarehouseFilterRow';
 import './warehouseFilterForm.css';
@@ -60,6 +60,16 @@ function WarehouseFilterForm() {
 		setFilterValue(newFilterValue);
 	}, [filterRows]);
 
+	useEffect(() => {
+		let isValid = false;
+		for (let row in filterValues) {
+			if (!filterValues[row]) {
+				isValid = true;
+			}
+		}
+		setSearchDisabled(isValid);
+	}, [filterValues]);
+
 	const addFilterRow = () => {
 		setFilterRows([...filterRows, filterRows[filterRows.length - 1] + 1]);
 	};
@@ -92,8 +102,8 @@ function WarehouseFilterForm() {
 								<span className="col-2">Loại sản phẩm</span>
 								<span className="col-2">Mã sản phẩm</span>
 								<span className="col-3">Tên sản phẩm</span>
-								<span className="col-2">Từ ngày(mm/dd/yyyy)</span>
-								<span className="col-2">Đến ngày(mm/dd/yyyy)</span>
+								<span className="col-2">Từ ngày (tháng/ngày/năm)</span>
+								<span className="col-2">Đến ngày (tháng/ngày/năm)</span>
 
 								{filterRows.length < 3 && (
 									<div className="warehouseFilterForm-addBtn col-1" onClick={addFilterRow}>
@@ -129,7 +139,7 @@ function WarehouseFilterForm() {
 						<div className="col-1 flex-horizontal-center">
 							<button
 								type="button"
-								className={`warehouseFilterForm-btn ${searchDisabled && 'disabled'}`}
+								className={`btn btn-primary warehouseFilterForm-btn ${searchDisabled && 'disabled'}`}
 								onClick={search}
 								disabled={searchDisabled}
 							>
