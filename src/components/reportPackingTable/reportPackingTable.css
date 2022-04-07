@@ -23,3 +23,42 @@
 #report-packing__table thead th, tfoot td {
    color: var(--txt-white);
 }
+
+	/* '#00bcd430',
+	'#ff980030',
+	'#9c27b030',
+	'#03a9f430',
+	'#8bc34630',
+	'#00968830',
+	'#ffc10730',
+	'#3f51b530',
+	'#79554830', */
+
+  .color1{
+    background-color: #00bcd430;
+  }
+  .color2{
+    background-color: #ff980030;
+  }
+  .color3{
+    background-color: #9c27b030;
+  }
+  .color4{
+    background-color: #03a9f430;
+  }
+  .color5{
+    background-color: #8bc34630;
+  }
+  .color6{
+    background-color: #00968830;
+  }
+  .color7{
+    background-color: #ffc10730;
+  }
+  .color8{
+    background-color: #3f51b530;
+  }
+  .color9{
+    background-color: #79554830;
+  }
+  

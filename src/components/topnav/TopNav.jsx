@@ -2,8 +2,6 @@ import React from 'react';
 
 import Dropdown from '../dropdown/DropDown';
 
-// import ThemeMenu from '../thememenu/ThemeMenu';
-
 import './topnav.css';
 
 import notifications from '../../assets/JsonData/notification.json';

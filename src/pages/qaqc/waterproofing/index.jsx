@@ -3,7 +3,7 @@ import React from 'react';
 import { ReactComponent as Stop } from '../../../assets/images/qaqc/stop.svg';
 import { ReactComponent as Manual } from '../../../assets/images/qaqc/manual.svg';
 import { ReactComponent as Auto } from '../../../assets/images/qaqc/auto.svg';
-import { ReactComponent as WaterProofMachine } from '../../../assets/images/qaqc/waterproof__run.svg';
+import { ReactComponent as WaterProofMachine } from '../../../assets/images/qaqc/waterProof__run.svg';
 import {
 	styled,
 	TableCell,
@@ -107,13 +107,13 @@ function StyledPaper({ children }) {
 }
 function WaterProofing() {
 	const history = useHistory();
-	const [machineState, setMachineState] = React.useState('stop');
-	const [settings, setSettings] = React.useState({
+	const [machineState] = React.useState('stop');
+	const [settings] = React.useState({
 		temperature: 0,
 		time: 0,
 		testNumber: 0,
 	});
-	const [params, setParams] = React.useState({
+	const [params] = React.useState({
 		temperature: 0,
 		time: 0,
 		testNumber: 0,

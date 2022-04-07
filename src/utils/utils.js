@@ -375,6 +375,11 @@ const PACKING_COLUMNS = [
 		width: 200,
 		disableSortBy: true,
 	},
+	{
+		Header: 'Màu',
+		accessor: 'color',
+		show: false,
+	},
 ];
 
 const WATER_PROOF_COLUMNS = [
@@ -408,6 +413,43 @@ const WATER_PROOF_COLUMNS = [
 	},
 ];
 
+const PACKING_EMPLOYEE_COLUMNS = [
+	{
+		Header: 'STT',
+		accessor: 'id',
+		width: 60,
+	},
+	{
+		Header: 'Mã nhân viên',
+		accessor: 'employeeId',
+		width: 100,
+	},
+	{
+		Header: 'Tên nhân viên',
+		accessor: 'employeeName',
+	},
+	{
+		Header: 'Bộ phận',
+		accessor: 'department',
+	},
+	{
+		Header: 'Giờ làm việc KH',
+		accessor: 'workTime',
+	},
+	{
+		Header: 'Số giờ nghỉ',
+		accessor: 'restTime',
+	},
+	{
+		Header: 'Các vi phạm/nhắc nhở',
+		accessor: 'violation',
+	},
+	{
+		Header: 'Ghi chú',
+		accessor: 'note',
+	},
+];
+
 function convertDate(value) {
 	const date = new Date(value);
 	return date.toLocaleDateString();
@@ -428,4 +470,5 @@ export {
 	BENDING_DEFORMATION_COLUMNS,
 	WATER_PROOF_COLUMNS,
 	PACKING_COLUMNS,
+	PACKING_EMPLOYEE_COLUMNS,
 };
