@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import FormikControl from '../formControl/FormControl';
 import './warehouseFilterRow.css';
 
-function WarehouseFilter({ filterId, deleteFilterRow, filterValues, setFilterValue, data }) {
+function WarehouseFilter({ filterId, deleteFilterRow, filterValues, setFilterValue, data, setSearchDisabled }) {
 	const [ids, setIds] = useState();
 
 	const { values, handleChange, setFieldValue, handleSubmit, isSubmitting, isValid } = useFormikContext();
@@ -34,6 +34,14 @@ function WarehouseFilter({ filterId, deleteFilterRow, filterValues, setFilterVal
 			['row' + filterId]: { type, id, name, fromDate, toDate },
 		});
 	}, [type, id, name, fromDate, toDate]);
+
+	useEffect(() => {
+		if (isValid) {
+			setSearchDisabled(false);
+		} else {
+			setSearchDisabled(true);
+		}
+	}, [isValid]);
 
 	return (
 		<div className="row warehouseFilterRow__container">

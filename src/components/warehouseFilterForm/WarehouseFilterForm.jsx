@@ -127,7 +127,12 @@ function WarehouseFilterForm() {
 						</div>
 
 						<div className="col-1 flex-horizontal-center">
-							<button type="button" className="warehouseFilterForm-btn" onClick={search}>
+							<button
+								type="button"
+								className={`warehouseFilterForm-btn ${searchDisabled && 'disabled'}`}
+								onClick={search}
+								disabled={searchDisabled}
+							>
 								Tìm
 							</button>
 						</div>
