@@ -42,15 +42,15 @@ function StyledPaper({ children }) {
 
 function FirstSystem() {
 	let history = useHistory();
-	const [machineState, setMachineState] = React.useState('stop');
-	const [params, setParams] = React.useState({
+	const [machineState] = React.useState('stop');
+	const [params] = React.useState({
 		numbs: 0,
 		force2: 0,
 		time2: 0,
 		force3: 0,
 		time3: 0,
 	});
-	const [settings, setSettings] = React.useState({
+	const [settings] = React.useState({
 		numb: 0,
 		force2: 0,
 		time2: 0,

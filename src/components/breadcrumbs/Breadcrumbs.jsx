@@ -1,5 +1,7 @@
-import { Breadcrumbs, Link, Typography } from '@mui/material';
+import { Breadcrumbs, Typography } from '@mui/material';
+import { Link } from 'react-router-dom';
 import React from 'react';
+import './breadcrumbs.css';
 
 function CustomizedBreadcrumbs({ id, sector, href }) {
 	return (
@@ -16,6 +18,7 @@ function CustomizedBreadcrumbs({ id, sector, href }) {
 								marginInlineStart: '0px',
 								marginInlineEnd: '0px',
 								fontWeight: 'bold',
+								textTransform: 'capitalize',
 							},
 							'& .MuiLink-root': {
 								marginBottom: '15px',
@@ -29,7 +32,7 @@ function CustomizedBreadcrumbs({ id, sector, href }) {
 				}}
 				aria-label="breadcrumb"
 			>
-				<Link color="inherit" underline="hover" href={href}>
+				<Link className="customized-breadcrumbs__link" to={href}>
 					{sector}
 				</Link>
 				<Typography color="text.primary">{id}</Typography>

@@ -1,41 +1,39 @@
-import React from 'react';
-// import { IgrRadialGauge, IgrRadialGaugeRange } from 'igniteui-react-gauges';
-import { ReactComponent as Stop } from '../../../assets/images/qaqc/stop.svg';
-import { ReactComponent as Manual } from '../../../assets/images/qaqc/manual.svg';
-import { ReactComponent as Auto } from '../../../assets/images/qaqc/auto.svg';
-import { ReactComponent as WaterProofMachine } from '../../../assets/images/qaqc/waterProof__run.svg';
 import {
+	createTheme,
+	Paper,
 	styled,
+	Table,
+	TableBody,
 	TableCell,
 	tableCellClasses,
-	ThemeProvider,
-	createTheme,
 	TableContainer,
-	Table,
 	TableHead,
 	TableRow,
-	TableBody,
-	Paper,
-	Link,
-	Typography,
-	Breadcrumbs,
+	ThemeProvider,
 } from '@mui/material';
-import ProgressBar from '../../../components/progressBar/ProgressBar';
 import {
-	Chart,
 	ArcElement,
-	Tooltip,
-	Legend,
-	CategoryScale,
 	BarElement,
+	CategoryScale,
+	Chart,
+	Legend,
 	LinearScale,
-	Title,
 	LineElement,
 	PointElement,
+	Title,
+	Tooltip,
 } from 'chart.js';
+import React from 'react';
 import { Line } from 'react-chartjs-2';
-import ReportNavigationButton from '../../../components/reportNavigationButton/ReportNavigationButton';
 import { useHistory } from 'react-router-dom';
+import { ReactComponent as Auto } from '../../../assets/images/qaqc/auto.svg';
+import { ReactComponent as Manual } from '../../../assets/images/qaqc/manual.svg';
+// import { IgrRadialGauge, IgrRadialGaugeRange } from 'igniteui-react-gauges';
+import { ReactComponent as Stop } from '../../../assets/images/qaqc/stop.svg';
+import { ReactComponent as WaterProofMachine } from '../../../assets/images/qaqc/waterProof__run.svg';
+import CustomizedBreadcrumbs from '../../../components/breadcrumbs/Breadcrumbs';
+import ProgressBar from '../../../components/progressBar/ProgressBar';
+import ReportNavigationButton from '../../../components/reportNavigationButton/ReportNavigationButton';
 
 Chart.register(ArcElement, Tooltip, Legend, CategoryScale, BarElement, LinearScale, Title, LineElement, PointElement);
 
@@ -125,36 +123,7 @@ function WaterProofing() {
 	];
 	return (
 		<>
-			<Breadcrumbs
-				sx={{
-					'& .MuiBreadcrumbs-ol': {
-						'& .MuiBreadcrumbs-li': {
-							'& .MuiTypography-root': {
-								display: 'block',
-								fontSize: '1.5em',
-								marginBlockStart: '0.83em',
-								marginBlockEnd: '0.83em',
-								marginInlineStart: '0px',
-								marginInlineEnd: '0px',
-								fontWeight: 'bold',
-							},
-							'& .MuiLink-root': {
-								marginBottom: '15px',
-								textTransform: 'capitalize',
-							},
-							'& .MuiBreadcrumbs-separator': {
-								fontSize: '1.5rem',
-							},
-						},
-					},
-				}}
-				aria-label="breadcrumb"
-			>
-				<Link color="inherit" underline="hover" href="/qaqc">
-					PHÒNG QA/QC THIẾT BỊ
-				</Link>
-				<Typography color="text.primary">MÁY KIẾM TRA CHỐNG THẤM</Typography>
-			</Breadcrumbs>
+			<CustomizedBreadcrumbs href="/qaqc" sector="PHÒNG QA/QC THIẾT BỊ" id="MÁY KIẾM TRA CHỐNG THẤM NƯỚC" />
 			<div className="row">
 				<div className="col-3">
 					<div className="card">

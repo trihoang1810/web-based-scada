@@ -56,54 +56,58 @@ function WarehouseDetail() {
 				<div className="row warehouseDetail__values">
 					<div className="col-8">
 						<div className="card">
-							<WarehouseTable
-								headers={[
-									{ text: 'Thời gian', key: 'time' },
-									{ text: 'Sự kiện', key: 'activity' },
-									{ text: 'SL/KL', key: 'quantity' },
-									{ text: 'Ghi chú', key: 'note' },
-								]}
-								body={[
-									{
-										time: '14/02/2022',
-										activity: 'Nhập kho',
-										quantity: '300',
-										note: 'Không',
-									},
-									{
-										time: '14/02/2022',
-										activity: 'xuất kho',
-										quantity: '200',
-										note: 'Không',
-									},
-									{
-										time: '14/02/2022',
-										activity: 'Nhập kho',
-										quantity: '500',
-										note: 'Không',
-									},
-								]}
-							/>
+							<div className="card__body">
+								<WarehouseTable
+									headers={[
+										{ text: 'Thời gian', key: 'time' },
+										{ text: 'Sự kiện', key: 'activity' },
+										{ text: 'SL/KL', key: 'quantity' },
+										{ text: 'Ghi chú', key: 'note' },
+									]}
+									body={[
+										{
+											time: '14/02/2022',
+											activity: 'Nhập kho',
+											quantity: '300',
+											note: 'Không',
+										},
+										{
+											time: '14/02/2022',
+											activity: 'xuất kho',
+											quantity: '200',
+											note: 'Không',
+										},
+										{
+											time: '14/02/2022',
+											activity: 'Nhập kho',
+											quantity: '500',
+											note: 'Không',
+										},
+									]}
+								/>
+							</div>
 						</div>
 					</div>
 
 					<div className="col-4">
 						<div className="card">
-							<WarehouseTable
-								headers={[
-									{ text: 'Vị trí', key: 'location' },
-									{ text: 'Số lượng', key: 'quantity' },
-								]}
-								body={[
-									{ location: '2.2.1', quantity: '300' },
-									{ location: '2.2.1', quantity: '300' },
-									{ location: '2.2.1', quantity: '300' },
-									{ location: '2.2.1', quantity: '300' },
-									{ location: '2.2.1', quantity: '300' },
-									{ location: '2.2.1', quantity: '300' },
-									{ location: '2.2.1', quantity: '300' },
-								]}
-							/>
+							<div className="card__body">
+								<WarehouseTable
+									headers={[
+										{ text: 'Vị trí', key: 'location' },
+										{ text: 'Số lượng', key: 'quantity' },
+									]}
+									body={[
+										{ location: '2.2.1', quantity: '300' },
+										{ location: '2.2.1', quantity: '300' },
+										{ location: '2.2.1', quantity: '300' },
+										{ location: '2.2.1', quantity: '300' },
+										{ location: '2.2.1', quantity: '300' },
+										{ location: '2.2.1', quantity: '300' },
+										{ location: '2.2.1', quantity: '300' },
+									]}
+								/>
+							</div>
 						</div>
 					</div>
 				</div>
