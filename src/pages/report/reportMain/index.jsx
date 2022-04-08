@@ -4,7 +4,7 @@ import { Route } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 import { Switch } from 'react-router-dom';
 import Navbar from '../../../components/navBar/NavBar';
-import ReportInjectionMoldingSector from '../../../components/reportInjectionMoldingSector/ReportInjectionMoldingSector';
+import ReportInjectionMoldingSector from './reportInjectionMoldingSector/ReportInjectionMoldingSector';
 import ReportPackingSector from './reportPackingSector/ReportPackingSector';
 import ReportQaQc from './reportQaQc/ReportQaQc';
 import { REPORT_MENU_LIST } from '../../../utils/utils';
