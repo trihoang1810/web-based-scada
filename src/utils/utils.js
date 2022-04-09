@@ -473,8 +473,9 @@ const PACKING_EMPLOYEE_COLUMNS = [
 const INJECTION_MACHINE_ID = [
 	{
 		title: 'M28',
-		isHaitian: false,
+		isHaitian: true,
 		subTitle: 'SM150',
+		url: '/injection/m28',
 	},
 	{
 		title: 'M26',
@@ -550,13 +551,15 @@ const INJECTION_MACHINE_ID = [
 	},
 	{
 		title: 'M2',
-		isHaitian: false,
+		isHaitian: true,
 		subTitle: 'TMC\n200ES',
+		url: '/injection/m2',
 	},
 	{
 		title: 'M27',
-		isHaitian: false,
+		isHaitian: true,
 		subTitle: 'TMC\n250ES',
+		url: '/injection/m27',
 	},
 	{
 		title: 'M25',
@@ -632,38 +635,45 @@ const INJECTION_MACHINE_ID = [
 	},
 	{
 		title: 'M1',
-		isHaitian: false,
+		isHaitian: true,
 		subTitle: 'CLF\n125T',
+		url: '/injection/m1',
 	},
 	{
 		title: 'L6',
-		isHaitian: false,
+		isHaitian: true,
 		subTitle: 'CLF 800T',
+		url: '/injection/l6',
 	},
 	{
 		title: 'L7',
-		isHaitian: false,
+		isHaitian: true,
 		subTitle: 'JM 600-C',
+		url: '/injection/l7',
 	},
 	{
 		title: 'L8',
-		isHaitian: false,
+		isHaitian: true,
 		subTitle: 'HC 800',
+		url: '/injection/l8',
 	},
 	{
 		title: 'L9',
-		isHaitian: false,
+		isHaitian: true,
 		subTitle: 'JSW 850EII',
+		url: '/injection/l9',
 	},
 	{
 		title: 'L10',
-		isHaitian: false,
+		isHaitian: true,
 		subTitle: 'JSW J850E-C5',
+		url: '/injection/l10',
 	},
 	{
 		title: 'L11',
-		isHaitian: false,
+		isHaitian: true,
 		subTitle: 'JSW 850EII',
+		url: '/injection/l11',
 	},
 	{
 		title: 'L12',
@@ -707,8 +717,9 @@ const INJECTION_MACHINE_LAYOUT = [
 	[
 		{
 			title: 'M28',
-			isHaitian: false,
+			isHaitian: true,
 			subTitle: 'SM150',
+			url: '/injection/m28',
 		},
 		{
 			title: 'M26',
@@ -784,15 +795,17 @@ const INJECTION_MACHINE_LAYOUT = [
 		},
 		{
 			title: 'M2',
-			isHaitian: false,
+			isHaitian: true,
 			subTitle: 'TMC\n200ES',
+			url: '/injection/m2',
 		},
 	],
 	[
 		{
 			title: 'M27',
-			isHaitian: false,
+			isHaitian: true,
 			subTitle: 'TMC\n250ES',
+			url: '/injection/m27',
 		},
 		{
 			title: 'M25',
@@ -868,41 +881,48 @@ const INJECTION_MACHINE_LAYOUT = [
 		},
 		{
 			title: 'M1',
-			isHaitian: false,
+			isHaitian: true,
 			subTitle: 'CLF\n125T',
+			url: '/injection/m1',
 		},
 	],
 	[
 		[
 			{
 				title: 'L6',
-				isHaitian: false,
+				isHaitian: true,
 				subTitle: 'CLF 800T',
+				url: '/injection/l6',
 			},
 			{
 				title: 'L7',
-				isHaitian: false,
+				isHaitian: true,
 				subTitle: 'JM 600-C',
+				url: '/injection/l7',
 			},
 			{
 				title: 'L8',
-				isHaitian: false,
+				isHaitian: true,
 				subTitle: 'HC 800',
+				url: '/injection/l8',
 			},
 			{
 				title: 'L9',
-				isHaitian: false,
+				isHaitian: true,
 				subTitle: 'JSW 850EII',
+				url: '/injection/l9',
 			},
 			{
 				title: 'L10',
-				isHaitian: false,
+				isHaitian: true,
 				subTitle: 'JSW J850E-C5',
+				url: '/injection/l10',
 			},
 			{
 				title: 'L11',
-				isHaitian: false,
+				isHaitian: true,
 				subTitle: 'JSW 850EII',
+				url: '/injection/l11',
 			},
 			{
 				title: 'L12',

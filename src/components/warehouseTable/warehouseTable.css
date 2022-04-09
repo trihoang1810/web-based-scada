@@ -13,10 +13,12 @@
 
 .warehouseTable th {
 	border-left: none;
+	font-size: 1.2rem;
 	border-right: none;
 }
 
 .warehouseTable th,
 .warehouseTable td {
 	text-align: center;
+	font-size: 1rem;
 }
