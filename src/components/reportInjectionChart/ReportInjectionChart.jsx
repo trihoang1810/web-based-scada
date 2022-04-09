@@ -1,8 +1,7 @@
 import React from 'react';
 import Chart from 'react-apexcharts';
 import './reportInjectionChart.css';
-import mock_injection_report from '../../assets/JsonData/mock_injection_report.json';
-import { format } from 'date-fns';
+
 const apexChartConfig = {
 	options: {
 		chart: {
@@ -11,7 +10,7 @@ const apexChartConfig = {
 				show: true,
 			},
 		},
-		colors: ['#2E93fA', '#66DA26'],
+		colors: ['#2E93fA', '#66DA26', '#22EE99'],
 		dataLabels: {
 			enabled: true,
 			enabledOnSeries: [0],
@@ -22,64 +21,123 @@ const apexChartConfig = {
 		},
 		fill: {
 			type: 'solid',
-			colors: ['#2E93fA', '#66DA26'],
-			opacity: [1, 0.7],
+			colors: ['#2E93fA', '#66DA26', '#22EE99'],
+			opacity: [1, 0.7, 1],
 		},
-		xaxis: {
-			categories: mock_injection_report[0]['MachineReport'].map((item) => format(new Date(item.Timestamp), 'HH:mm:ss')),
-			formatter: function (value) {
-				const averageXaxisLabel = (mock_injection_report[0]['MachineReport'].length / 7).toFixed(0);
-				let index = averageXaxisLabel;
-				let hoursNumber;
-				if ((value = mock_injection_report[0]['MachineReport'][index].Timestamp)) {
-					hoursNumber = value;
-					index = index + averageXaxisLabel;
-				} else {
-					hoursNumber = '';
-				}
-				return hoursNumber;
+
+		yaxis: [
+			{
+				title: {
+					text: 'Chu kỳ ép',
+					style: {
+						color: '#2E93fA',
+					},
+				},
+				min: 20,
+				max: 50,
+				labels: {
+					style: {
+						colors: '#2E93fA',
+					},
+				},
 			},
-		},
-		yaxis: {
-			min: 20,
-			max: 50,
-		},
+			{
+				title: {
+					text: 'Chu kỳ ép cài đặt',
+					style: {
+						color: '#00000000',
+					},
+				},
+				min: 20,
+				max: 50,
+				labels: {
+					show: false,
+					style: {
+						colors: '#66DA26',
+					},
+				},
+			},
+			{
+				opposite: true,
+				title: {
+					text: 'Thời gian cửa mở',
+					style: {
+						color: '#22EE99',
+					},
+				},
+				labels: {
+					style: {
+						colors: '#22EE99',
+					},
+				},
+				min: -3,
+				max: 6,
+			},
+		],
 		tooltip: {
 			enabled: true,
 		},
 		legend: {
 			show: false,
 		},
+		noData: {
+			text: 'Không có dữ liệu để hiển thị',
+			align: 'center',
+			verticalAlign: 'middle',
+			offsetX: 0,
+			offsetY: 0,
+			style: {
+				color: 'var(--main-color-red)',
+				fontSize: '14px',
+				fontFamily: 'Roboto',
+			},
+		},
 	},
-	series: [
-		{
-			name: 'Chu kỳ ép',
-			data: mock_injection_report[0]['MachineReport'].map((item) => item.CycleTime),
-		},
-		{
-			name: 'Chu kỳ ép cài đặt',
-			data: mock_injection_report[0]['MachineReport'].map((item) => item.SetCycle),
-		},
-	],
+	series: [],
 };
-function ReportInjectionChart() {
+function ReportInjectionChart({ series, categories, shift, moldId }) {
 	return (
 		<>
 			<div className="row">
 				<div className="col-12">
 					<div className="card">
+						<div className="card__header">
+							<h3>{shift}</h3>
+						</div>
 						<div className="card__body">
 							<div className="row">
 								<div className="col-12">
 									<Chart
 										type="line"
-										options={apexChartConfig.options}
-										series={apexChartConfig.series}
+										options={{
+											...apexChartConfig.options,
+											xaxis: {
+												categories: categories,
+											},
+										}}
+										series={series}
 										width="100%"
 										height="500px"
 									/>
 								</div>
-								<div className="col-12">table</div>
+								<div className="col-12">
+									<table id="mold-id-report__table">
+										<thead>
+											<tr>
+												<th>Mã máy</th>
+												<th>Chu kỳ ép cài đặt</th>
+											</tr>
+										</thead>
+										<tbody>
+											{moldId.map((moldId, index) => (
+												<tr key={index}>
+													<td>{moldId.moldId}</td>
+													<td>{moldId.setCycle}</td>
+												</tr>
+											))}
+										</tbody>
+									</table>
+								</div>
 							</div>
 						</div>
 					</div>

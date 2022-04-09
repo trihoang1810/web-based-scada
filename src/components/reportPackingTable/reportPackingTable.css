@@ -1,4 +1,4 @@
-#report-packing__table tfoot td {
+#mold-id-report__table tfoot td {
     text-transform: capitalize;
     padding: 15px 10px;
     border-bottom: 1px solid #ddd;
@@ -7,20 +7,20 @@
     border: none;
 }
 
-#report-packing__table thead, tfoot {
+#mold-id-report__table thead, tfoot {
   background-color: var(--main-color);
 }
 
-#report-packing__table tbody td {
+#mold-id-report__table tbody td {
   color: var(--txt-black);
 }
 
-#report-packing__table tr > td, tr > th {
+#mold-id-report__table tr > td, tr > th {
   padding: 15px 10px;
   border: 1px solid #ddd;
 }
 
-#report-packing__table thead th, tfoot td {
+#mold-id-report__table thead th, tfoot td {
    color: var(--txt-white);
 }
 
