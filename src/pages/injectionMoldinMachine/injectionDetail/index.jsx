@@ -4,7 +4,7 @@ import InjectionDetailComponent from '../../../components/injectionDetail/Inject
 import CustomizedBreadcrumbs from '../../../components/breadcrumbs/Breadcrumbs';
 
 function InjectionDetail() {
-	const [injectionMoldingMachineData, setInjectionMoldingMachineData] = useState({
+	const [injectionMoldingMachineData] = useState({
 		number: 'M1',
 		name: 'axB12',
 		percent: 30,

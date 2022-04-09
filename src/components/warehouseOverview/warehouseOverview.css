@@ -1,0 +1,6 @@
+.warehouseOverview__result tbody tr:hover {
+	cursor: pointer;
+	background-color: var(--main-color-gray);
+	color: var(--txt-white);
+	font-size: 500;
+}

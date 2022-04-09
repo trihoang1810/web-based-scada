@@ -6,6 +6,9 @@ import InjectionFilter from '../../../components/injectionFilter/InjectionFilter
 import InjectionMoldingMachine from '../../../components/injectionMoldingMachine/InjectionMoldingMachine';
 import InjectionStateNote from '../../../components/injectionStateNote/InjectionStateNote';
 import './injectionMoldinMachinePage.css';
+import { MONITOR_INJECTION_LIST } from '../../../utils/utils';
+import Navbar from '../../../components/navBar/NavBar';
+import ReportNavigationButton from '../../../components/reportNavigationButton/ReportNavigationButton';
 
 function InjectionMoldinMachinePage() {
 	// fake data from API
@@ -302,7 +305,7 @@ function InjectionMoldinMachinePage() {
 		},
 	];
 	useEffect(() => {
-		const id = setTimeout(() => setResData(rawData), 0);
+		const id = setTimeout(() => setResData(rawData), 1000);
 		return () => clearTimeout(id);
 	}, []);
 
@@ -311,7 +314,6 @@ function InjectionMoldinMachinePage() {
 	const pageSize = window.screen.width >= 1280 ? 12 : window.screen.width >= 500 ? 6 : 100;
 	let quantityPrepare = { M: 0, R: 0, S: 0 };
 	const param = useParams();
-	const history = useHistory();
 	const [page, setPage] = useState(+param.page);
 	const [pages, setPages] = useState();
 	const [quantity, setQuantity] = useState({});
@@ -319,6 +321,7 @@ function InjectionMoldinMachinePage() {
 	const [stateFilter, setStateFilter] = useState([]);
 	const [filterData, setFilterData] = useState();
 	const [pageData, setPageData] = useState();
+	const history = useHistory();
 
 	const hanldeCheckBtn = (e, state, payload) => {
 		e.stopPropagation();
@@ -366,6 +369,8 @@ function InjectionMoldinMachinePage() {
 		if (!(wattageFilterData || stateFilterData)) {
 			setFilterData(resData);
 		}
+		history.push('/injection/pages/1');
+		setPage(1);
 	}, [wattageFilter, stateFilter, resData]);
 
 	useEffect(() => {
@@ -424,10 +429,22 @@ function InjectionMoldinMachinePage() {
 				</div>
 			)}
 
-			<div className="row injectionMoldinMachines__container">
+			<div className="row injectionMoldinMachines__container mb-20">
 				{pageData
 					? pageData.map((item, index) => <InjectionMoldingMachine injectionMoldingMachineData={item} key={index} />)
 					: [...Array(pageSize).keys()].map((item, index) => <InjectionMoldingMachine key={index} />)}
+			</div>
+			<div className="row mb-10">
+				<div className="col-12 flex-center">
+					<ReportNavigationButton history={history} path="/injection/map">
+						Xem dưới dạng bản đồ
+					</ReportNavigationButton>
+				</div>
+			</div>
+			<div className="row">
+				<div className="col-12 flex-center">
+					<ReportNavigationButton history={history} path="/report/main/injection" />
+				</div>
 			</div>
 		</div>
 	);

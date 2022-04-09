@@ -1,11 +1,9 @@
 // import { IgrRadialGauge } from 'igniteui-react-gauges';
 import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 import ProgressBar from '../progressBar/ProgressBar';
 import Badge from '../badge/Badge';
-import 'react-loading-skeleton/dist/skeleton.css';
 import './injectionDetail.css';
-import { Button } from '@mui/material';
-import { Pie } from 'react-chartjs-2';
 import {
 	Chart,
 	ArcElement,

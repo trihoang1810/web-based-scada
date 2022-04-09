@@ -63,15 +63,17 @@ function Sidebar(props) {
 				</div>
 				{sidebar_items.map((item, index) => {
 					const subItem = (
-						<Link key={index} to={item.route}>
-							<SidebarItem
-								location={props.location.pathname}
-								subNav={item.subNav}
-								title={item.display_name}
-								icon={item.icon}
-								active={index === activeItem}
-							/>
-						</Link>
+						<React.Fragment key={index}>
+							<Link to={item.route}>
+								<SidebarItem
+									location={props.location.pathname}
+									subNav={item.subNav}
+									title={item.display_name}
+									icon={item.icon}
+									active={index === activeItem}
+								/>
+							</Link>
+						</React.Fragment>
 					);
 					return subItem;
 				})}

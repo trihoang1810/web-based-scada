@@ -9,8 +9,6 @@ import { WATER_PROOF_COLUMNS } from '../../../../utils/utils';
 
 function ReportWaterProof() {
 	const exportReport = (productName, dateStart, dateEnd, purpose, note) => {
-		console.log('purpose', purpose);
-		console.log('note', note);
 		const workbook = createExcelFile(convention, 11);
 		const sheet1 = workbook.getWorksheet('sheet1');
 

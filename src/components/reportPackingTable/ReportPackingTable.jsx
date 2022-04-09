@@ -48,6 +48,9 @@ function ReportPackingTable({ reportHeaders, reportData }) {
 			columns,
 			data,
 			defaultColumn,
+			initialState: {
+				hiddenColumns: ['color'],
+			},
 		},
 		useFilters,
 		useSortBy,
@@ -102,7 +105,7 @@ function ReportPackingTable({ reportHeaders, reportData }) {
 										{page.map((row) => {
 											prepareRow(row);
 											return (
-												<tr {...row.getRowProps()}>
+												<tr className={row.values['color']} {...row.getRowProps()}>
 													{row.cells.map((cell) => {
 														return <td {...cell.getCellProps()}>{cell.render('Cell')}</td>;
 													})}

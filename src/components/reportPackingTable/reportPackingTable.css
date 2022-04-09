@@ -1,4 +1,4 @@
-#report-packing__table tfoot td {
+#mold-id-report__table tfoot td {
     text-transform: capitalize;
     padding: 15px 10px;
     border-bottom: 1px solid #ddd;
@@ -7,19 +7,48 @@
     border: none;
 }
 
-#report-packing__table thead, tfoot {
+#mold-id-report__table thead, tfoot {
   background-color: var(--main-color);
 }
 
-#report-packing__table tbody td {
+#mold-id-report__table tbody td {
   color: var(--txt-black);
 }
 
-#report-packing__table tr > td, tr > th {
+#mold-id-report__table tr > td, tr > th {
   padding: 15px 10px;
   border: 1px solid #ddd;
 }
 
-#report-packing__table thead th, tfoot td {
+#mold-id-report__table thead th, tfoot td {
    color: var(--txt-white);
 }
+
+  .color1{
+    background-color: #00bcd430;
+  }
+  .color2{
+    background-color: #ff980030;
+  }
+  .color3{
+    background-color: #9c27b030;
+  }
+  .color4{
+    background-color: #03a9f430;
+  }
+  .color5{
+    background-color: #8bc34630;
+  }
+  .color6{
+    background-color: #00968830;
+  }
+  .color7{
+    background-color: #ffc10730;
+  }
+  .color8{
+    background-color: #3f51b530;
+  }
+  .color9{
+    background-color: #79554830;
+  }
+  

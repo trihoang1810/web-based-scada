@@ -1,7 +1,5 @@
 import {
-	Breadcrumbs,
 	createTheme,
-	Link,
 	Paper,
 	styled,
 	Table,
@@ -12,7 +10,6 @@ import {
 	TableHead,
 	TableRow,
 	ThemeProvider,
-	Typography,
 } from '@mui/material';
 import React from 'react';
 // import { IgrRadialGauge, IgrRadialGaugeRange } from 'igniteui-react-gauges';
@@ -22,6 +19,7 @@ import { ReactComponent as Auto } from '../../../assets/images/qaqc/auto.svg';
 import { ReactComponent as EnduranceMachine } from '../../../assets/images/qaqc/endurance__run.svg';
 import { ReactComponent as Manual } from '../../../assets/images/qaqc/manual.svg';
 import { ReactComponent as Stop } from '../../../assets/images/qaqc/stop.svg';
+import CustomizedBreadcrumbs from '../../../components/breadcrumbs/Breadcrumbs';
 import ProgressBar from '../../../components/progressBar/ProgressBar';
 import ReportNavigationButton from '../../../components/reportNavigationButton/ReportNavigationButton';
 
@@ -94,14 +92,14 @@ function StyledPaper({ children }) {
 }
 function Endurance() {
 	let history = useHistory();
-	const [machineState, setMachineState] = React.useState('stop');
-	const [settings, setSettings] = React.useState({
+	const [machineState] = React.useState('stop');
+	const [settings] = React.useState({
 		waitedClosedTime: 0,
 		waitedOpenTime: 0,
 		numbs: 0,
 		testNumber: 0,
 	});
-	const [params, setParams] = React.useState({
+	const [params] = React.useState({
 		waitedClosedTime: 0,
 		waitedOpenTime: 0,
 		droppedTime: 0,
@@ -121,36 +119,7 @@ function Endurance() {
 	// Số lần đóng nắp SP
 	return (
 		<>
-			<Breadcrumbs
-				sx={{
-					'& .MuiBreadcrumbs-ol': {
-						'& .MuiBreadcrumbs-li': {
-							'& .MuiTypography-root': {
-								display: 'block',
-								fontSize: '1.5em',
-								marginBlockStart: '0.83em',
-								marginBlockEnd: '0.83em',
-								marginInlineStart: '0px',
-								marginInlineEnd: '0px',
-								fontWeight: 'bold',
-							},
-							'& .MuiLink-root': {
-								marginBottom: '15px',
-								textTransform: 'capitalize',
-							},
-							'& .MuiBreadcrumbs-separator': {
-								fontSize: '1.5rem',
-							},
-						},
-					},
-				}}
-				aria-label="breadcrumb"
-			>
-				<Link color="inherit" underline="hover" href="/qaqc">
-					PHÒNG QA/QC THIẾT BỊ
-				</Link>
-				<Typography color="text.primary">MÁY KIẾM TRA ĐỘ BỀN ĐÓNG ÊM</Typography>
-			</Breadcrumbs>
+			<CustomizedBreadcrumbs href="/qaqc" sector="PHÒNG QA/QC THIẾT BỊ" id="MÁY KIẾM TRA ĐỘ BỀN ĐÓNG ÊM" />
 			<div className="row">
 				<div className="col-3">
 					<div className="card">

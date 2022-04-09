@@ -43,6 +43,17 @@ const REPORT_MENU_LIST = [
 	},
 ];
 
+const MONITOR_INJECTION_LIST = [
+	{
+		title: 'BẢNG',
+		url: '/report/injection/pages/1',
+	},
+	{
+		title: 'BẢN ĐỒ',
+		url: '/report/injection/map',
+	},
+];
+
 const QA_QC_REPORT_MENU_LIST = [
 	{
 		title: 'MKT Độ bền NBC',
@@ -375,6 +386,11 @@ const PACKING_COLUMNS = [
 		width: 200,
 		disableSortBy: true,
 	},
+	{
+		Header: 'Màu',
+		accessor: 'color',
+		show: false,
+	},
 ];
 
 const WATER_PROOF_COLUMNS = [
@@ -408,6 +424,548 @@ const WATER_PROOF_COLUMNS = [
 	},
 ];
 
+const PACKING_EMPLOYEE_COLUMNS = [
+	{
+		Header: 'STT',
+		accessor: 'id',
+		width: 60,
+		disableFilters: true,
+		disableSortBy: true,
+	},
+	{
+		Header: 'Mã nhân viên',
+		accessor: 'employeeId',
+		width: 100,
+		disableSortBy: true,
+	},
+	{
+		Header: 'Tên nhân viên',
+		accessor: 'employeeName',
+		disableSortBy: true,
+	},
+	{
+		Header: 'Bộ phận',
+		accessor: 'department',
+		disableSortBy: true,
+	},
+	{
+		Header: 'Giờ làm việc KH',
+		accessor: 'workTime',
+		disableFilters: true,
+	},
+	{
+		Header: 'Số giờ nghỉ',
+		accessor: 'restTime',
+		disableFilters: true,
+	},
+	{
+		Header: 'Các vi phạm/nhắc nhở',
+		accessor: 'violation',
+		disableFilters: true,
+	},
+	{
+		Header: 'Ghi chú',
+		accessor: 'note',
+		disableSortBy: true,
+	},
+];
+
+const INJECTION_MACHINE_ID = [
+	{
+		title: 'M28',
+		isHaitian: true,
+		subTitle: 'SM150',
+		url: '/injection/m28',
+	},
+	{
+		title: 'M26',
+		isHaitian: true,
+		subTitle: 'MA90',
+		url: '/injection/m26',
+	},
+	{
+		title: 'M24',
+		isHaitian: true,
+		subTitle: 'MA120',
+		url: '/injection/m24',
+	},
+	{
+		title: 'M22',
+		isHaitian: true,
+		subTitle: 'MA90',
+		url: '/injection/m22',
+	},
+	{
+		title: 'M20',
+		isHaitian: true,
+		subTitle: 'MA160',
+		url: '/injection/m20',
+	},
+	{
+		title: 'M18',
+		isHaitian: true,
+		subTitle: 'MA160',
+		url: '/injection/m18',
+	},
+	{
+		title: 'M16',
+		isHaitian: true,
+		subTitle: 'MA160',
+		url: '/injection/m16',
+	},
+	{
+		title: 'M14',
+		isHaitian: true,
+		subTitle: 'MA160',
+		url: '/injection/m14',
+	},
+	{
+		title: 'M12',
+		isHaitian: true,
+		subTitle: 'MA160',
+		url: '/injection/m12',
+	},
+	{
+		title: 'M10',
+		isHaitian: true,
+		subTitle: 'MA160',
+		url: '/injection/m10',
+	},
+	{
+		title: 'M8',
+		isHaitian: true,
+		subTitle: 'MA160',
+		url: '/injection/m8',
+	},
+	{
+		title: 'M6',
+		isHaitian: true,
+		subTitle: 'MA120',
+		url: '/injection/m6',
+	},
+	{
+		title: 'M4',
+		isHaitian: true,
+		subTitle: 'ZE90',
+		url: '/injection/m4',
+	},
+	{
+		title: 'M2',
+		isHaitian: true,
+		subTitle: 'TMC\n200ES',
+		url: '/injection/m2',
+	},
+	{
+		title: 'M27',
+		isHaitian: true,
+		subTitle: 'TMC\n250ES',
+		url: '/injection/m27',
+	},
+	{
+		title: 'M25',
+		isHaitian: true,
+		subTitle: 'MA90',
+		url: '/injection/m25',
+	},
+	{
+		title: 'M23',
+		isHaitian: true,
+		subTitle: 'MA120',
+		url: '/injection/m23',
+	},
+	{
+		title: 'M21',
+		isHaitian: true,
+		subTitle: 'MA160',
+		url: '/injection/m21',
+	},
+	{
+		title: 'M19',
+		isHaitian: true,
+		subTitle: 'MA160',
+		url: '/injection/m19',
+	},
+	{
+		title: 'M17',
+		isHaitian: true,
+		subTitle: 'MA160',
+		url: '/injection/m17',
+	},
+	{
+		title: 'M15',
+		isHaitian: true,
+		subTitle: 'MA250',
+		url: '/injection/m15',
+	},
+	{
+		title: 'M13',
+		isHaitian: true,
+		subTitle: 'MA250',
+		url: '/injection/m13',
+	},
+	{
+		title: 'M11',
+		isHaitian: true,
+		subTitle: 'MA250',
+		url: '/injection/m11',
+	},
+	{
+		title: 'M9',
+		isHaitian: true,
+		subTitle: 'MA250',
+		url: '/injection/m9',
+	},
+	{
+		title: 'M7',
+		isHaitian: true,
+		subTitle: 'MA250',
+		url: '/injection/m7',
+	},
+	{
+		title: 'M5',
+		subTitle: 'MA120',
+		isHaitian: true,
+		url: '/injection/m5',
+	},
+	{
+		title: 'M3',
+		isHaitian: true,
+		subTitle: 'ZE90',
+		url: '/injection/m3',
+	},
+	{
+		title: 'M1',
+		isHaitian: true,
+		subTitle: 'CLF\n125T',
+		url: '/injection/m1',
+	},
+	{
+		title: 'L6',
+		isHaitian: true,
+		subTitle: 'CLF 800T',
+		url: '/injection/l6',
+	},
+	{
+		title: 'L7',
+		isHaitian: true,
+		subTitle: 'JM 600-C',
+		url: '/injection/l7',
+	},
+	{
+		title: 'L8',
+		isHaitian: true,
+		subTitle: 'HC 800',
+		url: '/injection/l8',
+	},
+	{
+		title: 'L9',
+		isHaitian: true,
+		subTitle: 'JSW 850EII',
+		url: '/injection/l9',
+	},
+	{
+		title: 'L10',
+		isHaitian: true,
+		subTitle: 'JSW J850E-C5',
+		url: '/injection/l10',
+	},
+	{
+		title: 'L11',
+		isHaitian: true,
+		subTitle: 'JSW 850EII',
+		url: '/injection/l11',
+	},
+	{
+		title: 'L12',
+		isHaitian: true,
+		subTitle: 'MAII 700',
+		url: '/injection/l12',
+	},
+	{
+		title: 'L5',
+		isHaitian: true,
+		subTitle: 'MAIII 1000',
+		url: '/injection/l5',
+	},
+	{
+		title: 'L4',
+		isHaitian: true,
+		subTitle: 'MAII 800',
+		url: '/injection/l4',
+	},
+	{
+		title: 'L3',
+		isHaitian: true,
+		subTitle: 'MAII 1000',
+		url: '/injection/l3',
+	},
+	{
+		title: 'L2',
+		isHaitian: true,
+		subTitle: 'MAIII 1000',
+		url: '/injection/l2',
+	},
+	{
+		title: 'L1',
+		isHaitian: true,
+		subTitle: 'MAII 800',
+		url: '/injection/l1',
+	},
+];
+
+const INJECTION_MACHINE_LAYOUT = [
+	[
+		{
+			title: 'M28',
+			isHaitian: true,
+			subTitle: 'SM150',
+			url: '/injection/m28',
+		},
+		{
+			title: 'M26',
+			isHaitian: true,
+			subTitle: 'MA90',
+			url: '/injection/m26',
+		},
+		{
+			title: 'M24',
+			isHaitian: true,
+			subTitle: 'MA120',
+			url: '/injection/m24',
+		},
+		{
+			title: 'M22',
+			isHaitian: true,
+			subTitle: 'MA90',
+			url: '/injection/m22',
+		},
+		{
+			title: 'M20',
+			isHaitian: true,
+			subTitle: 'MA160',
+			url: '/injection/m20',
+		},
+		{
+			title: 'M18',
+			isHaitian: true,
+			subTitle: 'MA160',
+			url: '/injection/m18',
+		},
+		{
+			title: 'M16',
+			isHaitian: true,
+			subTitle: 'MA160',
+			url: '/injection/m16',
+		},
+		{
+			title: 'M14',
+			isHaitian: true,
+			subTitle: 'MA160',
+			url: '/injection/m14',
+		},
+		{
+			title: 'M12',
+			isHaitian: true,
+			subTitle: 'MA160',
+			url: '/injection/m12',
+		},
+		{
+			title: 'M10',
+			isHaitian: true,
+			subTitle: 'MA160',
+			url: '/injection/m10',
+		},
+		{
+			title: 'M8',
+			isHaitian: true,
+			subTitle: 'MA160',
+			url: '/injection/m8',
+		},
+		{
+			title: 'M6',
+			isHaitian: true,
+			subTitle: 'MA120',
+			url: '/injection/m6',
+		},
+		{
+			title: 'M4',
+			isHaitian: true,
+			subTitle: 'ZE90',
+			url: '/injection/m4',
+		},
+		{
+			title: 'M2',
+			isHaitian: true,
+			subTitle: 'TMC\n200ES',
+			url: '/injection/m2',
+		},
+	],
+	[
+		{
+			title: 'M27',
+			isHaitian: true,
+			subTitle: 'TMC\n250ES',
+			url: '/injection/m27',
+		},
+		{
+			title: 'M25',
+			isHaitian: true,
+			subTitle: 'MA90',
+			url: '/injection/m25',
+		},
+		{
+			title: 'M23',
+			isHaitian: true,
+			subTitle: 'MA120',
+			url: '/injection/m23',
+		},
+		{
+			title: 'M21',
+			isHaitian: true,
+			subTitle: 'MA160',
+			url: '/injection/m21',
+		},
+		{
+			title: 'M19',
+			isHaitian: true,
+			subTitle: 'MA160',
+			url: '/injection/m19',
+		},
+		{
+			title: 'M17',
+			isHaitian: true,
+			subTitle: 'MA160',
+			url: '/injection/m17',
+		},
+		{
+			title: 'M15',
+			isHaitian: true,
+			subTitle: 'MA250',
+			url: '/injection/m15',
+		},
+		{
+			title: 'M13',
+			isHaitian: true,
+			subTitle: 'MA250',
+			url: '/injection/m13',
+		},
+		{
+			title: 'M11',
+			isHaitian: true,
+			subTitle: 'MA250',
+			url: '/injection/m11',
+		},
+		{
+			title: 'M9',
+			isHaitian: true,
+			subTitle: 'MA250',
+			url: '/injection/m9',
+		},
+		{
+			title: 'M7',
+			isHaitian: true,
+			subTitle: 'MA250',
+			url: '/injection/m7',
+		},
+		{
+			title: 'M5',
+			subTitle: 'MA120',
+			isHaitian: true,
+			url: '/injection/m5',
+		},
+		{
+			title: 'M3',
+			isHaitian: true,
+			subTitle: 'ZE90',
+			url: '/injection/m3',
+		},
+		{
+			title: 'M1',
+			isHaitian: true,
+			subTitle: 'CLF\n125T',
+			url: '/injection/m1',
+		},
+	],
+	[
+		[
+			{
+				title: 'L6',
+				isHaitian: true,
+				subTitle: 'CLF 800T',
+				url: '/injection/l6',
+			},
+			{
+				title: 'L7',
+				isHaitian: true,
+				subTitle: 'JM 600-C',
+				url: '/injection/l7',
+			},
+			{
+				title: 'L8',
+				isHaitian: true,
+				subTitle: 'HC 800',
+				url: '/injection/l8',
+			},
+			{
+				title: 'L9',
+				isHaitian: true,
+				subTitle: 'JSW 850EII',
+				url: '/injection/l9',
+			},
+			{
+				title: 'L10',
+				isHaitian: true,
+				subTitle: 'JSW J850E-C5',
+				url: '/injection/l10',
+			},
+			{
+				title: 'L11',
+				isHaitian: true,
+				subTitle: 'JSW 850EII',
+				url: '/injection/l11',
+			},
+			{
+				title: 'L12',
+				isHaitian: true,
+				subTitle: 'MAII 700',
+				url: '/injection/l12',
+			},
+		],
+		[
+			{
+				title: 'L5',
+				isHaitian: true,
+				subTitle: 'MAIII 1000',
+				url: '/injection/l5',
+			},
+			{
+				title: 'L4',
+				isHaitian: true,
+				subTitle: 'MAII 800',
+				url: '/injection/l4',
+			},
+			{
+				title: 'L3',
+				isHaitian: true,
+				subTitle: 'MAII 1000',
+				url: '/injection/l3',
+			},
+			{
+				title: 'L2',
+				isHaitian: true,
+				subTitle: 'MAIII 1000',
+				url: '/injection/l2',
+			},
+			{
+				title: 'L1',
+				isHaitian: true,
+				subTitle: 'MAII 800',
+				url: '/injection/l1',
+			},
+		],
+	],
+];
+
 function convertDate(value) {
 	const date = new Date(value);
 	return date.toLocaleDateString();
@@ -428,4 +986,8 @@ export {
 	BENDING_DEFORMATION_COLUMNS,
 	WATER_PROOF_COLUMNS,
 	PACKING_COLUMNS,
+	PACKING_EMPLOYEE_COLUMNS,
+	MONITOR_INJECTION_LIST,
+	INJECTION_MACHINE_LAYOUT,
+	INJECTION_MACHINE_ID,
 };

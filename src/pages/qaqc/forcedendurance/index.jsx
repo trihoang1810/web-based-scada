@@ -1,28 +1,18 @@
+import {
+	createTheme, Paper, styled, Table, TableBody, TableCell,
+	tableCellClasses, TableContainer, TableHead,
+	TableRow, ThemeProvider
+} from '@mui/material';
 import React from 'react';
-// import { IgrRadialGauge, IgrRadialGaugeRange } from 'igniteui-react-gauges';
-import { ReactComponent as Stop } from '../../../assets/images/qaqc/stop.svg';
-import { ReactComponent as Manual } from '../../../assets/images/qaqc/manual.svg';
+import { useHistory } from 'react-router-dom';
 import { ReactComponent as Auto } from '../../../assets/images/qaqc/auto.svg';
 import { ReactComponent as ForcedEnduranceMachine } from '../../../assets/images/qaqc/forcedEndurance__run.svg';
-import {
-	styled,
-	TableCell,
-	tableCellClasses,
-	ThemeProvider,
-	createTheme,
-	TableContainer,
-	Table,
-	TableHead,
-	TableRow,
-	TableBody,
-	Paper,
-	Link,
-	Typography,
-	Breadcrumbs,
-} from '@mui/material';
+import { ReactComponent as Manual } from '../../../assets/images/qaqc/manual.svg';
+// import { IgrRadialGauge, IgrRadialGaugeRange } from 'igniteui-react-gauges';
+import { ReactComponent as Stop } from '../../../assets/images/qaqc/stop.svg';
+import CustomizedBreadcrumbs from '../../../components/breadcrumbs/Breadcrumbs';
 import ProgressBar from '../../../components/progressBar/ProgressBar';
 import ReportNavigationButton from '../../../components/reportNavigationButton/ReportNavigationButton';
-import { useHistory } from 'react-router-dom';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
 	[`&.${tableCellClasses.head}`]: {
@@ -46,14 +36,14 @@ function StyledPaper({ children }) {
 }
 function ForcedEndurance() {
 	let history = useHistory();
-	const [machineState, setMachineState] = React.useState('stop');
-	const [settings, setSettings] = React.useState({
+	const [machineState] = React.useState('stop');
+	const [settings] = React.useState({
 		stopTimeAbove: 0,
 		stopTimeBelow: 0,
 		numbs: 0,
 		testNumber: 0,
 	});
-	const [params, setParams] = React.useState({
+	const [params] = React.useState({
 		forcedTime: 0,
 		stopTimeAbove: 0,
 		stopTimeBelow: 0,
@@ -68,36 +58,7 @@ function ForcedEndurance() {
 	];
 	return (
 		<>
-			<Breadcrumbs
-				sx={{
-					'& .MuiBreadcrumbs-ol': {
-						'& .MuiBreadcrumbs-li': {
-							'& .MuiTypography-root': {
-								display: 'block',
-								fontSize: '1.5em',
-								marginBlockStart: '0.83em',
-								marginBlockEnd: '0.83em',
-								marginInlineStart: '0px',
-								marginInlineEnd: '0px',
-								fontWeight: 'bold',
-							},
-							'& .MuiLink-root': {
-								marginBottom: '15px',
-								textTransform: 'capitalize',
-							},
-							'& .MuiBreadcrumbs-separator': {
-								fontSize: '1.5rem',
-							},
-						},
-					},
-				}}
-				aria-label="breadcrumb"
-			>
-				<Link color="inherit" underline="hover" href="/qaqc">
-					PHÒNG QA/QC THIẾT BỊ
-				</Link>
-				<Typography color="text.primary">MÁY KIẾM TRA ĐỘ BỀN CƯỠNG BỨC</Typography>
-			</Breadcrumbs>
+			<CustomizedBreadcrumbs href="/qaqc" sector="PHÒNG QA/QC THIẾT BỊ" id="MÁY KIẾM TRA ĐỘ BỀN ĐÓNG CƯỠNG BỨC" />
 			<div className="row">
 				<div className="col-3">
 					<div className="card">

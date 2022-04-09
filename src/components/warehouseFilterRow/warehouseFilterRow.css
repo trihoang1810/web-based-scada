@@ -1,0 +1,29 @@
+.warehouseFilterRow__container {
+	width: 100%;
+}
+
+.warehouseFilterRow__container > div {
+	display: flex;
+	margin-top: 0;
+}
+
+.warehouseFilterRow__container select,
+.warehouseFilterRow__container input {
+	margin: 0 auto;
+	border-radius: 6px;
+	height: 40px;
+	padding-left: 10px;
+	font-size: 1.2rem;
+}
+
+.warehouseFilterRow__container .deleteBtn {
+	display: flex;
+	font-size: 1.5rem;
+	justify-content: center;
+	width: 30px;
+	align-items: center;
+}
+
+.warehouseFilterRow__container .deleteBtn:hover {
+	opacity: 0.6;
+}

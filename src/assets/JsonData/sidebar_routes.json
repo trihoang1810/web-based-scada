@@ -40,9 +40,21 @@
 	},
 	{
 		"display_name": "Máy ép",
-		"route": "/injection/pages/1",
+		"route": "/injection",
 		"icon": "bx bx-layer",
-		"subNav": []
+		"subNav": [
+
+			{
+				"display_name": "Dạng bản đồ",
+				"route": "/injection/map",
+				"icon": "bx bxs-map-pin"
+			},
+			{
+				"display_name": "Dạng bảng",
+				"route": "/injection/pages/1",
+				"icon": "bx bx-table"
+			}
+		]
 	},
 	{
 		"display_name": "Khu vực đóng gói",
@@ -71,12 +83,6 @@
 		"display_name": "cảnh báo",
 		"route": "/warning",
 		"icon": "bx bx-alarm-exclamation",
-		"subNav": []
-	},
-	{
-		"display_name": "tài khoản",
-		"route": "/profile",
-		"icon": "bx bx-user",
 		"subNav": []
 	},
 	{

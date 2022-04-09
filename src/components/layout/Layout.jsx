@@ -16,8 +16,6 @@ import { setMode, setColor } from '../../redux/slice/ThemeSlice';
 
 const Layout = () => {
 	const themeReducer = useSelector((state) => state.theme);
-	const sideBarReducer = useSelector((state) => state.sidebar);
-	const activeMenu = sideBarReducer.active;
 
 	const dispatch = useDispatch();
 

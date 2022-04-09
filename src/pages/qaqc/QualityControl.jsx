@@ -17,10 +17,10 @@ import { ReactComponent as RunDeformation } from '../../assets/images/qaqc/defor
 import QaqcMonitor from '../../components/qaqcmonitor/QaqcMonitor';
 
 function QualityControl() {
-	const [forcedEndurance, setForcedEndurance] = React.useState('forcedEndurance__stop');
-	const [endurance, setEndurance] = React.useState('endurance__stop');
-	const [waterProof, setWaterProof] = React.useState('waterProof__stop');
-	const [deformation, setDeformation] = React.useState('deformation__stop');
+	const [forcedEndurance] = React.useState('forcedEndurance__stop');
+	const [endurance] = React.useState('endurance__stop');
+	const [waterProof] = React.useState('waterProof__stop');
+	const [deformation] = React.useState('deformation__stop');
 
 	const match = useRouteMatch();
 	return (

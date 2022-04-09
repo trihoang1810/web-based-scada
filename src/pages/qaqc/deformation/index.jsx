@@ -1,6 +1,7 @@
-import { Breadcrumbs, Link, ToggleButton, ToggleButtonGroup, Typography } from '@mui/material';
+import { ToggleButton, ToggleButtonGroup } from '@mui/material';
 import React from 'react';
 import { Redirect, Route, Switch, useHistory, useRouteMatch } from 'react-router-dom';
+import CustomizedBreadcrumbs from '../../../components/breadcrumbs/Breadcrumbs';
 import FirstSystem from './firstsystem/FirstSystem';
 import SecondSystem from './secondsystem/SecondSystem';
 function Deformation() {
@@ -26,36 +27,7 @@ function Deformation() {
 	// }
 	return (
 		<>
-			<Breadcrumbs
-				sx={{
-					'& .MuiBreadcrumbs-ol': {
-						'& .MuiBreadcrumbs-li': {
-							'& .MuiTypography-root': {
-								display: 'block',
-								fontSize: '1.5em',
-								marginBlockStart: '0.83em',
-								marginBlockEnd: '0.83em',
-								marginInlineStart: '0px',
-								marginInlineEnd: '0px',
-								fontWeight: 'bold',
-							},
-							'& .MuiLink-root': {
-								marginBottom: '15px',
-								textTransform: 'capitalize',
-							},
-							'& .MuiBreadcrumbs-separator': {
-								fontSize: '1.5rem',
-							},
-						},
-					},
-				}}
-				aria-label="breadcrumb"
-			>
-				<Link color="inherit" underline="hover" href="/qaqc">
-					PHÒNG QA/QC THIẾT BỊ
-				</Link>
-				<Typography color="text.primary">MÁY KIẾM TRA ĐỘ BIẾN DẠNG</Typography>
-			</Breadcrumbs>
+			<CustomizedBreadcrumbs href="/qaqc" sector="PHÒNG QA/QC THIẾT BỊ" id="MÁY KIẾM TRA ĐỘ BIẾN DẠNG" />
 			<ToggleButtonGroup
 				fullWidth={true}
 				value={alignment}

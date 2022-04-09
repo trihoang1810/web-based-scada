@@ -1,0 +1,24 @@
+.warehouseTable thead {
+	background-color: var(--main-bg-dark);
+	font-size: 1.5rem;
+	font-weight: 500;
+	color: var(--txt-white);
+}
+
+.warehouseTable tbody {
+	background-color: var(--main-bg);
+	color: var(--txt-color);
+	font-size: 1.2rem;
+}
+
+.warehouseTable th {
+	border-left: none;
+	font-size: 1.2rem;
+	border-right: none;
+}
+
+.warehouseTable th,
+.warehouseTable td {
+	text-align: center;
+	font-size: 1rem;
+}
