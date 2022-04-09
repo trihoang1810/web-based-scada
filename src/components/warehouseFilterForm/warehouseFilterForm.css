@@ -5,9 +5,11 @@
 	align-items: center;
 	width: 100%;
 }
-
+.warehouseFilterForm-title > span {
+	font-size: 1.2rem;
+}
 .warehouseFilterForm-addBtn {
-	font-size: 2.5rem;
+	font-size: 2rem;
 	color: var(--second-color);
 	text-align: center;
 }

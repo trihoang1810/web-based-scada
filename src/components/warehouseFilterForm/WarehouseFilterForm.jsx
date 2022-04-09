@@ -102,8 +102,8 @@ function WarehouseFilterForm() {
 								<span className="col-2">Loại sản phẩm</span>
 								<span className="col-2">Mã sản phẩm</span>
 								<span className="col-3">Tên sản phẩm</span>
-								<span className="col-2">Từ ngày (tháng/ngày/năm)</span>
-								<span className="col-2">Đến ngày (tháng/ngày/năm)</span>
+								<span className="col-2">Từ ngày</span>
+								<span className="col-2">Đến ngày</span>
 
 								{filterRows.length < 3 && (
 									<div className="warehouseFilterForm-addBtn col-1" onClick={addFilterRow}>
