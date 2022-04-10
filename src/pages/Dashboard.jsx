@@ -190,7 +190,7 @@ const warehouseData = {
 		{
 			label: 'Tồn kho',
 			borderColor: 'blue',
-			backgroundColor: 'rgb(123,210,200)',
+			backgroundColor: 'rgb(123,210,200,1)',
 			data: [300, 700, 100, 50, 550],
 		},
 	],

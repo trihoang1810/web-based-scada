@@ -7,7 +7,7 @@ function WarehouseFilter({ filterId, deleteFilterRow, filterValues, setFilterVal
 	const [ids, setIds] = useState();
 	const [rowValues, setRowValues] = useState({});
 
-	const { values, handleChange, setFieldValue, handleSubmit, isSubmitting, isValid } = useFormikContext();
+	const { values, handleChange, setFieldValue, isValid } = useFormikContext();
 
 	const { type, id, name, fromDate, toDate } = values;
 
