@@ -2,19 +2,10 @@ import React from 'react';
 import ReportInjectionChart from '../../../../components/reportInjectionChart/ReportInjectionChart';
 import ReportInjectionFilter from '../../../../components/reportInjectionFilter/ReportInjectionFilter';
 import { format } from 'date-fns';
-import axios from 'axios';
-import { useQuery } from 'react-query';
-import PropagateLoader from 'react-spinners/PropagateLoader';
-import { css } from '@emotion/react';
 import LoadingComponent from '../../../../components/loadingComponent/LoadingComponent';
-const fetchInjectionReport = async () => {
-	return axios.get('https://my.api.mockaroo.com/injection_molding_machine_report.json?key=4ead7de0');
-};
+import useReportQuery from '../../../../hooks/useReportQuery';
 function ReportInjectionMoldingSector() {
-	const { data, isLoading, isFetching, isError, error, refetch } = useQuery('injection_report', fetchInjectionReport, {
-		refetchOnWindowFocus: false,
-		enabled: false,
-	});
+	const { data, isFetching, isError, error, refetch } = useReportQuery();
 
 	const onSubmit = (value) => {
 		refetch();
@@ -22,7 +13,7 @@ function ReportInjectionMoldingSector() {
 	};
 
 	if (isError) {
-		return <div>Something went wrong: {error}</div>;
+		return <div>Something went wrong: {error.message}</div>;
 	}
 	return (
 		<>
