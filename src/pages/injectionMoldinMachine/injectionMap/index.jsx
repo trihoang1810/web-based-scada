@@ -41,7 +41,7 @@ function InjectionMap() {
 																	<div className="injection-map__map-item-sub-title">{item.subTitle}</div>
 																)}
 																<div className="injection-map__machine-container">
-																	<VerticalMachine height="100px" width="auto" />
+																	<VerticalMachine height="100px" width="100%" />
 																</div>
 															</Link>
 														) : (
@@ -62,7 +62,7 @@ function InjectionMap() {
 																	<div className="injection-map__map-item-sub-title">{item.subTitle}</div>
 																)}
 																<div className="injection-map__machine-container">
-																	<VerticalMachine height="100px" width="auto" />
+																	<VerticalMachine height="100px" width="100%" />
 																</div>
 															</div>
 														)}
@@ -94,7 +94,7 @@ function InjectionMap() {
 																	<div className="injection-map__map-item-sub-title">{item.subTitle}</div>
 																)}
 																<div className="injection-map__machine-container">
-																	<VerticalMachine height="100px" width="auto" />
+																	<VerticalMachine height="100px" width="100%" />
 																</div>
 															</Link>
 														) : (
@@ -115,7 +115,7 @@ function InjectionMap() {
 																	<div className="injection-map__map-item-sub-title">{item.subTitle}</div>
 																)}
 																<div className="injection-map__machine-container">
-																	<VerticalMachine height="100px" width="auto" />
+																	<VerticalMachine height="100px" width="100%" />
 																</div>
 															</div>
 														)}
@@ -147,7 +147,7 @@ function InjectionMap() {
 																	<div className="injection-map__map-item-sub-title">{item.subTitle}</div>
 																)}
 																<div className="injection-map__machine-container">
-																	<HorizontalMachine height="auto" width="200px" />
+																	<HorizontalMachine height="100%" width="200px" />
 																</div>
 															</Link>
 														) : (
@@ -168,7 +168,7 @@ function InjectionMap() {
 																	<div className="injection-map__map-item-sub-title">{item.subTitle}</div>
 																)}
 																<div className="injection-map__machine-container">
-																	<HorizontalMachine height="auto" width="200px" />
+																	<HorizontalMachine height="100%" width="200px" />
 																</div>
 															</div>
 														)}
@@ -198,7 +198,7 @@ function InjectionMap() {
 																	<div className="injection-map__map-item-sub-title">{item.subTitle}</div>
 																)}
 																<div className="injection-map__machine-container">
-																	<HorizontalMachine height="auto" width="200px" />
+																	<HorizontalMachine height="100%" width="200px" />
 																</div>
 															</Link>
 														) : (
@@ -219,7 +219,7 @@ function InjectionMap() {
 																	<div className="injection-map__map-item-sub-title">{item.subTitle}</div>
 																)}
 																<div className="injection-map__machine-container">
-																	<HorizontalMachine height="auto" width="200px" />
+																	<HorizontalMachine height="100%" width="200px" />
 																</div>
 															</div>
 														)}

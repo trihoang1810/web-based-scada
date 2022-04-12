@@ -1,3 +1,8 @@
+# Web-based SCADA application
+======================================
+SISTRAIN's "magical eyes" application has the function of monitoring and collecting data related to the production status of the factory at C.H.A plastic joint stock company.
+
+==================================================
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

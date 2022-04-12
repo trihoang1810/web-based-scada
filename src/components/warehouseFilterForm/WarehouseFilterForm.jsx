@@ -105,7 +105,7 @@ function WarehouseFilterForm() {
 								<span className="col-2">Từ ngày</span>
 								<span className="col-2">Đến ngày</span>
 
-								{filterRows.length < 3 && (
+								{filterRows.length < 5 && (
 									<div className="warehouseFilterForm-addBtn col-1" onClick={addFilterRow}>
 										<i className="bx bx-plus-circle"></i>
 									</div>

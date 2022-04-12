@@ -8,6 +8,7 @@
 }
 
 .sidebar {
+  overflow: scroll;
   position: fixed;
   z-index: 999;
   min-width: var(--sidebar-width);

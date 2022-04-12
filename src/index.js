@@ -2,6 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import reportWebVitals from './reportWebVitals';
 
+import { QueryClientProvider, QueryClient } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
+
 import { Provider } from 'react-redux';
 
 import store from './redux/store/store';
@@ -57,11 +60,16 @@ Chart.register(
 	PointElement
 );
 
+const queryClient = new QueryClient();
+
 ReactDOM.render(
 	<React.StrictMode>
-		<Provider store={store}>
-			<Layout />
-		</Provider>
+		<QueryClientProvider client={queryClient}>
+			<Provider store={store}>
+				<Layout />
+			</Provider>
+			<ReactQueryDevtools position="bottom-right" initialIsOpen={false} />
+		</QueryClientProvider>
 	</React.StrictMode>,
 	document.getElementById('root')
 );
