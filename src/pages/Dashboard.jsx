@@ -38,7 +38,7 @@ import { ReactComponent as InjectionMoldingMachine } from '../assets/images/comp
 // 	],
 // };
 //----------------------------------------------------
-const qaqcButtonList = ['Độ bền', 'Độ bền CB', 'Chống thấm', 'Đố biến dạng'];
+const qaqcButtonList = ['Độ bền', 'Độ bền CB', 'Chống thấm', 'Độ biến dạng'];
 // const qaqcOptions = {
 // 	responsive: true,
 // 	maintainAspectRatio: false,
