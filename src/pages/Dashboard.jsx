@@ -1,7 +1,7 @@
 import React from 'react';
 // import { Link } from 'react-router-dom';
-import Badge from '../components/badge/Badge';
-import Table from '../components/table/Table';
+// import Badge from '../components/badge/Badge';
+// import Table from '../components/table/Table';
 import ToggleButtons from '../components/toggleButtons/ToggleButtons';
 import { ReactComponent as InjectionMoldingMachine } from '../assets/images/compressor/injectionFullDetail.svg';
 
@@ -183,42 +183,42 @@ const packingButtonList = ['Cụm 1', 'Cụm 2', 'Cụm 3', 'Cụm 4', 'Cụm 5'
 // 	indexAxis: 'y',
 // };
 //-------------------------------------
-const latestAlarmData = {
-	body: [
-		{
-			title: 'lorem ipsum',
-			priority: 'low',
-		},
-		{ title: 'lorem ipsum', priority: 'high' },
-		{
-			title: 'lorem ipsum',
-			priority: 'low',
-		},
-		{ title: 'lorem ipsum', priority: 'middle' },
-		{
-			title: 'lorem ipsum',
-			priority: 'low',
-		},
-		{ title: 'lorem ipsum', priority: 'high' },
-	],
-};
+// const latestAlarmData = {
+// 	body: [
+// 		{
+// 			title: 'lorem ipsum',
+// 			priority: 'low',
+// 		},
+// 		{ title: 'lorem ipsum', priority: 'high' },
+// 		{
+// 			title: 'lorem ipsum',
+// 			priority: 'low',
+// 		},
+// 		{ title: 'lorem ipsum', priority: 'middle' },
+// 		{
+// 			title: 'lorem ipsum',
+// 			priority: 'low',
+// 		},
+// 		{ title: 'lorem ipsum', priority: 'high' },
+// 	],
+// };
 
-const alarmStatus = {
-	low: 'success',
-	middle: 'warning',
-	high: 'danger',
-};
+// const alarmStatus = {
+// 	low: 'success',
+// 	middle: 'warning',
+// 	high: 'danger',
+// };
 
-const renderAlarmBody = (item, index) => {
-	return (
-		<tr key={index}>
-			<td>{item.title}</td>
-			<td>
-				<Badge type={alarmStatus[item.priority]} content={item.priority} />
-			</td>
-		</tr>
-	);
-};
+// const renderAlarmBody = (item, index) => {
+// 	return (
+// 		<tr key={index}>
+// 			<td>{item.title}</td>
+// 			<td>
+// 				<Badge type={alarmStatus[item.priority]} content={item.priority} />
+// 			</td>
+// 		</tr>
+// 	);
+// };
 
 //-------------------------------------
 const Dashboard = () => {
@@ -290,11 +290,9 @@ const Dashboard = () => {
 				<div className="col-4">
 					<div className="card full-height">
 						<div className="card__header">
-							<h3>CẢNH BÁO</h3>
+							<h3>CHỈ TIÊU OEE</h3>
 						</div>
-						<div className="card__body">
-							<Table headData={latestAlarmData.head} bodyData={latestAlarmData.body} renderBody={renderAlarmBody} />
-						</div>
+						<div className="card__body"></div>
 					</div>
 				</div>
 			</div>
