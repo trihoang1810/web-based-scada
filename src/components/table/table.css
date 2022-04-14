@@ -2,9 +2,16 @@
   overflow-y: auto;
 }
 
+
+.table-wrapper tr:hover{
+  background-color: var(--second-color);
+  color: var(--txt-white);
+  cursor: pointer;
+}
+
 table{
   width: 100%;
-  min-width: 400px;
+  min-width: 200px;
   border-spacing: 0;
 }
 

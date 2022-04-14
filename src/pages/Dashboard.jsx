@@ -1,9 +1,10 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
-// import Badge from '../components/badge/Badge';
-// import Table from '../components/table/Table';
+import { Link } from 'react-router-dom';
+import Badge from '../components/badge/Badge';
+import Table from '../components/table/Table';
 import ToggleButtons from '../components/toggleButtons/ToggleButtons';
-import { ReactComponent as InjectionMoldingMachine } from '../assets/images/compressor/injectionFullDetail.svg';
+import StatusCard from '../components/statusCard/StatusCard';
+import { ReactComponent as InjectionMoldingMachine } from '../assets/images/injectionMoldingMachine/injectionFullDetail.svg';
 
 //------------------------------------------
 // const injectionOptions = {
@@ -183,42 +184,46 @@ const packingButtonList = ['Cụm 1', 'Cụm 2', 'Cụm 3', 'Cụm 4', 'Cụm 5'
 // 	indexAxis: 'y',
 // };
 //-------------------------------------
-// const latestAlarmData = {
-// 	body: [
-// 		{
-// 			title: 'lorem ipsum',
-// 			priority: 'low',
-// 		},
-// 		{ title: 'lorem ipsum', priority: 'high' },
-// 		{
-// 			title: 'lorem ipsum',
-// 			priority: 'low',
-// 		},
-// 		{ title: 'lorem ipsum', priority: 'middle' },
-// 		{
-// 			title: 'lorem ipsum',
-// 			priority: 'low',
-// 		},
-// 		{ title: 'lorem ipsum', priority: 'high' },
-// 	],
-// };
+const latestAlarmData = {
+	body: [
+		{
+			title: 'lorem ipsum',
+			priority: 'low',
+		},
 
-// const alarmStatus = {
-// 	low: 'success',
-// 	middle: 'warning',
-// 	high: 'danger',
-// };
+		{ title: 'lorem ipsum', priority: 'high' },
+		{ title: 'lorem ipsum', priority: 'high' },
+		{ title: 'lorem ipsum', priority: 'high' },
+		{ title: 'lorem ipsum', priority: 'high' },
+		{
+			title: 'lorem ipsum',
+			priority: 'low',
+		},
+		{ title: 'lorem ipsum', priority: 'middle' },
+		{
+			title: 'lorem ipsum',
+			priority: 'low',
+		},
+		{ title: 'lorem ipsum', priority: 'high' },
+	],
+};
 
-// const renderAlarmBody = (item, index) => {
-// 	return (
-// 		<tr key={index}>
-// 			<td>{item.title}</td>
-// 			<td>
-// 				<Badge type={alarmStatus[item.priority]} content={item.priority} />
-// 			</td>
-// 		</tr>
-// 	);
-// };
+const alarmStatus = {
+	low: 'success',
+	middle: 'warning',
+	high: 'danger',
+};
+
+const renderAlarmBody = (item, index) => {
+	return (
+		<tr key={index}>
+			<td>{item.title}</td>
+			<td>
+				<Badge type={alarmStatus[item.priority]} content={item.priority} />
+			</td>
+		</tr>
+	);
+};
 
 //-------------------------------------
 const Dashboard = () => {
@@ -235,7 +240,7 @@ const Dashboard = () => {
 		<div>
 			<h2 className="page-header">Dashboard</h2>
 			<div className="row">
-				<div className="col-6">
+				<div className="col-5">
 					<div className="card full-height">
 						<div className="card__header">
 							<h3>PHÒNG QA/QC THIẾT BỊ</h3>
@@ -253,7 +258,7 @@ const Dashboard = () => {
 						</div>
 					</div>
 				</div>
-				<div className="col-6">
+				<div className="col-4">
 					<div className="card full-height">
 						<div className="card__header">
 							<h3>KHU ĐÓNG GÓI</h3>
@@ -266,6 +271,26 @@ const Dashboard = () => {
 										onClick={onPackingToggleButtonsIndexChange}
 										titles={packingButtonList}
 									/>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div className="col-3">
+					<div className="card height-400">
+						<div className="card__header">
+							<h3>CẢNH BÁO</h3>
+						</div>
+						<div className="card__body">
+							<div className="row">
+								<div className="col-12">
+									<Link to="/warning">
+										<Table
+											headData={latestAlarmData.head}
+											bodyData={latestAlarmData.body.slice(0, 6)}
+											renderBody={renderAlarmBody}
+										/>
+									</Link>
 								</div>
 							</div>
 						</div>
@@ -292,7 +317,50 @@ const Dashboard = () => {
 						<div className="card__header">
 							<h3>CHỈ TIÊU OEE</h3>
 						</div>
-						<div className="card__body"></div>
+						<div className="card__body">
+							<div className="row">
+								<div className="col-6">
+									<Link to="/report/oee">
+										<StatusCard
+											tooltip="Availability"
+											color="#3ace3a"
+											icon="bx bx-timer"
+											title="Mức độ hữu dụng"
+											count="50%"
+										/>
+									</Link>
+								</div>
+								<div className="col-6">
+									<Link to="/report/oee">
+										<StatusCard tooltip="Performance" color="#7c5eb8" icon="bx bx-cog" title="Hiệu suất" count="50%" />
+									</Link>
+								</div>
+							</div>
+							<div className="row">
+								<div className="col-6">
+									<Link to="/report/oee">
+										<StatusCard
+											tooltip="Quality"
+											color="#ffa82e"
+											icon="bx bx-search-alt"
+											title="Chất lượng"
+											count="50%"
+										/>
+									</Link>
+								</div>
+								<div className="col-6">
+									<Link to="/report/oee">
+										<StatusCard
+											tooltip="OEE index"
+											color="#ff4e4e "
+											icon="bx bx-target-lock"
+											title="Chỉ số OEE"
+											count="50%"
+										/>
+									</Link>
+								</div>
+							</div>
+						</div>
 					</div>
 				</div>
 			</div>
