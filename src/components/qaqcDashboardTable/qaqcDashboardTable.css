@@ -1,0 +1,67 @@
+#qaqc-dashboard-table {
+  overflow-y: auto;
+}
+#qaqc-dashboard-table tbody {
+  display: block;
+  overflow: auto;
+  width: 100%;
+}
+#qaqc-dashboard-table tr{
+  text-align: left;
+  height: 60px;
+  border-radius: 10px;
+}
+
+#qaqc-dashboard-table tr:first-child{
+  text-align: left;
+  height: 40px;
+}
+
+#qaqc-dashboard-table th{
+  border:none;
+  background-color: var(--second-color);
+  color: var(--txt-white);
+}
+
+#qaqc-dashboard-table td{
+  border-top: 1px solid #ddd;
+  border-right: 1px solid #ddd;
+  border-bottom: none;
+}
+
+#qaqc-dashboard-table tr > th {
+  min-width: 200px;
+  width: 220px;
+}
+#qaqc-dashboard-table tr > td {
+  min-width: 200px;
+  width: 220px;
+}
+#qaqc-dashboard-table.deformation tr > th {
+  min-width: 100px;
+  width: 150px;
+}
+#qaqc-dashboard-table.deformation tr > td {
+  min-width: 100px;
+  width: 150px;
+}
+#qaqc-dashboard-table tr> td {
+  text-align: center;
+}
+
+#qaqc-dashboard-table.deformation tr:first-child >td{
+  font-weight: bold;
+}
+#qaqc-dashboard-table.deformation tr:first-child >td{
+  font-weight: bold;
+}
+#qaqc-dashboard-table.deformation tr:first-child > th {
+  background-color: transparent;
+}
+#qaqc-dashboard-table tr:last-child > td{
+  border-bottom: 1px solid #ddd; 
+}
+
+#qaqc-dashboard-table.deformation tr:first-child > td{
+ border: none;
+}

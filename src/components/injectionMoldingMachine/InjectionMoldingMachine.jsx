@@ -123,8 +123,8 @@ function InjectionMoldingMachine({ injectionMoldingMachineData }) {
 										<td>{injectionMoldingMachineData.openDoorTime}</td>
 									</tr>
 									<tr>
-										<td>Số giờ hoạt động trên ngày</td>
-										<td>{injectionMoldingMachineData.operatingTime}</td>
+										<td>Mã sản phẩm ép</td>
+										<td>{injectionMoldingMachineData.productId}</td>
 									</tr>
 								</tbody>
 							</table>
