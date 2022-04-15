@@ -3,7 +3,7 @@ import React from 'react';
 // import Badge from '../components/badge/Badge';
 // import Table from '../components/table/Table';
 import ToggleButtons from '../components/toggleButtons/ToggleButtons';
-import { ReactComponent as InjectionMoldingMachine } from '../assets/images/compressor/injectionFullDetail.svg';
+import { ReactComponent as InjectionMoldingMachine } from '../assets/images/injectionMoldingMachine/injectionFullDetail.svg';
 
 //------------------------------------------
 // const injectionOptions = {
