@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './injectionFilter.css';
 
-function InjectionFilter({ hanldeCheckBtn, wattageFilter, stateFilter }) {
+function InjectionFilter({ handleCheckBtn, wattageFilter, stateFilter }) {
 	const [showWattageFilter, setShowWattageFilter] = useState(false);
 	const [showStateFilter, setShowStateFilter] = useState(false);
 	useEffect(() => {
@@ -19,8 +19,8 @@ function InjectionFilter({ hanldeCheckBtn, wattageFilter, stateFilter }) {
 			<span
 				className={`col-4 ${wattageFilter.length > 0 && 'isFiltered'}`}
 				onClick={(e) => {
-					setShowWattageFilter(!showWattageFilter);
 					e.stopPropagation();
+					setShowWattageFilter(!showWattageFilter);
 				}}
 			>
 				Công suất
@@ -28,7 +28,7 @@ function InjectionFilter({ hanldeCheckBtn, wattageFilter, stateFilter }) {
 			<div className={`injectionMoldinMachinePage__filter-wattage ${showWattageFilter ? 'show' : 'hide'}`}>
 				<button
 					type="button"
-					onClick={(e) => hanldeCheckBtn(e, 'wattage', 'small')}
+					onClick={(e) => handleCheckBtn(e, 'wattage', 'small')}
 					className={`injectionMoldinMachinePage__filter-btn ${wattageFilter.includes('small') && 'btnActive'}`}
 				>
 					<i className="bx bx-check"></i>
@@ -36,7 +36,7 @@ function InjectionFilter({ hanldeCheckBtn, wattageFilter, stateFilter }) {
 				</button>
 				<button
 					type="button"
-					onClick={(e) => hanldeCheckBtn(e, 'wattage', 'large')}
+					onClick={(e) => handleCheckBtn(e, 'wattage', 'large')}
 					className={`injectionMoldinMachinePage__filter-btn ${wattageFilter.includes('large') && 'btnActive'}`}
 				>
 					<i className="bx bx-check"></i>
@@ -55,7 +55,7 @@ function InjectionFilter({ hanldeCheckBtn, wattageFilter, stateFilter }) {
 			<div className={`injectionMoldinMachinePage__filter-state ${showStateFilter ? 'show' : 'hide'}`}>
 				<button
 					type="button"
-					onClick={(e) => hanldeCheckBtn(e, 'state', 'M')}
+					onClick={(e) => handleCheckBtn(e, 'state', 'M')}
 					className={`injectionMoldinMachinePage__filter-btn ${stateFilter.includes('M') && 'btnActive'}`}
 				>
 					<i className="bx bx-wrench"></i>
@@ -63,7 +63,7 @@ function InjectionFilter({ hanldeCheckBtn, wattageFilter, stateFilter }) {
 				</button>
 				<button
 					type="button"
-					onClick={(e) => hanldeCheckBtn(e, 'state', 'R')}
+					onClick={(e) => handleCheckBtn(e, 'state', 'R')}
 					className={`injectionMoldinMachinePage__filter-btn ${stateFilter.includes('R') && 'btnActive'}`}
 				>
 					<i className="bx bx-play"></i>
@@ -71,7 +71,7 @@ function InjectionFilter({ hanldeCheckBtn, wattageFilter, stateFilter }) {
 				</button>
 				<button
 					type="button"
-					onClick={(e) => hanldeCheckBtn(e, 'state', 'S')}
+					onClick={(e) => handleCheckBtn(e, 'state', 'S')}
 					className={`injectionMoldinMachinePage__filter-btn ${stateFilter.includes('S') && 'btnActive'}`}
 				>
 					<i className="bx bx-stop"></i>
