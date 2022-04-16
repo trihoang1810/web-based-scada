@@ -1,0 +1,15 @@
+.view-more-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: auto;
+  background-color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 10px;
+  transition: all 0.1s ease-in-out;
+}
+.view-more-button__text{
+  font-weight: 600;
+}

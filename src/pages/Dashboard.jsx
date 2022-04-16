@@ -8,6 +8,7 @@ import { ReactComponent as InjectionMoldingMachine } from '../assets/images/inje
 import { ReactComponent as PackingMachine } from '../assets/images/packingClassification/packingClassification.svg';
 import QaQcTable from '../components/qaqcDashboardTable/QaqcDashboardTable';
 import ProgressBar from '../components/progressBar/ProgressBar';
+import ViewMoreButton from '../components/viewMoreButton/ViewMoreButton';
 import { convertHMS } from '../utils/utils';
 // import { IgrRadialGauge, IgrRadialGaugeRange, IgrRadialGaugeModule } from 'igniteui-react-gauges';
 
@@ -299,7 +300,14 @@ const Dashboard = () => {
 				<div className="col-5">
 					<div className="card full-height">
 						<div className="card__header">
-							<h3>PHÒNG QA/QC THIẾT BỊ</h3>
+							<div className="row">
+								<div className="col-10 flex-horizontal-center">
+									<h3>PHÒNG QA/QC THIẾT BỊ</h3>
+								</div>
+								<div className="col-2 flex-left">
+									<ViewMoreButton link="/qaqc" />
+								</div>
+							</div>
 						</div>
 						<div className="card__body height-80">
 							<div className="row">
@@ -351,7 +359,14 @@ const Dashboard = () => {
 				<div className="col-4">
 					<div className="card full-height">
 						<div className="card__header">
-							<h3>KHU ĐÓNG GÓI</h3>
+							<div className="row">
+								<div className="col-9 flex-horizontal-center">
+									<h3>KHU VỰC ĐÓNG GÓI</h3>
+								</div>
+								<div className="col-3 flex-left">
+									<ViewMoreButton link="/packing" />
+								</div>
+							</div>
 						</div>
 						<div className="card__body height-80">
 							<div className="row">
@@ -430,7 +445,14 @@ const Dashboard = () => {
 				<div className="col-8">
 					<div className="card full-height">
 						<div className="card__header">
-							<h3>KHU MÁY ÉP</h3>
+							<div className="row">
+								<div className="col-9 flex-horizontal-center">
+									<h3>KHU VỰC MÁY ÉP</h3>
+								</div>
+								<div className="col-3 flex-left">
+									<ViewMoreButton link="/injection/pages/1" />
+								</div>
+							</div>
 						</div>
 						<div className="card__body">
 							<div className="row">
