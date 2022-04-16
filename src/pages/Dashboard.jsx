@@ -434,7 +434,44 @@ const Dashboard = () => {
 						</div>
 						<div className="card__body">
 							<div className="row">
-								<div className="col-12 flex-center">
+								<div className="col-3">
+									<div className="row">
+										<div className="col-12">
+											<StatusCard
+												padding="none"
+												height="87px"
+												tooltip="Máy đang chạy"
+												color="#3ace3a"
+												icon="bx bx-check-circle"
+												title="Máy đang chạy"
+												count="27"
+											/>
+										</div>
+										<div className="col-12">
+											<StatusCard
+												padding="none"
+												height="87px"
+												tooltip="Máy đang dừng"
+												color="#ffa82e"
+												icon="bx bx-loader-circle"
+												title="Máy đang dừng"
+												count="27"
+											/>
+										</div>
+										<div className="col-12">
+											<StatusCard
+												padding="none"
+												height="87px"
+												tooltip="Máy không hoạt động"
+												color="#ff4e4e"
+												icon="bx bx-power-off"
+												title="Máy không hoạt động"
+												count="27"
+											/>
+										</div>
+									</div>
+								</div>
+								<div className="col-9 flex-center">
 									<InjectionMoldingMachine width="100%" height="200px" />
 								</div>
 							</div>
@@ -451,6 +488,7 @@ const Dashboard = () => {
 								<div className="col-6">
 									<Link to="/report/oee">
 										<StatusCard
+											hover={true}
 											tooltip="Availability"
 											color="#3ace3a"
 											icon="bx bx-timer"
@@ -461,7 +499,14 @@ const Dashboard = () => {
 								</div>
 								<div className="col-6">
 									<Link to="/report/oee">
-										<StatusCard tooltip="Performance" color="#7c5eb8" icon="bx bx-cog" title="Hiệu suất" count="50%" />
+										<StatusCard
+											hover={true}
+											tooltip="Performance"
+											color="#7c5eb8"
+											icon="bx bx-cog"
+											title="Hiệu suất"
+											count="50%"
+										/>
 									</Link>
 								</div>
 							</div>
@@ -469,6 +514,7 @@ const Dashboard = () => {
 								<div className="col-6">
 									<Link to="/report/oee">
 										<StatusCard
+											hover={true}
 											tooltip="Quality"
 											color="#ffa82e"
 											icon="bx bx-search-alt"
@@ -480,6 +526,7 @@ const Dashboard = () => {
 								<div className="col-6">
 									<Link to="/report/oee">
 										<StatusCard
+											hover={true}
 											tooltip="OEE index"
 											color="#ff4e4e "
 											icon="bx bx-target-lock"
