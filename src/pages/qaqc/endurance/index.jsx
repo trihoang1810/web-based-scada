@@ -154,7 +154,7 @@ function Endurance() {
 										<TableHead>
 											<TableRow>
 												<StyledTableCell align="left">Thông số của máy</StyledTableCell>
-												<StyledTableCell align="left">Xi lanh 3</StyledTableCell>
+												<StyledTableCell align="left"> </StyledTableCell>
 											</TableRow>
 										</TableHead>
 										<TableBody

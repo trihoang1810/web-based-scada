@@ -5,7 +5,7 @@ function InjectionMoldingMainPage() {
 	return (
 		<>
 			<Switch>
-				<Redirect exact from="/injection" to="/injection/map" />
+				<Redirect exact from="/injection" to="/injection/pages/1" />
 			</Switch>
 		</>
 	);

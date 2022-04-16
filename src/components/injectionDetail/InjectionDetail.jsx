@@ -36,37 +36,37 @@ Chart.register(
 	PointElement
 );
 
-const injectionOptions = {
-	// responsive: true,
-	plugins: {
-		labels: {
-			render: (args) => {
-				return args.label;
-			},
-		},
-		datalabels: {
-			font: {
-				weight: 'bold',
-				size: 16,
-			},
-		},
-		legend: {
-			display: true,
-			position: 'top',
-		},
-	},
-};
+// const injectionOptions = {
+// 	// responsive: true,
+// 	plugins: {
+// 		labels: {
+// 			render: (args) => {
+// 				return args.label;
+// 			},
+// 		},
+// 		datalabels: {
+// 			font: {
+// 				weight: 'bold',
+// 				size: 16,
+// 			},
+// 		},
+// 		legend: {
+// 			display: true,
+// 			position: 'top',
+// 		},
+// 	},
+// };
 
-const injectionData = {
-	labels: ['Thời gian sản xuất', 'Thời gian nghỉ', 'Thời gian tắt', 'Thời gian lỗi'],
-	datasets: [
-		{
-			label: 'dataset1',
-			data: [25, 50, 100, 75],
-			backgroundColor: ['red', 'green', 'orange', 'blue'],
-		},
-	],
-};
+// const injectionData = {
+// 	labels: ['Thời gian sản xuất', 'Thời gian nghỉ', 'Thời gian tắt', 'Thời gian lỗi'],
+// 	datasets: [
+// 		{
+// 			label: 'dataset1',
+// 			data: [25, 50, 100, 75],
+// 			backgroundColor: ['red', 'green', 'orange', 'blue'],
+// 		},
+// 	],
+// };
 
 function InjectionDetail({ injectionMoldingMachineData }) {
 	const history = useHistory();

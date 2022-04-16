@@ -1,8 +1,8 @@
 import React from 'react';
 import './injectionMap.css';
 import { Link, useHistory } from 'react-router-dom';
-import { ReactComponent as VerticalMachine } from '../../../assets/images/compressor/vertical_injection_machine.svg';
-import { ReactComponent as HorizontalMachine } from '../../../assets/images/compressor/compressor.svg';
+import { ReactComponent as VerticalMachine } from '../../../assets/images/injectionMoldingMachine/vertical_injection_machine.svg';
+import { ReactComponent as HorizontalMachine } from '../../../assets/images/injectionMoldingMachine/injectionFullDetail.svg';
 import ReportNavigationButton from '../../../components/reportNavigationButton/ReportNavigationButton';
 import { INJECTION_MACHINE_LAYOUT } from '../../../utils/utils';
 function InjectionMap() {

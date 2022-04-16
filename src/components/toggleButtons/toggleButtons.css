@@ -1,0 +1,36 @@
+.toggle-buttons-container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+.toggle-buttons-button{
+  transition: all 0.1s ease-in-out;
+  margin-left: 10px;
+  color: rgb(204, 204, 204,0.3);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  height: 30px;
+  padding: 0 10px;
+  list-style: none;
+  font-size: 0.9rem;
+  border: 1px solid #9b9b9b00;
+  border-radius: 10px;
+  background-color: #f1f1f1;
+  box-shadow: none;
+  color: var(--txt-black);
+  overflow: hidden;
+}
+
+.toggle-buttons-button:hover{
+  background-color: #9b9b9b00;
+  border: 1px solid #9b9b9b;
+}
+
+.toggle-buttons-button.active{
+  background-color: var(--main-color-green);
+  color: var(--txt-white);
+}
