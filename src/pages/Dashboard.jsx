@@ -5,7 +5,14 @@ import Table from '../components/table/Table';
 import ToggleButtons from '../components/toggleButtons/ToggleButtons';
 import StatusCard from '../components/statusCard/StatusCard';
 import { ReactComponent as InjectionMoldingMachine } from '../assets/images/injectionMoldingMachine/injectionFullDetail.svg';
+import { ReactComponent as PackingMachine } from '../assets/images/packingClassification/packingClassification.svg';
+import QaQcTable from '../components/qaqcDashboardTable/QaqcDashboardTable';
+import ProgressBar from '../components/progressBar/ProgressBar';
+import ViewMoreButton from '../components/viewMoreButton/ViewMoreButton';
+import { convertHMS } from '../utils/utils';
+// import { IgrRadialGauge, IgrRadialGaugeRange, IgrRadialGaugeModule } from 'igniteui-react-gauges';
 
+// IgrRadialGaugeModule.register();
 //------------------------------------------
 // const injectionOptions = {
 // 	// responsive: true,
@@ -226,9 +233,26 @@ const renderAlarmBody = (item, index) => {
 };
 
 //-------------------------------------
+const workingHoursSetPoint = 28800;
 const Dashboard = () => {
 	// const themeReducer = useSelector((state) => state.theme.mode);
+	const [packingData] = React.useState({
+		isRunning: false,
+		progress: 10,
+		progressSetPoint: 500,
+		workingHours: 7212,
+		errorProducts: 5,
+		fixedProducts: 5,
+	});
 	const [qaqcToggleButtonsIndex, setQaqcToggleButtonsIndex] = React.useState(0);
+	const [isDeformation, setIsDeformation] = React.useState(false);
+	const [qaqcTableHead, setQaqcTableHead] = React.useState([
+		'Thời gian chờ nắp đóng',
+		'Thời gian chờ nắp mở',
+		'Số lần thực hiện',
+	]);
+	// const [isWaterProof, setIsWaterProof] = React.useState(false);
+	const [qaqcTableBody, setQaqcTableBody] = React.useState(['1', '2', '3']);
 	const [packingToggleButtonsIndex, setPackingToggleButtonsIndex] = React.useState(0);
 	const onQaqcToggleButtonsIndexChange = (index) => {
 		setQaqcToggleButtonsIndex(index);
@@ -236,6 +260,39 @@ const Dashboard = () => {
 	const onPackingToggleButtonsIndexChange = (index) => {
 		setPackingToggleButtonsIndex(index);
 	};
+	React.useEffect(() => {
+		switch (qaqcToggleButtonsIndex) {
+			case 0:
+				setQaqcTableHead(['Thời gian chờ nắp đóng', 'Thời gian chờ nắp mở', 'Số lần thực hiện']);
+				setQaqcTableBody(['1', '2', '3']);
+				setIsDeformation(false);
+				// setIsWaterProof(false);
+				break;
+			case 1:
+				setQaqcTableHead(['Thời gian dừng lên', 'Thời gian dừng xuống', 'Số lần thực hiện']);
+				setQaqcTableBody(['1', '2', '3']);
+				setIsDeformation(false);
+				// setIsWaterProof(false);
+				break;
+			case 2:
+				setQaqcTableHead(['Nhiệt độ cài đặt', 'Thời gian kiểm tra cài đặt']);
+				setQaqcTableBody(['1', '2']);
+				setIsDeformation(false);
+				// setIsWaterProof(true);
+				break;
+			case 3:
+				setQaqcTableHead([' ', 'Lực nén cài đặt', 'Thời gian giữ', 'Số lần cài đặt']);
+				setQaqcTableBody([
+					['Hệ 1', '1', '2', '3'],
+					['Hệ 2', '1', '2', '3'],
+				]);
+				setIsDeformation(true);
+				// setIsWaterProof(false);
+				break;
+			default:
+				break;
+		}
+	}, [qaqcToggleButtonsIndex]);
 	return (
 		<div>
 			<h2 className="page-header">Dashboard</h2>
@@ -243,9 +300,16 @@ const Dashboard = () => {
 				<div className="col-5">
 					<div className="card full-height">
 						<div className="card__header">
-							<h3>PHÒNG QA/QC THIẾT BỊ</h3>
+							<div className="row">
+								<div className="col-10 flex-horizontal-center">
+									<h3>PHÒNG QA/QC THIẾT BỊ</h3>
+								</div>
+								<div className="col-2 flex-left">
+									<ViewMoreButton link="/qaqc" />
+								</div>
+							</div>
 						</div>
-						<div className="card__body">
+						<div className="card__body height-80">
 							<div className="row">
 								<div className="col-12 flex-right">
 									<ToggleButtons
@@ -255,15 +319,56 @@ const Dashboard = () => {
 									/>
 								</div>
 							</div>
+							<div className="row full-height">
+								<div className="col-8 full-height flex-center">
+									<QaQcTable isDeformation={isDeformation} body={qaqcTableBody} header={qaqcTableHead} />
+								</div>
+								<div className="col-4 full-height flex-center">
+									{/* <IgrRadialGauge
+										width="100%"
+										height="180px"
+										minimumValue={0}
+										maximumValue={100}
+										scaleBrush="#c6c6c6"
+										scaleStartExtent={0.3}
+										scaleEndExtent={0.575}
+										value={70}
+										interval={10}
+										tickStartExtent={0.45}
+										tickEndExtent={0.575}
+										tickStrokeThickness={2}
+										tickBrush="Black"
+										minorTickCount={4}
+										minorTickEndExtent={0.5}
+										minorTickStartExtent={0.575}
+										fontBrush="Black"
+										backingShape="Fitted"
+										backingBrush="#ededed"
+										backingStrokeThickness={5}
+									>
+										<IgrRadialGaugeRange name="range1" startValue={0} endValue={40} brush="red" />
+										<IgrRadialGaugeRange name="range2" startValue={40} endValue={60} brush="yellow" />
+										<IgrRadialGaugeRange name="range3" startValue={60} endValue={100} brush="green" />
+									</IgrRadialGauge> */}
+									<span>Tiến trình: Data go here</span>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
 				<div className="col-4">
 					<div className="card full-height">
 						<div className="card__header">
-							<h3>KHU ĐÓNG GÓI</h3>
+							<div className="row">
+								<div className="col-9 flex-horizontal-center">
+									<h3>KHU VỰC ĐÓNG GÓI</h3>
+								</div>
+								<div className="col-3 flex-left">
+									<ViewMoreButton link="/packing" />
+								</div>
+							</div>
 						</div>
-						<div className="card__body">
+						<div className="card__body height-80">
 							<div className="row">
 								<div className="col-12 flex-right">
 									<ToggleButtons
@@ -271,6 +376,45 @@ const Dashboard = () => {
 										onClick={onPackingToggleButtonsIndexChange}
 										titles={packingButtonList}
 									/>
+								</div>
+							</div>
+							<div className="row full-height">
+								<div className="col-12 full-height flex-center">
+									<PackingMachine width="100%" height="150px" className="mb-15" />
+									<table id="packing">
+										<tbody>
+											<tr>
+												<td>Số lượng đóng gói</td>
+												<td>
+													<ProgressBar
+														width="150px"
+														height="15px"
+														percent={(packingData.progress / packingData.progressSetPoint) * 100}
+													/>
+												</td>
+												<td>{packingData.progress} sản phẩm</td>
+											</tr>
+											<tr>
+												<td>Giờ làm việc</td>
+												<td>
+													<ProgressBar
+														width="150px"
+														height="15px"
+														percent={(packingData.workingHours / workingHoursSetPoint) * 100}
+													/>
+												</td>
+
+												<td>{convertHMS(packingData.workingHours)}</td>
+											</tr>
+											<tr>
+												<td>Tổng lỗi</td>
+												<td></td>
+												<td>
+													lỗi: {packingData.errorProducts}; sửa: {packingData.fixedProducts}
+												</td>
+											</tr>
+										</tbody>
+									</table>
 								</div>
 							</div>
 						</div>
@@ -301,11 +445,55 @@ const Dashboard = () => {
 				<div className="col-8">
 					<div className="card full-height">
 						<div className="card__header">
-							<h3>KHU MÁY ÉP</h3>
+							<div className="row">
+								<div className="col-9 flex-horizontal-center">
+									<h3>KHU VỰC MÁY ÉP</h3>
+								</div>
+								<div className="col-3 flex-left">
+									<ViewMoreButton link="/injection/pages/1" />
+								</div>
+							</div>
 						</div>
 						<div className="card__body">
 							<div className="row">
-								<div className="col-12 flex-center">
+								<div className="col-3">
+									<div className="row">
+										<div className="col-12">
+											<StatusCard
+												padding="none"
+												height="87px"
+												tooltip="Máy đang chạy"
+												color="#3ace3a"
+												icon="bx bx-check-circle"
+												title="Máy đang chạy"
+												count="27"
+											/>
+										</div>
+										<div className="col-12">
+											<StatusCard
+												padding="none"
+												height="87px"
+												tooltip="Máy đang dừng"
+												color="#ffa82e"
+												icon="bx bx-loader-circle"
+												title="Máy đang dừng"
+												count="27"
+											/>
+										</div>
+										<div className="col-12">
+											<StatusCard
+												padding="none"
+												height="87px"
+												tooltip="Máy không hoạt động"
+												color="#ff4e4e"
+												icon="bx bx-power-off"
+												title="Máy không hoạt động"
+												count="27"
+											/>
+										</div>
+									</div>
+								</div>
+								<div className="col-9 flex-center">
 									<InjectionMoldingMachine width="100%" height="200px" />
 								</div>
 							</div>
@@ -322,6 +510,7 @@ const Dashboard = () => {
 								<div className="col-6">
 									<Link to="/report/oee">
 										<StatusCard
+											hover={true}
 											tooltip="Availability"
 											color="#3ace3a"
 											icon="bx bx-timer"
@@ -332,7 +521,14 @@ const Dashboard = () => {
 								</div>
 								<div className="col-6">
 									<Link to="/report/oee">
-										<StatusCard tooltip="Performance" color="#7c5eb8" icon="bx bx-cog" title="Hiệu suất" count="50%" />
+										<StatusCard
+											hover={true}
+											tooltip="Performance"
+											color="#7c5eb8"
+											icon="bx bx-cog"
+											title="Hiệu suất"
+											count="50%"
+										/>
 									</Link>
 								</div>
 							</div>
@@ -340,6 +536,7 @@ const Dashboard = () => {
 								<div className="col-6">
 									<Link to="/report/oee">
 										<StatusCard
+											hover={true}
 											tooltip="Quality"
 											color="#ffa82e"
 											icon="bx bx-search-alt"
@@ -351,6 +548,7 @@ const Dashboard = () => {
 								<div className="col-6">
 									<Link to="/report/oee">
 										<StatusCard
+											hover={true}
 											tooltip="OEE index"
 											color="#ff4e4e "
 											icon="bx bx-target-lock"

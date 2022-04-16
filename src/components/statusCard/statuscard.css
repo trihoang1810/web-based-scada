@@ -41,7 +41,7 @@
 .status-card__info > span{
     font-size: 1rem
 }
-.status-card::before {
+.status-card-hover::before {
     content: "";
     width: 100%;
     padding-top: 100%;
@@ -58,10 +58,10 @@
     transition: transform 0.8s ease 0s;
 }
 
-.status-card:hover::before {
+.status-card-hover:hover::before {
     transform: scale(3);
 }
 
-.status-card:hover {
+.status-card-hover:hover {
     color: var(--txt-white);
 }

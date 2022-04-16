@@ -8,6 +8,7 @@ function ToggleButtons({ titles, onClick, active }) {
 				{titles.map((item, index) => {
 					return (
 						<button
+							type="button"
 							key={index}
 							className={`toggle-buttons-button ${active === index ? 'active' : ''}`}
 							onClick={() => onClick(index)}

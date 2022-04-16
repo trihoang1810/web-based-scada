@@ -6,8 +6,8 @@ import InjectionFilter from '../../../components/injectionFilter/InjectionFilter
 import InjectionMoldingMachine from '../../../components/injectionMoldingMachine/InjectionMoldingMachine';
 import InjectionStateNote from '../../../components/injectionStateNote/InjectionStateNote';
 import './injectionMoldinMachinePage.css';
-import { MONITOR_INJECTION_LIST } from '../../../utils/utils';
-import Navbar from '../../../components/navBar/NavBar';
+// import { MONITOR_INJECTION_LIST } from '../../../utils/utils';
+// import Navbar from '../../../components/navBar/NavBar';
 import ReportNavigationButton from '../../../components/reportNavigationButton/ReportNavigationButton';
 
 function InjectionMoldinMachinePage() {
@@ -20,7 +20,7 @@ function InjectionMoldinMachinePage() {
 			state: 'R',
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
-			operatingTime: '1 tiếng 15 phút',
+			productId: 'EE2003',
 			wattage: 'small',
 		},
 		{
@@ -30,7 +30,7 @@ function InjectionMoldinMachinePage() {
 			state: 'M',
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
-			operatingTime: '1 tiếng 15 phút',
+			productId: 'EE2003',
 			wattage: 'large',
 		},
 		{
@@ -40,7 +40,7 @@ function InjectionMoldinMachinePage() {
 			state: 'S',
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
-			operatingTime: '1 tiếng 15 phút',
+			productId: 'EE2003',
 			wattage: 'large',
 		},
 		{
@@ -50,7 +50,7 @@ function InjectionMoldinMachinePage() {
 			state: 'M',
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
-			operatingTime: '1 tiếng 15 phút',
+			productId: 'EE2003',
 			wattage: 'small',
 		},
 		{
@@ -60,7 +60,7 @@ function InjectionMoldinMachinePage() {
 			state: 'R',
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
-			operatingTime: '1 tiếng 15 phút',
+			productId: 'EE2003',
 			wattage: 'small',
 		},
 		{
@@ -70,7 +70,7 @@ function InjectionMoldinMachinePage() {
 			state: 'M',
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
-			operatingTime: '1 tiếng 15 phút',
+			productId: 'EE2003',
 			wattage: 'large',
 		},
 		{
@@ -80,7 +80,7 @@ function InjectionMoldinMachinePage() {
 			state: 'S',
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
-			operatingTime: '1 tiếng 15 phút',
+			productId: 'EE2003',
 			wattage: 'large',
 		},
 		{
@@ -90,7 +90,7 @@ function InjectionMoldinMachinePage() {
 			state: 'M',
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
-			operatingTime: '1 tiếng 15 phút',
+			productId: 'EE2003',
 			wattage: 'small',
 		},
 		{
@@ -100,7 +100,7 @@ function InjectionMoldinMachinePage() {
 			state: 'R',
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
-			operatingTime: '1 tiếng 15 phút',
+			productId: 'EE2003',
 			wattage: 'small',
 		},
 		{
@@ -110,7 +110,7 @@ function InjectionMoldinMachinePage() {
 			state: 'M',
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
-			operatingTime: '1 tiếng 15 phút',
+			productId: 'EE2003',
 			wattage: 'large',
 		},
 		{
@@ -120,7 +120,7 @@ function InjectionMoldinMachinePage() {
 			state: 'S',
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
-			operatingTime: '1 tiếng 15 phút',
+			productId: 'EE2003',
 			wattage: 'large',
 		},
 		{
@@ -130,7 +130,7 @@ function InjectionMoldinMachinePage() {
 			state: 'M',
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
-			operatingTime: '1 tiếng 15 phút',
+			productId: 'EE2003',
 			wattage: 'small',
 		},
 		{
@@ -140,7 +140,7 @@ function InjectionMoldinMachinePage() {
 			state: 'R',
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
-			operatingTime: '1 tiếng 15 phút',
+			productId: 'EE2003',
 			wattage: 'small',
 		},
 		{
@@ -150,7 +150,7 @@ function InjectionMoldinMachinePage() {
 			state: 'M',
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
-			operatingTime: '1 tiếng 15 phút',
+			productId: 'EE2003',
 			wattage: 'large',
 		},
 		{
@@ -160,7 +160,7 @@ function InjectionMoldinMachinePage() {
 			state: 'S',
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
-			operatingTime: '1 tiếng 15 phút',
+			productId: 'EE2003',
 			wattage: 'large',
 		},
 		{
@@ -170,7 +170,7 @@ function InjectionMoldinMachinePage() {
 			state: 'M',
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
-			operatingTime: '1 tiếng 15 phút',
+			productId: 'EE2003',
 			wattage: 'small',
 		},
 		{
@@ -180,7 +180,7 @@ function InjectionMoldinMachinePage() {
 			state: 'R',
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
-			operatingTime: '1 tiếng 15 phút',
+			productId: 'EE2003',
 			wattage: 'small',
 		},
 		{
@@ -190,7 +190,7 @@ function InjectionMoldinMachinePage() {
 			state: 'M',
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
-			operatingTime: '1 tiếng 15 phút',
+			productId: 'EE2003',
 			wattage: 'large',
 		},
 		{
@@ -200,7 +200,7 @@ function InjectionMoldinMachinePage() {
 			state: 'S',
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
-			operatingTime: '1 tiếng 15 phút',
+			productId: 'EE2003',
 			wattage: 'large',
 		},
 		{
@@ -210,7 +210,7 @@ function InjectionMoldinMachinePage() {
 			state: 'M',
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
-			operatingTime: '1 tiếng 15 phút',
+			productId: 'EE2003',
 			wattage: 'small',
 		},
 		{
@@ -220,7 +220,7 @@ function InjectionMoldinMachinePage() {
 			state: 'R',
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
-			operatingTime: '1 tiếng 15 phút',
+			productId: 'EE2003',
 			wattage: 'small',
 		},
 		{
@@ -230,7 +230,7 @@ function InjectionMoldinMachinePage() {
 			state: 'M',
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
-			operatingTime: '1 tiếng 15 phút',
+			productId: 'EE2003',
 			wattage: 'large',
 		},
 		{
@@ -240,7 +240,7 @@ function InjectionMoldinMachinePage() {
 			state: 'S',
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
-			operatingTime: '1 tiếng 15 phút',
+			productId: 'EE2003',
 			wattage: 'large',
 		},
 		{
@@ -250,7 +250,7 @@ function InjectionMoldinMachinePage() {
 			state: 'M',
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
-			operatingTime: '1 tiếng 15 phút',
+			productId: 'EE2003',
 			wattage: 'small',
 		},
 		{
@@ -260,7 +260,7 @@ function InjectionMoldinMachinePage() {
 			state: 'R',
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
-			operatingTime: '1 tiếng 15 phút',
+			productId: 'EE2003',
 			wattage: 'small',
 		},
 		{
@@ -270,7 +270,7 @@ function InjectionMoldinMachinePage() {
 			state: 'M',
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
-			operatingTime: '1 tiếng 15 phút',
+			productId: 'EE2003',
 			wattage: 'large',
 		},
 		{
@@ -280,7 +280,7 @@ function InjectionMoldinMachinePage() {
 			state: 'S',
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
-			operatingTime: '1 tiếng 15 phút',
+			productId: 'EE2003',
 			wattage: 'large',
 		},
 		{
@@ -290,7 +290,7 @@ function InjectionMoldinMachinePage() {
 			state: 'M',
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
-			operatingTime: '1 tiếng 15 phút',
+			productId: 'EE2003',
 			wattage: 'small',
 		},
 		{
@@ -300,7 +300,7 @@ function InjectionMoldinMachinePage() {
 			state: 'R',
 			cycle: '30 giây',
 			openDoorTime: '7 giây',
-			operatingTime: '1 tiếng 15 phút',
+			productId: 'EE2003',
 			wattage: 'small',
 		},
 	];
@@ -323,7 +323,7 @@ function InjectionMoldinMachinePage() {
 	const [pageData, setPageData] = useState();
 	const history = useHistory();
 
-	const hanldeCheckBtn = (e, state, payload) => {
+	const handleCheckBtn = (e, state, payload) => {
 		e.stopPropagation();
 		if (state === 'wattage') {
 			if (wattageFilter.includes(payload)) {
@@ -402,7 +402,7 @@ function InjectionMoldinMachinePage() {
 						<InjectionStateNote quantity={quantity} />
 						{/* <div className="col-md-0 col-0 col-sm-2" style={{ padding: 0 }}></div> */}
 						{/* <div className="col-sm-2 col-md-0 col-0" style={{ padding: 0 }}></div> */}
-						<InjectionFilter hanldeCheckBtn={hanldeCheckBtn} wattageFilter={wattageFilter} stateFilter={stateFilter} />
+						<InjectionFilter handleCheckBtn={handleCheckBtn} wattageFilter={wattageFilter} stateFilter={stateFilter} />
 					</>
 				) : (
 					<Skeleton height={50} baseColor="#ccc" width={500} />

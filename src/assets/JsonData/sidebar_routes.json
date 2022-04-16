@@ -43,16 +43,15 @@
 		"route": "/injection",
 		"icon": "bx bx-layer",
 		"subNav": [
-
-			{
-				"display_name": "Dạng bản đồ",
-				"route": "/injection/map",
-				"icon": "bx bxs-map-pin"
-			},
 			{
 				"display_name": "Dạng bảng",
 				"route": "/injection/pages/1",
 				"icon": "bx bx-table"
+			},
+			{
+				"display_name": "Dạng bản đồ",
+				"route": "/injection/map",
+				"icon": "bx bxs-map-pin"
 			}
 		]
 	},

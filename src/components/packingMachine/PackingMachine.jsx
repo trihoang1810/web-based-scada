@@ -20,7 +20,6 @@ function PackingMachine({
 	workingHours,
 	errorProducts,
 	fixedProducts,
-	onClick,
 }) {
 	const workingHoursSetPoint = 28800;
 	return (
@@ -182,7 +181,7 @@ function PackingMachine({
 								<td>{progress} sản phẩm</td>
 							</tr>
 							<tr>
-								<td>Giờ công</td>
+								<td>Giờ làm việc</td>
 								<td>
 									<ProgressBar width="150px" height="15px" percent={(workingHours / workingHoursSetPoint) * 100} />
 								</td>
