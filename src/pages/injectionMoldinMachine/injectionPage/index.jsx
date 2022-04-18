@@ -424,7 +424,7 @@ function InjectionMoldinMachinePage() {
 			)}
 
 			<div className="row injectionMoldinMachines__container mb-20">
-				{pageData.length > 0 ? (
+				{pageData && pageData.length > 0 ? (
 					pageData.map((item, index) => <InjectionMoldingMachine injectionMoldingMachineData={item} key={index} />)
 				) : (
 					<p>Không tồn tại kết quả nào</p>
