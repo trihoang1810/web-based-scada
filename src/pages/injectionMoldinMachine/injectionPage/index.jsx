@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
-import Skeleton from 'react-loading-skeleton';
-import 'react-loading-skeleton/dist/skeleton.css';
 import InjectionFilter from '../../../components/injectionFilter/InjectionFilter';
 import InjectionMoldingMachine from '../../../components/injectionMoldingMachine/InjectionMoldingMachine';
 import InjectionStateNote from '../../../components/injectionStateNote/InjectionStateNote';
@@ -305,7 +303,7 @@ function InjectionMoldinMachinePage() {
 		},
 	];
 	useEffect(() => {
-		const id = setTimeout(() => setResData(rawData), 1000);
+		const id = setTimeout(() => setResData(rawData), 0);
 		return () => clearTimeout(id);
 	}, []);
 
@@ -396,17 +394,13 @@ function InjectionMoldinMachinePage() {
 			<h2 className="page-header">KHU MÁY ÉP</h2>
 
 			<div className="row injectionMoldinMachinePage__control">
-				{pageData ? (
-					<>
-						<div className="col-8 col-md-8 col-sm-2"></div>
-						<InjectionStateNote quantity={quantity} />
-						{/* <div className="col-md-0 col-0 col-sm-2" style={{ padding: 0 }}></div> */}
-						{/* <div className="col-sm-2 col-md-0 col-0" style={{ padding: 0 }}></div> */}
-						<InjectionFilter handleCheckBtn={handleCheckBtn} wattageFilter={wattageFilter} stateFilter={stateFilter} />
-					</>
-				) : (
-					<Skeleton height={50} baseColor="#ccc" width={500} />
-				)}
+				<>
+					<div className="col-8 col-md-8 col-sm-2"></div>
+					<InjectionStateNote quantity={quantity} />
+					{/* <div className="col-md-0 col-0 col-sm-2" style={{ padding: 0 }}></div> */}
+					{/* <div className="col-sm-2 col-md-0 col-0" style={{ padding: 0 }}></div> */}
+					<InjectionFilter handleCheckBtn={handleCheckBtn} wattageFilter={wattageFilter} stateFilter={stateFilter} />
+				</>
 			</div>
 			<div className="col-sm-12 col-md-12 injectionMoldinMachinePage__pageIndex">
 				{pages &&
@@ -430,9 +424,8 @@ function InjectionMoldinMachinePage() {
 			)}
 
 			<div className="row injectionMoldinMachines__container mb-20">
-				{pageData
-					? pageData.map((item, index) => <InjectionMoldingMachine injectionMoldingMachineData={item} key={index} />)
-					: [...Array(pageSize).keys()].map((item, index) => <InjectionMoldingMachine key={index} />)}
+				{pageData &&
+					pageData.map((item, index) => <InjectionMoldingMachine injectionMoldingMachineData={item} key={index} />)}
 			</div>
 			<div className="row mb-10">
 				<div className="col-12 flex-center">
