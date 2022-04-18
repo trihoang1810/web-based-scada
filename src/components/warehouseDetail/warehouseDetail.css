@@ -14,13 +14,13 @@
 	margin: 20px;
 }
 
-.warehouseDetail__values > div > div {
-	height: 300px;
+.warehouseDetail__values-table {
 	overflow-y: scroll;
 	overflow-x: hidden;
+	height: 240px;
 }
 
-.warehouseDetail__values tbody {
-	max-height: 200px;
-	overflow-y: scroll;
+.warehouseDetail__values-table thead {
+	position: sticky;
+	top: 0;
 }
