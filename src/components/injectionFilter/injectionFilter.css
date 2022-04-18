@@ -1,8 +1,8 @@
-.injectionMoldinMachinePage__filter {
+.injectionMoldingMachinePage__filter {
 	position: relative;
 }
 
-.injectionMoldinMachinePage__filter > span {
+.injectionMoldingMachinePage__filter > span {
 	margin-left: 8px;
 	background-color: var(--main-bg);
 	color: var(--txt-color);
@@ -15,21 +15,21 @@
 	flex-grow: 1;
 }
 
-.injectionMoldinMachinePage__filter .isFiltered {
+.injectionMoldingMachinePage__filter .isFiltered {
 	background-color: var(--main-color-gray);
 	color: var(--txt-white);
 	border: 1px solid var(--main-color-gray);
 }
 
-.injectionMoldinMachinePage__filter > span:hover {
+.injectionMoldingMachinePage__filter > span:hover {
 	cursor: pointer;
 	background-color: var(--main-color-gray);
 	color: var(--txt-white);
 	border: 2px solid var(--main-color-gray);
 }
 
-.injectionMoldinMachinePage__filter-wattage,
-.injectionMoldinMachinePage__filter-state {
+.injectionMoldingMachinePage__filter-wattage,
+.injectionMoldingMachinePage__filter-state {
 	background-color: var(--main-bg);
 	color: var(--main-color-gray);
 	margin: 2px;
@@ -77,20 +77,20 @@
 	}
 }
 
-.injectionMoldinMachinePage__filter-wattage {
+.injectionMoldingMachinePage__filter-wattage {
 	right: 158px;
 }
 
-.injectionMoldinMachinePage__filter-state {
+.injectionMoldingMachinePage__filter-state {
 	right: 0px;
 }
 
-.injectionMoldinMachinePage__filter-quantity span {
+.injectionMoldingMachinePage__filter-quantity span {
 	font-weight: 500;
 	margin-left: 4px;
 }
 
-.injectionMoldinMachinePage__filter-btn {
+.injectionMoldingMachinePage__filter-btn {
 	width: 124px;
 	height: 38px;
 	border-radius: 48px;
@@ -104,7 +104,7 @@
 	margin-top: 4px;
 }
 
-.injectionMoldinMachinePage__filter-btn i {
+.injectionMoldingMachinePage__filter-btn i {
 	font-size: 1.5rem;
 	line-height: 48px;
 	position: absolute;
@@ -113,14 +113,14 @@
 	transform: translateY(-50%);
 }
 
-.injectionMoldinMachinePage__filter-btn span {
+.injectionMoldingMachinePage__filter-btn span {
 	position: absolute;
 	left: 30px;
 	top: 50%;
 	transform: translateY(-50%);
 }
 
-.injectionMoldinMachinePage__filter-btn :hover {
+.injectionMoldingMachinePage__filter-btn :hover {
 	opacity: 0.7;
 }
 

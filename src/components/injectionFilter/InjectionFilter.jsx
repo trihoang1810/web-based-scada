@@ -15,7 +15,7 @@ function InjectionFilter({ handleCheckBtn, wattageFilter, stateFilter }) {
 	}, []);
 
 	return (
-		<div className="row col-2 injectionMoldinMachinePage__filter">
+		<div className="row col-2 injectionMoldingMachinePage__filter">
 			<span
 				className={`col-4 ${wattageFilter.length > 0 && 'isFiltered'}`}
 				onClick={(e) => {
@@ -25,11 +25,11 @@ function InjectionFilter({ handleCheckBtn, wattageFilter, stateFilter }) {
 			>
 				Công suất
 			</span>
-			<div className={`injectionMoldinMachinePage__filter-wattage ${showWattageFilter ? 'show' : 'hide'}`}>
+			<div className={`injectionMoldingMachinePage__filter-wattage ${showWattageFilter ? 'show' : 'hide'}`}>
 				<button
 					type="button"
 					onClick={(e) => handleCheckBtn(e, 'wattage', 'small')}
-					className={`injectionMoldinMachinePage__filter-btn ${wattageFilter.includes('small') && 'btnActive'}`}
+					className={`injectionMoldingMachinePage__filter-btn ${wattageFilter.includes('small') && 'btnActive'}`}
 				>
 					<i className="bx bx-check"></i>
 					<span>Máy nhỏ</span>
@@ -37,7 +37,7 @@ function InjectionFilter({ handleCheckBtn, wattageFilter, stateFilter }) {
 				<button
 					type="button"
 					onClick={(e) => handleCheckBtn(e, 'wattage', 'large')}
-					className={`injectionMoldinMachinePage__filter-btn ${wattageFilter.includes('large') && 'btnActive'}`}
+					className={`injectionMoldingMachinePage__filter-btn ${wattageFilter.includes('large') && 'btnActive'}`}
 				>
 					<i className="bx bx-check"></i>
 					<span>Máy lớn</span>
@@ -52,11 +52,11 @@ function InjectionFilter({ handleCheckBtn, wattageFilter, stateFilter }) {
 			>
 				Trạng thái
 			</span>
-			<div className={`injectionMoldinMachinePage__filter-state ${showStateFilter ? 'show' : 'hide'}`}>
+			<div className={`injectionMoldingMachinePage__filter-state ${showStateFilter ? 'show' : 'hide'}`}>
 				<button
 					type="button"
 					onClick={(e) => handleCheckBtn(e, 'state', 'M')}
-					className={`injectionMoldinMachinePage__filter-btn ${stateFilter.includes('M') && 'btnActive'}`}
+					className={`injectionMoldingMachinePage__filter-btn ${stateFilter.includes('M') && 'btnActive'}`}
 				>
 					<i className="bx bx-wrench"></i>
 					<span>Bảo trì</span>
@@ -64,7 +64,7 @@ function InjectionFilter({ handleCheckBtn, wattageFilter, stateFilter }) {
 				<button
 					type="button"
 					onClick={(e) => handleCheckBtn(e, 'state', 'R')}
-					className={`injectionMoldinMachinePage__filter-btn ${stateFilter.includes('R') && 'btnActive'}`}
+					className={`injectionMoldingMachinePage__filter-btn ${stateFilter.includes('R') && 'btnActive'}`}
 				>
 					<i className="bx bx-play"></i>
 					<span>Đang chạy</span>
@@ -72,7 +72,7 @@ function InjectionFilter({ handleCheckBtn, wattageFilter, stateFilter }) {
 				<button
 					type="button"
 					onClick={(e) => handleCheckBtn(e, 'state', 'S')}
-					className={`injectionMoldinMachinePage__filter-btn ${stateFilter.includes('S') && 'btnActive'}`}
+					className={`injectionMoldingMachinePage__filter-btn ${stateFilter.includes('S') && 'btnActive'}`}
 				>
 					<i className="bx bx-stop"></i>
 					<span>Tạm dừng</span>

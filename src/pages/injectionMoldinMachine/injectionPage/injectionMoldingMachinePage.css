@@ -1,10 +1,10 @@
-.injectionMoldinMachinePage__container {
+.injectionMoldingMachinePage__container {
 	position: relative;
 	overflow-x: hidden;
 	min-height: 300px;
 }
 
-.injectionMoldinMachines__container > p {
+.injectionMoldingMachines__container > p {
 	text-align: center;
 	font-size: 1.3rem;
 	font-weight: 500;
@@ -12,12 +12,12 @@
 	margin: 20px;
 }
 
-.injectionMoldinMachinePage__control {
+.injectionMoldingMachinePage__control {
 	margin-bottom: 4px;
 	margin-right: 5px;
 }
 
-.injectionMoldinMachinePage__pageIndex {
+.injectionMoldingMachinePage__pageIndex {
 	display: flex;
 	justify-content: center;
 	align-items: flex-end;
@@ -25,7 +25,7 @@
 	margin-bottom: 6px;
 }
 
-.injectionMoldinMachinePage__pageIndex-part {
+.injectionMoldingMachinePage__pageIndex-part {
 	width: 60px;
 	height: 6px;
 	border-radius: 4px;
@@ -49,11 +49,11 @@
 	}
 }
 
-.injectionMoldinMachines__container {
+.injectionMoldingMachines__container {
 	justify-content: flex-start;
 }
 
-.injectionMoldinMachinePage__navigate {
+.injectionMoldingMachinePage__navigate {
 	font-size: 6rem;
 	background-color: var(--second-color-gray);
 	opacity: 0.4;
@@ -62,7 +62,7 @@
 	transition: all 0.3s;
 }
 
-.injectionMoldinMachinePage__navigate:hover {
+.injectionMoldingMachinePage__navigate:hover {
 	opacity: 0.7;
 	font-size: 7rem;
 	cursor: pointer;
