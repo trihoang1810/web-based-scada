@@ -424,8 +424,11 @@ function InjectionMoldinMachinePage() {
 			)}
 
 			<div className="row injectionMoldinMachines__container mb-20">
-				{pageData &&
-					pageData.map((item, index) => <InjectionMoldingMachine injectionMoldingMachineData={item} key={index} />)}
+				{pageData.length > 0 ? (
+					pageData.map((item, index) => <InjectionMoldingMachine injectionMoldingMachineData={item} key={index} />)
+				) : (
+					<p>Không tồn tại kết quả nào</p>
+				)}
 			</div>
 			<div className="row mb-10">
 				<div className="col-12 flex-center">

@@ -4,6 +4,14 @@
 	min-height: 300px;
 }
 
+.injectionMoldinMachines__container > p {
+	text-align: center;
+	font-size: 1.3rem;
+	font-weight: 500;
+	width: 100%;
+	margin: 20px;
+}
+
 .injectionMoldinMachinePage__control {
 	margin-bottom: 4px;
 	margin-right: 5px;
