@@ -26,7 +26,7 @@ function InjectionDetail() {
 	return (
 		<>
 			<CustomizedBreadcrumbs href="/injection/pages/1" sector="KHU MÁY ÉP" id={id} />
-			{value ? <InjectionDetailComponent injectionMoldingMachineData={value} /> : <InjectionDetailComponent />}
+			{value && <InjectionDetailComponent injectionMoldingMachineData={value} />}
 		</>
 	);
 }

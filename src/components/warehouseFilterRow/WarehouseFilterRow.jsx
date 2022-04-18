@@ -15,7 +15,7 @@ function WarehouseFilter({ filterId, deleteFilterRow, filterValues, setFilterVal
 		if (type.length > 0) {
 			setIds(data[type].map((item) => item.id));
 		}
-	}, [type]);
+	}, [type, data]);
 
 	useEffect(() => {
 		let filterName;
@@ -27,7 +27,7 @@ function WarehouseFilter({ filterId, deleteFilterRow, filterValues, setFilterVal
 		} else {
 			setFieldValue('name', '');
 		}
-	}, [id, type]);
+	}, [id, type, data, setFieldValue]);
 
 	useEffect(() => {
 		setRowValues({ type, id, name, fromDate, toDate });
@@ -42,7 +42,7 @@ function WarehouseFilter({ filterId, deleteFilterRow, filterValues, setFilterVal
 		} else {
 			setSearchDisabled(true);
 		}
-	}, [isValid]);
+	}, [isValid, filterId, filterValues, rowValues, setFilterValue, setSearchDisabled]);
 
 	return (
 		<div className="row warehouseFilterRow__container">

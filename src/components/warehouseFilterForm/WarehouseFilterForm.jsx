@@ -3,7 +3,36 @@ import { useEffect, useMemo, useState } from 'react';
 import * as Yup from 'yup';
 import WarehouseFilterRow from '../warehouseFilterRow/WarehouseFilterRow';
 import './warehouseFilterForm.css';
-
+const fakeData = {
+	discharger: [
+		{
+			name: 'Bộ xả 1',
+			id: 'M1',
+		},
+		{
+			name: 'Bộ xả 2',
+			id: 'M2',
+		},
+		{
+			name: 'Bộ xả 3',
+			id: 'M3',
+		},
+	],
+	lid: [
+		{
+			name: 'nắp 1',
+			id: 'L1',
+		},
+		{
+			name: 'nắp 2',
+			id: 'L2',
+		},
+		{
+			name: 'nắp 3',
+			id: 'L3',
+		},
+	],
+};
 function WarehouseFilterForm() {
 	const [filterRows, setFilterRows] = useState([1]);
 	const [filterValues, setFilterValue] = useState({ row1: {} });
@@ -13,37 +42,6 @@ function WarehouseFilterForm() {
 	const toDateDefault = nowDate.toJSON().slice(0, 10);
 	nowDate.setDate(nowDate.getDate() - 7);
 	const fromDateDefault = nowDate.toJSON().slice(0, 10);
-
-	const fakeData = {
-		discharger: [
-			{
-				name: 'Bộ xả 1',
-				id: 'M1',
-			},
-			{
-				name: 'Bộ xả 2',
-				id: 'M2',
-			},
-			{
-				name: 'Bộ xả 3',
-				id: 'M3',
-			},
-		],
-		lid: [
-			{
-				name: 'nắp 1',
-				id: 'L1',
-			},
-			{
-				name: 'nắp 2',
-				id: 'L2',
-			},
-			{
-				name: 'nắp 3',
-				id: 'L3',
-			},
-		],
-	};
 
 	const idList = useMemo(() => {
 		const list = {};
