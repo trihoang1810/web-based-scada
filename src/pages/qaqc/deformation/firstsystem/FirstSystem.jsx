@@ -432,7 +432,7 @@ function FirstSystem() {
 			</div>
 			<div className="row">
 				<div className="col-12 flex-center">
-					<ReportNavigationButton history={history} path="/report/main/qaqc" />
+					<ReportNavigationButton history={history} path="/report/main/qaqc/deformation" />
 				</div>
 			</div>
 		</>

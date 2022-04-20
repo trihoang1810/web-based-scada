@@ -90,14 +90,14 @@ function StyledPaper({ children }) {
 function SecondSystem() {
 	let history = useHistory();
 
-	const [machineState, setMachineState] = React.useState('stop');
-	const [settings, setSettings] = React.useState({
+	const [machineState] = React.useState('stop');
+	const [settings] = React.useState({
 		force: 0,
 		numbs: 0,
 		time: 0,
 		testNumber: 0,
 	});
-	const [params, setParams] = React.useState({
+	const [params] = React.useState({
 		force: 0,
 		numbs: 0,
 		time: 0,
@@ -396,7 +396,7 @@ function SecondSystem() {
 			</div>
 			<div className="row">
 				<div className="col-12 flex-center">
-					<ReportNavigationButton history={history} path="/report/main/qaqc" />
+					<ReportNavigationButton history={history} path="/report/main/qaqc/deformation" />
 				</div>
 			</div>
 		</>
