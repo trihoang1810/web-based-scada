@@ -1,8 +1,8 @@
-import { getInjectionReport } from '../api/axios/injectionReport';
+import { getTemporaryInjectionReport } from '../api/axios/injectionReport';
 import { useQuery } from 'react-query';
 
-const useInjectionReportQuery = () => {
-	return useQuery('injection_report', getInjectionReport, {
+const useInjectionReportQuery = (machineId, dateStart, dateEnd) => {
+	return useQuery(['injection_report', machineId, dateStart, dateEnd], getTemporaryInjectionReport, {
 		refetchOnWindowFocus: false,
 		enabled: false,
 		staleTime: Infinity,

@@ -9,6 +9,8 @@ const reportData = createSlice({
 		forcedEnduranceReportDataDate: {},
 		deformationReportData: [],
 		deformationReportDataDate: {},
+		waterProofReportData: [],
+		waterProofReportDataDate: {},
 	},
 	reducers: {
 		setEnduranceReportData: (state, action) => {
@@ -33,6 +35,12 @@ const reportData = createSlice({
 			state.deformationReportData = [];
 			state.deformationReportDataDate = {};
 		},
+		setWaterProofReportData: (state, action) => {
+			state.waterProofReportData.push(action.payload);
+		},
+		setWaterProofReportDataDate: (state, action) => {
+			state.waterProofReportDataDate = action.payload;
+		},
 	},
 });
 
@@ -45,5 +53,7 @@ export const {
 	setDeformationReportData,
 	setDeformationReportDataDate,
 	resetDeformationReportData,
+	setWaterProofReportData,
+	setWaterProofReportDataDate,
 } = actions;
 export default reducer;

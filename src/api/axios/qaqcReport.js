@@ -41,6 +41,14 @@ const qaQcApi = {
 			},
 		});
 	},
+	getWaterProofReport(dateStart, dateEnd) {
+		return axiosClient.get('/qaqc/waterproof', {
+			params: {
+				dateStart,
+				dateEnd,
+			},
+		});
+	},
 };
 
 export { qaQcApi };
