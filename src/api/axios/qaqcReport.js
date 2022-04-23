@@ -17,6 +17,30 @@ const qaQcApi = {
 			},
 		});
 	},
+	getRockTestReport(dateStart, dateEnd) {
+		return axiosClient.get('/qaqc/rocktest', {
+			params: {
+				dateStart,
+				dateEnd,
+			},
+		});
+	},
+	getStaticLoadReport(dateStart, dateEnd) {
+		return axiosClient.get('/qaqc/staticload', {
+			params: {
+				dateStart,
+				dateEnd,
+			},
+		});
+	},
+	getCurlingForceReport(dateStart, dateEnd) {
+		return axiosClient.get('/qaqc/curlingforce', {
+			params: {
+				dateStart,
+				dateEnd,
+			},
+		});
+	},
 };
 
 export { qaQcApi };

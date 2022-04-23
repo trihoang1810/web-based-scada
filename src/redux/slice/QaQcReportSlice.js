@@ -7,6 +7,8 @@ const reportData = createSlice({
 		enduranceReportDataDate: {},
 		forcedEnduranceReportData: [],
 		forcedEnduranceReportDataDate: {},
+		deformationReportData: [],
+		deformationReportDataDate: {},
 	},
 	reducers: {
 		setEnduranceReportData: (state, action) => {
@@ -21,6 +23,16 @@ const reportData = createSlice({
 		setForcedEnduranceReportDataDate: (state, action) => {
 			state.forcedEnduranceReportDataDate = action.payload;
 		},
+		setDeformationReportData: (state, action) => {
+			state.deformationReportData.push(action.payload);
+		},
+		setDeformationReportDataDate: (state, action) => {
+			state.deformationReportDataDate = action.payload;
+		},
+		resetDeformationReportData: (state) => {
+			state.deformationReportData = [];
+			state.deformationReportDataDate = {};
+		},
 	},
 });
 
@@ -30,5 +42,8 @@ export const {
 	setForcedEnduranceReportData,
 	setEnduranceReportDataDate,
 	setForcedEnduranceReportDataDate,
+	setDeformationReportData,
+	setDeformationReportDataDate,
+	resetDeformationReportData,
 } = actions;
 export default reducer;

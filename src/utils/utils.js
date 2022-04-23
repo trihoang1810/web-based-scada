@@ -157,11 +157,11 @@ const BENDING_DEFORMATION_COLUMNS = [
 		accessor: 'weight',
 	},
 	{
-		Header: 'Số lần thử nghiệm',
+		Header: 'Thời gian',
 		accessor: 'number_of_test',
 	},
 	{
-		Header: 'Kết quả đánh giá',
+		Header: 'Độ cong vênh',
 		accessor: 'result',
 	},
 	{
@@ -169,7 +169,7 @@ const BENDING_DEFORMATION_COLUMNS = [
 		accessor: 'total',
 	},
 	{
-		Header: 'Ghi chú',
+		Header: 'Nhận xét',
 		accessor: 'note',
 	},
 	{
