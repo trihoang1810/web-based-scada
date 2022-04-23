@@ -3,9 +3,9 @@ import ReportInjectionChart from '../../../../components/reportInjectionChart/Re
 import ReportInjectionFilter from '../../../../components/reportInjectionFilter/ReportInjectionFilter';
 import { format } from 'date-fns';
 import LoadingComponent from '../../../../components/loadingComponent/LoadingComponent';
-import useReportQuery from '../../../../hooks/useReportQuery';
+import { useInjectionReportQuery } from '../../../../hooks/useReportQuery';
 function ReportInjectionMoldingSector() {
-	const { data, isFetching, isError, error, refetch } = useReportQuery();
+	const { data, isFetching, isError, error, refetch } = useInjectionReportQuery();
 
 	const onSubmit = (value) => {
 		refetch();

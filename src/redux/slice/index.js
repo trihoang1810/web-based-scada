@@ -7,10 +7,12 @@
 
 import ThemeReducer from './ThemeSlice';
 import SideBarReducer from './SideBarSlice';
+import QaQcReportReducer from './QaQcReportSlice';
 
 const rootReducer = {
 	theme: ThemeReducer,
 	sidebar: SideBarReducer,
+	qaQcReportData: QaQcReportReducer,
 };
 
 export default rootReducer;

@@ -20,7 +20,7 @@ const validationSchema = Yup.object({
 // component = { ReportQaqcTable };
 // reportData = { enduranceData };
 // reportHeaders = { ENDURANCE_COLUMNS };
-function ReportQaqcFilter({ reportData, reportHeaders, deformation, exportReport, onSubmit }) {
+function ReportQaqcFilter({ reportData, reportHeaders, deformation, exportReport, onSubmit, dataDisplay }) {
 	const initialDateStart = () => {
 		const today = new Date();
 		const numberOfDaysToSubtract = 7;
@@ -116,13 +116,15 @@ function ReportQaqcFilter({ reportData, reportHeaders, deformation, exportReport
 												type="button"
 												className={`btn btn-primary ${
 													formik.values.productName === '' ||
-													(formik.values.purpose === 'other' && formik.values.note === '')
+													(formik.values.purpose === 'other' && formik.values.note === '') ||
+													dataDisplay.length === 0
 														? 'btn-disabled'
 														: ''
 												}`}
 												disabled={
 													formik.values.productName === '' ||
-													(formik.values.purpose === 'other' && formik.values.note === '')
+													(formik.values.purpose === 'other' && formik.values.note === '') ||
+													dataDisplay.length === 0
 														? true
 														: false
 												}

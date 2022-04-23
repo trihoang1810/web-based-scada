@@ -1,6 +1,7 @@
-import { getInjectionReport } from '../api/axios/getInjectionReport';
+import { getInjectionReport } from '../api/axios/injectionReport';
 import { useQuery } from 'react-query';
-const useReportQuery = () => {
+
+const useInjectionReportQuery = () => {
 	return useQuery('injection_report', getInjectionReport, {
 		refetchOnWindowFocus: false,
 		enabled: false,
@@ -8,4 +9,42 @@ const useReportQuery = () => {
 	});
 };
 
-export default useReportQuery;
+// const useQaQcReportQuery = (query, dateStart, dateEnd) => {
+// 	let key = '';
+// 	let fetchFn = null;
+// 	switch (query) {
+// 		case 'endurance':
+// 			key = 'endurance_report';
+// 			fetchFn = getEnduranceReport;
+// 			break;
+// 		case 'forced-endurance':
+// 			key = 'forced_endurance_report';
+// 			fetchFn = getEnduranceReport;
+// 			break;
+// 		case 'rock-test':
+// 			key = 'rock_test_report';
+// 			fetchFn = getEnduranceReport;
+// 			break;
+// 		case 'static-load':
+// 			key = 'static_load_report';
+// 			fetchFn = getEnduranceReport;
+// 			break;
+// 		case 'bending':
+// 			key = 'bending_report';
+// 			fetchFn = getEnduranceReport;
+// 			break;
+// 		case 'water-proof':
+// 			key = 'water_proof_report';
+// 			fetchFn = getEnduranceReport;
+// 			break;
+// 		default:
+// 			break;
+// 	}
+// 	return useQuery(key, fetchFn, {
+// 		refetchOnWindowFocus: false,
+// 		enabled: false,
+// 		staleTime: Infinity,
+// 	});
+// };
+
+export { useInjectionReportQuery };
