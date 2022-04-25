@@ -48,8 +48,7 @@ function ReportInjectionMoldingSector() {
 				<LoadingComponent />
 			) : error ? (
 				<EmptyPlaceholder isError={true} msg={error} />
-			) : injectionReportData ? (
-				injectionReportData?.length > 0 &&
+			) : injectionReportData?.length > 0 ? (
 				injectionReportData?.map((item, index) => {
 					return (
 						<React.Fragment key={index}>
