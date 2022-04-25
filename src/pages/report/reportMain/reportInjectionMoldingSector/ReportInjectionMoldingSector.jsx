@@ -58,6 +58,7 @@ function ReportInjectionMoldingSector() {
 						<React.Fragment key={index}>
 							<ReportInjectionChart
 								moldId={
+									// filter method dùng để remove những duplicate item trong mảng
 									[
 										...new Set(
 											injectionReportData?.data.map((item) =>
