@@ -971,12 +971,27 @@ function convertDate(value) {
 	return date.toLocaleDateString();
 }
 
+async function getTagsData(connection, eonNodeId, deviceQueries, tagNames) {
+	const nodeQuery = {
+		EonNodeId: eonNodeId,
+		DeviceQueries: deviceQueries.map((deviceQuery) => {
+			return {
+				DeviceId: deviceQuery,
+				TagNames: tagNames,
+			};
+		}),
+	};
+	var result = await connection.invoke('GetListTags', nodeQuery);
+	return result;
+}
+
 export {
 	packingState,
 	packingEmployees,
 	QA_QC_REPORT_MENU_LIST,
 	convertHMS,
 	COLUMNS,
+	getTagsData,
 	convertDate,
 	REPORT_MENU_LIST,
 	ENDURANCE_COLUMNS,

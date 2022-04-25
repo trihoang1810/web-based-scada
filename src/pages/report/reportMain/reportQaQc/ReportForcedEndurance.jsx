@@ -175,9 +175,7 @@ function ReportForcedEndurance() {
 			.catch((err) => {
 				setLoading(false);
 				setError(err);
-				console.log(err);
 			});
-		console.log(values);
 	};
 	return (
 		<>

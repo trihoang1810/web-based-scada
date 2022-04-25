@@ -15,7 +15,6 @@ function ReportEndurance() {
 	const qaQcReportReducer = useSelector((state) => state.qaQcReportData);
 	const enduranceReportData = qaQcReportReducer.enduranceReportData;
 	const dateAssigned = qaQcReportReducer.enduranceReportDataDate;
-	console.log('enduranceReportData', enduranceReportData);
 	const dispatch = useDispatch();
 	// const [data, setData] = React.useState([]);
 	const [loading, setLoading] = React.useState(false);
@@ -177,7 +176,6 @@ function ReportEndurance() {
 				setLoading(false);
 				setError(err);
 			});
-		console.log(values);
 	};
 
 	return (

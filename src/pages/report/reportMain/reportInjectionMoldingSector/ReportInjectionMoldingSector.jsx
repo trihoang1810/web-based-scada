@@ -6,11 +6,11 @@ import { format } from 'date-fns';
 import LoadingComponent from '../../../../components/loadingComponent/LoadingComponent';
 import { injectionApi } from '../../../../api/axios/injectionReport';
 import { resetInjectionReportData, setInjectionReportData } from '../../../../redux/slice/InjectionReportSlice';
+import EmptyPlaceholder from '../../../../components/emptyPlaceholder/EmptyPlaceholder';
 function ReportInjectionMoldingSector() {
 	const dispatch = useDispatch();
 	const injectionReportReducer = useSelector((state) => state.injectionReportData);
 	const injectionReportData = injectionReportReducer.injectionReportData;
-	console.log('injectionReportData', injectionReportData);
 	const [isLoading, setIsLoading] = React.useState(false);
 	const [error, setError] = React.useState(null);
 	const onSubmit = (value) => {
@@ -47,6 +47,10 @@ function ReportInjectionMoldingSector() {
 			<ReportInjectionFilter onSubmit={onSubmit} />
 			{isLoading ? (
 				<LoadingComponent />
+			) : error ? (
+				<EmptyPlaceholder isError={true} msg={error} />
+			) : injectionReportData ? (
+				<EmptyPlaceholder msg="Nhấn nút tìm kiếm để xem báo cáo" />
 			) : (
 				injectionReportData?.length > 0 &&
 				injectionReportData?.map((item, index) => {

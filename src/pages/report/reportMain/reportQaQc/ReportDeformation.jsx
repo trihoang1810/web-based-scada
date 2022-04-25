@@ -327,7 +327,6 @@ function ReportDeformation() {
 			default:
 				break;
 		}
-		console.log(values);
 	};
 	return (
 		<>
