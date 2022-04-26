@@ -56,7 +56,7 @@ function ReportInjectionMoldingSector() {
 								moldId={
 									// filter method dùng để remove những duplicate item trong mảng
 									// The key here is that the findIndex() method returns the index of the first element, so if there is a second element that matches, it will never be found as well as added during the filter.
-									// Bởi vì list bên dưới trả về các item là list nên cần phải gắn thêm [index] đằng sau mỗi list để lấy từng thông tin khuôn và setpoint của ca đó
+									// Bởi vì list bên dưới trả về các item là list nên cần phải gắn thêm [index] đằng sau mỗi list để lấy từng thông tin khuôn và setpoint khuôn của ca đó
 									[
 										...new Set(
 											injectionReportData?.map((item) =>
