@@ -125,6 +125,7 @@ function QualityControl() {
 						isAlarm: rawData.deviceQueryResults[0].tagQueryResults[8].value,
 					})
 				);
+				console.log(deformationMonitorData);
 				setDeformation(deformationMonitorData.isRunning ? 'deformation__run' : 'deformation__stop');
 				switch (rawData.deviceQueryResults[0].tagQueryResults[10].value) {
 					case 0:
@@ -211,7 +212,7 @@ function QualityControl() {
 		return () => {
 			clearInterval(id);
 		};
-	}, [connection, connectionState, dispatch, deformationMonitorData.isRunning]);
+	}, [connection, connectionState, dispatch, deformationMonitorData]);
 	React.useEffect(() => {
 		if (error && errorPriority) {
 			notify(error, errorPriority);
