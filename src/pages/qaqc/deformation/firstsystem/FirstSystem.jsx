@@ -24,7 +24,7 @@ import ReportNavigationButton from '../../../../components/reportNavigationButto
 import { HttpTransportType, HubConnectionBuilder } from '@microsoft/signalr';
 import { getTagsData } from '../../../../utils/utils';
 import { ToastContainer, toast } from 'react-toastify';
-import { IgrRadialGauge, IgrRadialGaugeRange } from 'igniteui-react-gauges';
+// import { IgrRadialGauge, IgrRadialGaugeRange } from 'igniteui-react-gauges';
 const StyledTableCell = styled(TableCell)(() => ({
 	[`&.${tableCellClasses.head}`]: {
 		backgroundImage: 'linear-gradient(var(--main-color), var(--second-color));',
@@ -490,7 +490,7 @@ function FirstSystem() {
 									flexBasis: '300px',
 								}}
 							>
-								<IgrRadialGauge
+								{/* <IgrRadialGauge
 									width="100%"
 									height="300px"
 									minimumValue={0}
@@ -586,7 +586,7 @@ function FirstSystem() {
 										endValue={Math.floor(deformationMonitorData.time1 + deformationMonitorData.time1 / 10)}
 										brush="green"
 									/>
-								</IgrRadialGauge>
+								</IgrRadialGauge> */}
 								<h4>Thời gian giữ</h4>
 							</div>
 						</div>
@@ -606,7 +606,7 @@ function FirstSystem() {
 									flexBasis: '300px',
 								}}
 							>
-								<IgrRadialGauge
+								{/* <IgrRadialGauge
 									width="100%"
 									height="300px"
 									minimumValue={0}
@@ -702,7 +702,7 @@ function FirstSystem() {
 										endValue={Math.floor(deformationMonitorData.time1 + deformationMonitorData.time1 / 10)}
 										brush="green"
 									/>
-								</IgrRadialGauge>
+								</IgrRadialGauge> */}
 								<h4>Thời gian giữ</h4>
 							</div>
 						</div>
