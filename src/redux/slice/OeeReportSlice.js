@@ -14,27 +14,11 @@ const oeeReportData = createSlice({
 		scrapDetailSeries: [],
 		totalQuantityDetailSeries: [],
 		downTimeData: {
-			// {
 			detail: 'Thời gian nghỉ',
 			percent: 0,
 			trend: 'up',
-			// },
-			// {
-			// 	detail: 'Máy tắt do lỗi',
-			// 	percent: 65,
-			// 	trend: 'down',
-			// },
-			// {
-			// 	detail: 'Không sử dụng',
-			// 	percent: 40,
-			// 	trend: 'up',
-			// },
-			// {
-			// 	detail: 'Không sử dụng',
-			// 	percent: 0,
-			// 	trend: 'up',
-			// },
 		},
+		firstTimeGoToPage: true,
 	},
 	reducers: {
 		setOeeOverall: (state, action) => {
@@ -62,10 +46,10 @@ const oeeReportData = createSlice({
 			};
 		},
 		setDetailLabels: (state, action) => {
-			state.detailLabels = action.payload;
+			state.detailLabels = action.payload.reverse();
 		},
 		pushAvailabilityDetailSeries: (state, action) => {
-			state.availabilityDetailSeries.push(action.payload);
+			state.availabilityDetailSeries.unshift(action.payload);
 		},
 		resetDetailSeries: (state) => {
 			state.availabilityDetailSeries = [];
@@ -73,10 +57,13 @@ const oeeReportData = createSlice({
 			state.totalQuantityDetailSeries = [];
 		},
 		pushScrapDetailSeries: (state, action) => {
-			state.scrapDetailSeries.push(action.payload);
+			state.scrapDetailSeries.unshift(action.payload);
 		},
 		pushTotalQuantityDetailSeries: (state, action) => {
-			state.totalQuantityDetailSeries.push(action.payload);
+			state.totalQuantityDetailSeries.unshift(action.payload);
+		},
+		setFirstTimeGoToPage: (state) => {
+			state.firstTimeGoToPage = false;
 		},
 	},
 });
@@ -84,6 +71,7 @@ const oeeReportData = createSlice({
 const { reducer, actions } = oeeReportData;
 export const {
 	setOeeOverall,
+	setFirstTimeGoToPage,
 	pushScrapDetailSeries,
 	pushAvailabilityDetailLabels,
 	pushAvailabilityDetailSeries,

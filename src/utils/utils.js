@@ -1,4 +1,5 @@
 import { format } from 'date-fns';
+import React from 'react';
 
 function convertHMS(value) {
 	const sec = parseInt(value, 10); // convert value to number if it's string
@@ -1009,8 +1010,19 @@ function convertMiliseconds(miliseconds, format) {
 			return { d: days, h: hours, m: minutes, s: seconds };
 	}
 }
+function ScrollToBottom({ pathname }) {
+	React.useEffect(() => {
+		window.scrollTo({
+			top: 225,
+			behavior: 'smooth',
+		});
+	}, [pathname]);
+
+	return null;
+}
 export {
 	packingState,
+	ScrollToBottom,
 	packingEmployees,
 	QA_QC_REPORT_MENU_LIST,
 	convertHMS,

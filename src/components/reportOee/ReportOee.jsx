@@ -15,7 +15,6 @@ function ReportOee({
 	quantityData,
 	downtimeData,
 	oeeOverallData,
-	oeeData,
 	lastTimeUpdated,
 }) {
 	return (
@@ -60,7 +59,6 @@ function ReportOee({
 										discrepancy={discrepancy}
 										oeeOverallData={oeeOverallData}
 										targetData={targetData}
-										oeeData={oeeData}
 									/>
 								</div>
 							</div>
