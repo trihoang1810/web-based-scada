@@ -24,6 +24,17 @@ const injectionApi = {
 			},
 		});
 	},
+	getTemporaryOeeStatistics(dateStart) {
+		//yyyy-MM-dd
+		return axios.get(`http://192.168.1.80:8082/api/oeestatistics?startTime=${dateStart}`, {
+			headers: {
+				'Content-Type': 'application/json',
+				'Access-Control-Allow-Origin': 'http://localhost:3000/',
+				'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
+				'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token',
+			},
+		});
+	},
 };
 
 export { injectionApi };

@@ -23,7 +23,7 @@ import { useHistory } from 'react-router-dom';
 import { HttpTransportType, HubConnectionBuilder } from '@microsoft/signalr';
 import { ToastContainer, toast } from 'react-toastify';
 import { getTagsData } from '../../../../utils/utils';
-import { IgrRadialGauge, IgrRadialGaugeRange } from 'igniteui-react-gauges';
+// import { IgrRadialGauge, IgrRadialGaugeRange } from 'igniteui-react-gauges';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
 	[`&.${tableCellClasses.head}`]: {
@@ -529,7 +529,7 @@ function SecondSystem() {
 									flexBasis: '300px',
 								}}
 							>
-								<IgrRadialGauge
+								{/* <IgrRadialGauge
 									width="100%"
 									height="300px"
 									minimumValue={0}
@@ -550,6 +550,7 @@ function SecondSystem() {
 									fontBrush="Black"
 									backingShape="Fitted"
 									backingBrush="#ededed"
+									transitionDuration={500}
 								>
 									<IgrRadialGaugeRange
 										name="range1"
@@ -573,7 +574,7 @@ function SecondSystem() {
 										endValue={Math.floor(deformationMonitorData.force2 + deformationMonitorData.force2 / 10)}
 										brush="green"
 									/>
-								</IgrRadialGauge>
+								</IgrRadialGauge> */}
 								<h4>Lực nhấn</h4>
 							</div>
 							<div
@@ -583,7 +584,7 @@ function SecondSystem() {
 									flexBasis: '300px',
 								}}
 							>
-								<IgrRadialGauge
+								{/* <IgrRadialGauge
 									width="100%"
 									height="300px"
 									minimumValue={0}
@@ -604,6 +605,7 @@ function SecondSystem() {
 									fontBrush="Black"
 									backingShape="Fitted"
 									backingBrush="#ededed"
+									transitionDuration={500}
 								>
 									<IgrRadialGaugeRange
 										name="range1"
@@ -625,7 +627,7 @@ function SecondSystem() {
 										endValue={Math.floor(deformationMonitorData.time2 + deformationMonitorData.time2 / 10)}
 										brush="green"
 									/>
-								</IgrRadialGauge>
+								</IgrRadialGauge> */}
 								<h4>Thời gian giữ</h4>
 							</div>
 						</div>
