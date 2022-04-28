@@ -12,14 +12,20 @@ import {
 	ThemeProvider,
 } from '@mui/material';
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setDeformationMonitorData } from '../../../../redux/slice/QaQcMonitorSlice';
+
 import { ReactComponent as Auto } from '../../../../assets/images/qaqc/auto.svg';
 import { ReactComponent as Manual } from '../../../../assets/images/qaqc/manual.svg';
 import { ReactComponent as Stop } from '../../../../assets/images/qaqc/stop.svg';
 import ProgressBar from '../../../../components/progressBar/ProgressBar';
 import { useHistory } from 'react-router-dom';
 import ReportNavigationButton from '../../../../components/reportNavigationButton/ReportNavigationButton';
-
-const StyledTableCell = styled(TableCell)(({ theme }) => ({
+import { HttpTransportType, HubConnectionBuilder } from '@microsoft/signalr';
+import { getTagsData } from '../../../../utils/utils';
+import { ToastContainer, toast } from 'react-toastify';
+// import { IgrRadialGauge, IgrRadialGaugeRange } from 'igniteui-react-gauges';
+const StyledTableCell = styled(TableCell)(() => ({
 	[`&.${tableCellClasses.head}`]: {
 		backgroundImage: 'linear-gradient(var(--main-color), var(--second-color));',
 		color: 'var(--txt-white)',
@@ -42,29 +48,223 @@ function StyledPaper({ children }) {
 
 function FirstSystem() {
 	let history = useHistory();
-	const [machineState] = React.useState('stop');
-	const [params] = React.useState({
-		numbs: 0,
-		force2: 0,
-		time2: 0,
-		force3: 0,
-		time3: 0,
-	});
-	const [settings] = React.useState({
-		numb: 0,
-		force2: 0,
-		time2: 0,
-		force3: 0,
-		time3: 0,
-		testNumber: 0,
-	});
-	const rows = [
-		createData('Lực nhấn', settings.force2, settings.force3),
-		createData('Số lần nhấn', settings.numb, settings.numb),
-		createData('Thời gian giữ', settings.time2, settings.time3),
-		createData('Bài test', settings.testNumber, settings.testNumber),
-	];
+	const [connection, setConnection] = React.useState(null);
+	const [error, setError] = React.useState(null);
+	const [errorPriority, setErrorPriority] = React.useState(null);
+	const [state, setState] = React.useState('disconnected');
 
+	const dispatch = useDispatch();
+	const qaqcMonitorReducer = useSelector((state) => state.qaQcMonitorData);
+	const deformationMonitorData = qaqcMonitorReducer.deformationMonitorData;
+
+	const [machineState, setMachineState] = React.useState(
+		deformationMonitorData.isRunning && deformationMonitorData.mode === true
+			? 'manual'
+			: deformationMonitorData.isRunning && deformationMonitorData.mode === false
+			? 'auto'
+			: 'stop'
+	);
+	const rows = [
+		createData('Lực nhấn', deformationMonitorData.force1, deformationMonitorData.force1),
+		createData('Số lần nhấn', deformationMonitorData.numb1, deformationMonitorData.numb1),
+		createData('Thời gian giữ', deformationMonitorData.time1, deformationMonitorData.time1),
+	];
+	React.useEffect(() => {
+		const connect = new HubConnectionBuilder()
+			.withUrl(`http://192.168.1.80:8085/websockethub`, {
+				skipNegotiation: true,
+				transport: HttpTransportType.WebSockets,
+			})
+			.withAutomaticReconnect()
+			.build();
+		connect
+			.start()
+			.then(() => {
+				setConnection(connect);
+				setState('connected');
+				connect.on('ReceiveData', (data) => {
+					console.log('data 2', data);
+				});
+			})
+			.catch((err) => {
+				alert(err);
+			});
+		setConnection(connect);
+		return () => {
+			connect.stop();
+		};
+	}, []);
+
+	const notify = (error, errorPriority) => {
+		switch (errorPriority) {
+			case 'low':
+				return toast.success(error, {
+					position: 'bottom-right',
+					autoClose: 5000,
+					hideProgressBar: false,
+					closeOnClick: true,
+					draggable: true,
+					progress: undefined,
+				});
+			case 'middle':
+				return toast.warn(error, {
+					position: 'bottom-right',
+					autoClose: 5000,
+					hideProgressBar: false,
+					closeOnClick: true,
+					draggable: true,
+					progress: undefined,
+				});
+			case 'high':
+				return toast.error(error, {
+					position: 'bottom-right',
+					autoClose: 5000,
+					hideProgressBar: false,
+					closeOnClick: true,
+					draggable: true,
+					progress: undefined,
+				});
+			default:
+				return;
+		}
+	};
+	React.useEffect(() => {
+		let id;
+		if (connection && state === 'connected') {
+			id = setInterval(async () => {
+				const rawData = await getTagsData(
+					connection,
+					'qaqclab',
+					['plc'],
+					[
+						'Sp Force Cylinder 12',
+						'Sp No Press 12',
+						'Sp Time Hold 12',
+						'Pv Force Cylinder 1',
+						'Pv Force Cylinder 2',
+						'Pv No Press 1',
+						'Pv No Press 2',
+						'Pv Time Hold 1',
+						'Pv Time Hold 2',
+						'Mode App',
+						'Green App',
+						'Red App',
+						'Error App',
+						'Error Code',
+					]
+				);
+				dispatch(
+					setDeformationMonitorData({
+						numb1: rawData.deviceQueryResults[0].tagQueryResults[1].value,
+						force1: rawData.deviceQueryResults[0].tagQueryResults[0].value,
+						time1: rawData.deviceQueryResults[0].tagQueryResults[2].value,
+						pvForceCylinder1: rawData.deviceQueryResults[0].tagQueryResults[3].value,
+						pvForceCylinder2: rawData.deviceQueryResults[0].tagQueryResults[4].value,
+						pvNoPress1: rawData.deviceQueryResults[0].tagQueryResults[5].value,
+						pvTimeHold1: rawData.deviceQueryResults[0].tagQueryResults[7].value,
+						pvTimeHold2: rawData.deviceQueryResults[0].tagQueryResults[8].value,
+						isRunning: rawData.deviceQueryResults[0].tagQueryResults[10].value,
+						isAlarm: rawData.deviceQueryResults[0].tagQueryResults[11].value,
+						mode: rawData.deviceQueryResults[0].tagQueryResults[9].value,
+					})
+				);
+				setMachineState(
+					deformationMonitorData.isRunning && deformationMonitorData.mode === true
+						? 'manual'
+						: deformationMonitorData.isRunning && deformationMonitorData.mode === false
+						? 'auto'
+						: 'stop'
+				);
+				switch (rawData.deviceQueryResults[0].tagQueryResults[13].value) {
+					case 0:
+						break;
+					case 100:
+						setError('Hoàn thành chương trình');
+						setErrorPriority('low');
+						break;
+					case 500:
+						setError('Cài đặt lực, thời gian giữ, số lần nhấn và sai số');
+						setErrorPriority('high');
+						break;
+					case 501:
+						setError('Lực cài đặt hệ 1 quá lớn (>2000)');
+						setErrorPriority('high');
+						break;
+					case 502:
+						setError('Lực cài đặt hệ 2 quá lớn (>2000)');
+						setErrorPriority('high');
+						break;
+					case 503:
+						setError('Hệ thống chưa sẵn sàng');
+						setErrorPriority('high');
+						break;
+					case 504:
+						setError('Lỗi xi lanh 1 chưa tới vị trí đặt lực');
+						setErrorPriority('high');
+						break;
+					case 505:
+						setError('Lỗi xi lanh 1 chưa về vị trí ban đầu');
+						setErrorPriority('high');
+						break;
+					case 506:
+						setError('Lỗi xi lanh 2 chưa tới vị trí đặt lực');
+						setErrorPriority('high');
+						break;
+					case 507:
+						setError('Lỗi xi lanh 2 chưa về vị trí ban đầu');
+						setErrorPriority('high');
+						break;
+					case 508:
+						setError('Lỗi xi lanh 3 chưa tới vị trí đặt lực');
+						setErrorPriority('high');
+						break;
+					case 509:
+						setError('Lỗi xi lanh 3 chưa về vị trí ban đầu');
+						setErrorPriority('high');
+						break;
+					case 510:
+						setError('Dừng hệ thống khẩn cấp');
+						setErrorPriority('high');
+						break;
+					case 600:
+						setError('Xi lanh 1 quá lực');
+						setErrorPriority('middle');
+						break;
+					case 601:
+						setError('Xi lanh 2 quá lực');
+						setErrorPriority('middle');
+						break;
+					case 602:
+						setError('Xi lanh 3 quá lực');
+						setErrorPriority('middle');
+						break;
+					case 603:
+						setError('Xi lanh 1 không đủ lực');
+						setErrorPriority('middle');
+						break;
+					case 604:
+						setError('Xi lanh 2 không đủ lực');
+						setErrorPriority('middle');
+						break;
+					case 605:
+						setError('Xi lanh 3 không đủ lực');
+						setErrorPriority('middle');
+						break;
+					default:
+						setError('Đang test');
+						setErrorPriority('low');
+						break;
+				}
+				console.log(deformationMonitorData);
+			}, 1000);
+		}
+		return () => clearInterval(id);
+	}, [connection, state, dispatch, deformationMonitorData]);
+	React.useEffect(() => {
+		if (error && errorPriority) {
+			notify(error, errorPriority);
+		}
+	}, [error, errorPriority]);
 	return (
 		<>
 			<div className="row">
@@ -204,8 +404,11 @@ function FirstSystem() {
 							</div>
 							<div className="row flex-center">
 								<div className="col-8">
-									<span className="packingParamsTitle">Tiến độ thực hiện: {params.numbs}</span>
-									<ProgressBar height="20px" percent={50} />
+									<span className="packingParamsTitle">Tiến độ thực hiện: {deformationMonitorData.pvNoPress1}</span>
+									<ProgressBar
+										height="20px"
+										percent={Math.floor((deformationMonitorData.pvNoPress1 / deformationMonitorData.numb1) * 100)}
+									/>
 								</div>
 							</div>
 						</div>
@@ -291,26 +494,47 @@ function FirstSystem() {
 									width="100%"
 									height="300px"
 									minimumValue={0}
-									maximumValue={100}
+									maximumValue={Math.floor(deformationMonitorData.force1 + deformationMonitorData.force1 / 10)}
 									scaleBrush="#c6c6c6"
 									scaleStartExtent={0.3}
 									scaleEndExtent={0.575}
-									value={70}
-									interval={10}
+									value={deformationMonitorData.pvForceCylinder1}
+									labelInterval={Math.floor((deformationMonitorData.force1 + deformationMonitorData.force1 / 10) / 6)}
+									interval={Math.floor((deformationMonitorData.force1 + deformationMonitorData.force1 / 10) / 6)}
+									minorTickCount={10}
 									tickStartExtent={0.45}
 									tickEndExtent={0.575}
 									tickStrokeThickness={2}
 									tickBrush="Black"
-									minorTickCount={4}
 									minorTickEndExtent={0.5}
 									minorTickStartExtent={0.575}
 									fontBrush="Black"
 									backingShape="Fitted"
 									backingBrush="#ededed"
+									transitionDuration={500}
 								>
-									<IgrRadialGaugeRange name="range1" startValue={0} endValue={40} brush="red" />
-									<IgrRadialGaugeRange name="range2" startValue={40} endValue={60} brush="yellow" />
-									<IgrRadialGaugeRange name="range3" startValue={60} endValue={100} brush="green" />
+									<IgrRadialGaugeRange
+										name="range1"
+										startValue={0}
+										endValue={Math.floor((deformationMonitorData.force1 + deformationMonitorData.force1 / 10) / 3)}
+										brush="red"
+									/>
+									<IgrRadialGaugeRange
+										name="range2"
+										startValue={Math.floor((deformationMonitorData.force1 + deformationMonitorData.force1 / 10) / 3)}
+										endValue={Math.floor(
+											((deformationMonitorData.force1 + deformationMonitorData.force1 / 10) / 3) * 2
+										)}
+										brush="yellow"
+									/>
+									<IgrRadialGaugeRange
+										name="range3"
+										startValue={Math.floor(
+											((deformationMonitorData.force1 + deformationMonitorData.force1 / 10) / 3) * 2
+										)}
+										endValue={Math.floor(deformationMonitorData.force1 + deformationMonitorData.force1 / 10)}
+										brush="green"
+									/>
 								</IgrRadialGauge> */}
 								<h4>Lực nhấn</h4>
 							</div>
@@ -325,26 +549,45 @@ function FirstSystem() {
 									width="100%"
 									height="300px"
 									minimumValue={0}
-									maximumValue={100}
+									maximumValue={Math.floor(deformationMonitorData.time1 + deformationMonitorData.time1 / 10)}
 									scaleBrush="#c6c6c6"
 									scaleStartExtent={0.3}
 									scaleEndExtent={0.575}
-									value={70}
-									interval={10}
+									value={deformationMonitorData.pvTimeHold1}
+									labelInterval={Math.floor((deformationMonitorData.time1 + deformationMonitorData.time1 / 10) / 6)}
+									interval={Math.floor((deformationMonitorData.time1 + deformationMonitorData.time1 / 10) / 6)}
+									minorTickCount={10}
 									tickStartExtent={0.45}
 									tickEndExtent={0.575}
 									tickStrokeThickness={2}
 									tickBrush="Black"
-									minorTickCount={4}
 									minorTickEndExtent={0.5}
 									minorTickStartExtent={0.575}
 									fontBrush="Black"
 									backingShape="Fitted"
 									backingBrush="#ededed"
+									transitionDuration={500}
 								>
-									<IgrRadialGaugeRange name="range1" startValue={0} endValue={40} brush="red" />
-									<IgrRadialGaugeRange name="range2" startValue={40} endValue={60} brush="yellow" />
-									<IgrRadialGaugeRange name="range3" startValue={60} endValue={100} brush="green" />
+									<IgrRadialGaugeRange
+										name="range1"
+										startValue={0}
+										endValue={Math.floor((deformationMonitorData.time1 + deformationMonitorData.time1 / 10) / 3)}
+										brush="red"
+									/>
+									<IgrRadialGaugeRange
+										name="range2"
+										startValue={Math.floor((deformationMonitorData.time1 + deformationMonitorData.time1 / 10) / 3)}
+										endValue={Math.floor(((deformationMonitorData.time1 + deformationMonitorData.time1 / 10) / 3) * 2)}
+										brush="yellow"
+									/>
+									<IgrRadialGaugeRange
+										name="range3"
+										startValue={Math.floor(
+											((deformationMonitorData.time1 + deformationMonitorData.time1 / 10) / 3) * 2
+										)}
+										endValue={Math.floor(deformationMonitorData.time1 + deformationMonitorData.time1 / 10)}
+										brush="green"
+									/>
 								</IgrRadialGauge> */}
 								<h4>Thời gian giữ</h4>
 							</div>
@@ -369,26 +612,47 @@ function FirstSystem() {
 									width="100%"
 									height="300px"
 									minimumValue={0}
-									maximumValue={100}
+									maximumValue={Math.floor(deformationMonitorData.force1 + deformationMonitorData.force1 / 10)}
 									scaleBrush="#c6c6c6"
 									scaleStartExtent={0.3}
 									scaleEndExtent={0.575}
-									value={70}
-									interval={10}
+									value={deformationMonitorData.pvForceCylinder2}
+									labelInterval={Math.floor((deformationMonitorData.force1 + deformationMonitorData.force1 / 10) / 6)}
+									interval={Math.floor((deformationMonitorData.force1 + deformationMonitorData.force1 / 10) / 6)}
+									minorTickCount={10}
 									tickStartExtent={0.45}
 									tickEndExtent={0.575}
 									tickStrokeThickness={2}
 									tickBrush="Black"
-									minorTickCount={4}
 									minorTickEndExtent={0.5}
 									minorTickStartExtent={0.575}
 									fontBrush="Black"
 									backingShape="Fitted"
 									backingBrush="#ededed"
+									transitionDuration={500}
 								>
-									<IgrRadialGaugeRange name="range1" startValue={0} endValue={40} brush="red" />
-									<IgrRadialGaugeRange name="range2" startValue={40} endValue={60} brush="yellow" />
-									<IgrRadialGaugeRange name="range3" startValue={60} endValue={100} brush="green" />
+									<IgrRadialGaugeRange
+										name="range1"
+										startValue={0}
+										endValue={Math.floor((deformationMonitorData.force1 + deformationMonitorData.force1 / 10) / 3)}
+										brush="red"
+									/>
+									<IgrRadialGaugeRange
+										name="range2"
+										startValue={Math.floor((deformationMonitorData.force1 + deformationMonitorData.force1 / 10) / 3)}
+										endValue={Math.floor(
+											((deformationMonitorData.force1 + deformationMonitorData.force1 / 10) / 3) * 2
+										)}
+										brush="yellow"
+									/>
+									<IgrRadialGaugeRange
+										name="range3"
+										startValue={Math.floor(
+											((deformationMonitorData.force1 + deformationMonitorData.force1 / 10) / 3) * 2
+										)}
+										endValue={Math.floor(deformationMonitorData.force1 + deformationMonitorData.force1 / 10)}
+										brush="green"
+									/>
 								</IgrRadialGauge> */}
 								<h4>Lực nhấn</h4>
 							</div>
@@ -403,26 +667,45 @@ function FirstSystem() {
 									width="100%"
 									height="300px"
 									minimumValue={0}
-									maximumValue={100}
+									maximumValue={Math.floor(deformationMonitorData.time1 + deformationMonitorData.time1 / 10)}
 									scaleBrush="#c6c6c6"
 									scaleStartExtent={0.3}
 									scaleEndExtent={0.575}
-									value={70}
-									interval={10}
+									value={deformationMonitorData.pvTimeHold2}
+									labelInterval={Math.floor((deformationMonitorData.time1 + deformationMonitorData.time1 / 10) / 6)}
+									interval={Math.floor((deformationMonitorData.time1 + deformationMonitorData.time1 / 10) / 6)}
 									tickStartExtent={0.45}
 									tickEndExtent={0.575}
 									tickStrokeThickness={2}
 									tickBrush="Black"
-									minorTickCount={4}
+									minorTickCount={10}
 									minorTickEndExtent={0.5}
 									minorTickStartExtent={0.575}
 									fontBrush="Black"
 									backingShape="Fitted"
 									backingBrush="#ededed"
+									transitionDuration={500}
 								>
-									<IgrRadialGaugeRange name="range1" startValue={0} endValue={40} brush="red" />
-									<IgrRadialGaugeRange name="range2" startValue={40} endValue={60} brush="yellow" />
-									<IgrRadialGaugeRange name="range3" startValue={60} endValue={100} brush="green" />
+									<IgrRadialGaugeRange
+										name="range1"
+										startValue={0}
+										endValue={Math.floor((deformationMonitorData.time1 + deformationMonitorData.time1 / 10) / 3)}
+										brush="red"
+									/>
+									<IgrRadialGaugeRange
+										name="range2"
+										startValue={Math.floor((deformationMonitorData.time1 + deformationMonitorData.time1 / 10) / 3)}
+										endValue={Math.floor(((deformationMonitorData.time1 + deformationMonitorData.time1 / 10) / 3) * 2)}
+										brush="yellow"
+									/>
+									<IgrRadialGaugeRange
+										name="range3"
+										startValue={Math.floor(
+											((deformationMonitorData.time1 + deformationMonitorData.time1 / 10) / 3) * 2
+										)}
+										endValue={Math.floor(deformationMonitorData.time1 + deformationMonitorData.time1 / 10)}
+										brush="green"
+									/>
 								</IgrRadialGauge> */}
 								<h4>Thời gian giữ</h4>
 							</div>
@@ -432,9 +715,20 @@ function FirstSystem() {
 			</div>
 			<div className="row">
 				<div className="col-12 flex-center">
-					<ReportNavigationButton history={history} path="/report/main/qaqc" />
+					<ReportNavigationButton history={history} path="/report/main/qaqc/deformation" />
 				</div>
 			</div>
+			<ToastContainer
+				position="bottom-right"
+				autoClose={5000}
+				hideProgressBar={false}
+				newestOnTop={false}
+				closeOnClick
+				theme="colored"
+				rtl={false}
+				draggable
+				pauseOnHover
+			/>
 		</>
 	);
 }

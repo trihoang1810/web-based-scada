@@ -1,4 +1,5 @@
 import { format } from 'date-fns';
+import React from 'react';
 
 function convertHMS(value) {
 	const sec = parseInt(value, 10); // convert value to number if it's string
@@ -157,11 +158,11 @@ const BENDING_DEFORMATION_COLUMNS = [
 		accessor: 'weight',
 	},
 	{
-		Header: 'Số lần thử nghiệm',
+		Header: 'Thời gian',
 		accessor: 'number_of_test',
 	},
 	{
-		Header: 'Kết quả đánh giá',
+		Header: 'Độ cong vênh',
 		accessor: 'result',
 	},
 	{
@@ -169,7 +170,7 @@ const BENDING_DEFORMATION_COLUMNS = [
 		accessor: 'total',
 	},
 	{
-		Header: 'Ghi chú',
+		Header: 'Nhận xét',
 		accessor: 'note',
 	},
 	{
@@ -440,7 +441,7 @@ const PACKING_EMPLOYEE_COLUMNS = [
 	},
 	{
 		Header: 'Tên nhân viên',
-		accessor: 'employeeName',
+		accessor: 'employee',
 		disableSortBy: true,
 	},
 	{
@@ -971,12 +972,63 @@ function convertDate(value) {
 	return date.toLocaleDateString();
 }
 
+async function getTagsData(connection, eonNodeId, deviceQueries, tagNames) {
+	const nodeQuery = {
+		EonNodeId: eonNodeId,
+		DeviceQueries: deviceQueries.map((deviceQuery) => {
+			return {
+				DeviceId: deviceQuery,
+				TagNames: tagNames,
+			};
+		}),
+	};
+	var result = await connection.invoke('GetListTags', nodeQuery);
+	return result;
+}
+function convertMiliseconds(miliseconds, format) {
+	var days, hours, minutes, seconds, total_hours, total_minutes, total_seconds;
+
+	total_seconds = parseInt(Math.floor(miliseconds / 1000));
+	total_minutes = parseInt(Math.floor(total_seconds / 60));
+	total_hours = parseInt(Math.floor(total_minutes / 60));
+	days = parseInt(Math.floor(total_hours / 24));
+
+	seconds = parseInt(total_seconds % 60);
+	minutes = parseInt(total_minutes % 60);
+	hours = parseInt(total_hours % 24);
+
+	switch (format) {
+		case 's':
+			return total_seconds;
+		case 'm':
+			return total_minutes;
+		case 'h':
+			return total_hours;
+		case 'd':
+			return days;
+		default:
+			return { d: days, h: hours, m: minutes, s: seconds };
+	}
+}
+function ScrollToBottom({ pathname }) {
+	React.useEffect(() => {
+		window.scrollTo({
+			top: 225,
+			behavior: 'smooth',
+		});
+	}, [pathname]);
+
+	return null;
+}
 export {
 	packingState,
+	ScrollToBottom,
 	packingEmployees,
 	QA_QC_REPORT_MENU_LIST,
 	convertHMS,
 	COLUMNS,
+	convertMiliseconds,
+	getTagsData,
 	convertDate,
 	REPORT_MENU_LIST,
 	ENDURANCE_COLUMNS,
