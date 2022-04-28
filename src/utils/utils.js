@@ -441,7 +441,7 @@ const PACKING_EMPLOYEE_COLUMNS = [
 	},
 	{
 		Header: 'Tên nhân viên',
-		accessor: 'employeeName',
+		accessor: 'employee',
 		disableSortBy: true,
 	},
 	{

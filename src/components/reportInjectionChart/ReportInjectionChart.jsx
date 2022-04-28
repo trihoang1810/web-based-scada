@@ -95,7 +95,7 @@ const apexChartConfig = {
 	},
 	series: [],
 };
-function ReportInjectionChart({ series, categories, shift, moldId }) {
+function ReportInjectionChart({ shift, series, categories, moldId }) {
 	return (
 		<>
 			<div className="row">
@@ -124,14 +124,22 @@ function ReportInjectionChart({ series, categories, shift, moldId }) {
 									<table id="mold-id-report__table">
 										<thead>
 											<tr>
-												<th>Mã máy</th>
+												<th>Nhân viên đứng máy</th>
+												<th>Mã khuôn</th>
+												<th>Mã sản phẩm</th>
+												<th>Tên sản phẩm</th>
+												<th>Số lượng ép ra</th>
 												<th>Chu kỳ ép cài đặt</th>
 											</tr>
 										</thead>
 										<tbody>
 											{moldId.map((moldId, index) => (
 												<tr key={index}>
+													<td>{moldId.employee}</td>
 													<td>{moldId.moldId}</td>
+													<td>{moldId.productId}</td>
+													<td>{moldId.productName}</td>
+													<td>{moldId.totalQuantity}</td>
 													<td>{moldId.setCycle}</td>
 												</tr>
 											))}

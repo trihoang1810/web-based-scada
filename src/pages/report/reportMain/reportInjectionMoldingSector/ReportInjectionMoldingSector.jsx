@@ -11,32 +11,48 @@ function ReportInjectionMoldingSector() {
 	const dispatch = useDispatch();
 	const injectionReportReducer = useSelector((state) => state.injectionReportData);
 	const injectionReportData = injectionReportReducer.injectionReportData;
+	const [hasNothing, setHasNothing] = React.useState(false);
 	const [isLoading, setIsLoading] = React.useState(false);
 	const [error, setError] = React.useState(null);
+	console.log(injectionReportData);
 	const onSubmit = (value) => {
 		dispatch(resetInjectionReportData());
 		setIsLoading(true);
 		injectionApi
 			.getTemporaryInjectionReport(value.moldingMachineId, value.dateStart, value.dateEnd)
 			.then((res) => {
+				console.log('res', res.data.items);
 				setIsLoading(false);
-				res.items.forEach((item, index) => {
-					dispatch(
-						setInjectionReportData({
-							MachineID: item.machine.id,
-							MachineReport: item.shots.map((shot) => ({
-								Timestamp: shot.timeStamp,
-								CycleTime: shot.injectionTime / 1000,
-								OpenTime: shot.openTime / 1000,
-								Mode: item.product.mold.automatic === true ? 0 : 1,
-								MoldID: item.product.moldId,
-								SetCycle: item.product.mold.standardInjectionCycle / 1000,
-							})),
-						})
-					);
-				});
+				if (res.data.items.length === 0) {
+					setHasNothing(true);
+				} else {
+					res.data.items.forEach((item, index) => {
+						dispatch(
+							setInjectionReportData({
+								MachineID: item.machine.id,
+								Shift:
+									item.shiftNumber === 0
+										? `Ca 1 ngày ${format(new Date(item.date), 'dd/MM/yyyy')}`
+										: `Ca 2 ngày ${format(new Date(item.date), 'dd/MM/yyyy')}`,
+								MachineReport: item.shots.map((shot) => ({
+									Timestamp: shot.timeStamp,
+									ProductId: item.product.id,
+									ProductName: item.product.name,
+									CycleTime: shot.injectionTime / 1000,
+									OpenTime: shot.openTime / 1000,
+									Mode: item.product.mold.automatic === true ? 0 : 1,
+									MoldID: item.product.moldId,
+									SetCycle: item.product.mold.standardInjectionCycle / 1000,
+									TotalQuantity: item.totalQuantity,
+									Employee: item.employee.lastName + ' ' + item.employee.firstName,
+								})),
+							})
+						);
+					});
+				}
 			})
 			.catch((err) => {
+				console.log(err);
 				setIsLoading(false);
 				setError(err);
 			});
@@ -62,8 +78,13 @@ function ReportInjectionMoldingSector() {
 											injectionReportData?.map((item) =>
 												item.MachineReport.reduce((acc, cur) => {
 													acc.push({
+														productId: cur.ProductId,
+														productName: cur.ProductName,
+														employee: cur.Employee,
 														moldId: cur.MoldID,
 														setCycle: cur.SetCycle,
+														totalQuantity: cur.TotalQuantity,
+														shift: cur.Shift,
 													});
 													return acc;
 												}, []).filter(
@@ -74,28 +95,30 @@ function ReportInjectionMoldingSector() {
 										),
 									][index]
 								}
-								shift={`ca ${index + 1}`}
+								shift={item.Shift}
 								categories={item['MachineReport'].map((item) => {
 									return format(new Date(item.Timestamp), 'HH:mm:ss');
 								})}
 								series={[
 									{
 										name: 'Chu kỳ ép',
-										data: item['MachineReport'].map((item) => item.CycleTime),
+										data: item['MachineReport'].map((item) => item.CycleTime.toFixed(2)),
 									},
 									{
 										name: 'Chu kỳ ép cài đặt',
-										data: item['MachineReport'].map((item) => item.SetCycle),
+										data: item['MachineReport'].map((item) => item.SetCycle.toFixed(2)),
 									},
 									{
 										name: 'Thời gian cửa mở',
-										data: item['MachineReport'].map((item) => item.OpenTime),
+										data: item['MachineReport'].map((item) => item.OpenTime.toFixed(2)),
 									},
 								]}
 							/>
 						</React.Fragment>
 					);
 				})
+			) : hasNothing ? (
+				<EmptyPlaceholder isError={true} msg="Không có dữ liệu, vui lòng chọn ngày bắt đầu và kết thúc khác" />
 			) : (
 				<EmptyPlaceholder msg="Nhấn nút tìm kiếm để xem báo cáo" />
 			)}

@@ -76,12 +76,8 @@ function OeeIndex() {
 		trend,
 		discrepancy,
 	} = useSelector((state) => state.oeeReportData);
-	// const onSubmitCallBack = React.useCallback(() => {
-	// 	onSubmit(a, b);
-	// }, [a, b]);
 	const onSubmit = React.useCallback(
 		(value) => {
-			console.log(value.dateStart);
 			setIsLoading(true);
 			dispatch(resetDetailSeries());
 			injectionApi
