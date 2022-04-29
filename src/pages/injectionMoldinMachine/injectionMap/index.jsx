@@ -5,6 +5,7 @@ import { ReactComponent as VerticalMachine } from '../../../assets/images/inject
 import { ReactComponent as HorizontalMachine } from '../../../assets/images/injectionMoldingMachine/injectionFullDetail.svg';
 import ReportNavigationButton from '../../../components/reportNavigationButton/ReportNavigationButton';
 import { INJECTION_MACHINE_LAYOUT } from '../../../utils/utils';
+
 function InjectionMap() {
 	const history = useHistory();
 	return (
