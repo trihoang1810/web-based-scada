@@ -57,22 +57,23 @@ const apexChartConfig = {
 					},
 				},
 			},
-			{
-				opposite: true,
-				title: {
-					text: 'Thời gian cửa mở',
-					style: {
-						color: '#22EE99',
-					},
-				},
-				labels: {
-					style: {
-						colors: '#22EE99',
-					},
-				},
-				min: -3,
-				max: 6,
-			},
+			// {
+			// 	opposite: true,
+			// 	title: {
+			// 		text: 'Thời gian cửa mở',
+			// 		style: {
+			// 			color: '#22EE99',
+			// 		},
+			// 	},
+			// 	labels: {
+			// 		show: false,
+			// 		style: {
+			// 			colors: '#22EE99',
+			// 		},
+			// 	},
+			// 	min: -3,
+			// 	max: 6,
+			// },
 		],
 		tooltip: {
 			enabled: true,
