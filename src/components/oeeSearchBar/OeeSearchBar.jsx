@@ -1,5 +1,6 @@
 import { ErrorMessage, Form, Formik } from 'formik';
 import React from 'react';
+import { useSelector } from 'react-redux';
 import FormikControl from '../formControl/FormControl';
 import * as Yup from 'yup';
 import { format } from 'date-fns';
@@ -14,15 +15,16 @@ const validationSchema = Yup.object({
 });
 
 function OeeSearchBar({ onSubmit }) {
+	const { initialOeeDateStart } = useSelector((state) => state.oeeReportData);
 	const handleSubmit = (event) => {
 		onSubmit(event);
 	};
 	const initialDateStart = React.useMemo(() => {
 		const today = new Date();
-		const numberOfDaysToSubtract = 7;
+		const numberOfDaysToSubtract = Number(initialOeeDateStart);
 		const date = today.setDate(today.getDate() - numberOfDaysToSubtract);
 		return format(date, 'yyyy-MM-dd');
-	}, []);
+	}, [initialOeeDateStart]);
 
 	const initialDateEnd = React.useMemo(() => {
 		const today = new Date();

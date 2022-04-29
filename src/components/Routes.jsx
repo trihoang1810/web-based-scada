@@ -16,6 +16,7 @@ import Report from '../pages/report/Report';
 import InjectionMap from '../pages/injectionMoldinMachine/injectionMap';
 import InjectionMoldingMainPage from '../pages/injectionMoldinMachine/index';
 import Test from '../test/Test';
+import Settings from '../pages/Settings';
 
 const Routes = () => {
 	return (
@@ -32,6 +33,7 @@ const Routes = () => {
 			<Route path="/injection/:id" component={InjectionDetail} />
 			<Route path="/warning" component={Alarm} />
 			<Route path="/report" component={Report} />
+			<Route path="/settings" component={Settings} />
 			<Route path="/test" component={Test} />
 			<Route path="*" component={Error} />
 		</Switch>

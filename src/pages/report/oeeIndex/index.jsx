@@ -11,7 +11,6 @@ import {
 	pushTotalQuantityDetailSeries,
 	resetDetailSeries,
 	setOeeOverall,
-	setOeeTarget,
 	pushScrapDetailSeries,
 	setFirstTimeGoToPage,
 	setTrend,
@@ -69,6 +68,7 @@ function OeeIndex() {
 		totalQuantityDetailSeries,
 		scrapDetailSeries,
 		lastTimeUpdated,
+		initialOeeDateStart,
 		detailLabels,
 		availabilityDetailSeries,
 		downTimeData,
@@ -145,7 +145,6 @@ function OeeIndex() {
 						(totalPartsProducedTime / totalWorkTime) * 100 > 100 ? 100 : (totalPartsProducedTime / totalWorkTime) * 100;
 					quality = (totalQualifiedProducedParts / totalProducedParts) * 100;
 					pauseTimeProportion = (totalPauseTime / (res.data.items.length * 12 * 60 * 60 * 1000)) * 100;
-					dispatch(setOeeTarget(50));
 					dispatch(setDiscrepancy(((availability * quality * performance) / 10000 - oeeTarget).toFixed(1)));
 					dispatch(setTrend((availability * quality * performance) / 10000 - oeeTarget > 0 ? 'up' : 'down'));
 					dispatch(setOeeOverall([availability.toFixed(2), performance.toFixed(2), quality.toFixed(2)]));
@@ -164,9 +163,11 @@ function OeeIndex() {
 	React.useEffect(() => {
 		if (firstTimeGoToPage) {
 			dispatch(setFirstTimeGoToPage(false));
-			onSubmit({ dateStart: format(new Date(Date.now() - 7 * 24 * 60 * 60 * 1000), 'yyyy-MM-dd') });
+			onSubmit({
+				dateStart: format(new Date(Date.now() - Number(initialOeeDateStart) * 24 * 60 * 60 * 1000), 'yyyy-MM-dd'),
+			});
 		}
-	}, [firstTimeGoToPage, dispatch, onSubmit]);
+	}, [firstTimeGoToPage, dispatch, onSubmit, initialOeeDateStart]);
 	React.useEffect(() => {
 		availabilityData = {
 			...availabilityData,

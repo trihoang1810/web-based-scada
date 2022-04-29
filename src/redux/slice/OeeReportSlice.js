@@ -4,7 +4,7 @@ const oeeReportData = createSlice({
 	name: 'oeeReportData',
 	initialState: {
 		oeeOverall: [0, 0, 0],
-		oeeTarget: 50,
+		oeeTarget: localStorage.getItem('oeeTarget') || '50',
 		pauseTimeProportion: 0,
 		lastTimeUpdated: 0,
 		discrepancy: 0,
@@ -19,12 +19,14 @@ const oeeReportData = createSlice({
 			trend: 'up',
 		},
 		firstTimeGoToPage: true,
+		initialOeeDateStart: localStorage.getItem('initialOeeDateStart') || 7,
 	},
 	reducers: {
 		setOeeOverall: (state, action) => {
 			state.oeeOverall = action.payload;
 		},
 		setOeeTarget: (state, action) => {
+			localStorage.setItem('oeeTarget', action.payload);
 			state.oeeTarget = action.payload;
 		},
 		setPauseTimeProportion: (state, action) => {
@@ -65,11 +67,16 @@ const oeeReportData = createSlice({
 		setFirstTimeGoToPage: (state) => {
 			state.firstTimeGoToPage = false;
 		},
+		setInitialOeeDateStart: (state, action) => {
+			localStorage.setItem('initialOeeDateStart', action.payload);
+			state.initialOeeDateStart = action.payload;
+		},
 	},
 });
 
 const { reducer, actions } = oeeReportData;
 export const {
+	setInitialOeeDateStart,
 	setOeeOverall,
 	setFirstTimeGoToPage,
 	pushScrapDetailSeries,
