@@ -263,7 +263,7 @@ const Dashboard = () => {
 		setPackingToggleButtonsIndex(index);
 	};
 	const dispatch = useDispatch();
-	const { oeeOverall } = useSelector((state) => state.oeeReportData);
+	const { oeeOverall, initialOeeDateStart } = useSelector((state) => state.oeeReportData);
 	const onSubmit = React.useCallback(
 		(value) => {
 			injectionApi
@@ -296,8 +296,8 @@ const Dashboard = () => {
 		[dispatch]
 	);
 	React.useEffect(() => {
-		onSubmit(format(new Date(Date.now() - 7 * 24 * 60 * 60 * 1000), 'yyyy-MM-dd'));
-	}, [onSubmit]);
+		onSubmit(format(new Date(Date.now() - initialOeeDateStart * 24 * 60 * 60 * 1000), 'yyyy-MM-dd'));
+	}, [onSubmit, initialOeeDateStart]);
 	React.useEffect(() => {
 		switch (qaqcToggleButtonsIndex) {
 			case 0:

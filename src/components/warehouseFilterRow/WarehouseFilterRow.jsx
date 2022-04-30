@@ -3,13 +3,13 @@ import { useEffect, useState } from 'react';
 import FormikControl from '../formControl/FormControl';
 import './warehouseFilterRow.css';
 
-function WarehouseFilter({ filterId, deleteFilterRow, filterValues, setFilterValue, data, setSearchDisabled }) {
+function WarehouseFilter({ filterId, deleteFilterRow, setFilterValue, data, setSearchDisabled }) {
 	const [ids, setIds] = useState();
 	const [rowValues, setRowValues] = useState({});
 
 	const { values, handleChange, setFieldValue, isValid } = useFormikContext();
 
-	const { type, id, name, fromDate, toDate } = values;
+	const { type, id, name } = values;
 
 	useEffect(() => {
 		if (type.length > 0) {
@@ -30,24 +30,32 @@ function WarehouseFilter({ filterId, deleteFilterRow, filterValues, setFilterVal
 	}, [id, type, data, setFieldValue]);
 
 	useEffect(() => {
-		setRowValues({ type, id, name, fromDate, toDate });
-	}, [type, id, name, fromDate, toDate]);
-
+		setRowValues({ type, id, name });
+	}, [type, id, name]);
+	// useEffect(() => {
+	// 	for (let row in rowValues) {
+	// 		if (rowValues[row].id === '' || rowValues[row].name === '') {
+	// 			setSearchDisabled(true);
+	// 		}
+	// 	}
+	// }, [rowValues, setSearchDisabled]);
 	useEffect(() => {
 		if (isValid) {
-			setFilterValue({
-				...filterValues,
-				['row' + filterId]: rowValues,
+			setFilterValue((prev) => {
+				return {
+					...prev,
+					['row' + filterId]: rowValues,
+				};
 			});
 		} else {
 			setSearchDisabled(true);
 		}
-	}, [isValid, filterId, filterValues, rowValues, setFilterValue, setSearchDisabled]);
+	}, [isValid, filterId, rowValues, setFilterValue, setSearchDisabled]);
 
 	return (
 		<div className="row warehouseFilterRow__container">
 			<>
-				<div className="col-2">
+				<div className="col-4">
 					<FormikControl
 						control="select"
 						name="type"
@@ -59,7 +67,7 @@ function WarehouseFilter({ filterId, deleteFilterRow, filterValues, setFilterVal
 					/>
 				</div>
 
-				<div className="col-2">
+				<div className="col-3">
 					<FormikControl control="input" list={`list${filterId}`} name="id" onChange={handleChange} />
 
 					{ids && (
@@ -73,17 +81,17 @@ function WarehouseFilter({ filterId, deleteFilterRow, filterValues, setFilterVal
 					)}
 				</div>
 
-				<div className="col-3">
+				<div className="col-4">
 					<FormikControl name="name" control="input" />
 				</div>
 
-				<div className="col-2">
+				{/* <div className="col-2">
 					<FormikControl control="date" name="fromDate" onChange={handleChange} />
 				</div>
 
 				<div className="col-2">
 					<FormikControl control="date" name="toDate" onChange={handleChange} />
-				</div>
+				</div> */}
 
 				{deleteFilterRow && (
 					<div className="col-1 flex-center">
@@ -95,8 +103,8 @@ function WarehouseFilter({ filterId, deleteFilterRow, filterValues, setFilterVal
 				<div className="row" style={{ width: '100%', marginTop: '6px', marginLeft: '4px' }}>
 					<div className="col-12">
 						<ErrorMessage name="id" component="div" className="error-message" />
-						<ErrorMessage name="fromDate" component="div" className="error-message" />
-						<ErrorMessage name="toDate" component="div" className="error-message" />
+						{/* <ErrorMessage name="fromDate" component="div" className="error-message" />
+						<ErrorMessage name="toDate" component="div" className="error-message" /> */}
 						<ErrorMessage name="name" component="div" className="error-message" />
 					</div>
 				</div>

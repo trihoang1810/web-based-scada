@@ -12,7 +12,7 @@ function EmptyPlaceholder({ isError, msg }) {
 					alignItems: 'center',
 					flexDirection: 'column',
 					height: '400px',
-					width: '100vw',
+					width: '98vw',
 					padding: '20px',
 				}}
 				className="report_placeholder"

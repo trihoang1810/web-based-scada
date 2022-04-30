@@ -1010,6 +1010,7 @@ function convertMiliseconds(miliseconds, format) {
 			return { d: days, h: hours, m: minutes, s: seconds };
 	}
 }
+
 function ScrollToBottom({ pathname }) {
 	React.useEffect(() => {
 		window.scrollTo({
@@ -1020,6 +1021,7 @@ function ScrollToBottom({ pathname }) {
 
 	return null;
 }
+
 export {
 	packingState,
 	ScrollToBottom,
