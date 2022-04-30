@@ -1,5 +1,6 @@
 import axiosClient from './axiosClient';
 import axios from 'axios';
+import { format } from 'date-fns';
 
 const injectionApi = {
 	getInjectionReport(dateStart, dateEnd) {
@@ -24,14 +25,18 @@ const injectionApi = {
 			},
 		});
 	},
-	getTemporaryOeeStatistics(dateStart) {
+	getTemporaryOeeStatistics(dateStart, dateEnd) {
 		//yyyy-MM-dd
-		return axios.get(`http://192.168.1.80:8082/api/oeestatistics?startTime=${dateStart}`, {
+		return axios.get(`http://192.168.1.80:8082/api/oeestatistics`, {
 			headers: {
 				'Content-Type': 'application/json',
 				'Access-Control-Allow-Origin': 'http://localhost:3000/',
 				'Access-Control-Allow-Methods': 'GET, POST, PATCH, PUT, DELETE, OPTIONS',
 				'Access-Control-Allow-Headers': 'Origin, Content-Type, X-Auth-Token',
+			},
+			params: {
+				startTime: dateStart,
+				stopTime: dateEnd ? dateEnd : format(Date.now(), 'yyyy-MM-dd'),
 			},
 		});
 	},

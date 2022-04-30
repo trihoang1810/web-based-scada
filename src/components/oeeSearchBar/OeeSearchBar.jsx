@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import FormikControl from '../formControl/FormControl';
 import * as Yup from 'yup';
 import { format } from 'date-fns';
-
+import './oeeSearchBar.css';
 const validationSchema = Yup.object({
 	dateStart: Yup.date().required('Không được bỏ trống'),
 	dateEnd: Yup.date()
@@ -45,19 +45,31 @@ function OeeSearchBar({ onSubmit }) {
 								dateStart: initialDateStart,
 								dateEnd: initialDateEnd,
 							}}
+							initialTouched={{
+								dateStart: true,
+								dateEnd: true,
+							}}
 							onSubmit={handleSubmit}
 							validationSchema={validationSchema}
 						>
-							<Form id="alarm__filter">
-								<FormikControl control="date" name="dateStart" label="Ngày bắt đầu" />
-								<FormikControl control="date" name="dateEnd" label="Ngày kết thúc" />
-								<button type="submit" className="btn btn-primary">
-									Tìm kiếm
-								</button>
-								<div className="error-msg__container">
-									<ErrorMessage name="dateEnd" component="div" className="error-message" />
+							<>
+								<div className="row">
+									<div className="col-12">
+										<Form id="oee__filter">
+											<FormikControl control="date" name="dateStart" label="Ngày bắt đầu" />
+											<FormikControl control="date" name="dateEnd" label="Ngày kết thúc" />
+											<button type="submit" className="btn btn-primary">
+												Tìm kiếm
+											</button>
+										</Form>
+									</div>
+									<div className="col-12">
+										<div className="error-msg__container">
+											<ErrorMessage name="dateEnd" component="div" className="error-message" />
+										</div>
+									</div>
 								</div>
-							</Form>
+							</>
 						</Formik>
 					</div>
 				</div>
