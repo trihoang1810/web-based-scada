@@ -18,6 +18,7 @@ function WarehouseFilter({ filterId, mapData, filledRows, setFilledRows }) {
 	//--------------------------------
 	const history = useHistory();
 	const [ids, setIds] = useState();
+	const [canClick, setCanClick] = useState(false);
 
 	const formik = useFormik({
 		initialValues: {
@@ -37,9 +38,7 @@ function WarehouseFilter({ filterId, mapData, filledRows, setFilledRows }) {
 	}, [type, mapData]);
 
 	const showDetail = () => {
-		if (filledRows.includes(filterId)) {
-			history.push('/warehouse/' + id);
-		}
+		history.push('/warehouse/' + id);
 	};
 
 	useEffect(() => {
@@ -51,6 +50,7 @@ function WarehouseFilter({ filterId, mapData, filledRows, setFilledRows }) {
 			if (!filledRows.includes(filterId)) {
 				setFilledRows([...filledRows, filterId]);
 			}
+			setCanClick(true);
 		} else if (id) {
 			setFieldValue('name', 'Sản phẩm không tồn tại');
 			setFieldValue('quantity', '');
@@ -58,12 +58,15 @@ function WarehouseFilter({ filterId, mapData, filledRows, setFilledRows }) {
 			if (filledRows.includes(filterId)) {
 				setFilledRows(filledRows.filter((rowId) => rowId !== filterId));
 			}
+			setCanClick(false);
+		} else {
+			setCanClick(false);
 		}
 	}, [id, type]);
 
 	return (
 		<FormikProvider value={formik}>
-			<tr onClick={showDetail}>
+			<tr onClick={canClick ? showDetail : null} className={canClick ? 'clickable' : ''}>
 				<td>
 					<FormikControl
 						control="select"
@@ -74,11 +77,19 @@ function WarehouseFilter({ filterId, mapData, filledRows, setFilledRows }) {
 							{ key: 'Bộ xả', value: 'discharger' },
 							{ key: 'Nắp bàn cầu', value: 'lid' },
 						]}
+						onClick={(e) => e.stopPropagation()}
 					/>
 				</td>
 
 				<td>
-					<FormikControl control="input" list={`list${filterId}`} name="id" value={id} onChange={handleChange} />
+					<FormikControl
+						control="input"
+						list={`list${filterId}`}
+						name="id"
+						value={id}
+						onChange={handleChange}
+						onClick={(e) => e.stopPropagation()}
+					/>
 
 					{ids && (
 						<datalist id={`list${filterId}`}>

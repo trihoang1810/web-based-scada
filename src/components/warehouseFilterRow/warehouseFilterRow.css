@@ -27,3 +27,7 @@
 .warehouseFilterRow__container .deleteBtn:hover {
 	opacity: 0.6;
 }
+
+.clickable:hover {
+	cursor: pointer;
+}
