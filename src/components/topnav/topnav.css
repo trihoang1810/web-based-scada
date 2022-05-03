@@ -75,11 +75,13 @@
 .search-result__item span {
   margin-left: 10px;
   font-size: 1rem;
+  font-weight: bold;
   text-transform: capitalize;
 }
 
 .search-result__item i {
   margin-left: 10px;
+  font-weight: bold;
 }
 
 .search-result__item:hover{

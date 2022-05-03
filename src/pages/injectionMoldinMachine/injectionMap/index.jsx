@@ -6,7 +6,7 @@ import { ReactComponent as HorizontalMachine } from '../../../assets/images/inje
 import ReportNavigationButton from '../../../components/reportNavigationButton/ReportNavigationButton';
 import { INJECTION_MACHINE_LAYOUT } from '../../../utils/utils';
 import InjectionMoldingMachine from '../../../components/injectionMoldingMachine/InjectionMoldingMachine';
-
+import Breadcrumbs from '../../../components/breadcrumbs/Breadcrumbs';
 function InjectionMachine({ item, direction, modalPosition = [] }) {
 	//fake data
 	const data = {
@@ -95,6 +95,7 @@ function InjectionMap() {
 	const history = useHistory();
 	return (
 		<>
+			<Breadcrumbs id="KHU VỰC MÁY ÉP" />
 			<div className="row">
 				<div className="col-12">
 					<div className="card">

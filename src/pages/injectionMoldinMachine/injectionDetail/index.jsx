@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 import InjectionDetailComponent from '../../../components/injectionDetail/InjectionDetail';
-import CustomizedBreadcrumbs from '../../../components/breadcrumbs/Breadcrumbs';
+import Breadcrumbs from '../../../components/breadcrumbs/Breadcrumbs';
 
 function InjectionDetail() {
 	const { state } = useLocation();
@@ -34,7 +34,7 @@ function InjectionDetail() {
 
 	return (
 		<>
-			<CustomizedBreadcrumbs href={`${!map ? '/injection/pages/1' : '/injection/map'}`} sector="KHU MÁY ÉP" id={id} />
+			<Breadcrumbs href={`${!map ? '/injection/pages/1' : '/injection/map'}`} sector="KHU MÁY ÉP" id={id} />
 			{value && <InjectionDetailComponent injectionMoldingMachineData={value} />}
 		</>
 	);

@@ -333,7 +333,7 @@ const Dashboard = () => {
 	}, [qaqcToggleButtonsIndex]);
 	return (
 		<div>
-			<h2 className="page-header">Dashboard</h2>
+			<h2 className="page-header">DASHBOARD</h2>
 			<div className="row">
 				<div className="col-5">
 					<div className="card full-height">
