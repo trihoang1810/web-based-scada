@@ -1,21 +1,21 @@
-import { Formik } from 'formik';
-import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import WarehouseFilterRow from '../warehouseFilterRow/WarehouseFilterRow';
-import WarehouseTable from '../warehouseTable/WarehouseTable';
 import './warehouseOverview.css';
 
 function WarehouseOverview() {
-	const history = useHistory();
-	const [rows, setRows] = useState([1, 2, 3]);
+	const [row, setRows] = useState([1]);
+	const [filledRows, setFilledRows] = useState([]);
 
-	const showDetail = (id) => {
-		history.push('/warehouse/' + id);
-	};
 	const mapData = {
 		discharger: ['D1', 'D2', 'D3', 'D4'],
 		lid: ['L1', 'L2', 'L3'],
 	};
+
+	useEffect(() => {
+		if (filledRows.length === row.length) {
+			setRows([...row, row[row.length - 1] + 1]);
+		}
+	}, [filledRows]);
 
 	return (
 		<>
@@ -31,8 +31,14 @@ function WarehouseOverview() {
 				</thead>
 
 				<tbody>
-					{rows.map((row) => (
-						<WarehouseFilterRow key={row} filterId={row} mapData={mapData} />
+					{row.map((row) => (
+						<WarehouseFilterRow
+							key={row}
+							filterId={row}
+							mapData={mapData}
+							filledRows={filledRows}
+							setFilledRows={setFilledRows}
+						/>
 					))}
 				</tbody>
 			</table>

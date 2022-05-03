@@ -1,9 +1,10 @@
 import { FormikProvider, useFormik } from 'formik';
 import { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import FormikControl from '../formControl/FormControl';
 import './warehouseFilterRow.css';
 
-function WarehouseFilter({ filterId, mapData }) {
+function WarehouseFilter({ filterId, mapData, filledRows, setFilledRows }) {
 	//-------------fake api-------
 	const fakeData = [
 		{ id: 'L1', name: 'Nắp bàn cầu đóng êm H2', quantity: 200, note: 'Không' },
@@ -15,6 +16,7 @@ function WarehouseFilter({ filterId, mapData }) {
 		{ id: 'D4', name: 'Bộ xả D4', quantity: 16, note: 'Không' },
 	];
 	//--------------------------------
+	const history = useHistory();
 	const [ids, setIds] = useState();
 
 	const formik = useFormik({
@@ -34,22 +36,34 @@ function WarehouseFilter({ filterId, mapData }) {
 		}
 	}, [type, mapData]);
 
+	const showDetail = () => {
+		if (filledRows.includes(filterId)) {
+			history.push('/warehouse/' + id);
+		}
+	};
+
 	useEffect(() => {
 		if (mapData[type].includes(id)) {
 			const fielData = fakeData.filter((item) => item.id === id)[0];
 			setFieldValue('name', fielData.name);
 			setFieldValue('quantity', fielData.quantity);
 			setFieldValue('note', fielData.note);
+			if (!filledRows.includes(filterId)) {
+				setFilledRows([...filledRows, filterId]);
+			}
 		} else if (id) {
 			setFieldValue('name', 'Sản phẩm không tồn tại');
 			setFieldValue('quantity', '');
 			setFieldValue('note', '');
+			if (filledRows.includes(filterId)) {
+				setFilledRows(filledRows.filter((rowId) => rowId !== filterId));
+			}
 		}
-	}, [id]);
+	}, [id, type]);
 
 	return (
 		<FormikProvider value={formik}>
-			<tr>
+			<tr onClick={showDetail}>
 				<td>
 					<FormikControl
 						control="select"
