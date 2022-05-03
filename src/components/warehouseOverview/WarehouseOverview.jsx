@@ -11,22 +11,38 @@ function WarehouseOverview() {
 		lid: ['L1', 'L2', 'L3'],
 	};
 
+	const handleDeleteAllRow = () => {
+		setRows([1]);
+		setFilledRows(['deleted']);
+	};
+
 	useEffect(() => {
-		if (filledRows.length === row.length) {
+		if (filledRows.length === row.length && filledRows[0] !== 'deleted') {
 			setRows([...row, row[row.length - 1] + 1]);
 		}
 	}, [filledRows]);
 
 	return (
 		<>
-			<table>
+			<table className="warehouseOverview">
 				<thead>
-					<tr>
+					<tr className="heading-1">
+						<td>Tìm kiếm</td>
+						<td></td>
+						<td>Kết quả</td>
+						<td></td>
+						<td></td>
+					</tr>
+					<tr className="heading-2">
 						<td>Loại sản phẩm</td>
 						<td>Mã sản phẩm</td>
 						<td>Tên sản phẩm</td>
 						<td>Số lượng</td>
-						<td>Ghi chú</td>
+						<td>
+							<button onClick={handleDeleteAllRow} className="btn-deleteAll">
+								Xóa tất cả
+							</button>
+						</td>
 					</tr>
 				</thead>
 

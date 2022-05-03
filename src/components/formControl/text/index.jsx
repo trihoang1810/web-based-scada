@@ -11,7 +11,6 @@ function Input(props) {
 				{({ field }) => {
 					return (
 						<input
-							style={disable ? { backgroundColor: '#d9d9d9' } : {}}
 							id={field.name}
 							{...field}
 							list={list}

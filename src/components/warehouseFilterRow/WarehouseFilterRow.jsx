@@ -30,7 +30,7 @@ function WarehouseFilter({ filterId, mapData, filledRows, setFilledRows }) {
 		},
 	});
 	const { values, handleChange, setFieldValue } = formik;
-	const { type, id, name, quantity, note } = values;
+	const { type, id, name, quantity } = values;
 	useEffect(() => {
 		if (type === 'discharger' || type === 'lid') {
 			setIds(mapData[type].map((id) => id));
@@ -42,19 +42,22 @@ function WarehouseFilter({ filterId, mapData, filledRows, setFilledRows }) {
 	};
 
 	useEffect(() => {
-		if (mapData[type].includes(id)) {
+		if (filledRows[0] === 'deleted') {
+			setFieldValue('id', '');
+			setFieldValue('name', '');
+			setFieldValue('quantity', '');
+			setFilledRows([]);
+		} else if (mapData[type].includes(id) && filledRows[0] !== 'deleted') {
 			const fielData = fakeData.filter((item) => item.id === id)[0];
 			setFieldValue('name', fielData.name);
 			setFieldValue('quantity', fielData.quantity);
-			setFieldValue('note', fielData.note);
 			if (!filledRows.includes(filterId)) {
 				setFilledRows([...filledRows, filterId]);
 			}
 			setCanClick(true);
 		} else if (id) {
 			setFieldValue('name', 'Sản phẩm không tồn tại');
-			setFieldValue('quantity', '');
-			setFieldValue('note', '');
+			setFieldValue('quantity', 'Không xác định');
 			if (filledRows.includes(filterId)) {
 				setFilledRows(filledRows.filter((rowId) => rowId !== filterId));
 			}
@@ -62,11 +65,11 @@ function WarehouseFilter({ filterId, mapData, filledRows, setFilledRows }) {
 		} else {
 			setCanClick(false);
 		}
-	}, [id, type]);
+	}, [id, type, filledRows]);
 
 	return (
 		<FormikProvider value={formik}>
-			<tr onClick={canClick ? showDetail : null} className={canClick ? 'clickable' : ''}>
+			<tr className="warehouseFilterRow__container">
 				<td>
 					<FormikControl
 						control="select"
@@ -110,7 +113,9 @@ function WarehouseFilter({ filterId, mapData, filledRows, setFilledRows }) {
 					<FormikControl name="quantity" control="input" value={quantity} disable />
 				</td>
 				<td>
-					<FormikControl name="note" control="input" value={note} disable />
+					<button onClick={showDetail} disabled={!canClick} className="btn">
+						Xem chi tiết
+					</button>
 				</td>
 			</tr>
 		</FormikProvider>
