@@ -1,7 +1,9 @@
 import { FormikProvider, useFormik } from 'formik';
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import FormikControl from '../formControl/FormControl';
+import { setData } from '../../redux/slice/warehouseSlice';
 import './warehouseFilterRow.css';
 
 function WarehouseFilter({ filterId, mapData, filledRows, setFilledRows }) {
@@ -17,16 +19,25 @@ function WarehouseFilter({ filterId, mapData, filledRows, setFilledRows }) {
 	];
 	//--------------------------------
 	const history = useHistory();
+	const dispatch = useDispatch();
 	const [ids, setIds] = useState();
 	const [canClick, setCanClick] = useState(false);
+	const warehouseData = useSelector((state) => state.warehouse);
+	const restoreData = useMemo(() => {
+		const rowData = warehouseData[filterId];
+		if (rowData) {
+			return rowData;
+		} else {
+			return {};
+		}
+	}, []);
 
 	const formik = useFormik({
 		initialValues: {
-			type: 'discharger',
-			id: '',
-			name: '',
-			quantity: '',
-			note: '',
+			type: restoreData.type ?? 'discharger',
+			id: restoreData.id ?? '',
+			name: restoreData.name ?? '',
+			quantity: restoreData.quantity ?? '',
 		},
 	});
 	const { values, handleChange, setFieldValue } = formik;
@@ -54,6 +65,17 @@ function WarehouseFilter({ filterId, mapData, filledRows, setFilledRows }) {
 			if (!filledRows.includes(filterId)) {
 				setFilledRows([...filledRows, filterId]);
 			}
+
+			dispatch(
+				setData({
+					index: filterId,
+					type,
+					id,
+					name,
+					quantity,
+				})
+			);
+
 			setCanClick(true);
 		} else if (id) {
 			setFieldValue('name', 'Sản phẩm không tồn tại');

@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { removeAll } from '../../redux/slice/warehouseSlice';
 import WarehouseFilterRow from '../warehouseFilterRow/WarehouseFilterRow';
 import './warehouseOverview.css';
 
 function WarehouseOverview() {
-	const [row, setRows] = useState([1]);
+	const dispatch = useDispatch();
+	const [rows, setRows] = useState([0]);
 	const [filledRows, setFilledRows] = useState([]);
 
 	const mapData = {
@@ -12,13 +15,14 @@ function WarehouseOverview() {
 	};
 
 	const handleDeleteAllRow = () => {
-		setRows([1]);
+		setRows([0]);
 		setFilledRows(['deleted']);
+		dispatch(removeAll());
 	};
 
 	useEffect(() => {
-		if (filledRows.length === row.length && filledRows[0] !== 'deleted') {
-			setRows([...row, row[row.length - 1] + 1]);
+		if (filledRows.length === rows.length && filledRows[0] !== 'deleted') {
+			setRows([...rows, rows[rows.length - 1] + 1]);
 		}
 	}, [filledRows]);
 
@@ -47,10 +51,10 @@ function WarehouseOverview() {
 				</thead>
 
 				<tbody>
-					{row.map((row) => (
+					{rows.map((rows) => (
 						<WarehouseFilterRow
-							key={row}
-							filterId={row}
+							key={rows}
+							filterId={rows}
 							mapData={mapData}
 							filledRows={filledRows}
 							setFilledRows={setFilledRows}

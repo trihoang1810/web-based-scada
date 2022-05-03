@@ -11,6 +11,7 @@ import QaQcReportReducer from './QaQcReportSlice';
 import InjectionReportReducer from './InjectionReportSlice';
 import QaQcMonitorReducer from './QaQcMonitorSlice';
 import OeeReportReducer from './OeeReportSlice';
+import warehouseReducer from './warehouseSlice';
 const rootReducer = {
 	theme: ThemeReducer,
 	sidebar: SideBarReducer,
@@ -18,6 +19,7 @@ const rootReducer = {
 	injectionReportData: InjectionReportReducer,
 	qaQcMonitorData: QaQcMonitorReducer,
 	oeeReportData: OeeReportReducer,
+	warehouse: warehouseReducer,
 };
 
 export default rootReducer;
