@@ -1,74 +1,70 @@
-import { ErrorMessage, useFormikContext } from 'formik';
+import { FormikProvider, useFormik } from 'formik';
 import { useEffect, useState } from 'react';
 import FormikControl from '../formControl/FormControl';
 import './warehouseFilterRow.css';
 
-function WarehouseFilter({ filterId, deleteFilterRow, setFilterValue, data, setSearchDisabled }) {
+function WarehouseFilter({ filterId, mapData }) {
+	//-------------fake api-------
+	const fakeData = [
+		{ id: 'L1', name: 'Nắp bàn cầu đóng êm H2', quantity: 200, note: 'Không' },
+		{ id: 'L2', name: 'Nắp bàn cầu đóng êm H30', quantity: 300, note: 'Không' },
+		{ id: 'L3', name: 'Nắp bàn cầu đóng êm M2', quantity: 100, note: 'Không' },
+		{ id: 'D1', name: 'Bộ xả D1', quantity: 250, note: 'Không' },
+		{ id: 'D2', name: 'Bộ xả D2', quantity: 134, note: 'Không' },
+		{ id: 'D3', name: 'Bộ xả D3', quantity: 200, note: 'Không' },
+		{ id: 'D4', name: 'Bộ xả D4', quantity: 16, note: 'Không' },
+	];
+	//--------------------------------
 	const [ids, setIds] = useState();
-	const [rowValues, setRowValues] = useState({});
 
-	const { values, handleChange, setFieldValue, isValid } = useFormikContext();
-
-	const { type, id, name } = values;
+	const formik = useFormik({
+		initialValues: {
+			type: 'discharger',
+			id: '',
+			name: '',
+			quantity: '',
+			note: '',
+		},
+	});
+	const { values, handleChange, setFieldValue } = formik;
+	const { type, id, name, quantity, note } = values;
+	useEffect(() => {
+		if (type === 'discharger' || type === 'lid') {
+			setIds(mapData[type].map((id) => id));
+		}
+	}, [type, mapData]);
 
 	useEffect(() => {
-		if (type.length > 0) {
-			setIds(data[type].map((item) => item.id));
+		if (mapData[type].includes(id)) {
+			const fielData = fakeData.filter((item) => item.id === id)[0];
+			setFieldValue('name', fielData.name);
+			setFieldValue('quantity', fielData.quantity);
+			setFieldValue('note', fielData.note);
+		} else if (id) {
+			setFieldValue('name', 'Sản phẩm không tồn tại');
+			setFieldValue('quantity', '');
+			setFieldValue('note', '');
 		}
-	}, [type, data]);
-
-	useEffect(() => {
-		let filterName;
-		if (type && id) {
-			filterName = data[type].filter((item) => item.id === id && item.name)[0]?.name;
-		}
-		if (filterName) {
-			setFieldValue('name', filterName);
-		} else {
-			setFieldValue('name', '');
-		}
-	}, [id, type, data, setFieldValue]);
-
-	useEffect(() => {
-		setRowValues({ type, id, name });
-	}, [type, id, name]);
-	// useEffect(() => {
-	// 	for (let row in rowValues) {
-	// 		if (rowValues[row].id === '' || rowValues[row].name === '') {
-	// 			setSearchDisabled(true);
-	// 		}
-	// 	}
-	// }, [rowValues, setSearchDisabled]);
-	useEffect(() => {
-		if (isValid) {
-			setFilterValue((prev) => {
-				return {
-					...prev,
-					['row' + filterId]: rowValues,
-				};
-			});
-		} else {
-			setSearchDisabled(true);
-		}
-	}, [isValid, filterId, rowValues, setFilterValue, setSearchDisabled]);
+	}, [id]);
 
 	return (
-		<div className="row warehouseFilterRow__container">
-			<>
-				<div className="col-4">
+		<FormikProvider value={formik}>
+			<tr>
+				<td>
 					<FormikControl
 						control="select"
 						name="type"
+						value={type}
 						onChange={handleChange}
 						options={[
 							{ key: 'Bộ xả', value: 'discharger' },
 							{ key: 'Nắp bàn cầu', value: 'lid' },
 						]}
 					/>
-				</div>
+				</td>
 
-				<div className="col-3">
-					<FormikControl control="input" list={`list${filterId}`} name="id" onChange={handleChange} />
+				<td>
+					<FormikControl control="input" list={`list${filterId}`} name="id" value={id} onChange={handleChange} />
 
 					{ids && (
 						<datalist id={`list${filterId}`}>
@@ -79,37 +75,20 @@ function WarehouseFilter({ filterId, deleteFilterRow, setFilterValue, data, setS
 							))}
 						</datalist>
 					)}
-				</div>
+				</td>
 
-				<div className="col-4">
-					<FormikControl name="name" control="input" />
-				</div>
+				<td>
+					<FormikControl name="name" control="input" value={name} disable />
+				</td>
 
-				{/* <div className="col-2">
-					<FormikControl control="date" name="fromDate" onChange={handleChange} />
-				</div>
-
-				<div className="col-2">
-					<FormikControl control="date" name="toDate" onChange={handleChange} />
-				</div> */}
-
-				{deleteFilterRow && (
-					<div className="col-1 flex-center">
-						<div className="deleteBtn" onClick={() => deleteFilterRow(filterId)}>
-							<i className="bx bxs-x-circle"></i>
-						</div>
-					</div>
-				)}
-				<div className="row" style={{ width: '100%', marginTop: '6px', marginLeft: '4px' }}>
-					<div className="col-12">
-						<ErrorMessage name="id" component="div" className="error-message" />
-						{/* <ErrorMessage name="fromDate" component="div" className="error-message" />
-						<ErrorMessage name="toDate" component="div" className="error-message" /> */}
-						<ErrorMessage name="name" component="div" className="error-message" />
-					</div>
-				</div>
-			</>
-		</div>
+				<td>
+					<FormikControl name="quantity" control="input" value={quantity} disable />
+				</td>
+				<td>
+					<FormikControl name="note" control="input" value={note} disable />
+				</td>
+			</tr>
+		</FormikProvider>
 	);
 }
 
