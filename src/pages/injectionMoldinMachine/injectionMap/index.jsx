@@ -23,7 +23,15 @@ function InjectionMachine({ item, direction, modalPosition = [] }) {
 	return (
 		<React.Fragment>
 			{item.isHaitian ? (
-				<Link className="injection-map__map-item-inner" to={item.url}>
+				<Link
+					className="injection-map__map-item-inner"
+					to={{
+						pathname: item.url,
+						state: {
+							map: true,
+						},
+					}}
+				>
 					<div className="injection-map__map-item-title">{item.title}</div>
 					{item.subTitle.includes('\n') ? (
 						<div className="injection-map__map-item-sub-title">
