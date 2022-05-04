@@ -1032,7 +1032,73 @@ function ScrollToBottom({ pathname }) {
 	return null;
 }
 
-const PLAN_TRACKING_COLUMNS = [
+const PACKING_PLAN_TRACKING_COLUMNS = [
+	{
+		Header: 'Ngày',
+		accessor: 'date',
+		Cell: ({
+			cell: {
+				row: {
+					original: { date },
+				},
+			},
+		}) => {
+			return <span>{format(new Date(date), 'dd/MM/yyyy')}</span>;
+		},
+	},
+	{
+		Header: 'Nhân viên đứng máy',
+		accessor: 'employee',
+	},
+	{
+		Header: 'Mã nhân viên',
+		accessor: 'employeeId',
+	},
+	{
+		Header: 'Cụm máy',
+		accessor: 'packingUnit',
+	},
+	{
+		Header: 'Mã sản phẩm',
+		accessor: 'productId',
+	},
+	{
+		Header: 'Tên sản phẩm',
+		accessor: 'productName',
+	},
+	{
+		Header: 'Lịch trình đóng gói',
+		accessor: 'plannedQuantity',
+	},
+	{
+		Header: 'Thực hiện',
+		accessor: 'actualQuantity',
+	},
+	{
+		Header: 'Giải trình',
+		accessor: 'note',
+	},
+	{
+		Header: 'Tiến độ',
+		accessor: 'progress',
+		Cell: ({
+			cell: {
+				row: {
+					original: { plannedQuantity, actualQuantity },
+				},
+			},
+		}) => {
+			return <ProgressBar height={15} width={170} percent={((actualQuantity / plannedQuantity) * 100).toFixed(2)} />;
+		},
+	},
+	{
+		Header: 'Priority',
+		accessor: 'priority',
+		show: false,
+	},
+];
+
+const INJECTION_PLAN_TRACKING_COLUMNS = [
 	{
 		Header: 'Ngày',
 		accessor: 'date',
@@ -1134,5 +1200,6 @@ export {
 	INJECTION_MACHINE_LAYOUT,
 	INJECTION_MACHINE_ID,
 	PLAN_TRACKING_MENU_LIST,
-	PLAN_TRACKING_COLUMNS,
+	INJECTION_PLAN_TRACKING_COLUMNS,
+	PACKING_PLAN_TRACKING_COLUMNS,
 };

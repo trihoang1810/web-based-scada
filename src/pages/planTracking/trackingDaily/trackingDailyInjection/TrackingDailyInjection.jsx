@@ -1,5 +1,5 @@
 import React from 'react';
-import DailyPackingProgressTable from '../../../../components/dailyInjectionProgressTable/DailyInjectionProgressTable';
+import DailyProgressTable from '../../../../components/dailyInjectionProgressTable/DailyInjectionProgressTable';
 import DailyProgressFilter from '../../../../components/dailyProgressFilter/DailyProgressFilter';
 import LoadingComponent from '../../../../components/loadingComponent/LoadingComponent';
 import { injectionApi } from '../../../../api/axios/injectionReport';
@@ -70,7 +70,7 @@ function TrackingDailyInjection() {
 						<h3>Kết quả tìm kiếm</h3>
 					</div>
 					<div className="card__body">
-						<DailyPackingProgressTable rawData={data} />
+						<DailyProgressTable rawData={data} />
 					</div>
 				</div>
 			) : null}
