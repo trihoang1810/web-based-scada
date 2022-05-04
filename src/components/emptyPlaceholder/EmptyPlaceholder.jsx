@@ -22,7 +22,18 @@ function EmptyPlaceholder({ isError, msg }) {
 				) : (
 					<EmptyPlaceholderImg width="100%" height="300px" />
 				)}
-				<h4>{msg}</h4>
+				<h4>
+					{msg.includes('\n')
+						? msg.split('\n').map((subTitle, index) => {
+								return (
+									<React.Fragment key={index}>
+										{subTitle}
+										{index !== msg.split('\n').length - 1 ? <br /> : null}
+									</React.Fragment>
+								);
+						  })
+						: msg}
+				</h4>
 			</div>
 		</>
 	);

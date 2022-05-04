@@ -12,13 +12,13 @@ function Input(props) {
 					return (
 						<input
 							id={field.name}
-							{...field}
 							list={list}
 							disabled={disable}
 							type="text"
 							placeholder={placeholder}
 							onChange={onChange}
 							onClick={onClick}
+							{...field}
 						/>
 					);
 				}}
