@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { removeAll } from '../../redux/slice/warehouseSlice';
 import WarehouseFilterRow from '../warehouseFilterRow/WarehouseFilterRow';
 import './warehouseOverview.css';
@@ -22,9 +22,9 @@ function WarehouseOverview() {
 
 	useEffect(() => {
 		if (filledRows.length === rows.length && filledRows[0] !== 'deleted') {
-			setRows([...rows, rows[rows.length - 1] + 1]);
+			setRows((prev) => [...prev, rows[rows.length - 1] + 1]);
 		}
-	}, [filledRows]);
+	}, [filledRows, rows]);
 
 	return (
 		<>

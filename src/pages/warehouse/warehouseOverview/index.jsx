@@ -4,7 +4,11 @@ function WarehouseOverviewPage() {
 	return (
 		<>
 			<h2 className="page-header">KHO VẬN</h2>
-			<WarehouseOverview />
+			<div className="card">
+				<div className="card__body">
+					<WarehouseOverview />
+				</div>
+			</div>
 		</>
 	);
 }

@@ -8,15 +8,17 @@ import './warehouseFilterRow.css';
 
 function WarehouseFilter({ filterId, mapData, filledRows, setFilledRows }) {
 	//-------------fake api-------
-	const fakeData = [
-		{ id: 'L1', name: 'Nắp bàn cầu đóng êm H2', quantity: 200, note: 'Không' },
-		{ id: 'L2', name: 'Nắp bàn cầu đóng êm H30', quantity: 300, note: 'Không' },
-		{ id: 'L3', name: 'Nắp bàn cầu đóng êm M2', quantity: 100, note: 'Không' },
-		{ id: 'D1', name: 'Bộ xả D1', quantity: 250, note: 'Không' },
-		{ id: 'D2', name: 'Bộ xả D2', quantity: 134, note: 'Không' },
-		{ id: 'D3', name: 'Bộ xả D3', quantity: 200, note: 'Không' },
-		{ id: 'D4', name: 'Bộ xả D4', quantity: 16, note: 'Không' },
-	];
+	const fakeData = useMemo(() => {
+		return [
+			{ id: 'L1', name: 'Nắp bàn cầu đóng êm H2', quantity: 200, note: 'Không' },
+			{ id: 'L2', name: 'Nắp bàn cầu đóng êm H30', quantity: 300, note: 'Không' },
+			{ id: 'L3', name: 'Nắp bàn cầu đóng êm M2', quantity: 100, note: 'Không' },
+			{ id: 'D1', name: 'Bộ xả D1', quantity: 250, note: 'Không' },
+			{ id: 'D2', name: 'Bộ xả D2', quantity: 134, note: 'Không' },
+			{ id: 'D3', name: 'Bộ xả D3', quantity: 200, note: 'Không' },
+			{ id: 'D4', name: 'Bộ xả D4', quantity: 16, note: 'Không' },
+		];
+	}, []);
 	//--------------------------------
 	const history = useHistory();
 	const dispatch = useDispatch();
@@ -30,7 +32,7 @@ function WarehouseFilter({ filterId, mapData, filledRows, setFilledRows }) {
 		} else {
 			return {};
 		}
-	}, []);
+	}, [filterId, warehouseData]);
 
 	const formik = useFormik({
 		initialValues: {
@@ -87,7 +89,7 @@ function WarehouseFilter({ filterId, mapData, filledRows, setFilledRows }) {
 		} else {
 			setCanClick(false);
 		}
-	}, [id, type, filledRows]);
+	}, [id, type, filledRows, dispatch, fakeData, filterId, mapData, name, quantity, setFieldValue, setFilledRows]);
 
 	return (
 		<FormikProvider value={formik}>
