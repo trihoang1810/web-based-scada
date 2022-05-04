@@ -24,6 +24,7 @@
 
 .warehouseFilterRow__container .btn {
 	border: none;
+	font-size: 1rem;
 	background-color: var(--main-bg);
 	color: var(--txt-color);
 	text-decoration: underline;
