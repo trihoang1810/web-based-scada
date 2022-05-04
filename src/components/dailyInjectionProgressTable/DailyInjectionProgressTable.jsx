@@ -1,6 +1,6 @@
 import React from 'react';
 import { useFlexLayout, useTable } from 'react-table';
-import './dailyPackingProgressTable.css';
+import './dailyInjectionProgressTable.css';
 import { PLAN_TRACKING_COLUMNS } from '../../utils/utils';
 
 function DailyPackingProgressTable({ rawData }) {
