@@ -147,31 +147,31 @@ function ReportForcedEndurance() {
 			.getForcedEnduranceReport(values.dateStart, values.dateEnd)
 			.then((res) => {
 				setLoading(false);
+				const filteredData = [];
 				if (res) {
 					res[0].deformationTestSheets?.forEach((item) => {
-						dispatch(
-							setForcedEnduranceReportData({
-								sample: item.numberTesting,
-								time: item.timeSmoothClosingLid,
-								toilet_bumper: item.statusLidNotBreak,
-								no_oil_spill: item.statusLidNotLeak,
-								first_result: item.statusLidResult,
-								closing_time: item.timeSmoothClosingPlinth,
-								no_drop_bumper: item.statusPlinthNotBreak,
-								no_spill: item.statusPlinthNotLeak,
-								second_result: item.statusPlinthResult,
-								total: item.totalError,
-								note: item.note,
-								employee: item.employee,
-							})
-						);
-						dispatch(
-							setForcedEnduranceReportDataDate({
-								startTime: format(new Date(res[0].startTime), 'dd/MM/yyyy'),
-								stopTime: format(new Date(res[0].stopTime), 'dd/MM/yyyy'),
-							})
-						);
+						filteredData.push({
+							sample: item.numberTesting,
+							time: item.timeSmoothClosingLid,
+							toilet_bumper: item.statusLidNotBreak,
+							no_oil_spill: item.statusLidNotLeak,
+							first_result: item.statusLidResult,
+							closing_time: item.timeSmoothClosingPlinth,
+							no_drop_bumper: item.statusPlinthNotBreak,
+							no_spill: item.statusPlinthNotLeak,
+							second_result: item.statusPlinthResult,
+							total: item.totalError,
+							note: item.note,
+							employee: item.employee,
+						});
 					});
+					dispatch(setForcedEnduranceReportData(filteredData));
+					dispatch(
+						setForcedEnduranceReportDataDate({
+							startTime: format(new Date(res[0].startTime), 'dd/MM/yyyy'),
+							stopTime: format(new Date(res[0].stopTime), 'dd/MM/yyyy'),
+						})
+					);
 				}
 			})
 			.catch((err) => {

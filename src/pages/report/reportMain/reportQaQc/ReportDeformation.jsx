@@ -245,6 +245,8 @@ function ReportDeformation() {
 	const onSubmit = (values) => {
 		dispatch(resetDeformationReportData());
 		setLoading(true);
+		const filteredData = [];
+
 		switch (values.testType) {
 			case 'static-load':
 				qaQcApi
@@ -252,22 +254,21 @@ function ReportDeformation() {
 					.then((res) => {
 						setLoading(false);
 						res[0].staticLoadTestSheets?.forEach((item, index) => {
-							dispatch(
-								setDeformationReportData({
-									id: item.staticLoadReportId,
-									result: item.testResult,
-									total: item.totalError,
-									note: item.note,
-									employee: item.employee,
-								})
-							);
-							dispatch(
-								setDeformationReportDataDate({
-									dateStart: format(new Date(res[0].startTime), 'dd/MM/yyyy'),
-									dateEnd: format(new Date(res[0].stopTime), 'dd/MM/yyyy'),
-								})
-							);
+							filteredData.push({
+								id: item.staticLoadReportId,
+								result: item.testResult,
+								total: item.totalError,
+								note: item.note,
+								employee: item.employee,
+							});
 						});
+						dispatch(
+							setDeformationReportDataDate({
+								dateStart: format(new Date(res[0].startTime), 'dd/MM/yyyy'),
+								dateEnd: format(new Date(res[0].stopTime), 'dd/MM/yyyy'),
+							})
+						);
+						dispatch(setDeformationReportData(filteredData));
 					})
 					.catch((err) => {
 						setLoading(false);
@@ -280,18 +281,23 @@ function ReportDeformation() {
 					.then((res) => {
 						setLoading(false);
 						res[0].curlingForceTestSheets?.forEach((item, index) => {
-							dispatch(
-								setDeformationReportData({
-									id: item.curlingForceReportId,
-									weight: item.mass,
-									number_of_test: item.timeSpan,
-									result: item.warping,
-									total: item.totalError,
-									note: item.remark,
-									employee: item.employee,
-								})
-							);
+							filteredData.push({
+								id: item.curlingForceReportId,
+								weight: item.mass,
+								number_of_test: item.timeSpan,
+								result: item.warping,
+								total: item.totalError,
+								note: item.remark,
+								employee: item.employee,
+							});
 						});
+						dispatch(setDeformationReportData(filteredData));
+						dispatch(
+							setDeformationReportDataDate({
+								dateStart: format(new Date(res[0].startTime), 'dd/MM/yyyy'),
+								dateEnd: format(new Date(res[0].stopTime), 'dd/MM/yyyy'),
+							})
+						);
 					})
 					.catch((err) => {
 						setLoading(false);
@@ -305,24 +311,23 @@ function ReportDeformation() {
 					.then((res) => {
 						setLoading(false);
 						res[0].rockTestSheets?.forEach((item, index) => {
-							dispatch(
-								setDeformationReportData({
-									id: item.rockTestReportId,
-									weight: item.mass,
-									number_of_test: item.numberOfTest,
-									result: item.testResult,
-									total: item.totalError,
-									note: item.note,
-									employee: item.employee,
-								})
-							);
-							dispatch(
-								setDeformationReportDataDate({
-									dateStart: format(new Date(res[0].startTime), 'dd/MM/yyyy'),
-									dateEnd: format(new Date(res[0].stopTime), 'dd/MM/yyyy'),
-								})
-							);
+							filteredData.push({
+								id: item.rockTestReportId,
+								weight: item.mass,
+								number_of_test: item.numberOfTest,
+								result: item.testResult,
+								total: item.totalError,
+								note: item.note,
+								employee: item.employee,
+							});
 						});
+						dispatch(setDeformationReportData(filteredData));
+						dispatch(
+							setDeformationReportDataDate({
+								dateStart: format(new Date(res[0].startTime), 'dd/MM/yyyy'),
+								dateEnd: format(new Date(res[0].stopTime), 'dd/MM/yyyy'),
+							})
+						);
 					})
 					.catch((err) => {
 						setLoading(false);

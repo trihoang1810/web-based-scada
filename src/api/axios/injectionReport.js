@@ -41,7 +41,7 @@ const injectionApi = {
 		});
 	},
 	getTemporaryInjectionPlanTracking(startTime, stopTime) {
-		return axios.get('https://my.api.mockaroo.com/plan_tracking_injection.json?key=4ead7de0', {
+		return axios.get('http://192.168.1.80:8082/api/shiftreports', {
 			headers: {
 				'Content-Type': 'application/json',
 				'Access-Control-Allow-Origin': 'http://localhost:3000/',

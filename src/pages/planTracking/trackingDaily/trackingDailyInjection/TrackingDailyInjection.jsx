@@ -1,5 +1,5 @@
 import React from 'react';
-import DailyProgressTable from '../../../../components/dailyInjectionProgressTable/DailyInjectionProgressTable';
+import DailyProgressTable from '../../../../components/progressTable/ProgressTable';
 import { useSelector, useDispatch } from 'react-redux';
 import { setDailyInjectionPlanTrackingData } from '../../../../redux/slice/PlanTrackingSlice';
 import DailyProgressFilter from '../../../../components/dailyProgressFilter/DailyProgressFilter';
@@ -20,22 +20,27 @@ function TrackingDailyInjection() {
 				.then((res) => {
 					setLoading(false);
 					setError(null);
-					dispatch(
-						setDailyInjectionPlanTrackingData(
-							res.data.map((item) => {
-								return {
-									...item,
-									priority:
-										Math.floor((item.actualQuantity / item.plannedQuantity) * 100) >= 67
-											? 'lightgreen'
-											: Math.floor((item.actualQuantity / item.plannedQuantity) * 100) < 67 &&
-											  Math.floor((item.actualQuantity / item.plannedQuantity) * 100) >= 33
-											? 'lightyellow'
-											: 'lightred',
-								};
-							})
-						)
-					);
+					const filteredData = [];
+					res.data.items.forEach((item) => {
+						filteredData.push({
+							date: item.date,
+							eShift: item.shiftNumber,
+							productId: item.product.id,
+							productName: item.product.name,
+							plannedQuantity: item.totalQuantity + 100,
+							actualQuantity: item.totalQuantity,
+							note: item.note,
+							employee: item.employee.firstName + ' ' + item.employee.lastName,
+							priority:
+								Math.floor((item.totalQuantity / (item.totalQuantity + 100)) * 100) >= 67
+									? 'lightgreen'
+									: Math.floor((item.totalQuantity / (item.totalQuantity + 100)) * 100) < 67 &&
+									  Math.floor((item.totalQuantity / (item.totalQuantity + 100)) * 100) >= 33
+									? 'lightyellow'
+									: 'lightred',
+						});
+					});
+					dispatch(setDailyInjectionPlanTrackingData(filteredData));
 				})
 				.catch((err) => {
 					setLoading(false);

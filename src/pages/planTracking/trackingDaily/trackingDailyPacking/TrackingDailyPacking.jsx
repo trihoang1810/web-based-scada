@@ -1,15 +1,12 @@
 import { format } from 'date-fns';
 import React from 'react';
 import { packingApi } from '../../../../api/axios/packingReport';
-import DailyProgressTable from '../../../../components/dailyInjectionProgressTable/DailyInjectionProgressTable';
+import DailyProgressTable from '../../../../components/progressTable/ProgressTable';
 import DailyProgressFilter from '../../../../components/dailyProgressFilter/DailyProgressFilter';
 import EmptyPlaceholder from '../../../../components/emptyPlaceholder/EmptyPlaceholder';
 import LoadingComponent from '../../../../components/loadingComponent/LoadingComponent';
 import { useSelector, useDispatch } from 'react-redux';
-import {
-	setDailyPackingPlanTrackingData,
-	resetDailyPackingPlanTrackingData,
-} from '../../../../redux/slice/PlanTrackingSlice';
+import { setDailyPackingPlanTrackingData } from '../../../../redux/slice/PlanTrackingSlice';
 function TrackingDailyPacking() {
 	const dispatch = useDispatch();
 	const { dailyPackingPlanTrackingData } = useSelector((state) => state.planTracking);
@@ -17,37 +14,35 @@ function TrackingDailyPacking() {
 	const [error, setError] = React.useState(null);
 	const requestData = React.useCallback(
 		async (startTime, stopTime) => {
-			dispatch(resetDailyPackingPlanTrackingData());
 			setLoading(true);
 			packingApi
 				.getTemporaryPackingPlanTracking(startTime, stopTime)
 				.then((res) => {
 					setLoading(false);
 					setError(null);
-					console.log(res.data);
 					res.data.forEach((shift) => {
+						const filteredData = [];
 						shift.items.forEach((item) => {
-							dispatch(
-								setDailyPackingPlanTrackingData({
-									date: shift.date,
-									productId: item.item[0].id,
-									productName: item.item[0].name,
-									plannedQuantity: item.plannedQuantity,
-									actualQuantity: item.actualQuantity,
-									note: item.note,
-									employee: shift.employee[0].firstName + ' ' + shift.employee[0].lastName,
-									employeeId: shift.employee[0].id,
-									packingUnit: `Cụm máy ${shift.packingUnit[0].id}`,
-									priority:
-										Math.floor((item.actualQuantity / item.plannedQuantity) * 100) >= 67
-											? 'lightgreen'
-											: Math.floor((item.actualQuantity / item.plannedQuantity) * 100) < 67 &&
-											  Math.floor((item.actualQuantity / item.plannedQuantity) * 100) >= 33
-											? 'lightyellow'
-											: 'lightred',
-								})
-							);
+							filteredData.push({
+								date: shift.date,
+								productId: item.item[0].id,
+								productName: item.item[0].name,
+								plannedQuantity: item.plannedQuantity,
+								actualQuantity: item.actualQuantity,
+								note: item.note,
+								employee: shift.employee[0].firstName + ' ' + shift.employee[0].lastName,
+								employeeId: shift.employee[0].id,
+								packingUnit: `Cụm máy ${shift.packingUnit[0].id}`,
+								priority:
+									Math.floor((item.actualQuantity / item.plannedQuantity) * 100) >= 67
+										? 'lightgreen'
+										: Math.floor((item.actualQuantity / item.plannedQuantity) * 100) < 67 &&
+										  Math.floor((item.actualQuantity / item.plannedQuantity) * 100) >= 33
+										? 'lightyellow'
+										: 'lightred',
+							});
 						});
+						dispatch(setDailyPackingPlanTrackingData(filteredData));
 					});
 					// setData(
 					// 	res.data.map((item) => {

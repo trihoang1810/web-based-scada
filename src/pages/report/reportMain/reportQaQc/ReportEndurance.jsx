@@ -149,32 +149,32 @@ function ReportEndurance() {
 		qaQcApi
 			.getEnduranceReport(values.dateStart, values.dateEnd)
 			.then((res) => {
+				const filteredData = [];
 				setLoading(false);
 				if (res) {
 					res[0].reliabilityTestSheets?.forEach((item) => {
-						dispatch(
-							setEnduranceReportData({
-								sample: item.numberTesting,
-								time: item.timeSmoothClosingLid,
-								toilet_bumper: item.statusLidNotFall,
-								no_oil_spill: item.statusLidNotLeak,
-								first_result: item.statusLidResult,
-								closing_time: item.timeSmoothClosingPlinth,
-								no_drop_bumper: item.statusPlinthNotFall,
-								no_spill: item.statusPlinthNotLeak,
-								second_result: item.statusPlinthResult,
-								total: item.totalError,
-								note: item.note,
-								employee: item.employee,
-							})
-						);
-						dispatch(
-							setEnduranceReportDataDate({
-								startTime: format(new Date(res[0].startTime), 'dd/MM/yyyy'),
-								stopTime: format(new Date(res[0].stopTime), 'dd/MM/yyyy'),
-							})
-						);
+						filteredData.push({
+							sample: item.numberTesting,
+							time: item.timeSmoothClosingLid,
+							toilet_bumper: item.statusLidNotFall,
+							no_oil_spill: item.statusLidNotLeak,
+							first_result: item.statusLidResult,
+							closing_time: item.timeSmoothClosingPlinth,
+							no_drop_bumper: item.statusPlinthNotFall,
+							no_spill: item.statusPlinthNotLeak,
+							second_result: item.statusPlinthResult,
+							total: item.totalError,
+							note: item.note,
+							employee: item.employee,
+						});
 					});
+					dispatch(setEnduranceReportData(filteredData));
+					dispatch(
+						setEnduranceReportDataDate({
+							startTime: format(new Date(res[0].startTime), 'dd/MM/yyyy'),
+							stopTime: format(new Date(res[0].stopTime), 'dd/MM/yyyy'),
+						})
+					);
 				}
 			})
 			.catch((err) => {

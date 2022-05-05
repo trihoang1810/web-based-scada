@@ -5,6 +5,7 @@ const planTrackingData = createSlice({
 	initialState: {
 		dailyInjectionPlanTrackingData: [],
 		dailyPackingPlanTrackingData: [],
+		monthlyInjectionPlanTrackingData: [],
 	},
 	reducers: {
 		setDailyInjectionPlanTrackingData: (state, action) => {
@@ -12,14 +13,11 @@ const planTrackingData = createSlice({
 			state.dailyInjectionPlanTrackingData = action.payload;
 		},
 		setDailyPackingPlanTrackingData: (state, action) => {
-			state.dailyPackingPlanTrackingData.push(action.payload);
-			// state.dailyPackingPlanTrackingData = action.payload;
+			// state.dailyPackingPlanTrackingData.push(action.payload);
+			state.dailyPackingPlanTrackingData = action.payload;
 		},
-		resetDailyPackingPlanTrackingData: (state) => {
-			state.dailyPackingPlanTrackingData = [];
-		},
-		resetDailyInjectionPlanTrackingData: (state) => {
-			state.dailyInjectionPlanTrackingData = [];
+		setMonthlyInjectionPlanTrackingData: (state, action) => {
+			state.monthlyInjectionPlanTrackingData = action.payload;
 		},
 	},
 });
@@ -28,7 +26,6 @@ const { reducer, actions } = planTrackingData;
 export default reducer;
 export const {
 	setDailyPackingPlanTrackingData,
-	resetDailyPackingPlanTrackingData,
 	setDailyInjectionPlanTrackingData,
-	resetDailyInjectionPlanTrackingData,
+	setMonthlyInjectionPlanTrackingData,
 } = actions;

@@ -1107,6 +1107,86 @@ const PACKING_PLAN_TRACKING_COLUMNS = [
 	},
 ];
 
+const INJECTION_MONTHLY_PLAN_TRACKING_COLUMNS = [
+	{
+		Header: 'Mã chi tiết',
+		accessor: 'productId',
+	},
+	{
+		Header: 'Tên chi tiết',
+		accessor: 'productName',
+	},
+	{
+		Header: 'Mã khuôn',
+		accessor: 'moldId',
+	},
+	{
+		Header: 'Chu kỳ ép tiêu chuẩn',
+		accessor: 'standardInjectionCycle',
+	},
+	{
+		Header: 'Số lượng đặt ra',
+		accessor: 'plannedQuantity',
+	},
+	{
+		Header: 'Số lượng thực hiện',
+		accessor: 'actualQuantity',
+	},
+	{
+		Header: 'Tiến độ',
+		accessor: 'progress',
+		Cell: ({
+			cell: {
+				row: {
+					original: { plannedQuantity, actualQuantity },
+				},
+			},
+		}) => {
+			return <ProgressBar height={15} width={170} percent={((actualQuantity / plannedQuantity) * 100).toFixed(2)} />;
+		},
+	},
+	{
+		Header: 'Priority',
+		accessor: 'priority',
+	},
+];
+
+const PACKING_MONTHLY_PLAN_TRACKING_COLUMNS = [
+	{
+		Header: 'Mã sản phẩm',
+		accessor: 'productId',
+	},
+	{
+		Header: 'Tên sản phẩm',
+		accessor: 'productName',
+	},
+	{
+		Header: 'Số lượng cài đặt',
+		accessor: 'plannedQuantity',
+	},
+	{
+		Header: 'Số lượng đóng gói thực',
+		accessor: 'actualQuantity',
+	},
+	{
+		Header: 'Tiến độ',
+		accessor: 'progress',
+		Cell: ({
+			cell: {
+				row: {
+					original: { plannedQuantity, actualQuantity },
+				},
+			},
+		}) => {
+			return <ProgressBar height={15} width={170} percent={((actualQuantity / plannedQuantity) * 100).toFixed(2)} />;
+		},
+	},
+	{
+		Header: 'Priority',
+		accessor: 'priority',
+	},
+];
+
 const INJECTION_PLAN_TRACKING_COLUMNS = [
 	{
 		Header: 'Ngày',
@@ -1212,4 +1292,6 @@ export {
 	INJECTION_PLAN_TRACKING_COLUMNS,
 	PACKING_PLAN_TRACKING_COLUMNS,
 	MONTHLY_PLAN_TRACKING_MENU_LIST,
+	INJECTION_MONTHLY_PLAN_TRACKING_COLUMNS,
+	PACKING_MONTHLY_PLAN_TRACKING_COLUMNS,
 };
