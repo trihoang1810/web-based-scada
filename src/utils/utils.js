@@ -1178,7 +1178,7 @@ const PACKING_MONTHLY_PLAN_TRACKING_COLUMNS = [
 				},
 			},
 		}) => {
-			return <ProgressBar height={15} width={170} percent={((actualQuantity / plannedQuantity) * 100).toFixed(2)} />;
+			return <ProgressBar height={15} width={300} percent={((actualQuantity / plannedQuantity) * 100).toFixed(2)} />;
 		},
 	},
 	{

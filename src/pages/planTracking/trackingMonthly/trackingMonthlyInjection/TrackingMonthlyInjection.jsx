@@ -61,7 +61,7 @@ function TrackingMonthlyInjection() {
 				setError(`Có lỗi xảy ra, vui lòng thử lại:\n${err}`);
 			}
 		},
-		[setLoading, setError]
+		[setLoading, setError, dispatch]
 	);
 	React.useEffect(() => {
 		request(format(Date.now(), 'yyyy-MM').concat('-01'));
