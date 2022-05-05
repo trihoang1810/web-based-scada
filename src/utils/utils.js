@@ -83,7 +83,16 @@ const PLAN_TRACKING_MENU_LIST = [
 		url: '/plan-tracking/daily/injection',
 	},
 ];
-
+const MONTHLY_PLAN_TRACKING_MENU_LIST = [
+	{
+		title: 'LỊCH TRÌNH ĐÓNG GÓI',
+		url: '/plan-tracking/monthly/packing',
+	},
+	{
+		title: 'LỊCH TRÌNH MÁY ÉP',
+		url: '/plan-tracking/monthly/injection',
+	},
+];
 const ENDURANCE_COLUMNS = [
 	{
 		Header: 'Số lần thử',
@@ -1202,4 +1211,5 @@ export {
 	PLAN_TRACKING_MENU_LIST,
 	INJECTION_PLAN_TRACKING_COLUMNS,
 	PACKING_PLAN_TRACKING_COLUMNS,
+	MONTHLY_PLAN_TRACKING_MENU_LIST,
 };
