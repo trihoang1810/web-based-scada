@@ -5,6 +5,7 @@ import { injectionApi } from '../../../api/axios/injectionReport';
 import { useSelector, useDispatch } from 'react-redux';
 import { useLocation } from 'react-router-dom';
 import { ScrollToBottom } from '../../../utils/utils';
+import EmptyPlaceHolder from '../../../components/emptyPlaceholder/EmptyPlaceholder';
 import {
 	setDetailLabels,
 	pushAvailabilityDetailSeries,
@@ -85,79 +86,85 @@ function OeeIndex() {
 				.then((res) => {
 					setIsLoading(false);
 					dispatch(setLastTimeUpdated(convertMiliseconds(Date.now() - new Date(value.dateStart), 'd')));
-					console.log(res.data.items);
-					let totalWorkTime = 0;
-					let totalPartsProducedTime = 0;
-					let totalQualifiedProducedParts = 0;
-					let totalProducedParts = 0;
-					let availability = 0;
-					let performance = 0;
-					let quality = 0;
-					let totalPauseTime = 0;
-					let totalWorkTimePerDay = 0;
-					let totalScrapPerDay = 0;
-					let totalQuantityPerDay = 0;
-					let pauseTimeProportion = 0;
-					let referredDay = res.data.items[0].date.split('T')[0];
-					res.data.items.forEach((item, index) => {
-						totalWorkTime += item.workTime;
-						totalPartsProducedTime += item.totalQuantity * item.standardInjectionCycle;
-						totalQualifiedProducedParts += item.totalQuantity;
-						totalProducedParts += item.numberOfShots * item.productsPerShot;
-						totalPauseTime += item.pauseTime;
-						if (item.date.split('T')[0] === referredDay) {
-							totalWorkTimePerDay += item.workTime;
-							totalScrapPerDay += item.numberOfShots * item.productsPerShot - item.totalQuantity;
-							totalQuantityPerDay += item.totalQuantity;
-						} else {
-							dispatch(pushAvailabilityDetailSeries((totalWorkTimePerDay / (12 * 60 * 60 * 1000)).toFixed(4) * 100));
-							dispatch(pushScrapDetailSeries(totalScrapPerDay));
-							dispatch(pushTotalQuantityDetailSeries(totalQuantityPerDay));
-							totalScrapPerDay = item.numberOfShots * item.productsPerShot - item.totalQuantity;
-							totalWorkTimePerDay = item.workTime;
-							totalQuantityPerDay = item.totalQuantity;
-							referredDay = item.date.split('T')[0];
-						}
-						if (res.data.items.length === index + 1) {
-							dispatch(pushAvailabilityDetailSeries((totalWorkTimePerDay / (12 * 60 * 60 * 1000)).toFixed(4) * 100));
-							dispatch(pushScrapDetailSeries(totalScrapPerDay));
-							dispatch(pushTotalQuantityDetailSeries(totalQuantityPerDay));
-						}
-					});
-					dispatch(
-						setDetailLabels(
-							res.data.items
-								.filter((value, index, self) => {
-									return (
-										index ===
-										self.findIndex((t) => {
-											return t.date.split('T')[0] === value.date.split('T')[0];
-										})
-									);
-								})
-								.map((value) => {
-									return format(new Date(value.date), 'dd/MM');
-								})
-						)
-					);
-					availability = (totalWorkTime / (res.data.items.length * 12 * 60 * 60 * 1000)) * 100;
-					performance =
-						(totalPartsProducedTime / totalWorkTime) * 100 > 100 ? 100 : (totalPartsProducedTime / totalWorkTime) * 100;
-					quality = (totalQualifiedProducedParts / totalProducedParts) * 100;
-					pauseTimeProportion = (totalPauseTime / (res.data.items.length * 12 * 60 * 60 * 1000)) * 100;
-					dispatch(setDiscrepancy(((availability * quality * performance) / 10000 - oeeTarget).toFixed(1)));
-					dispatch(setTrend((availability * quality * performance) / 10000 - oeeTarget > 0 ? 'up' : 'down'));
-					dispatch(setOeeOverall([availability.toFixed(2), performance.toFixed(2), quality.toFixed(2)]));
-					dispatch(setDownTimeData(pauseTimeProportion.toFixed(2)));
+					console.log(res.data);
+					if (res.data.totalItems !== 0) {
+						let totalWorkTime = 0;
+						let totalPartsProducedTime = 0;
+						let totalQualifiedProducedParts = 0;
+						let totalProducedParts = 0;
+						let availability = 0;
+						let performance = 0;
+						let quality = 0;
+						let totalPauseTime = 0;
+						let totalWorkTimePerDay = 0;
+						let totalScrapPerDay = 0;
+						let totalQuantityPerDay = 0;
+						let pauseTimeProportion = 0;
+						let referredDay = res.data.items[0].date.split('T')[0];
+						res.data.items.forEach((item, index) => {
+							totalWorkTime += item.workTime;
+							totalPartsProducedTime += item.totalQuantity * item.standardInjectionCycle;
+							totalQualifiedProducedParts += item.totalQuantity;
+							totalProducedParts += item.numberOfShots * item.productsPerShot;
+							totalPauseTime += item.pauseTime;
+							if (item.date.split('T')[0] === referredDay) {
+								totalWorkTimePerDay += item.workTime;
+								totalScrapPerDay += item.numberOfShots * item.productsPerShot - item.totalQuantity;
+								totalQuantityPerDay += item.totalQuantity;
+							} else {
+								dispatch(pushAvailabilityDetailSeries((totalWorkTimePerDay / (12 * 60 * 60 * 1000)).toFixed(4) * 100));
+								dispatch(pushScrapDetailSeries(totalScrapPerDay));
+								dispatch(pushTotalQuantityDetailSeries(totalQuantityPerDay));
+								totalScrapPerDay = item.numberOfShots * item.productsPerShot - item.totalQuantity;
+								totalWorkTimePerDay = item.workTime;
+								totalQuantityPerDay = item.totalQuantity;
+								referredDay = item.date.split('T')[0];
+							}
+							if (res.data.items.length === index + 1) {
+								dispatch(pushAvailabilityDetailSeries((totalWorkTimePerDay / (12 * 60 * 60 * 1000)).toFixed(4) * 100));
+								dispatch(pushScrapDetailSeries(totalScrapPerDay));
+								dispatch(pushTotalQuantityDetailSeries(totalQuantityPerDay));
+							}
+						});
+						dispatch(
+							setDetailLabels(
+								res.data.items
+									.filter((value, index, self) => {
+										return (
+											index ===
+											self.findIndex((t) => {
+												return t.date.split('T')[0] === value.date.split('T')[0];
+											})
+										);
+									})
+									.map((value) => {
+										return format(new Date(value.date), 'dd/MM');
+									})
+							)
+						);
+						availability = (totalWorkTime / (res.data.items.length * 12 * 60 * 60 * 1000)) * 100;
+						performance =
+							(totalPartsProducedTime / totalWorkTime) * 100 > 100
+								? 100
+								: (totalPartsProducedTime / totalWorkTime) * 100;
+						quality = (totalQualifiedProducedParts / totalProducedParts) * 100;
+						pauseTimeProportion = (totalPauseTime / (res.data.items.length * 12 * 60 * 60 * 1000)) * 100;
+						dispatch(setDiscrepancy(((availability * quality * performance) / 10000 - oeeTarget).toFixed(1)));
+						dispatch(setTrend((availability * quality * performance) / 10000 - oeeTarget > 0 ? 'up' : 'down'));
+						dispatch(setOeeOverall([availability.toFixed(2), performance.toFixed(2), quality.toFixed(2)]));
+						dispatch(setDownTimeData(pauseTimeProportion.toFixed(2)));
+					} else {
+						setError('Không tìm thấy dữ liệu');
+					}
 				})
 				.catch((err) => {
 					setIsLoading(false);
-					setError(error);
+					setError(err);
 					alert(err);
 					console.log(err);
 				});
 		},
-		[dispatch, error, oeeTarget]
+		[dispatch, oeeTarget]
 	);
 
 	React.useEffect(() => {
@@ -191,6 +198,8 @@ function OeeIndex() {
 			<OeeSearchBar onSubmit={onSubmit} />
 			{isLoading ? (
 				<LoadingComponent />
+			) : error ? (
+				<EmptyPlaceHolder isError={true} msg={error} />
 			) : (
 				<>
 					<ScrollToBottom pathname={pathname} />

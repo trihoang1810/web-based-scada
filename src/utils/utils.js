@@ -1,6 +1,6 @@
 import { format } from 'date-fns';
 import React from 'react';
-
+import ProgressBar from '../components/progressBar/ProgressBar';
 function convertHMS(value) {
 	const sec = parseInt(value, 10); // convert value to number if it's string
 	let hours = Math.floor(sec / 3600); // get hours
@@ -73,7 +73,26 @@ const QA_QC_REPORT_MENU_LIST = [
 		url: '/report/main/qaqc/water-proof',
 	},
 ];
-
+const PLAN_TRACKING_MENU_LIST = [
+	{
+		title: 'LỊCH TRÌNH ĐÓNG GÓI',
+		url: '/plan-tracking/daily/packing',
+	},
+	{
+		title: 'LỊCH TRÌNH MÁY ÉP',
+		url: '/plan-tracking/daily/injection',
+	},
+];
+const MONTHLY_PLAN_TRACKING_MENU_LIST = [
+	{
+		title: 'LỊCH TRÌNH ĐÓNG GÓI',
+		url: '/plan-tracking/monthly/packing',
+	},
+	{
+		title: 'LỊCH TRÌNH MÁY ÉP',
+		url: '/plan-tracking/monthly/injection',
+	},
+];
 const ENDURANCE_COLUMNS = [
 	{
 		Header: 'Số lần thử',
@@ -1022,6 +1041,151 @@ function ScrollToBottom({ pathname }) {
 	return null;
 }
 
+const PACKING_PLAN_TRACKING_COLUMNS = [
+	{
+		Header: 'Ngày',
+		accessor: 'date',
+		Cell: ({
+			cell: {
+				row: {
+					original: { date },
+				},
+			},
+		}) => {
+			return <span>{format(new Date(date), 'dd/MM/yyyy')}</span>;
+		},
+	},
+	{
+		Header: 'Nhân viên đứng máy',
+		accessor: 'employee',
+	},
+	{
+		Header: 'Mã nhân viên',
+		accessor: 'employeeId',
+	},
+	{
+		Header: 'Cụm máy',
+		accessor: 'packingUnit',
+	},
+	{
+		Header: 'Mã sản phẩm',
+		accessor: 'productId',
+	},
+	{
+		Header: 'Tên sản phẩm',
+		accessor: 'productName',
+	},
+	{
+		Header: 'Lịch trình đóng gói',
+		accessor: 'plannedQuantity',
+	},
+	{
+		Header: 'Thực hiện',
+		accessor: 'actualQuantity',
+	},
+	{
+		Header: 'Giải trình',
+		accessor: 'note',
+	},
+	{
+		Header: 'Tiến độ',
+		accessor: 'progress',
+		Cell: ({
+			cell: {
+				row: {
+					original: { plannedQuantity, actualQuantity },
+				},
+			},
+		}) => {
+			return <ProgressBar height={15} width={170} percent={((actualQuantity / plannedQuantity) * 100).toFixed(2)} />;
+		},
+	},
+	{
+		Header: 'Priority',
+		accessor: 'priority',
+		show: false,
+	},
+];
+
+const INJECTION_PLAN_TRACKING_COLUMNS = [
+	{
+		Header: 'Ngày',
+		accessor: 'date',
+		Cell: ({
+			cell: {
+				row: {
+					original: { date },
+				},
+			},
+		}) => {
+			return <span>{format(new Date(date), 'dd/MM/yyyy')}</span>;
+		},
+	},
+	{
+		Header: 'Ca làm',
+		accessor: 'eShift',
+		width: 100,
+		Cell: ({
+			cell: {
+				row: {
+					original: { eShift },
+				},
+			},
+		}) => {
+			switch (eShift) {
+				case 0:
+					return <span>Ca 1</span>;
+				case 1:
+					return <span>Ca 2</span>;
+				default:
+					return <div></div>;
+			}
+		},
+	},
+	{
+		Header: 'Mã sản phẩm',
+		accessor: 'productId',
+	},
+	{
+		Header: 'Tên sản phẩm',
+		accessor: 'productName',
+	},
+	{
+		Header: 'Lịch trình ép máy',
+		accessor: 'plannedQuantity',
+	},
+	{
+		Header: 'Thực hiện',
+		accessor: 'actualQuantity',
+	},
+	{
+		Header: 'Giải trình',
+		accessor: 'note',
+	},
+	{
+		Header: 'Nhân viên đứng máy',
+		accessor: 'employee',
+	},
+	{
+		Header: 'Tiến độ',
+		accessor: 'progress',
+		Cell: ({
+			cell: {
+				row: {
+					original: { plannedQuantity, actualQuantity },
+				},
+			},
+		}) => {
+			return <ProgressBar height={15} width={170} percent={((actualQuantity / plannedQuantity) * 100).toFixed(2)} />;
+		},
+	},
+	{
+		Header: 'Priority',
+		accessor: 'priority',
+		show: false,
+	},
+];
+
 export {
 	packingState,
 	ScrollToBottom,
@@ -1044,4 +1208,8 @@ export {
 	MONITOR_INJECTION_LIST,
 	INJECTION_MACHINE_LAYOUT,
 	INJECTION_MACHINE_ID,
+	PLAN_TRACKING_MENU_LIST,
+	INJECTION_PLAN_TRACKING_COLUMNS,
+	PACKING_PLAN_TRACKING_COLUMNS,
+	MONTHLY_PLAN_TRACKING_MENU_LIST,
 };

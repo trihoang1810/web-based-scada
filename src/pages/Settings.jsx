@@ -5,6 +5,7 @@ import React from 'react';
 import FormikControl from '../components/formControl/FormControl';
 import * as Yup from 'yup';
 import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle } from '@mui/material';
+import CustomizedBreadcrumbs from '../components/breadcrumbs/Breadcrumbs';
 const oeeTargetValidationSchema = Yup.object({
 	oeeTarget: Yup.number()
 		.typeError('Phải là con số')
@@ -38,7 +39,7 @@ function Settings() {
 	};
 	return (
 		<>
-			<h2 className="page-header">CÀI ĐẶT</h2>
+			<CustomizedBreadcrumbs id="CÀI ĐẶT" />
 			<div className="card">
 				<div className="card__header">
 					<h3>Trang cài đặt</h3>

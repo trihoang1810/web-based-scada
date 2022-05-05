@@ -18,6 +18,7 @@ import QaqcMonitor from '../../components/qaqcmonitor/QaqcMonitor';
 import { HttpTransportType, HubConnectionBuilder } from '@microsoft/signalr';
 import { toast, ToastContainer } from 'react-toastify';
 import { getTagsData } from '../../utils/utils';
+import CustomizedBreadcrumbs from '../../components/breadcrumbs/Breadcrumbs';
 
 function QualityControl() {
 	const [forcedEndurance] = React.useState('forcedEndurance__stop');
@@ -220,7 +221,7 @@ function QualityControl() {
 	}, [error, errorPriority]);
 	return (
 		<>
-			<h2 className="page-header">PHÒNG QA/QC THIẾT BỊ</h2>
+			<CustomizedBreadcrumbs id="PHÒNG QA/QC THIẾT BỊ" />
 			<div className="row">
 				<div className="col-5 col-md-12">
 					<div className="card full-height">

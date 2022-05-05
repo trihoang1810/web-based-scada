@@ -22,7 +22,6 @@ function ReportInjectionMoldingSector() {
 		injectionApi
 			.getTemporaryInjectionReport(value.moldingMachineId, value.dateStart, value.dateEnd)
 			.then((res) => {
-				console.log('res', res.data.items);
 				setIsLoading(false);
 				if (res.data.items.length === 0) {
 					setHasNothing(true);
@@ -53,9 +52,8 @@ function ReportInjectionMoldingSector() {
 				}
 			})
 			.catch((err) => {
-				console.log(err);
 				setIsLoading(false);
-				setError(err);
+				setError(`Có lỗi xảy ra, vui lòng thử lại\n${err}`);
 			});
 	};
 	return (

@@ -17,11 +17,17 @@ import InjectionMap from '../pages/injectionMoldinMachine/injectionMap';
 import InjectionMoldingMainPage from '../pages/injectionMoldinMachine/index';
 import Test from '../test/Test';
 import Settings from '../pages/Settings';
+import PlanTracking from '../pages/planTracking/PlanTracking';
+import TrackingMonthly from '../pages/planTracking/trackingMonthly/TrackingMonthly';
+import TrackingDaily from '../pages/planTracking/trackingDaily/TrackingDaily';
 
 const Routes = () => {
 	return (
 		<Switch>
 			<Route path="/" exact component={Dashboard} />
+			<Route path="/plan-tracking" exact component={PlanTracking} />
+			<Route path="/plan-tracking/monthly" component={TrackingMonthly} />
+			<Route path="/plan-tracking/daily" component={TrackingDaily} />
 			<Route path="/warehouse/:id" component={WarehouseDetail} />
 			<Route path="/warehouse" component={WarehouseOverview} />
 			<Route path="/qaqc" component={QualityControlRoutes} />
