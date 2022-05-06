@@ -11,7 +11,7 @@ import QaQcReportReducer from './QaQcReportSlice';
 import InjectionReportReducer from './InjectionReportSlice';
 import QaQcMonitorReducer from './QaQcMonitorSlice';
 import OeeReportReducer from './OeeReportSlice';
-import WarehouseReducer from './warehouseSlice';
+import WarehouseReducer from './WarehouseSlice';
 import PlanTrackingReducer from './PlanTrackingSlice';
 const rootReducer = {
 	theme: ThemeReducer,
