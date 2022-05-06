@@ -21,7 +21,7 @@ const injectionApi = {
 			},
 			params: {
 				startTime: dateStart,
-				stopTime: dateEnd,
+				stopTime: format(new Date(dateEnd + 1 * 24 * 60 * 60 * 1000), 'yyyy-MM-dd'),
 			},
 		});
 	},
@@ -36,7 +36,9 @@ const injectionApi = {
 			},
 			params: {
 				startTime: dateStart,
-				stopTime: dateEnd ? dateEnd : format(Date.now(), 'yyyy-MM-dd'),
+				stopTime: dateEnd
+					? format(new Date(dateEnd + 1 * 24 * 60 * 60 * 1000), 'yyyy-MM-dd')
+					: format(new Date(Date.now() + 1 * 24 * 60 * 60 * 1000), 'yyyy-MM-dd'),
 			},
 		});
 	},
@@ -50,7 +52,9 @@ const injectionApi = {
 			},
 			params: {
 				startTime,
-				stopTime: stopTime ? stopTime : format(Date.now(), 'yyyy-MM-dd'),
+				stopTime: stopTime
+					? format(new Date(stopTime + 1 * 24 * 60 * 60 * 1000), 'yyyy-MM-dd')
+					: format(new Date(Date.now() + 1 * 24 * 60 * 60 * 1000), 'yyyy-MM-dd'),
 			},
 		});
 	},

@@ -1,51 +1,52 @@
+import { format } from 'date-fns';
 import axiosClient from './axiosClient';
 
 const qaQcApi = {
-	getEnduranceReport(dateStart, dateEnd) {
+	getEnduranceReport(startTime, stopTime) {
 		return axiosClient.get('/qaqc/reliability', {
 			params: {
-				dateStart,
-				dateEnd,
+				startTime,
+				stopTime: format(new Date(stopTime + 1 * 24 * 60 * 60 * 1000), 'yyyy-MM-dd'),
 			},
 		});
 	},
-	getForcedEnduranceReport(dateStart, dateEnd) {
+	getForcedEnduranceReport(startTime, stopTime) {
 		return axiosClient.get('/qaqc/deformation', {
 			params: {
-				dateStart,
-				dateEnd,
+				startTime,
+				stopTime: format(new Date(stopTime + 1 * 24 * 60 * 60 * 1000), 'yyyy-MM-dd'),
 			},
 		});
 	},
-	getRockTestReport(dateStart, dateEnd) {
+	getRockTestReport(startTime, stopTime) {
 		return axiosClient.get('/qaqc/rocktest', {
 			params: {
-				dateStart,
-				dateEnd,
+				startTime,
+				stopTime: format(new Date(stopTime + 1 * 24 * 60 * 60 * 1000), 'yyyy-MM-dd'),
 			},
 		});
 	},
-	getStaticLoadReport(dateStart, dateEnd) {
+	getStaticLoadReport(startTime, stopTime) {
 		return axiosClient.get('/qaqc/staticload', {
 			params: {
-				dateStart,
-				dateEnd,
+				startTime,
+				stopTime: format(new Date(stopTime + 1 * 24 * 60 * 60 * 1000), 'yyyy-MM-dd'),
 			},
 		});
 	},
-	getCurlingForceReport(dateStart, dateEnd) {
+	getCurlingForceReport(startTime, stopTime) {
 		return axiosClient.get('/qaqc/curlingforce', {
 			params: {
-				dateStart,
-				dateEnd,
+				startTime,
+				stopTime: format(new Date(stopTime + 1 * 24 * 60 * 60 * 1000), 'yyyy-MM-dd'),
 			},
 		});
 	},
-	getWaterProofReport(dateStart, dateEnd) {
+	getWaterProofReport(startTime, stopTime) {
 		return axiosClient.get('/qaqc/waterproof', {
 			params: {
-				dateStart,
-				dateEnd,
+				startTime,
+				stopTime: format(new Date(stopTime + 1 * 24 * 60 * 60 * 1000), 'yyyy-MM-dd'),
 			},
 		});
 	},
