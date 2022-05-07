@@ -82,7 +82,7 @@ function OeeIndex() {
 			setIsLoading(true);
 			dispatch(resetDetailSeries());
 			injectionApi
-				.getTemporaryOeeStatistics(value.dateStart)
+				.getTemporaryOeeStatistics(value.dateStart, value.dateEnd ? value.dateEnd : undefined)
 				.then((res) => {
 					setIsLoading(false);
 					dispatch(setLastTimeUpdated(convertMiliseconds(Date.now() - new Date(value.dateStart), 'd')));
