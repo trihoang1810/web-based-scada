@@ -56,19 +56,9 @@ function ReportQaqcFilter({
 		? {
 				dateStart: initialDateStart(),
 				dateEnd: initialDateEnd(),
-				purpose: 'period',
-				note: '',
-				productName: '',
 				testType: 'rock-test',
 		  }
 		: { dateStart: initialDateStart(), dateEnd: initialDateEnd(), purpose: 'period', note: '', productName: '' };
-
-	const PURPOSE_OPTIONS = [
-		{ value: 'period', key: 'Định kỳ' },
-		{ value: 'anomaly', key: 'Bất thường' },
-		{ value: 'newProduct', key: 'Sản phẩm mới' },
-		{ value: 'other', key: 'Khác' },
-	];
 	const TEST_TYPE_OPTIONS = [
 		{ value: 'rock-test', key: 'Rock test' },
 		{ value: 'bending', key: 'Lực uốn' },
@@ -115,57 +105,25 @@ function ReportQaqcFilter({
 									<div className="col-12">
 										<div className="error-msg__container">
 											<ErrorMessage name="dateEnd" component="div" className="error-message" />
-											<ErrorMessage name="purpose" component="div" className="error-message" />
-											<ErrorMessage name="note" component="div" className="error-message" />
 										</div>
 									</div>
 								</div>
 								<div className="row">
 									<div className="col-12">
 										<Form id="qaqc-report__filter">
-											<FormControl
-												placeholder="Đặt tên sản phẩm trước khi xuất excel"
-												label="Tên sản phẩm"
-												name="productName"
-												control="input"
-											/>
-											<FormControl label="Mục đích" name="purpose" control="select" options={PURPOSE_OPTIONS} />
-											<FormControl
-												label="Ghi chú"
-												name="note"
-												control="input"
-												disable={formik.values.purpose === 'other' ? false : true}
-											/>
 											<button
 												type="button"
-												className={`btn btn-primary ${
-													formik.values.productName === '' ||
-													(formik.values.purpose === 'other' && formik.values.note === '') ||
-													dataDisplay.length === 0
-														? 'btn-disabled'
-														: ''
-												}`}
-												disabled={
-													formik.values.productName === '' ||
-													(formik.values.purpose === 'other' && formik.values.note === '') ||
-													dataDisplay.length === 0
-														? true
-														: false
-												}
-												onClick={() =>
-													exportReport(
-														formik.values.productName,
-														format(new Date(formik.values.dateStart), 'dd/MM/yyyy'),
-														format(new Date(formik.values.dateEnd), 'dd/MM/yyyy'),
-														formik.values.purpose,
-														formik.values.note,
-														formik.values.testType
-													)
-												}
+												className={`btn btn-primary ${dataDisplay.length === 0 ? 'btn-disabled' : ''}`}
+												disabled={dataDisplay.length === 0 ? true : false}
+												onClick={() => exportReport()}
 											>
 												Xuất excel
 											</button>
 										</Form>
+									</div>
+									<div className="col-12">
+										<ErrorMessage name="purpose" component="div" className="error-message" />
+										<ErrorMessage name="note" component="div" className="error-message" />
 									</div>
 								</div>
 							</div>

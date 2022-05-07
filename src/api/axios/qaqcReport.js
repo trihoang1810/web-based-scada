@@ -1,52 +1,54 @@
 import { format } from 'date-fns';
-import axiosClient from './axiosClient';
+// import axiosClient from './axiosClient';
+import axios from 'axios';
 
 const qaQcApi = {
+	REQUEST_URL: 'http://192.168.1.80:8084/api',
 	getEnduranceReport(startTime, stopTime) {
-		return axiosClient.get('/qaqc/reliability', {
+		return axios.get(`${this.REQUEST_URL}/SoftCloseTests`, {
 			params: {
 				startTime,
-				stopTime: format(new Date(stopTime + 1 * 24 * 60 * 60 * 1000), 'yyyy-MM-dd'),
+				stopTime: format(new Date(stopTime).setDate(new Date(stopTime).getDate() + 1), 'yyyy-MM-dd'),
 			},
 		});
 	},
 	getForcedEnduranceReport(startTime, stopTime) {
-		return axiosClient.get('/qaqc/deformation', {
+		return axios.get(`${this.REQUEST_URL}/ForcedCloseTests`, {
 			params: {
 				startTime,
-				stopTime: format(new Date(stopTime + 1 * 24 * 60 * 60 * 1000), 'yyyy-MM-dd'),
+				stopTime: format(new Date(stopTime).setDate(new Date(stopTime).getDate() + 1), 'yyyy-MM-dd'),
 			},
 		});
 	},
 	getRockTestReport(startTime, stopTime) {
-		return axiosClient.get('/qaqc/rocktest', {
+		return axios.get(`${this.REQUEST_URL}/RockTests`, {
 			params: {
 				startTime,
-				stopTime: format(new Date(stopTime + 1 * 24 * 60 * 60 * 1000), 'yyyy-MM-dd'),
+				stopTime: format(new Date(stopTime).setDate(new Date(stopTime).getDate() + 1), 'yyyy-MM-dd'),
 			},
 		});
 	},
 	getStaticLoadReport(startTime, stopTime) {
-		return axiosClient.get('/qaqc/staticload', {
+		return axios.get(`${this.REQUEST_URL}/StaticLoadTests`, {
 			params: {
 				startTime,
-				stopTime: format(new Date(stopTime + 1 * 24 * 60 * 60 * 1000), 'yyyy-MM-dd'),
+				stopTime: format(new Date(stopTime).setDate(new Date(stopTime).getDate() + 1), 'yyyy-MM-dd'),
 			},
 		});
 	},
 	getCurlingForceReport(startTime, stopTime) {
-		return axiosClient.get('/qaqc/curlingforce', {
+		return axios.get(`${this.REQUEST_URL}/CurlingForceTests`, {
 			params: {
 				startTime,
-				stopTime: format(new Date(stopTime + 1 * 24 * 60 * 60 * 1000), 'yyyy-MM-dd'),
+				stopTime: format(new Date(stopTime).setDate(new Date(stopTime).getDate() + 1), 'yyyy-MM-dd'),
 			},
 		});
 	},
 	getWaterProofReport(startTime, stopTime) {
-		return axiosClient.get('/qaqc/waterproof', {
+		return axios.get('/qaqc/waterproof', {
 			params: {
 				startTime,
-				stopTime: format(new Date(stopTime + 1 * 24 * 60 * 60 * 1000), 'yyyy-MM-dd'),
+				stopTime: format(new Date(stopTime).setDate(new Date(stopTime).getDate() + 1), 'yyyy-MM-dd'),
 			},
 		});
 	},

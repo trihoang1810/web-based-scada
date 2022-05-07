@@ -4,6 +4,7 @@ const reportData = createSlice({
 	name: 'enduranceReportData',
 	initialState: {
 		enduranceReportData: [],
+		enduranceOverviewData: {},
 		enduranceReportDataDate: {},
 		forcedEnduranceReportData: [],
 		forcedEnduranceReportDataDate: {},
@@ -19,6 +20,9 @@ const reportData = createSlice({
 		},
 		setEnduranceReportDataDate: (state, action) => {
 			state.enduranceReportDataDate = action.payload;
+		},
+		setEnduranceOverviewData: (state, action) => {
+			state.enduranceOverviewData = action.payload;
 		},
 		resetEnduranceReportData: (state) => {
 			state.enduranceReportData = [];
@@ -74,5 +78,6 @@ export const {
 	resetWaterProofReportData,
 	setWaterProofReportData,
 	setWaterProofReportDataDate,
+	setEnduranceOverviewData,
 } = actions;
 export default reducer;

@@ -93,6 +93,7 @@ const MONTHLY_PLAN_TRACKING_MENU_LIST = [
 		url: '/plan-tracking/monthly/injection',
 	},
 ];
+
 const ENDURANCE_COLUMNS = [
 	{
 		Header: 'Số lần thử',
