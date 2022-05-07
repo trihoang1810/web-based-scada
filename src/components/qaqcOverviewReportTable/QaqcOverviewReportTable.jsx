@@ -2,6 +2,23 @@ import React from 'react';
 import './qaqcOverviewReportTable.css';
 function QaqcOverviewReportTable({ overviewData }) {
 	const { purpose, testNote, productId, productName } = overviewData;
+	let purposeVietSub;
+	switch (purpose) {
+		case 'period':
+			purposeVietSub = 'Định kỳ';
+			break;
+		case 'anomaly':
+			purposeVietSub = 'Bất thường';
+			break;
+		case 'newProduct':
+			purposeVietSub = 'SP mới';
+			break;
+		case 'other':
+			purposeVietSub = 'Khác';
+			break;
+		default:
+			break;
+	}
 	return (
 		<>
 			<div className="row">
@@ -20,7 +37,7 @@ function QaqcOverviewReportTable({ overviewData }) {
 									</tr>
 									<tr>
 										<td>Mục đích kiểm tra</td>
-										<td>{purpose ? purpose : ''}</td>
+										<td>{purposeVietSub ? purposeVietSub : ''}</td>
 									</tr>
 									<tr>
 										<td>Ghi chú</td>

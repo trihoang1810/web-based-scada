@@ -9,17 +9,12 @@ import LoadingComponent from '../loadingComponent/LoadingComponent';
 import EmptyPlaceholder from '../emptyPlaceholder/EmptyPlaceholder';
 import { useDispatch } from 'react-redux';
 import { resetDeformationReportData } from '../../redux/slice/QaQcReportSlice';
-
+import QaqcOverviewReportTable from '../qaqcOverviewReportTable/QaqcOverviewReportTable';
 const validationSchema = Yup.object({
 	dateStart: Yup.date(),
 	dateEnd: Yup.date().when('dateStart', (dateStart, schema) => {
 		return dateStart ? schema.min(dateStart, 'Ngày bắt đầu phải nhỏ hơn ngày kết thúc') : schema;
 	}),
-	purpose: Yup.string(),
-	note: Yup.string().when('purpose', (purpose, schema) => {
-		return purpose === 'other' ? schema.required('Ghi chú không được bỏ trống') : schema;
-	}),
-	productName: Yup.string(),
 });
 // component = { ReportQaqcTable };
 // reportData = { enduranceData };
@@ -33,6 +28,7 @@ function ReportQaqcFilter({
 	dataDisplay,
 	loading,
 	error,
+	overviewData,
 }) {
 	const dispatch = useDispatch();
 	const initialDateStart = () => {
@@ -58,7 +54,7 @@ function ReportQaqcFilter({
 				dateEnd: initialDateEnd(),
 				testType: 'rock-test',
 		  }
-		: { dateStart: initialDateStart(), dateEnd: initialDateEnd(), purpose: 'period', note: '', productName: '' };
+		: { dateStart: initialDateStart(), dateEnd: initialDateEnd() };
 	const TEST_TYPE_OPTIONS = [
 		{ value: 'rock-test', key: 'Rock test' },
 		{ value: 'bending', key: 'Lực uốn' },
@@ -115,7 +111,7 @@ function ReportQaqcFilter({
 												type="button"
 												className={`btn btn-primary ${dataDisplay.length === 0 ? 'btn-disabled' : ''}`}
 												disabled={dataDisplay.length === 0 ? true : false}
-												onClick={() => exportReport()}
+												onClick={() => exportReport(formik.values.testType)}
 											>
 												Xuất excel
 											</button>
@@ -137,16 +133,20 @@ function ReportQaqcFilter({
 										) : reportData.length <= 0 ? (
 											<EmptyPlaceholder msg="Nhấn nút tìm kiếm để xem báo cáo" />
 										) : (
-											<ReportQaqcTable
-												reportData={reportData}
-												reportHeaders={
-													formik.values.testType === 'rock-test'
-														? reportHeaders.rockTest
-														: formik.values.testType === 'bending'
-														? reportHeaders.bending
-														: reportHeaders.staticLoad
-												}
-											/>
+											<>
+												<QaqcOverviewReportTable overviewData={overviewData} />
+
+												<ReportQaqcTable
+													reportData={reportData}
+													reportHeaders={
+														formik.values.testType === 'rock-test'
+															? reportHeaders.rockTest
+															: formik.values.testType === 'bending'
+															? reportHeaders.bending
+															: reportHeaders.staticLoad
+													}
+												/>
+											</>
 										)}
 									</div>
 								</div>

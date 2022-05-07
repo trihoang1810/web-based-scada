@@ -149,24 +149,23 @@ function ReportEndurance() {
 	};
 
 	const onSubmit = (values) => {
-		console.log(values);
 		dispatch(resetEnduranceReportData());
 		setLoading(true);
 		qaQcApi
-			.getEnduranceReport('2021-01-01', '2023-01-01')
+			.getEnduranceReport(values.dateStart, values.dateEnd)
 			.then((res) => {
 				console.log(res.data.items);
 				const filteredData = [];
 				setLoading(false);
-				if (res) {
+				if (res.data.items.length > 0) {
 					res.data.items[0].samples.forEach((item) => {
 						filteredData.push({
 							sample: item.sampleNumber,
-							time: item.seatLidResult.fallTime,
+							time: (item.seatLidResult.fallTime / 1000).toFixed(2),
 							toilet_bumper: item.seatLidResult.isBumperIntact === true ? 'oke' : 'lỗi',
 							no_oil_spill: item.seatLidResult.isUnleaked === true ? 'oke' : 'lỗi',
 							first_result: item.seatLidResult.passed === true ? 'oke' : 'lỗi',
-							closing_time: item.seatRingResult.fallTime,
+							closing_time: (item.seatRingResult.fallTime / 1000).toFixed(2),
 							no_drop_bumper: item.seatRingResult.isBumperIntact === true ? 'oke' : 'lỗi',
 							no_spill: item.seatRingResult.isUnleaked === true ? 'oke' : 'lỗi',
 							second_result: item.seatRingResult.passed === true ? 'oke' : 'lỗi',
@@ -179,11 +178,11 @@ function ReportEndurance() {
 					dispatch(
 						setEnduranceOverviewData({
 							purpose:
-								res.data.items[0].purpose === 0
+								res.data.items[0].testPurpose === 0
 									? 'period'
-									: res.data.items[0].purpose === 1
+									: res.data.items[0].testPurpose === 1
 									? 'anomaly'
-									: res.data.items[0].purpose === 2
+									: res.data.items[0].testPurpose === 2
 									? 'newProduct'
 									: 'other',
 							testNote: res.data.items[0].note,
@@ -197,6 +196,9 @@ function ReportEndurance() {
 							stopTime: format(new Date(res.data.items[0].endDate), 'dd/MM/yyyy'),
 						})
 					);
+				} else {
+					setLoading(false);
+					setError(`Không có dữ liệu trong ngày, vui lòng chọn ngày khác`);
 				}
 			})
 			.catch((err) => {

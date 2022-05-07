@@ -372,24 +372,6 @@ const PACKING_COLUMNS = [
 		disableSortBy: true,
 	},
 	{
-		Header: 'KQ kiểm tra SP',
-		accessor: 'result',
-		width: 80,
-		disableFilters: true,
-	},
-	{
-		Header: 'Thiết bị sử dụng',
-		accessor: 'equipment',
-		width: 80,
-		disableFilters: true,
-	},
-	{
-		Header: 'KQ bảo dưỡng TB',
-		accessor: 'maintenanceResult',
-		width: 80,
-		disableFilters: true,
-	},
-	{
 		Header: 'Người thực hiện',
 		accessor: 'employee',
 		width: 80,
