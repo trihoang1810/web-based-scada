@@ -125,4 +125,4 @@ const Topnav = () => {
 	);
 };
 
-export default Topnav;
+export default React.memo(Topnav);

@@ -88,4 +88,4 @@ function Sidebar(props) {
 	);
 }
 
-export default Sidebar;
+export default React.memo(Sidebar);

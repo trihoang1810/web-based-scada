@@ -39,4 +39,4 @@ function EmptyPlaceholder({ isError, msg }) {
 	);
 }
 
-export default EmptyPlaceholder;
+export default React.memo(EmptyPlaceholder);

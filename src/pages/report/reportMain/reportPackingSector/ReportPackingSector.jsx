@@ -52,221 +52,224 @@ function ReportPackingSector() {
 			]);
 		});
 	}, []);
-	const exportReport = (dateSearch, fileName) => {
-		const workbook = createExcelFile(data);
-		const sheet1 = workbook.getWorksheet('sheet1');
+	const exportReport = React.useCallback(
+		(dateSearch, fileName) => {
+			const workbook = createExcelFile(data);
+			const sheet1 = workbook.getWorksheet('sheet1');
 
-		sheet1.addImage(0, {
-			tl: { row: 0.2, col: 0.5 },
-			br: { row: 3.8, col: 1.5 },
-		});
+			sheet1.addImage(0, {
+				tl: { row: 0.2, col: 0.5 },
+				br: { row: 3.8, col: 1.5 },
+			});
 
-		sheet1.getColumn('B').width = 22;
-		sheet1.getColumn('Q').width = 4;
-		sheet1.getRow(6).height = 26;
-		sheet1.getRow(8).height = 40;
+			sheet1.getColumn('B').width = 22;
+			sheet1.getColumn('Q').width = 4;
+			sheet1.getRow(6).height = 26;
+			sheet1.getRow(8).height = 40;
 
-		for (let c = 1; c <= 20; c++) {
-			bgBrush(sheet1, 8, c, 'e7e6e6');
-		}
+			for (let c = 1; c <= 20; c++) {
+				bgBrush(sheet1, 8, c, 'e7e6e6');
+			}
 
-		sheet1.getCell('C7').alignment = {
-			horizontal: 'left',
-		};
-		sheet1.getCell('M6').value = format(new Date(dateSearch), 'dd/MM/yyyy');
-		sheet1.getCell('M6').alignment = {
-			horizontal: 'center',
-			vertical: 'middle',
-		};
-		let rowIndex1 = 9;
-		packingReportData.forEach((item, index) => {
-			let dateComparison = item.date;
-			sheet1.getRow(rowIndex1).values = [
-				item.id,
-				item.date,
-				item.productCode,
-				'',
-				item.productName,
-				'',
-				'',
-				'',
-				'',
-				'',
-				item.unit,
-				item.quantity,
-				item.result,
-				item.equipment,
-				item.maintenanceResult,
-				item.employee,
-				'',
-				item.time,
-				item.note,
-			];
-			sheet1.getRow(rowIndex1).font = {
-				size: 9,
-				name: 'Times New Roman',
+			sheet1.getCell('C7').alignment = {
+				horizontal: 'left',
 			};
-			sheet1.mergeCells(rowIndex1, 3, rowIndex1, 4);
-			sheet1.mergeCells(rowIndex1, 5, rowIndex1, 10);
-			sheet1.mergeCells(rowIndex1, 16, rowIndex1, 17);
-			sheet1.mergeCells(rowIndex1, 19, rowIndex1, 20);
-			rowIndex1++;
-			if (index + 1 !== packingReportData.length) {
-				if (dateComparison !== packingReportData[index + 1].date) {
-					dateComparison = packingReportData[index + 1].date;
-					sheet1.mergeCells(rowIndex1, 3, rowIndex1, 4);
-					sheet1.mergeCells(rowIndex1, 5, rowIndex1, 10);
-					sheet1.mergeCells(rowIndex1, 16, rowIndex1, 17);
-					sheet1.mergeCells(rowIndex1, 19, rowIndex1, 20);
-					rowIndex1++;
+			sheet1.getCell('M6').value = format(new Date(dateSearch), 'dd/MM/yyyy');
+			sheet1.getCell('M6').alignment = {
+				horizontal: 'center',
+				vertical: 'middle',
+			};
+			let rowIndex1 = 9;
+			packingReportData.forEach((item, index) => {
+				let dateComparison = item.date;
+				sheet1.getRow(rowIndex1).values = [
+					item.id,
+					item.date,
+					item.productCode,
+					'',
+					item.productName,
+					'',
+					'',
+					'',
+					'',
+					'',
+					item.unit,
+					item.quantity,
+					item.result,
+					item.equipment,
+					item.maintenanceResult,
+					item.employee,
+					'',
+					item.time,
+					item.note,
+				];
+				sheet1.getRow(rowIndex1).font = {
+					size: 9,
+					name: 'Times New Roman',
+				};
+				sheet1.mergeCells(rowIndex1, 3, rowIndex1, 4);
+				sheet1.mergeCells(rowIndex1, 5, rowIndex1, 10);
+				sheet1.mergeCells(rowIndex1, 16, rowIndex1, 17);
+				sheet1.mergeCells(rowIndex1, 19, rowIndex1, 20);
+				rowIndex1++;
+				if (index + 1 !== packingReportData.length) {
+					if (dateComparison !== packingReportData[index + 1].date) {
+						dateComparison = packingReportData[index + 1].date;
+						sheet1.mergeCells(rowIndex1, 3, rowIndex1, 4);
+						sheet1.mergeCells(rowIndex1, 5, rowIndex1, 10);
+						sheet1.mergeCells(rowIndex1, 16, rowIndex1, 17);
+						sheet1.mergeCells(rowIndex1, 19, rowIndex1, 20);
+						rowIndex1++;
+					}
 				}
-			}
-		});
-		///-----------------------------------------------
-		for (let r = 9; r < rowIndex1; r++) {
-			for (let c = 1; c <= 20; c++) {
-				drawBorder(sheet1, r, c);
-			}
-		}
-
-		sheet1.getCell(rowIndex1, 1).value = {
-			richText: [{ text: '2.Báo cáo tình hình nhân sự nhóm', font: { bold: true, name: 'Times New Roman' } }],
-		};
-		sheet1.mergeCells(rowIndex1, 1, rowIndex1, 20);
-		sheet1.getRow(rowIndex1 + 1).values = [
-			'Stt',
-			'',
-			'Mã nhân viên',
-			'',
-			'Tên nhân viên',
-			'',
-			'',
-			'',
-			'Bộ phận',
-			'',
-			'Giờ làm việc KH',
-			'',
-			'Số giờ nghỉ',
-			'',
-			'Các vi phạm/nhắc nhở',
-			'',
-			'',
-			'',
-			'Ghi chú',
-		];
-		sheet1.getRow(rowIndex1 + 1).font = {
-			name: 'Times New Roman',
-		};
-		for (let c = 1; c <= 20; c++) {
-			bgBrush(sheet1, rowIndex1 + 1, c, 'e7e6e6');
-		}
-
-		let rowIndex2 = rowIndex1 + 2;
-		///------------------------------------------------------
-		packingEmployeeReportData.forEach((item, index) => {
-			sheet1.getRow(rowIndex2).values = [
-				index + 1,
-				'',
-				item.employeeId,
-				'',
-				item.employee,
-				'',
-				'',
-				'',
-				item.department,
-				'',
-				item.workTime,
-				'',
-				item.restTime,
-				'',
-				item.violation,
-				'',
-				'',
-				'',
-				item.note,
-			];
-			sheet1.getRow(rowIndex2).font = {
-				size: 9,
-				name: 'Times New Roman',
-			};
-			rowIndex2++;
-		});
-		///-----------------------------------------------------
-
-		for (let r = rowIndex1 + 1; r < rowIndex2; r++) {
-			sheet1.mergeCells(r, 3, r, 4);
-			sheet1.mergeCells(r, 5, r, 8);
-			sheet1.mergeCells(r, 9, r, 10);
-			sheet1.mergeCells(r, 11, r, 12);
-			sheet1.mergeCells(r, 13, r, 14);
-			sheet1.mergeCells(r, 15, r, 18);
-			sheet1.mergeCells(r, 19, r, 20);
-		}
-
-		for (let r = rowIndex1 + 1; r < rowIndex2; r++) {
-			for (let c = 1; c <= 20; c++) {
-				drawBorder(sheet1, r, c, 'top', 'bottom');
-				if (c === 2 || c === 3 || c === 5 || c === 9 || c === 11 || c === 13 || c === 15 || c === 19) {
+			});
+			///-----------------------------------------------
+			for (let r = 9; r < rowIndex1; r++) {
+				for (let c = 1; c <= 20; c++) {
 					drawBorder(sheet1, r, c);
 				}
-				if (c === 20) {
-					drawBorder(sheet1, r, c, 'top', 'bottom', 'right');
+			}
+
+			sheet1.getCell(rowIndex1, 1).value = {
+				richText: [{ text: '2.Báo cáo tình hình nhân sự nhóm', font: { bold: true, name: 'Times New Roman' } }],
+			};
+			sheet1.mergeCells(rowIndex1, 1, rowIndex1, 20);
+			sheet1.getRow(rowIndex1 + 1).values = [
+				'Stt',
+				'',
+				'Mã nhân viên',
+				'',
+				'Tên nhân viên',
+				'',
+				'',
+				'',
+				'Bộ phận',
+				'',
+				'Giờ làm việc KH',
+				'',
+				'Số giờ nghỉ',
+				'',
+				'Các vi phạm/nhắc nhở',
+				'',
+				'',
+				'',
+				'Ghi chú',
+			];
+			sheet1.getRow(rowIndex1 + 1).font = {
+				name: 'Times New Roman',
+			};
+			for (let c = 1; c <= 20; c++) {
+				bgBrush(sheet1, rowIndex1 + 1, c, 'e7e6e6');
+			}
+
+			let rowIndex2 = rowIndex1 + 2;
+			///------------------------------------------------------
+			packingEmployeeReportData.forEach((item, index) => {
+				sheet1.getRow(rowIndex2).values = [
+					index + 1,
+					'',
+					item.employeeId,
+					'',
+					item.employee,
+					'',
+					'',
+					'',
+					item.department,
+					'',
+					item.workTime,
+					'',
+					item.restTime,
+					'',
+					item.violation,
+					'',
+					'',
+					'',
+					item.note,
+				];
+				sheet1.getRow(rowIndex2).font = {
+					size: 9,
+					name: 'Times New Roman',
+				};
+				rowIndex2++;
+			});
+			///-----------------------------------------------------
+
+			for (let r = rowIndex1 + 1; r < rowIndex2; r++) {
+				sheet1.mergeCells(r, 3, r, 4);
+				sheet1.mergeCells(r, 5, r, 8);
+				sheet1.mergeCells(r, 9, r, 10);
+				sheet1.mergeCells(r, 11, r, 12);
+				sheet1.mergeCells(r, 13, r, 14);
+				sheet1.mergeCells(r, 15, r, 18);
+				sheet1.mergeCells(r, 19, r, 20);
+			}
+
+			for (let r = rowIndex1 + 1; r < rowIndex2; r++) {
+				for (let c = 1; c <= 20; c++) {
+					drawBorder(sheet1, r, c, 'top', 'bottom');
+					if (c === 2 || c === 3 || c === 5 || c === 9 || c === 11 || c === 13 || c === 15 || c === 19) {
+						drawBorder(sheet1, r, c);
+					}
+					if (c === 20) {
+						drawBorder(sheet1, r, c, 'top', 'bottom', 'right');
+					}
 				}
 			}
-		}
 
-		sheet1.getCell(rowIndex1, 1).alignment = {
-			horizontal: 'left',
-		};
+			sheet1.getCell(rowIndex1, 1).alignment = {
+				horizontal: 'left',
+			};
 
-		sheet1.getRow(rowIndex2).values = [
-			'Báo cáo khác',
-			'',
-			'',
-			'',
-			'',
-			'',
-			'',
-			'',
-			'',
-			'',
-			'',
-			'',
-			'Lập báo cáo',
-			'',
-			'Xem xét',
-			'',
-			'Duyệt',
-			's',
-			'Thống kê',
-		];
-		sheet1.getRow(rowIndex2).font = {
-			name: 'Times New Roman',
-		};
-		sheet1.mergeCells(rowIndex2, 1, rowIndex2 + 5, 12);
-		sheet1.getCell(rowIndex2, 1).font = { bold: true };
-		sheet1.getCell(rowIndex2, 1).alignment = {
-			horizontal: 'left',
-			vertical: 'top',
-		};
+			sheet1.getRow(rowIndex2).values = [
+				'Báo cáo khác',
+				'',
+				'',
+				'',
+				'',
+				'',
+				'',
+				'',
+				'',
+				'',
+				'',
+				'',
+				'Lập báo cáo',
+				'',
+				'Xem xét',
+				'',
+				'Duyệt',
+				's',
+				'Thống kê',
+			];
+			sheet1.getRow(rowIndex2).font = {
+				name: 'Times New Roman',
+			};
+			sheet1.mergeCells(rowIndex2, 1, rowIndex2 + 5, 12);
+			sheet1.getCell(rowIndex2, 1).font = { bold: true };
+			sheet1.getCell(rowIndex2, 1).alignment = {
+				horizontal: 'left',
+				vertical: 'top',
+			};
 
-		for (let c = 13; c <= 20; c++) {
-			if (c % 2 === 1) {
-				sheet1.mergeCells(rowIndex2, c, rowIndex2, c + 1);
-				sheet1.mergeCells(rowIndex2 + 1, c, rowIndex2 + 4, c + 1);
-				sheet1.mergeCells(rowIndex2 + 5, c, rowIndex2 + 5, c + 1);
+			for (let c = 13; c <= 20; c++) {
+				if (c % 2 === 1) {
+					sheet1.mergeCells(rowIndex2, c, rowIndex2, c + 1);
+					sheet1.mergeCells(rowIndex2 + 1, c, rowIndex2 + 4, c + 1);
+					sheet1.mergeCells(rowIndex2 + 5, c, rowIndex2 + 5, c + 1);
+				}
 			}
-		}
-		for (let r = 6; r <= rowIndex2 + 5; r++) {
-			for (let c = 1; c <= 20; c++) {
-				drawBorder(sheet1, r, c);
+			for (let r = 6; r <= rowIndex2 + 5; r++) {
+				for (let c = 1; c <= 20; c++) {
+					drawBorder(sheet1, r, c);
+				}
 			}
-		}
-		saveExcelFile(workbook, `${fileName}`);
-	};
-	const onSubmit = (value) => {
+			saveExcelFile(workbook, `${fileName}`);
+		},
+		[packingEmployeeReportData, packingReportData]
+	);
+	const onSubmit = React.useCallback((value) => {
 		console.log(value);
-	};
+	}, []);
 	return (
 		<>
 			<ReportPackingFilter exportReport={exportReport} onSubmit={onSubmit} />
