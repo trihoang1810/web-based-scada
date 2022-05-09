@@ -10,7 +10,7 @@ import Breadcrumbs from '../../../components/breadcrumbs/Breadcrumbs';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 
-function InjectionMachine({ item, direction, modalPosition = [] }) {
+function InjectionMachine({ item, direction }) {
 	//fake data
 	const data = {
 		name: 'AXb15',
@@ -29,6 +29,7 @@ function InjectionMachine({ item, direction, modalPosition = [] }) {
 				<Tippy
 					className="injection-map__map-item-modal"
 					content={<InjectionMoldingMachine injectionMoldingMachineData={data} />}
+					maxWidth={470}
 				>
 					<Link
 						className="injection-map__map-item-inner"
@@ -64,30 +65,36 @@ function InjectionMachine({ item, direction, modalPosition = [] }) {
 					</Link>
 				</Tippy>
 			) : (
-				<div className="injection-map__map-item-inner injection-map__map-item-inner--none-haitian">
-					<div className="injection-map__map-item-title">{item.title}</div>
-					{item.subTitle.includes('\n') ? (
-						<div className="injection-map__map-item-sub-title">
-							{item.subTitle.split('\n').map((subTitle, index) => {
-								return (
-									<React.Fragment key={index}>
-										{subTitle}
-										{index !== item.subTitle.split('\n').length - 1 ? <br /> : null}
-									</React.Fragment>
-								);
-							})}
-						</div>
-					) : (
-						<div className="injection-map__map-item-sub-title">{item.subTitle}</div>
-					)}
-					<div className="injection-map__machine-container">
-						{direction === 'vectical' ? (
-							<VerticalMachine height="100px" width="100%" />
+				<Tippy
+					className="injection-map__map-item-modal"
+					content={<InjectionMoldingMachine injectionMoldingMachineData={data} />}
+					maxWidth={470}
+				>
+					<div className="injection-map__map-item-inner injection-map__map-item-inner--none-haitian">
+						<div className="injection-map__map-item-title">{item.title}</div>
+						{item.subTitle.includes('\n') ? (
+							<div className="injection-map__map-item-sub-title">
+								{item.subTitle.split('\n').map((subTitle, index) => {
+									return (
+										<React.Fragment key={index}>
+											{subTitle}
+											{index !== item.subTitle.split('\n').length - 1 ? <br /> : null}
+										</React.Fragment>
+									);
+								})}
+							</div>
 						) : (
-							<HorizontalMachine height="100px" width="100%" />
+							<div className="injection-map__map-item-sub-title">{item.subTitle}</div>
 						)}
+						<div className="injection-map__machine-container">
+							{direction === 'vectical' ? (
+								<VerticalMachine height="100px" width="100%" />
+							) : (
+								<HorizontalMachine height="100px" width="100%" />
+							)}
+						</div>
 					</div>
-				</div>
+				</Tippy>
 			)}
 		</React.Fragment>
 	);
@@ -110,54 +117,26 @@ function InjectionMap() {
 									<div className="injection-map__map-first-row">
 										<div className="injection-map__map-item">
 											{INJECTION_MACHINE_LAYOUT[0].map((item, index) => {
-												return (
-													<InjectionMachine
-														item={item}
-														key={index}
-														direction="vectical"
-														modalPosition={index <= 7 ? ['bottom', 'right'] : ['bottom', 'left']}
-													/>
-												);
+												return <InjectionMachine item={item} key={index} direction="vectical" />;
 											})}
 										</div>
 									</div>
 									<div className="injection-map__map-second-row">
 										<div className="injection-map__map-item">
 											{INJECTION_MACHINE_LAYOUT[1].map((item, index) => {
-												return (
-													<InjectionMachine
-														item={item}
-														key={index}
-														direction="vectical"
-														modalPosition={index <= 7 ? ['bottom', 'right'] : ['bottom', 'left']}
-													/>
-												);
+												return <InjectionMachine item={item} key={index} direction="vectical" />;
 											})}
 										</div>
 									</div>
 									<div className="injection-map__map-third-row">
 										<div className="injection-map__map-first-column">
 											{INJECTION_MACHINE_LAYOUT[2][0].map((item, index) => {
-												return (
-													<InjectionMachine
-														item={item}
-														key={index}
-														direction="horizontal"
-														modalPosition={index <= 2 ? ['bottom', 'right'] : ['top', 'right']}
-													/>
-												);
+												return <InjectionMachine item={item} key={index} direction="horizontal" />;
 											})}
 										</div>
 										<div className="injection-map__map-second-column">
 											{INJECTION_MACHINE_LAYOUT[2][1].map((item, index) => {
-												return (
-													<InjectionMachine
-														item={item}
-														key={index}
-														direction="horizontal"
-														modalPosition={index <= 2 ? ['bottom', 'left'] : ['top', 'left']}
-													/>
-												);
+												return <InjectionMachine item={item} key={index} direction="horizontal" />;
 											})}
 										</div>
 									</div>
