@@ -1,41 +1,75 @@
 import { format } from 'date-fns';
 import React from 'react';
-import mocking_packing_report from '../../../../assets/JsonData/mock_packing_report.json';
 import data from '../../../../assets/JsonData/report_packing_employee-assessment.json';
 import { bgBrush, createExcelFile, drawBorder, saveExcelFile } from '../../../../utils/excel';
 import { PACKING_COLUMNS, PACKING_EMPLOYEE_COLUMNS } from '../../../../utils/utils';
 import ReportPackingFilter from '../../../../components/reportPackingFilter/ReportPackingFilter';
 import ReportPackingTable from '../../../../components/reportPackingTable/ReportPackingTable';
 import mocking_packing_report_employee from '../../../../assets/JsonData/mock_packing_report_employee-assessment.json';
-
+import { packingApi } from '../../../../api/axios/packingReport';
 const randomColor = ['color1', 'color2', 'color3', 'color4', 'color5', 'color6', 'color7', 'color8', 'color9'];
 
 function ReportPackingSector() {
 	const [packingReportData, setPackingReportData] = React.useState([]);
 	const [packingEmployeeReportData, setPackingEmployeeReportData] = React.useState([]);
 	React.useEffect(() => {
-		mocking_packing_report.forEach((reportList, index1) => {
-			reportList['list-report'].forEach((report, index2) => {
-				setPackingReportData((prevState) => [
-					...prevState,
-					{
-						id: report.id,
-						color: randomColor[index1 % 9],
-						date: reportList.date,
-						productCode: report.productCode,
-						productName: report.productName,
-						unit: report.unit,
-						quantity: report.quantity,
-						result: report.result,
-						equipment: report.equipment,
-						maintenanceResult: report.maintenanceResult,
-						employee: report.employee,
-						time: report.time,
-						note: report.note,
-					},
-				]);
+		let filteredData = [];
+		(async () => {
+			const res = await packingApi.getTemporaryPackingPlanTracking();
+			console.log(res.data);
+			filteredData = res.data.reduce((acc, cur) => {
+				if (acc.find((item) => item.date === cur.date)) {
+					cur.items.forEach((item) => {
+						acc
+							.find((item) => item.date === cur.date)
+							.items.push({
+								productCode: item.item.id,
+								productName: item.item.name,
+								unit: item.unitOfMeasurement === 0 ? 'Cái' : 'Bộ',
+								quantity: item.actualQuantity,
+								note: item.note,
+								employee: cur.employee.lastName + ' ' + cur.employee.firstName,
+								time: (cur.workingTime / 1000).toFixed(2),
+							});
+					});
+				} else {
+					acc.push({
+						date: cur.date,
+						items: cur.items.map((item) => {
+							return {
+								productCode: item.item.id,
+								productName: item.item.name,
+								unit: item.unitOfMeasurement === 0 ? 'Cái' : 'Bộ',
+								quantity: item.actualQuantity,
+								note: item.note,
+								employee: cur.employee.lastName + ' ' + cur.employee.firstName,
+								time: (cur.workingTime / 1000).toFixed(2),
+							};
+						}),
+					});
+				}
+				return acc;
+			}, []);
+			filteredData.forEach((reportList, index1) => {
+				reportList.items.forEach((report, index2) => {
+					setPackingReportData((prevState) => [
+						...prevState,
+						{
+							id: index2 + 1,
+							color: randomColor[index1 % 9],
+							date: reportList.date,
+							productCode: report.productCode,
+							productName: report.productName,
+							unit: report.unit,
+							quantity: report.quantity,
+							employee: report.employee,
+							time: report.time,
+							note: report.note,
+						},
+					]);
+				});
 			});
-		});
+		})();
 		mocking_packing_report_employee.forEach((reportList, index1) => {
 			setPackingEmployeeReportData((prevState) => [
 				...prevState,
