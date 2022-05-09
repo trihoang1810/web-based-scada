@@ -7,6 +7,9 @@ import ReportNavigationButton from '../../../components/reportNavigationButton/R
 import { INJECTION_MACHINE_LAYOUT } from '../../../utils/utils';
 import InjectionMoldingMachine from '../../../components/injectionMoldingMachine/InjectionMoldingMachine';
 import Breadcrumbs from '../../../components/breadcrumbs/Breadcrumbs';
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
+
 function InjectionMachine({ item, direction, modalPosition = [] }) {
 	//fake data
 	const data = {
@@ -23,41 +26,43 @@ function InjectionMachine({ item, direction, modalPosition = [] }) {
 	return (
 		<React.Fragment>
 			{item.isHaitian ? (
-				<Link
-					className="injection-map__map-item-inner"
-					to={{
-						pathname: item.url,
-						state: {
-							map: true,
-						},
-					}}
+				<Tippy
+					className="injection-map__map-item-modal"
+					content={<InjectionMoldingMachine injectionMoldingMachineData={data} />}
 				>
-					<div className="injection-map__map-item-title">{item.title}</div>
-					{item.subTitle.includes('\n') ? (
-						<div className="injection-map__map-item-sub-title">
-							{item.subTitle.split('\n').map((subTitle, index) => {
-								return (
-									<React.Fragment key={index}>
-										{subTitle}
-										{index !== item.subTitle.split('\n').length - 1 ? <br /> : null}
-									</React.Fragment>
-								);
-							})}
-						</div>
-					) : (
-						<div className="injection-map__map-item-sub-title">{item.subTitle}</div>
-					)}
-					<div className="injection-map__machine-container">
-						{direction === 'vectical' ? (
-							<VerticalMachine height="100px" width="100%" />
+					<Link
+						className="injection-map__map-item-inner"
+						to={{
+							pathname: item.url,
+							state: {
+								map: true,
+							},
+						}}
+					>
+						<div className="injection-map__map-item-title">{item.title}</div>
+						{item.subTitle.includes('\n') ? (
+							<div className="injection-map__map-item-sub-title">
+								{item.subTitle.split('\n').map((subTitle, index) => {
+									return (
+										<React.Fragment key={index}>
+											{subTitle}
+											{index !== item.subTitle.split('\n').length - 1 ? <br /> : null}
+										</React.Fragment>
+									);
+								})}
+							</div>
 						) : (
-							<HorizontalMachine height="100px" width="100%" />
+							<div className="injection-map__map-item-sub-title">{item.subTitle}</div>
 						)}
-						<div className={`card injection-map__map-item-modal ${modalPosition.join(' ')}`}>
-							<InjectionMoldingMachine injectionMoldingMachineData={data} />
+						<div className="injection-map__machine-container">
+							{direction === 'vectical' ? (
+								<VerticalMachine height="100px" width="100%" />
+							) : (
+								<HorizontalMachine height="100px" width="100%" />
+							)}
 						</div>
-					</div>
-				</Link>
+					</Link>
+				</Tippy>
 			) : (
 				<div className="injection-map__map-item-inner injection-map__map-item-inner--none-haitian">
 					<div className="injection-map__map-item-title">{item.title}</div>
@@ -81,9 +86,6 @@ function InjectionMachine({ item, direction, modalPosition = [] }) {
 						) : (
 							<HorizontalMachine height="100px" width="100%" />
 						)}
-						<div className={`card injection-map__map-item-modal ${modalPosition.join(' ')}`}>
-							<InjectionMoldingMachine injectionMoldingMachineData={data} />
-						</div>
 					</div>
 				</div>
 			)}

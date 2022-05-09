@@ -130,9 +130,9 @@
 }
 
 .injection-map__map-item-modal {
-	display: none;
 	width: 500px;
-	position: absolute;
+	background-color: white;
+	color: #ddd;
 	z-index: 99;
 }
 
@@ -149,10 +149,10 @@
 	width: 420px;
 }
 
-.injection-map__map-item-inner:hover .injection-map__map-item-modal {
+/* .injection-map__map-item-inner:hover .injection-map__map-item-modal {
 	display: block;
 	animation: appear 0.3s ease-out;
-}
+} */
 
 .injection-map__map-item-inner .left {
 	right: 60%;
