@@ -15,16 +15,22 @@ import Alarm from '../pages/Alarm';
 import Report from '../pages/report/Report';
 import InjectionMap from '../pages/injectionMoldinMachine/injectionMap';
 import InjectionMoldingMainPage from '../pages/injectionMoldinMachine/index';
+import Login from '../pages/login/Login';
 import Test from '../test/Test';
 import Settings from '../pages/Settings';
 import PlanTracking from '../pages/planTracking/PlanTracking';
 import TrackingMonthly from '../pages/planTracking/trackingMonthly/TrackingMonthly';
 import TrackingDaily from '../pages/planTracking/trackingDaily/TrackingDaily';
-
+import SignInOidc from '../pages/signInOidc/SignInOidc';
+import SignOutOidc from '../pages/signOutOidc/SignOutOidc';
+import PrivateRoute from '../utils/protectedRoute';
 const Routes = () => {
 	return (
 		<Switch>
 			<Route path="/" exact component={Dashboard} />
+			<Route path="/login" exact component={Login} />
+			<Route path="/signin-oidc" exact component={SignInOidc} />
+			<Route path="/signout-oidc" exact component={SignOutOidc} />
 			<Route path="/plan-tracking" exact component={PlanTracking} />
 			<Route path="/plan-tracking/monthly" component={TrackingMonthly} />
 			<Route path="/plan-tracking/daily" component={TrackingDaily} />
@@ -42,6 +48,7 @@ const Routes = () => {
 			<Route path="/settings" component={Settings} />
 			<Route path="/test" component={Test} />
 			<Route component={Error} />
+			<PrivateRoute exact path="/" component={Dashboard} />
 		</Switch>
 	);
 };
