@@ -60,7 +60,7 @@ let quantityData = {
 
 function OeeIndex() {
 	const [isLoading, setIsLoading] = React.useState(false);
-	const [error, setError] = React.useState(false);
+	const [error, setError] = React.useState(null);
 	const dispatch = useDispatch();
 	const { pathname } = useLocation();
 	const {
@@ -159,9 +159,8 @@ function OeeIndex() {
 				})
 				.catch((err) => {
 					setIsLoading(false);
-					setError(err);
-					alert(err);
-					console.log(err);
+					setError('Có lỗi xảy ra, vui lòng thử lại\n' + err);
+					console.error(err);
 				});
 		},
 		[dispatch, oeeTarget]
@@ -192,6 +191,7 @@ function OeeIndex() {
 			datasets: [{ ...quantityData.datasets[0], data: totalQuantityDetailSeries }],
 		};
 	}, [detailLabels, availabilityDetailSeries, scrapDetailSeries, totalQuantityDetailSeries]);
+	console.log(error);
 	return (
 		<>
 			<h2 className="page-header">CHỈ SỐ OEE</h2>

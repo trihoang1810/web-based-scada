@@ -44,7 +44,7 @@ function InjectionDetail() {
 	// 			});
 	// 		})
 	// 		.catch((err) => {
-	// 			alert(err);
+	// 			console.error(err);
 	// 		});
 	// 	setConnection(connect);
 	// 	return () => {
