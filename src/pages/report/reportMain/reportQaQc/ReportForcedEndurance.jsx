@@ -169,7 +169,7 @@ function ReportForcedEndurance() {
 								second_result: item.result.passed === true ? 'Oke' : 'Lỗi',
 								total: item.sampleNumber,
 								note: item.note,
-								employee: res.data.items[0].tester.lastName + ' ' + res.data.items[0].tester.firstName,
+								employee: item.tester.lastName + ' ' + item.tester.firstName,
 							});
 						});
 						dispatch(setForcedEnduranceReportData(filteredData));

@@ -41,7 +41,7 @@ const Routes = () => {
 			<Route path="/report" component={Report} />
 			<Route path="/settings" component={Settings} />
 			<Route path="/test" component={Test} />
-			<Route path="*" component={Error} />
+			<Route component={Error} />
 		</Switch>
 	);
 };

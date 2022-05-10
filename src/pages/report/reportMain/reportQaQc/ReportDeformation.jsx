@@ -281,7 +281,7 @@ function ReportDeformation() {
 										result: item.status,
 										total: item.numberOfErrors,
 										note: item.note,
-										employee: res.data.items[0].tester.lastName + ' ' + res.data.items[0].tester.firstName,
+										employee: item.tester.lastName + ' ' + item.tester.firstName,
 									});
 								});
 								dispatch(
@@ -330,7 +330,7 @@ function ReportDeformation() {
 										result: item.deformationDegree,
 										total: item.numberOfError,
 										note: item.note,
-										employee: res.data.items[0].tester.lastName + ' ' + res.data.items[0].tester.firstName,
+										employee: item.tester.lastName + ' ' + item.tester.firstName,
 									});
 								});
 								dispatch(setDeformationReportData(filteredData));
@@ -379,7 +379,7 @@ function ReportDeformation() {
 										result: item.passed === true ? 'Oke' : 'Lỗi',
 										total: item.numberOfErrors,
 										note: item.note,
-										employee: res.data.items[0].tester.lastName + ' ' + res.data.items[0].tester.firstName,
+										employee: item.tester.lastName + ' ' + item.tester.firstName,
 									});
 								});
 								dispatch(setDeformationReportData(filteredData));

@@ -172,7 +172,7 @@ function ReportEndurance() {
 								second_result: item.seatRingResult.passed === true ? 'oke' : 'lỗi',
 								total: item.sampleNumber,
 								note: item.note,
-								employee: res.data.items[0].tester.lastName + ' ' + res.data.items[0].tester.firstName,
+								employee: item.tester.lastName + ' ' + item.tester.firstName,
 							});
 						});
 						dispatch(setEnduranceReportData(filteredData));
@@ -223,8 +223,6 @@ function ReportEndurance() {
 				<>
 					<QaqcOverviewReportTable overviewData={enduranceOverviewData} />
 					<ReportQaqcTable reportData={enduranceReportData} reportHeaders={ENDURANCE_COLUMNS} />
-					{/* <ReportEndurance reportData={enduranceOverviewData} reportHeaders={QAQC_OVERVIEW_COLUMNS} /> */}
-					{/* <code>{JSON.stringify(enduranceReportData, null, 2)}</code> */}
 				</>
 			)}
 		</>

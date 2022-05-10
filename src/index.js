@@ -12,7 +12,8 @@ import './assets/boxicons-2.0.7/css/boxicons.min.css';
 import './assets/css/grid.css';
 import './assets/css/index.css';
 import './assets/css/theme.css';
-// import { OidcProvider } from '@axa-fr/react-oidc-context';
+// import { AuthProvider } from 'oidc-react';
+// import { OidcProvider } from '@axa-fr/react-oidc';
 import Layout from './components/layout/Layout';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import {
@@ -58,27 +59,46 @@ Chart.register(
 	LineElement,
 	PointElement
 );
-
+// localStorage.setItem('isLoggedIn', 'false');
+// localStorage.setItem('token', '');
 const queryClient = new QueryClient();
-// const configuration = {
-// 	client_id: 'interactive.public.short',
-// 	redirect_uri: 'http://localhost:4200/authentication/callback',
-// 	silent_redirect_uri: 'http://localhost:4200/authentication/silent-callback',
-// 	scope: 'openid profile email api offline_access',
-// 	authority: 'https://demo.identityserver.io',
-// 	service_worker_only: false,
-// };
 
 ReactDOM.render(
 	<React.StrictMode>
-		{/* <OidcProvider configuration={configuration}> */}
+		{/* <OidcProvider
+			configuration={{
+				authority: 'https://authenticationserver20220111094343.azurewebsites.net',
+				client_id: 'react-client',
+				redirect_uri:
+					'https://authenticationserver20220111094343.azurewebsites.net/account/login?returnUrl=http://localhost:3000/authentication/callback',
+				silent_redirect_uri:
+					'https://authenticationserver20220111094343.azurewebsites.net/account/login?returnUrl=http://localhost:3000/authentication/silent-callback',
+				scope: 'openid native-client-scope profile',
+				// service_worker_relative_url: '/OidcServiceWorker.js',
+				// service_worker_only: false,
+			}}
+		> */}
+		{/* <OidcSecure> */}
+		{/* <AuthProvider
+			authority="https://authenticationserver20220111094343.azurewebsites.net"
+			redirectUri="https://authenticationserver20220111094343.azurewebsites.net/account/login?returnUrl=http://localhost:3000"
+			clientId="react-client"
+			scope="openid native-client-scope profile"
+			onSignIn={async (user) => {
+				alert('You just signed in, congratz! Check out the console!');
+				console.log(user);
+				window.location.hash = '';
+			}}
+		> */}
 		<QueryClientProvider client={queryClient}>
 			<Provider store={store}>
 				<Layout />
 			</Provider>
 			<ReactQueryDevtools position="bottom-right" initialIsOpen={false} />
 		</QueryClientProvider>
+		{/* </OidcSecure> */}
 		{/* </OidcProvider> */}
+		{/* </AuthProvider> */}
 	</React.StrictMode>,
 	document.getElementById('root')
 );
