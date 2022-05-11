@@ -9,7 +9,7 @@ import TopNav from '../topnav/TopNav';
 import { accessToken } from '../../utils/utils';
 import { setLogin } from '../../redux/slice/LoginSlice';
 
-import { BrowserRouter, Route } from 'react-router-dom';
+import { Route } from 'react-router-dom';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { useAuth } from 'oidc-react';
@@ -33,24 +33,26 @@ const Layout = () => {
 			: dispatch(setLogin({ user: null, isLoggedIn: false }));
 	}, [token, dispatch]);
 	return (
-		<BrowserRouter>
-			<Route
-				render={(props) => (
-					<div className={`layout ${themeReducer.mode} ${themeReducer.color}`}>
-						<Sidebar {...props} />
-						<div className={`layout__content`}>
-							<pre>
-								<code>{JSON.stringify(userData, null, 2)}</code>
-							</pre>
-							<TopNav />
-							<div className="layout__content-main">
-								<Routes />
-							</div>
+		<Route
+			render={(props) => (
+				<div className={`layout ${themeReducer.mode} ${themeReducer.color}`}>
+					<Sidebar {...props} />
+					<div className={`layout__content`}>
+						<pre
+							style={{
+								display: 'none',
+							}}
+						>
+							<code>{JSON.stringify(userData, null, 2)}</code>
+						</pre>
+						<TopNav />
+						<div className="layout__content-main">
+							<Routes />
 						</div>
 					</div>
-				)}
-			/>
-		</BrowserRouter>
+				</div>
+			)}
+		/>
 	);
 };
 export default Layout;

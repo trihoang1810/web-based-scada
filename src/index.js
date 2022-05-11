@@ -5,6 +5,8 @@ import reportWebVitals from './reportWebVitals';
 import { QueryClientProvider, QueryClient } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools';
 
+import { BrowserRouter, Switch, Route } from 'react-router-dom';
+
 import { Provider } from 'react-redux';
 import store from './redux/store/store';
 import 'react-toastify/dist/ReactToastify.css';
@@ -12,7 +14,7 @@ import './assets/boxicons-2.0.7/css/boxicons.min.css';
 import './assets/css/grid.css';
 import './assets/css/index.css';
 import './assets/css/theme.css';
-// import { AuthProvider } from 'oidc-react';
+import { AuthProvider } from 'oidc-react';
 // import { OidcProvider } from '@axa-fr/react-oidc';
 import Layout from './components/layout/Layout';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
@@ -29,7 +31,10 @@ import {
 	LineElement,
 	PointElement,
 } from 'chart.js';
-
+import Login from './pages/login/Login';
+import SignInOidc from './pages/signInOidc/SignInOidc';
+import SignOutOidc from './pages/signOutOidc/SignOutOidc';
+import { Redirect } from 'react-router-dom';
 Chart.defaults.set('plugins.datalabels', {
 	color: 'black',
 	labels: {
@@ -59,46 +64,37 @@ Chart.register(
 	LineElement,
 	PointElement
 );
-// localStorage.setItem('isLoggedIn', 'false');
-// localStorage.setItem('token', '');
 const queryClient = new QueryClient();
-
+const oidcConfig = {
+	onSignIn: () => {
+		// Redirect?
+		console.log('onSignIn');
+	},
+	authority: 'https://authenticationserver20220111094343.azurewebsites.net',
+	clientId: 'react-client',
+	redirectUri: 'http://localhost:3000/signin-oidc',
+	scope: 'openid profile native-client-scope',
+	responseType: 'id_token token',
+	postLogoutRedirectUri: 'http://localhost:3000/signout-oidc',
+};
 ReactDOM.render(
 	<React.StrictMode>
-		{/* <OidcProvider
-			configuration={{
-				authority: 'https://authenticationserver20220111094343.azurewebsites.net',
-				client_id: 'react-client',
-				redirect_uri:
-					'https://authenticationserver20220111094343.azurewebsites.net/account/login?returnUrl=http://localhost:3000/authentication/callback',
-				silent_redirect_uri:
-					'https://authenticationserver20220111094343.azurewebsites.net/account/login?returnUrl=http://localhost:3000/authentication/silent-callback',
-				scope: 'openid native-client-scope profile',
-				// service_worker_relative_url: '/OidcServiceWorker.js',
-				// service_worker_only: false,
-			}}
-		> */}
-		{/* <OidcSecure> */}
-		{/* <AuthProvider
-			authority="https://authenticationserver20220111094343.azurewebsites.net"
-			redirectUri="https://authenticationserver20220111094343.azurewebsites.net/account/login?returnUrl=http://localhost:3000"
-			clientId="react-client"
-			scope="openid native-client-scope profile"
-			onSignIn={async (user) => {
-				alert('You just signed in, congratz! Check out the console!');
-				console.log(user);
-				window.location.hash = '';
-			}}
-		> */}
-		<QueryClientProvider client={queryClient}>
-			<Provider store={store}>
-				<Layout />
-			</Provider>
-			<ReactQueryDevtools position="bottom-right" initialIsOpen={false} />
-		</QueryClientProvider>
-		{/* </OidcSecure> */}
-		{/* </OidcProvider> */}
-		{/* </AuthProvider> */}
+		<AuthProvider {...oidcConfig}>
+			<QueryClientProvider client={queryClient}>
+				<Provider store={store}>
+					<BrowserRouter>
+						<Switch>
+							<Redirect exact from="/" to="/layout/dashboard" />
+							<Route path="/login" exact component={Login} />
+							<Route path="/signin-oidc" exact component={SignInOidc} />
+							<Route path="/signout-oidc" exact component={SignOutOidc} />
+							<Route path="/layout" component={Layout} />
+						</Switch>
+					</BrowserRouter>
+				</Provider>
+				<ReactQueryDevtools position="bottom-right" initialIsOpen={false} />
+			</QueryClientProvider>
+		</AuthProvider>
 	</React.StrictMode>,
 	document.getElementById('root')
 );

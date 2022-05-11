@@ -22,7 +22,7 @@ const SidebarItem = (props) => {
 	const active = props.active ? 'active' : '';
 	const onClick = async () => {
 		await signOut();
-		history.push('/');
+		history.push('/login');
 	};
 	return (
 		<div className="sidebar__item">
