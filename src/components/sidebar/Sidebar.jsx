@@ -17,22 +17,12 @@ import { useHistory } from 'react-router-dom';
 import { useAuth } from 'oidc-react';
 
 const SidebarItem = (props) => {
-	const { signOut } = useAuth();
-	const history = useHistory();
 	const active = props.active ? 'active' : '';
-	const onClick = async () => {
-		await signOut();
-		history.push('/login');
-	};
+
 	return (
 		<div className="sidebar__item">
 			<div className="sidebar__item-flex">
-				<Link
-					onClick={async () => {
-						await onClick();
-					}}
-					to={props.route}
-				>
+				<Link to={props.route}>
 					<div className={` sidebar__item-inner ${active}`}>
 						<i className={props.icon}></i>
 						<span>{props.title}</span>
@@ -54,6 +44,12 @@ const SidebarItem = (props) => {
 };
 
 function Sidebar(props) {
+	const { signOut } = useAuth();
+	const history = useHistory();
+	const onClick = async () => {
+		await signOut();
+		history.push('/login');
+	};
 	const sideBarReducer = useSelector((state) => state.sidebar);
 	const activeMenu = sideBarReducer.active;
 	const dispatch = useDispatch();
@@ -62,8 +58,8 @@ function Sidebar(props) {
 	};
 
 	const activeItem = sidebar_items.findIndex((item) => {
-		if (item.route.includes('/injection/')) {
-			return props.location.pathname.includes('/injection/');
+		if (item.route.includes('/layout/injection/')) {
+			return props.location.pathname.includes('/layout/injection/');
 		} else {
 			return item.route === props.location.pathname;
 		}
@@ -92,6 +88,19 @@ function Sidebar(props) {
 					);
 					return subItem;
 				})}
+				<div
+					onClick={async () => {
+						await onClick();
+					}}
+					className="sidebar__item sidebar__item--logout"
+				>
+					<div className="sidebar__item-flex">
+						<div className={` sidebar__item-inner`}>
+							<i className="bx bx-log-out"></i>
+							<span>Đăng xuất</span>
+						</div>
+					</div>
+				</div>
 			</div>
 			{activeMenu !== 'active' && <div className="sidebar__obscure-filter" onClick={handleMenuClick}></div>}
 			{activeMenu === 'active' ? (
@@ -104,3 +113,10 @@ function Sidebar(props) {
 }
 
 export default React.memo(Sidebar);
+// ,
+// 	{
+// 		"display_name": "đăng xuất",
+// 		"route": "/",
+// 		"icon": "bx bx-log-out",
+// 		"subNav": []
+// 	}

@@ -35,6 +35,7 @@ import Login from './pages/login/Login';
 import SignInOidc from './pages/signInOidc/SignInOidc';
 import SignOutOidc from './pages/signOutOidc/SignOutOidc';
 import { Redirect } from 'react-router-dom';
+import ErrorPage from './pages/Error';
 Chart.defaults.set('plugins.datalabels', {
 	color: 'black',
 	labels: {
@@ -89,6 +90,7 @@ ReactDOM.render(
 							<Route path="/signin-oidc" exact component={SignInOidc} />
 							<Route path="/signout-oidc" exact component={SignOutOidc} />
 							<Route path="/layout" component={Layout} />
+							<Route component={ErrorPage} />
 						</Switch>
 					</BrowserRouter>
 				</Provider>

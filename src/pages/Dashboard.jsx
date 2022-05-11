@@ -169,7 +169,7 @@ const Dashboard = () => {
 									<h3>PHÒNG QA/QC THIẾT BỊ</h3>
 								</div>
 								<div className="col-2 flex-left">
-									<ViewMoreButton link="/qaqc" />
+									<ViewMoreButton link="/layout/qaqc" />
 								</div>
 							</div>
 						</div>
@@ -228,7 +228,7 @@ const Dashboard = () => {
 									<h3>KHU VỰC ĐÓNG GÓI</h3>
 								</div>
 								<div className="col-3 flex-left">
-									<ViewMoreButton link="/packing" />
+									<ViewMoreButton link="/layout/packing" />
 								</div>
 							</div>
 						</div>
@@ -314,7 +314,7 @@ const Dashboard = () => {
 									<h3>KHU VỰC MÁY ÉP</h3>
 								</div>
 								<div className="col-3 flex-left">
-									<ViewMoreButton link="/injection/pages/1" />
+									<ViewMoreButton link="/layout/injection/pages/1" />
 								</div>
 							</div>
 						</div>
@@ -385,7 +385,7 @@ const Dashboard = () => {
 						<div className="card__body">
 							<div className="row">
 								<div className="col-6">
-									<Link to="/report/oee">
+									<Link to="/layout/report/oee">
 										<StatusCard
 											hover={true}
 											tooltip="Availability"
@@ -397,7 +397,7 @@ const Dashboard = () => {
 									</Link>
 								</div>
 								<div className="col-6">
-									<Link to="/report/oee">
+									<Link to="/layout/report/oee">
 										<StatusCard
 											hover={true}
 											tooltip="Performance"
@@ -411,7 +411,7 @@ const Dashboard = () => {
 							</div>
 							<div className="row">
 								<div className="col-6">
-									<Link to="/report/oee">
+									<Link to="/layout/report/oee">
 										<StatusCard
 											hover={true}
 											tooltip="Quality"
@@ -423,7 +423,7 @@ const Dashboard = () => {
 									</Link>
 								</div>
 								<div className="col-6">
-									<Link to="/report/oee">
+									<Link to="/layout/report/oee">
 										<StatusCard
 											hover={true}
 											tooltip="OEE index"

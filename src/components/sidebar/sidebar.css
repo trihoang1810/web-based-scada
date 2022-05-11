@@ -186,3 +186,7 @@ i>span>i{
 .sidebar__item--sub-container{
   padding: 10px 35px;
 }
+
+.sidebar__item--logout{
+  cursor: pointer;
+}

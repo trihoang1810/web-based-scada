@@ -364,7 +364,7 @@ function InjectionMoldingMachinePage() {
 	}, []);
 
 	useEffect(() => {
-		history.push(`/injection/pages/${page}`);
+		history.push(`/layout/injection/pages/${page}`);
 	}, [page, history]);
 
 	useEffect(() => {
@@ -393,7 +393,7 @@ function InjectionMoldingMachinePage() {
 		if (!(wattageFilterData || stateFilterData)) {
 			setFilterData(resData);
 		}
-		history.push('/injection/pages/1');
+		history.push('/layout/injection/pages/1');
 		setPage(1);
 	}, [wattageFilter, stateFilter, resData, history]);
 
@@ -460,14 +460,14 @@ function InjectionMoldingMachinePage() {
 			</div>
 			<div className="row mb-10">
 				<div className="col-12 flex-center">
-					<ReportNavigationButton history={history} path="/injection/map">
+					<ReportNavigationButton history={history} path="/layout/injection/map">
 						DẠNG BẢN ĐỒ
 					</ReportNavigationButton>
 				</div>
 			</div>
 			<div className="row">
 				<div className="col-12 flex-center">
-					<ReportNavigationButton history={history} path="/report/main/injection" />
+					<ReportNavigationButton history={history} path="/layout/report/main/injection" />
 				</div>
 			</div>
 		</div>

@@ -1,7 +1,7 @@
 [
 	{
 		"display_name": "Dashboard",
-		"route": "/",
+		"route": "/layout/dashboard",
 		"icon": "bx bx-category-alt",
 		"subNav": []
 	},
@@ -105,12 +105,6 @@
 		"display_name": "cài đặt",
 		"route": "/layout/settings",
 		"icon": "bx bx-cog",
-		"subNav": []
-	},
-	{
-		"display_name": "đăng xuất",
-		"route": "/",
-		"icon": "bx bx-log-out",
 		"subNav": []
 	}
 ]

@@ -261,7 +261,7 @@ function WaterProofing() {
 			</div>
 			<div className="row">
 				<div className="col-12 flex-center">
-					<ReportNavigationButton history={history} path="/report/main/qaqc/water-proof" />
+					<ReportNavigationButton history={history} path="/layout/report/main/qaqc/water-proof" />
 				</div>
 			</div>
 		</>

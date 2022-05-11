@@ -5,11 +5,7 @@ function Error() {
 	return (
 		<div>
 			{/* <NotFoundImage width="100%" /> */}
-			<div className="row">
-				<div className="col-12">
-					<NotFound />
-				</div>
-			</div>
+			<NotFound />
 		</div>
 	);
 }

@@ -263,7 +263,7 @@ function ForcedEndurance() {
 			</div>
 			<div className="row">
 				<div className="col-12 flex-center">
-					<ReportNavigationButton history={history} path="/report/main/qaqc/forced-endurance" />
+					<ReportNavigationButton history={history} path="/layout/report/main/qaqc/forced-endurance" />
 				</div>
 			</div>
 		</>

@@ -314,7 +314,7 @@ function Endurance() {
 			</div>
 			<div className="row">
 				<div className="col-12 flex-center">
-					<ReportNavigationButton history={history} path="/report/main/qaqc/endurance" />
+					<ReportNavigationButton history={history} path="/layout/report/main/qaqc/endurance" />
 				</div>
 			</div>
 		</>

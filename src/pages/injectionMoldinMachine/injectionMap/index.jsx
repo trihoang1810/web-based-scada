@@ -146,14 +146,14 @@ function InjectionMap() {
 						<div className="card__footer">
 							<div className="row mb-10">
 								<div className="col-12">
-									<ReportNavigationButton history={history} path="/injection/pages/1">
+									<ReportNavigationButton history={history} path="/layout/injection/pages/1">
 										DẠNG BẢNG
 									</ReportNavigationButton>
 								</div>
 							</div>
 							<div className="row">
 								<div className="col-12">
-									<ReportNavigationButton history={history} path="/report/main/injection" />
+									<ReportNavigationButton history={history} path="/layout/report/main/injection" />
 								</div>
 							</div>
 						</div>

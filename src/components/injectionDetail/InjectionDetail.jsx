@@ -211,9 +211,9 @@ function InjectionDetail({ injectionMoldingMachineConfiguration, realTimeData, p
 			</div>
 			<div className="row">
 				<div className="col-12 flex-horizontal-center">
-					<ReportNavigationButton history={history} path="/report/main/injection" />
+					<ReportNavigationButton history={history} path="/layout/report/main/injection" />
 					<div className="mr-40"></div>
-					<ReportNavigationButton history={history} path="/report/oee">
+					<ReportNavigationButton history={history} path="/layout/report/oee">
 						CHỈ SỐ OEE
 					</ReportNavigationButton>
 				</div>

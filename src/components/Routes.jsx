@@ -2,7 +2,6 @@ import React from 'react';
 
 import { Route, Switch, useRouteMatch } from 'react-router-dom';
 
-import Error from '../pages/Error';
 import QualityControlRoutes from '../pages/qaqc';
 import InjectionMoldingMachinePage from '../pages/injectionMoldinMachine/injectionPage';
 import InjectionDetail from '../pages/injectionMoldinMachine/injectionDetail';
@@ -42,7 +41,6 @@ const Routes = () => {
 			<Route path={`${url}/report`} component={Report} />
 			<Route path={`${url}/settings`} component={Settings} />
 			<Route path={`${url}/test`} component={Test} />
-			<Route component={Error} />
 		</Switch>
 	);
 };

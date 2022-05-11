@@ -301,7 +301,7 @@ function PackingDetail() {
 					</div>
 				</div>
 				<div className="flex-center mb-10">
-					<ReportNavigationButton history={history} path="/report/main/packing" />
+					<ReportNavigationButton history={history} path="/layout/report/main/packing" />
 				</div>
 			</div>
 		</>
